@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Card from "../components/Dashboard/Admin/Card";
+import Cards from "../components/Dashboard/Admin/Cards";
 import Layout from "../components/Layout";
 import LineChart from "../components/Dashboard/Admin/Charts/LineChart";
 import BarChart from "../components/Dashboard/Admin/Charts/BarChart";
@@ -7,25 +7,6 @@ import DoughnutChart from "../components/Dashboard/Admin/Charts/DoughnutChart";
 import NoticeBoard from "../components/Dashboard/Admin/NoticeBoard";
 
 const API_URL = "http://192.168.0.20:8000/v1/data/all";
-
-// const userDatas = [
-//   {
-//     title: "Students",
-//     data: 150000,
-//   },
-//   {
-//     title: "Teachers",
-//     data: 200,
-//   },
-//   {
-//     title: "Parents",
-//     data: 150000,
-//   },
-//   {
-//     title: "Earnings",
-//     data: "$193000",
-//   },
-// ];
 
 function Home() {
   const [userData, setUserData] = useState([]);
@@ -40,11 +21,30 @@ function Home() {
       const data = await res.json();
       setUserData(data);
     };
-    console.log(userData);
     getData();
-  }, [setUserData]);
+    console.log(userData);
+  }, []);
 
   const { total_male, total_female } = userData;
+
+  const totalCounts = [
+    {
+      title: "students",
+      count: userData.total_students,
+    },
+    {
+      title: "teachers",
+      count: userData.total_students,
+    },
+    {
+      title: "parents",
+      count: userData.total_students,
+    },
+    {
+      title: "earnings",
+      count: userData.total_students,
+    },
+  ];
 
   return (
     <Layout>
@@ -53,25 +53,17 @@ function Home() {
           Admin Dashboard
         </h1>
         <div className="mt-8 grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
-          <Card title="Students" number={userData.total_students} />
-          <Card title="Teachers" number={userData.total_teachers} />
-          <Card title="parents" number={userData.total_parents} />
-          <Card title="Earnings" number={userData.total_expenses} />
-          {/* {userData &&
-            userData.map((data, i) => (
-              <Card key={i} title={data.title} number={data.data} />
-            ))} */}
+          <Cards totalCounts={totalCounts} />
           <div className="col-span-2">
             <LineChart />
           </div>
           <BarChart />
           <DoughnutChart male={total_male} female={total_female} />
           <div className="col-span-2">
-            <NoticeBoard />
+            <NoticeBoard notices={userData.notice} />
           </div>
         </div>
       </div>
-      {/* </div> */}
     </Layout>
   );
 }
