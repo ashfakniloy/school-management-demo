@@ -42,6 +42,7 @@ import { enUS } from "date-fns/locale";
 // ];
 
 function NoticeBoard({ notices }) {
+  // console.log(notices.data);
   return (
     <div className="bg-white p-5 shadow-lg">
       <h1 className="my-5 text-2xl">Notice Board</h1>

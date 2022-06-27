@@ -9,7 +9,6 @@
 //   Legend,
 // } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-// import { Chart, registerables } from "chart.js";
 import Chart from "chart.js/auto";
 
 function DoughnutChart({ male, female }) {
@@ -23,13 +22,10 @@ function DoughnutChart({ male, female }) {
   //   Legend
   // );
 
-  // Chart.register(...registerables);
-
   const data = {
     labels: ["Male", "Female"],
     datasets: [
       {
-        label: "Sales for 2020 (M)",
         data: [male, female],
         fill: true,
         borderColor: ["white"],

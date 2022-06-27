@@ -1,83 +1,26 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { FaArrowLeft, FaArrowRight, FaUserCircle } from "react-icons/fa";
+import { FaAngleRight, FaAngleDown } from "react-icons/fa";
+import { navLinks } from "./NavLinks";
+import SubMenu from "./SubMenu";
 
-const menus = [
-  {
-    name: "dashboard",
-    link: "/",
-  },
-  {
-    name: "students",
-    link: "/students",
-  },
-  {
-    name: "teachers",
-    link: "/teachers",
-  },
-  {
-    name: "parents",
-    link: "/parents",
-  },
-  {
-    name: "library",
-    link: "/library",
-  },
-  {
-    name: "accounts",
-    link: "/accounts",
-  },
-  {
-    name: "class",
-    link: "/class",
-  },
-  {
-    name: "subject",
-    link: "/subject",
-  },
-  {
-    name: "class Routine",
-    link: "/class-routine",
-  },
-  {
-    name: "attendance",
-    link: "/attendance",
-  },
-  {
-    name: "exam",
-    link: "/exam",
-  },
-  {
-    name: "transpoart",
-    link: "/transpoart",
-  },
-  {
-    name: "hotel",
-    link: "/hotel",
-  },
-  {
-    name: "notice",
-    link: "/notice",
-  },
-  {
-    name: "message",
-    link: "/message",
-  },
-  {
-    name: "account",
-    link: "/account",
-  },
-];
-
-function Sidebar({ showMenu }) {
-  // const [showMenu, setShowMenu] = useState(true);
+function Sidebar({ showMenu, showSubLinks, setShowSubLinks }) {
   const router = useRouter();
+
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const subnav = () => setShowDropdown(!showDropdown);
 
   const activeClass = (path) =>
     router.pathname === path
       ? "bg-slate-500 hover:bg-slate-500 border-l-4 border-0 border-slate-400 pl-6"
       : "hover:bg-slate-600 border-t last:border-b border-slate-600";
+
+  // const activeSubMenuClass = (path) =>
+  //   router.pathname === path
+  //     ? "bg-slate-700 hover:bg-slate-600 border-l-4 border-0 border-slate-400 pl-6"
+  //     : "hover:bg-slate-500 border-t last:border-b border-slate-500";
 
   return (
     <div
@@ -97,35 +40,82 @@ function Sidebar({ showMenu }) {
         </div>
 
         <ul className="mt-6">
-          {menus.map((menu, i) => (
-            <Link key={i} href={menu.link} passHref>
-              <li
-                className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
-                  menu.link
-                )}`}
-              >
-                <div className="flex items-center gap-4 ">
-                  <div className="text-2xl">
-                    <FaUserCircle className="fill-yellow-500" />
+          {navLinks.map((nav, i) => (
+            <div key={i} onClick={nav.subLinks && subnav}>
+              <Link href={nav.subLinks ? "" : nav.link} passHref>
+                <li
+                  className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
+                    nav.link
+                  )}`}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="text-xl">
+                      <span>{nav.icon}</span>
+                    </div>
+                    <p
+                      className={`capitalize duration-300 whitespace-nowrap ${
+                        showMenu ? "opacity-100" : "opacity-0"
+                      }`}
+                    >
+                      {nav.name}
+                    </p>
+                    <div className="">
+                      {nav.subLinks && showDropdown
+                        ? ">"
+                        : nav.subLinks
+                        ? "<"
+                        : null}
+                    </div>
+                    {/* {nav.subLinks && (
+                      <span
+                        className={`pl-24`}
+                        onClick={() => setShowSubLinks(!showSubLinks)}
+                      >
+                        
+                        {showSubLinks ? <FaAngleDown /> : <FaAngleRight />}
+                      </span>
+                    )} */}
                   </div>
-                  <p
-                    className={`capitalize duration-300 whitespace-nowrap ${
-                      showMenu ? "opacity-100" : "opacity-0"
-                    }`}
+                </li>
+              </Link>
+
+              {showDropdown &&
+                nav.subLinks &&
+                nav.subLinks.map((subLink, i) => (
+                  <div
+                    key={i}
+                    className={`flex flex-col  pl-20 capitalize duration-300 whitespace-nowrap cursor-pointer}`}
+                    // onClick={subLink && showSubnav}
+                    // onClick={() => toggle(i)}
                   >
-                    {menu.name}
-                  </p>
+                    <Link href={subLink.link} passHref>
+                      <p className="my-3 text-xs">{subLink.name}</p>
+
+                      {/* {subLink && subnav
+                      ? item.iconOpened
+                      : subLink
+                      ? item.iconClosed
+                      : null} */}
+                    </Link>
+                  </div>
+                ))}
+
+              {/* {nav.subLinks &&
+                nav.subLinks.map((subLink, i) => (
+                  <SubMenu key={i} subLink={subLink} />
+                ))} */}
+
+              {/* {showSubLinks && showMenu && (
+                <div className="bg-gray-600 delay-100">
+                  {nav.subLinks &&
+                    nav.subLinks.map((subLink, i) => (
+                      <SubMenu i={i} subLink={subLink} />
+                    ))}
                 </div>
-              </li>
-            </Link>
+              )} */}
+            </div>
           ))}
         </ul>
-        {/* <div
-          className="absolute top-5 -right-3 bg-yellow-300 text-gray-800 p-2 text-sm border border-slate-600 rounded-full"
-          onClick={() => setShowMenu(!showMenu)}
-        >
-          {!showMenu ? <FaArrowLeft /> : <FaArrowRight />}
-        </div> */}
       </div>
     </div>
   );
