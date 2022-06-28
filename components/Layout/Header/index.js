@@ -3,7 +3,7 @@ import { FaBars } from "react-icons/fa";
 
 function Header({ showMenu, setShowMenu }) {
   return (
-    <div className="bg-white w-full flex justify-between items-center shadow-md px-5 py-3 sticky top-0">
+    <div className="bg-white w-full flex justify-between items-center shadow-md px-5 py-3 sticky top-0 z-10">
       <div className="ml-3 flex items-center gap-8">
         <div className="" onClick={() => setShowMenu(!showMenu)}>
           <FaBars />

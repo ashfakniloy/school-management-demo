@@ -63,6 +63,16 @@ export const navLinks = [
     name: "parents",
     link: "/parents",
     icon: <RiParentFill className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "all parents",
+        link: "/parents/all-parents",
+      },
+      {
+        name: "add parent",
+        link: "/parents/add-parent",
+      },
+    ],
   },
   {
     name: "library",

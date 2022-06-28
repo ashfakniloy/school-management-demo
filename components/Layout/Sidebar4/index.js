@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { navLinks } from "./NavLinks";
 import "react-pro-sidebar/dist/css/styles.css";
@@ -10,14 +11,25 @@ function Sidebar4({ showMenu }) {
       }`}
     >
       <ProSidebar>
+        <h1
+          className={`text-2xl text-white duration-300 ml-10 my-7 ${
+            showMenu ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          Sidebar
+        </h1>
         {navLinks.map((navLink, i) => (
           <Menu key={i} iconShape="square">
             {!navLink.subLinks ? (
-              <MenuItem icon={navLink.icon}>{navLink.name}</MenuItem>
+              <Link href={navLink.link} passHref>
+                <MenuItem icon={navLink.icon}>{navLink.name}</MenuItem>
+              </Link>
             ) : (
               <SubMenu title={navLink.name} icon={navLink.icon}>
                 {navLink.subLinks.map((subLink, i) => (
-                  <MenuItem key={i}>{subLink.name}</MenuItem>
+                  <Link key={i} href={subLink.link} passHref>
+                    <MenuItem>{subLink.name}</MenuItem>
+                  </Link>
                 ))}
               </SubMenu>
             )}
