@@ -10,9 +10,23 @@ function Sidebar({ showMenu, showSubLinks, setShowSubLinks }) {
 
   // const [showDropdown, setShowDropdown] = useState(false);
 
-  const [clicked, setClicked] = useState(false);
+  // const [clicked, setClicked] = useState(false);
 
-  const subnav = () => setShowDropdown(!showDropdown);
+  const [subnav, setSubnav] = useState(false);
+
+  console.log(subnav);
+
+  const showSubnav = () => setSubnav(!subnav);
+
+  const toggle = (i) => {
+    if (clicked === i) {
+      return setClicked(null);
+    }
+
+    setClicked(i);
+  };
+
+  // const subnav = () => setShowDropdown(!showDropdown);
 
   const activeClass = (path) =>
     router.pathname === path
@@ -43,6 +57,42 @@ function Sidebar({ showMenu, showSubLinks, setShowSubLinks }) {
 
         <div className="mt-6">
           {navLinks.map((navLink, i) => (
+            <div className="" key={i}>
+              <Link href={!navLink.subLinks ? navLink.link : ""} passHref>
+                <div
+                  className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
+                    navLink.link
+                  )}`}
+                  onClick={navLink.subLinks && showSubnav}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="text-xl">
+                      <span>{navLink.icon}</span>
+                    </div>
+                    <p
+                      className={`capitalize duration-300 whitespace-nowrap ${
+                        showMenu ? "opacity-100" : "opacity-0"
+                      }`}
+                    >
+                      {navLink.name}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+
+              {subnav &&
+                navLink.subLinks &&
+                navLink.subLinks.map((subLink, i) => (
+                  <div className="my-2" key={i}>
+                    {subLink.name}
+                  </div>
+                ))}
+            </div>
+          ))}
+        </div>
+
+        {/* <div className="mt-6">
+          {navLinks.map((navLink, i) => (
             <div key={i}>
               {!navLink.subLinks ? (
                 <Link href={navLink.link} passHref>
@@ -66,72 +116,45 @@ function Sidebar({ showMenu, showSubLinks, setShowSubLinks }) {
                   </div>
                 </Link>
               ) : (
-                <div
-                  className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
-                    navLink.link
-                  )}`}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="text-xl">
-                      <span>{navLink.icon}</span>
-                    </div>
-                    <p
-                      className={`capitalize duration-300 whitespace-nowrap ${
-                        showMenu ? "opacity-100" : "opacity-0"
-                      }`}
-                    >
-                      {navLink.name}
-                    </p>
-                    <div className="">
-                      {">"}
-                      {/* {nav.subLinks && showDropdown
-                        ? ">"
-                        : nav.subLinks
-                        ? "<"
-                        : null} */}
-                    </div>
-
-                    {/* {nav.subLinks && (
-                      <span
-                        className={`pl-24`}
-                        onClick={() => setShowSubLinks(!showSubLinks)}
+                <div>
+                  <div
+                    key={i}
+                    className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
+                      navLink.link
+                    )}`}
+                    // onClick={() => setClicked(!clicked)}
+                    onClick={() => toggle(i)}
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="text-xl">
+                        <span>{navLink.icon}</span>
+                      </div>
+                      <p
+                        className={`capitalize duration-300 whitespace-nowrap ${
+                          showMenu ? "opacity-100" : "opacity-0"
+                        }`}
                       >
-                        
-                        {showSubLinks ? <FaAngleDown /> : <FaAngleRight />}
-                      </span>
-                    )} */}
+                        {navLink.name}
+                      </p>
+                    </div>
                   </div>
-                  {navLink.subLinks.map((subLink, i) => (
-                    <SubMenu
-                      key={i}
-                      index={i}
-                      subLink={subLink}
-                      clicked={clicked}
-                      setClicked={setClicked}
-                    />
-                    // <p key={i} className="flex flex-col">
-                    //   {subLink.name}
-                    // </p>
-                  ))}
+
+                  {clicked &&
+                    navLink.subLinks.map((subLink, i) => (
+                      <SubMenu
+                        key={i}
+                        index={i}
+                        subLink={subLink}
+                        clicked={clicked}
+                        setClicked={setClicked}
+                      />
+                    ))}
                 </div>
               )}
 
-              {/* {nav.subLinks &&
-                nav.subLinks.map((subLink, i) => (
-                  <SubMenu key={i} subLink={subLink} />
-                ))} */}
-
-              {/* {showSubLinks && showMenu && (
-                <div className="bg-gray-600 delay-100">
-                  {nav.subLinks &&
-                    nav.subLinks.map((subLink, i) => (
-                      <SubMenu i={i} subLink={subLink} />
-                    ))}
-                </div>
-              )} */}
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

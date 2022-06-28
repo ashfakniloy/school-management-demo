@@ -19,18 +19,19 @@ function Sidebar4({ showMenu }) {
           Sidebar
         </h1>
         {navLinks.map((navLink, i) => (
-          <Menu key={i} iconShape="square">
+          <Menu key={i} iconShape="square" className="relative">
             {!navLink.subLinks ? (
               <Link href={navLink.link} passHref>
                 <MenuItem icon={navLink.icon}>{navLink.name}</MenuItem>
               </Link>
             ) : (
               <SubMenu title={navLink.name} icon={navLink.icon}>
-                {navLink.subLinks.map((subLink, i) => (
-                  <Link key={i} href={subLink.link} passHref>
-                    <MenuItem>{subLink.name}</MenuItem>
-                  </Link>
-                ))}
+                {showMenu &&
+                  navLink.subLinks.map((subLink, i) => (
+                    <Link key={i} href={subLink.link} passHref>
+                      <MenuItem>{subLink.name}</MenuItem>
+                    </Link>
+                  ))}
               </SubMenu>
             )}
           </Menu>

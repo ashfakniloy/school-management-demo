@@ -19,7 +19,7 @@
 
 * html,
 body {
-  @apply p-0 m-0 font-Poppins;
+  @apply p-0 m-0 font-Poppins bg-gray-100;
 }
 
 /* html,

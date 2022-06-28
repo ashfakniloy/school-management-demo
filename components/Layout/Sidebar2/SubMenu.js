@@ -35,8 +35,8 @@ function SubMenu({ item, showMenu }) {
         showMenu &&
         item.subLinks.map((item, index) => {
           return (
-            <div className="ml-4 my-3">
-              <Link href={item.link} key={index}>
+            <div className="ml-4 my-3" key={index}>
+              <Link href={item.link}>
                 <p className="text-sm">{item.name}</p>
               </Link>
             </div>

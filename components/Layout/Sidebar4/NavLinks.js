@@ -106,6 +106,16 @@ export const navLinks = [
     name: "class",
     link: "/class",
     icon: <SiGoogleclassroom className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "all classes",
+        link: "/class/all-classes",
+      },
+      {
+        name: "add new class",
+        link: "/class/add-new-class",
+      },
+    ],
   },
   {
     name: "subject",
@@ -121,6 +131,21 @@ export const navLinks = [
     name: "attendance",
     link: "/attendance",
     icon: <SiGooglesheets className="fill-green-400" />,
+  },
+  {
+    name: "leave",
+    link: "/leave",
+    icon: <SiGooglesheets className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "all leaves",
+        link: "/leaves/all-leaves",
+      },
+      {
+        name: "add leave",
+        link: "/leaves/add-leave",
+      },
+    ],
   },
   {
     name: "exam",
