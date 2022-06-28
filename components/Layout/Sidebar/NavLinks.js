@@ -17,11 +17,13 @@ import { AiFillSetting } from "react-icons/ai";
 
 export const navLinks = [
   {
+    id: 1,
     name: "dashboard",
     link: "/",
     // icon: <AiOutlineDashboard className="fill-green-400" />,
   },
   {
+    id: 2,
     name: "students",
     link: "/students",
     // icon: <ImUsers className="fill-green-400" />,
@@ -41,6 +43,7 @@ export const navLinks = [
     ],
   },
   {
+    id: 3,
     name: "teachers",
     link: "/teachers",
     // icon: <MdOutlineGroups className="fill-green-400" />,
@@ -60,66 +63,79 @@ export const navLinks = [
     ],
   },
   {
+    id: 4,
     name: "parents",
     link: "/parents",
     // icon: <RiParentFill className="fill-green-400" />,
   },
   {
+    id: 5,
     name: "library",
     link: "/library",
     // icon: <ImLibrary className="fill-green-400" />,
   },
   {
+    id: 6,
     name: "accounts",
     link: "/accounts",
     // icon: <GiMoneyStack className="fill-green-400" />,
   },
   {
+    id: 7,
     name: "class",
     link: "/class",
     // icon: <SiGoogleclassroom className="fill-green-400" />,
   },
   {
+    id: 8,
     name: "subject",
     link: "/subject",
     // icon: <FaBookOpen className="fill-green-400" />,
   },
   {
+    id: 9,
     name: "class Routine",
     link: "/class-routine",
     // icon: <BsCalendar3 className="fill-green-400" />,
   },
   {
+    id: 10,
     name: "attendance",
     link: "/attendance",
     // icon: <SiGooglesheets className="fill-green-400" />,
   },
   {
+    id: 11,
     name: "exam",
     link: "/exam",
     // icon: <GoChecklist className="fill-green-400" />,
   },
   {
+    id: 12,
     name: "transpoart",
     link: "/transpoart",
     // icon: <GiBus className="fill-green-400" />,
   },
   {
+    id: 13,
     name: "hostel",
     link: "/hostel",
     // icon: <AiOutlineHome className="fill-green-400" />,
   },
   {
+    id: 14,
     name: "notice",
     link: "/notice",
     // icon: <FaClipboardList className="fill-green-400" />,
   },
   {
+    id: 15,
     name: "message",
     link: "/message",
     // icon: <MdMessage className="fill-green-400" />,
   },
   {
+    id: 16,
     name: "account",
     link: "/account",
     // icon: <AiFillSetting className="fill-green-400" />,

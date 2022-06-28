@@ -8,25 +8,15 @@ import SubMenu from "./SubMenu";
 function Sidebar({ showMenu, showSubLinks, setShowSubLinks }) {
   const router = useRouter();
 
-  // const [showDropdown, setShowDropdown] = useState(false);
+  const [subMenuOpen, setSubMenuOpen] = useState("");
 
-  // const [clicked, setClicked] = useState(false);
-
-  const [subnav, setSubnav] = useState(false);
-
-  console.log(subnav);
-
-  const showSubnav = () => setSubnav(!subnav);
-
-  const toggle = (i) => {
-    if (clicked === i) {
-      return setClicked(null);
+  const toggle = (index) => {
+    if (subMenuOpen === index) {
+      return setSubMenuOpen(null);
     }
 
-    setClicked(i);
+    setSubMenuOpen(index);
   };
-
-  // const subnav = () => setShowDropdown(!showDropdown);
 
   const activeClass = (path) =>
     router.pathname === path
@@ -60,10 +50,13 @@ function Sidebar({ showMenu, showSubLinks, setShowSubLinks }) {
             <div className="" key={i}>
               <Link href={!navLink.subLinks ? navLink.link : ""} passHref>
                 <div
+                  // className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
+                  //   navLink.link
+                  // )}`}
                   className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
                     navLink.link
                   )}`}
-                  onClick={navLink.subLinks && showSubnav}
+                  onClick={() => toggle(navLink.id)}
                 >
                   <div className="flex items-center gap-4">
                     <div className="text-xl">
@@ -76,16 +69,22 @@ function Sidebar({ showMenu, showSubLinks, setShowSubLinks }) {
                     >
                       {navLink.name}
                     </p>
+                    {navLink.subLinks && (
+                      <div className="ml-28">
+                        <FaAngleRight />
+                      </div>
+                    )}
                   </div>
                 </div>
               </Link>
 
-              {subnav &&
+              {subMenuOpen === navLink.id &&
                 navLink.subLinks &&
                 navLink.subLinks.map((subLink, i) => (
-                  <div className="my-2" key={i}>
-                    {subLink.name}
-                  </div>
+                  <SubMenu key={i} subLink={subLink} />
+                  // <div className="my-2 text-sm" key={i}>
+                  //   {subLink.name}
+                  // </div>
                 ))}
             </div>
           ))}
