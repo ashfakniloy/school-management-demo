@@ -1,19 +1,16 @@
-import { AiOutlineDashboard } from "react-icons/ai";
-import { ImUsers } from "react-icons/im";
-import { MdOutlineGroups } from "react-icons/md";
+import {
+  AiOutlineDashboard,
+  AiOutlineHome,
+  AiFillSetting,
+} from "react-icons/ai";
+import { ImUsers, ImLibrary } from "react-icons/im";
+import { MdOutlineGroups, MdMessage } from "react-icons/md";
 import { RiParentFill } from "react-icons/ri";
-import { ImLibrary } from "react-icons/im";
-import { GiMoneyStack } from "react-icons/gi";
-import { SiGoogleclassroom } from "react-icons/si";
-import { FaBookOpen } from "react-icons/fa";
+import { GiMoneyStack, GiBus } from "react-icons/gi";
+import { SiGoogleclassroom, SiGooglesheets } from "react-icons/si";
+import { FaBookOpen, FaClipboardList } from "react-icons/fa";
 import { BsCalendar3 } from "react-icons/bs";
-import { SiGooglesheets } from "react-icons/si";
 import { GoChecklist } from "react-icons/go";
-import { GiBus } from "react-icons/gi";
-import { AiOutlineHome } from "react-icons/ai";
-import { FaClipboardList } from "react-icons/fa";
-import { MdMessage } from "react-icons/md";
-import { AiFillSetting } from "react-icons/ai";
 
 export const navLinks = [
   {
