@@ -2,9 +2,9 @@ import { useState } from "react";
 import Header from "./Header";
 import ScrollTop from "./ScrollTop";
 import Sidebar from "./Sidebar";
-import Sidebar2 from "./Sidebar2";
-import Sidebar3 from "./Sidebar3";
-import Sidebar4 from "./Sidebar4";
+// import Sidebar2 from "./Sidebar2";
+// import Sidebar3 from "./Sidebar3";
+// import Sidebar4 from "./Sidebar4";
 
 function Layout({ children }) {
   const [showMenu, setShowMenu] = useState(true);
@@ -15,6 +15,7 @@ function Layout({ children }) {
     <div className="flex">
       <Sidebar
         showMenu={showMenu}
+        setShowMenu={setShowMenu}
         // showSubLinks={showSubLinks}
         // setShowSubLinks={setShowSubLinks}
       />

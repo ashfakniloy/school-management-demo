@@ -22,8 +22,7 @@ function Home() {
       setUserData(data);
     };
     getData();
-    // console.log("data", userData.notice[0]);
-  }, []);
+  }, [setUserData]);
 
   const { total_male, total_female } = userData;
 

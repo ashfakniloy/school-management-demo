@@ -5,7 +5,7 @@ import { FaAngleRight, FaAngleDown } from "react-icons/fa";
 import { navLinks } from "./NavLinks";
 import SubMenu from "./SubMenu";
 
-function Sidebar({ showMenu, showSubLinks, setShowSubLinks }) {
+function Sidebar({ showMenu, setShowMenu }) {
   const router = useRouter();
 
   const [subMenuOpen, setSubMenuOpen] = useState("");
@@ -20,13 +20,8 @@ function Sidebar({ showMenu, showSubLinks, setShowSubLinks }) {
 
   const activeClass = (path) =>
     router.pathname === path
-      ? "bg-slate-500 hover:bg-slate-500 border-l-4 border-0 border-slate-400 pl-6"
-      : "hover:bg-slate-600 border-t last:border-b border-slate-600";
-
-  // const activeSubMenuClass = (path) =>
-  //   router.pathname === path
-  //     ? "bg-slate-700 hover:bg-slate-600 border-l-4 border-0 border-slate-400 pl-6"
-  //     : "hover:bg-slate-500 border-t last:border-b border-slate-500";
+      ? "bg-slate-500 hover:bg-slate-500 border-l-4 border-slate-400 pl-6"
+      : "hover:bg-slate-600 ";
 
   return (
     <div
@@ -47,31 +42,34 @@ function Sidebar({ showMenu, showSubLinks, setShowSubLinks }) {
 
         <div className="mt-6">
           {navLinks.map((navLink, i) => (
-            <div className="" key={i}>
+            <div className="" key={i} onClick={() => setShowMenu(true)}>
               <Link href={!navLink.subLinks ? navLink.link : ""} passHref>
                 <div
-                  // className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
-                  //   navLink.link
-                  // )}`}
-                  className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
+                  className={`px-7 py-3 text-[13px] cursor-pointer border-t border-slate-600 ${activeClass(
                     navLink.link
                   )}`}
                   onClick={() => toggle(navLink.id)}
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="text-xl">
-                      <span>{navLink.icon}</span>
+                  <div className="flex items-center justify-between relative">
+                    <div className="flex items-center gap-4">
+                      <div className="text-xl">
+                        <span>{navLink.icon}</span>
+                      </div>
+                      <p
+                        className={`capitalize duration-300 whitespace-nowrap ${
+                          showMenu ? "opacity-100" : "opacity-0"
+                        }`}
+                      >
+                        {navLink.name}
+                      </p>
                     </div>
-                    <p
-                      className={`capitalize duration-300 whitespace-nowrap ${
-                        showMenu ? "opacity-100" : "opacity-0"
-                      }`}
-                    >
-                      {navLink.name}
-                    </p>
                     {navLink.subLinks && (
-                      <div className="ml-28">
-                        <FaAngleRight />
+                      <div className="">
+                        {subMenuOpen === navLink.id ? (
+                          <FaAngleDown />
+                        ) : (
+                          <FaAngleRight />
+                        )}
                       </div>
                     )}
                   </div>
@@ -79,81 +77,19 @@ function Sidebar({ showMenu, showSubLinks, setShowSubLinks }) {
               </Link>
 
               {subMenuOpen === navLink.id &&
+                showMenu &&
                 navLink.subLinks &&
                 navLink.subLinks.map((subLink, i) => (
-                  <SubMenu key={i} subLink={subLink} />
-                  // <div className="my-2 text-sm" key={i}>
-                  //   {subLink.name}
-                  // </div>
+                  <SubMenu
+                    key={i}
+                    index={subLink.id}
+                    subLink={subLink}
+                    activeClass={activeClass}
+                  />
                 ))}
             </div>
           ))}
         </div>
-
-        {/* <div className="mt-6">
-          {navLinks.map((navLink, i) => (
-            <div key={i}>
-              {!navLink.subLinks ? (
-                <Link href={navLink.link} passHref>
-                  <div
-                    className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
-                      navLink.link
-                    )}`}
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="text-xl">
-                        <span>{navLink.icon}</span>
-                      </div>
-                      <p
-                        className={`capitalize duration-300 whitespace-nowrap ${
-                          showMenu ? "opacity-100" : "opacity-0"
-                        }`}
-                      >
-                        {navLink.name}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              ) : (
-                <div>
-                  <div
-                    key={i}
-                    className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
-                      navLink.link
-                    )}`}
-                    // onClick={() => setClicked(!clicked)}
-                    onClick={() => toggle(i)}
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="text-xl">
-                        <span>{navLink.icon}</span>
-                      </div>
-                      <p
-                        className={`capitalize duration-300 whitespace-nowrap ${
-                          showMenu ? "opacity-100" : "opacity-0"
-                        }`}
-                      >
-                        {navLink.name}
-                      </p>
-                    </div>
-                  </div>
-
-                  {clicked &&
-                    navLink.subLinks.map((subLink, i) => (
-                      <SubMenu
-                        key={i}
-                        index={i}
-                        subLink={subLink}
-                        clicked={clicked}
-                        setClicked={setClicked}
-                      />
-                    ))}
-                </div>
-              )}
-
-            </div>
-          ))}
-        </div> */}
       </div>
     </div>
   );
