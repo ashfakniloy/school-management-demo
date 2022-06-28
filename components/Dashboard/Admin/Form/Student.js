@@ -62,8 +62,8 @@ function Student() {
       console.log(data);
       // formik.resetForm();
     } else {
-      console.log("status", data.message);
-      toast.error("Something went wrong!");
+      console.log("error", data);
+      toast.error(data.message);
     }
   };
 

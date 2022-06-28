@@ -80,9 +80,27 @@ export const navLinks = [
     icon: <ImLibrary className="fill-green-400" />,
   },
   {
-    name: "accounts",
-    link: "/accounts",
+    name: "accounting",
+    link: "/accounting",
     icon: <GiMoneyStack className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "all expenses",
+        link: "/accounting/all-expenses",
+      },
+      {
+        name: "add expense",
+        link: "/accounting/add-expense",
+      },
+      {
+        name: "all fees",
+        link: "/accounting/all-fees",
+      },
+      {
+        name: "add fee",
+        link: "/accounting/add-fee",
+      },
+    ],
   },
   {
     name: "class",

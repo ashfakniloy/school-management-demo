@@ -1,24 +1,25 @@
 import Link from "next/link";
+import { FaAngleRight, FaAngleDown } from "react-icons/fa";
 import { useState } from "react";
 
-function SubMenu({
-  i,
-  subLink,
-  // showSubLinks,
-  // setShowSubLinks,
-  // showMenu,
-  // activeClass,
-}) {
-  const [showSubMenu, setShowSubMenu] = useState(false);
+function SubMenu({ index, subLink, clicked, setClicked }) {
+  // const [showSubMenu, setShowSubMenu] = useState(false);
 
-  const showSubnav = () => setShowSubMenu(!showSubMenu);
+  const toggle = (index) => {
+    if (clicked === index) {
+      return setClicked(null);
+    }
+
+    setClicked(index);
+  };
+
+  // const showSubnav = () => setShowSubMenu(!showSubMenu);
 
   return (
     <div
-      key={i}
+      key={index}
+      onClick={() => toggle(index)}
       className={`flex flex-col  pl-20 capitalize duration-300 whitespace-nowrap cursor-pointer}`}
-      onClick={subLink && showSubnav}
-      // onClick={() => toggle(i)}
     >
       <Link href={subLink.link} passHref>
         <p className="my-3 text-xs">{subLink.name}</p>

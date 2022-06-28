@@ -8,7 +8,9 @@ import SubMenu from "./SubMenu";
 function Sidebar({ showMenu, showSubLinks, setShowSubLinks }) {
   const router = useRouter();
 
-  const [showDropdown, setShowDropdown] = useState(false);
+  // const [showDropdown, setShowDropdown] = useState(false);
+
+  const [clicked, setClicked] = useState(false);
 
   const subnav = () => setShowDropdown(!showDropdown);
 
@@ -39,33 +41,56 @@ function Sidebar({ showMenu, showSubLinks, setShowSubLinks }) {
           </h2>
         </div>
 
-        <ul className="mt-6">
-          {navLinks.map((nav, i) => (
-            <div key={i} onClick={nav.subLinks && subnav}>
-              <Link href={nav.subLinks ? "" : nav.link} passHref>
-                <li
+        <div className="mt-6">
+          {navLinks.map((navLink, i) => (
+            <div key={i}>
+              {!navLink.subLinks ? (
+                <Link href={navLink.link} passHref>
+                  <div
+                    className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
+                      navLink.link
+                    )}`}
+                  >
+                    <div className="flex items-center gap-4">
+                      <div className="text-xl">
+                        <span>{navLink.icon}</span>
+                      </div>
+                      <p
+                        className={`capitalize duration-300 whitespace-nowrap ${
+                          showMenu ? "opacity-100" : "opacity-0"
+                        }`}
+                      >
+                        {navLink.name}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ) : (
+                <div
                   className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
-                    nav.link
+                    navLink.link
                   )}`}
                 >
                   <div className="flex items-center gap-4">
                     <div className="text-xl">
-                      <span>{nav.icon}</span>
+                      <span>{navLink.icon}</span>
                     </div>
                     <p
                       className={`capitalize duration-300 whitespace-nowrap ${
                         showMenu ? "opacity-100" : "opacity-0"
                       }`}
                     >
-                      {nav.name}
+                      {navLink.name}
                     </p>
                     <div className="">
-                      {nav.subLinks && showDropdown
+                      {">"}
+                      {/* {nav.subLinks && showDropdown
                         ? ">"
                         : nav.subLinks
                         ? "<"
-                        : null}
+                        : null} */}
                     </div>
+
                     {/* {nav.subLinks && (
                       <span
                         className={`pl-24`}
@@ -76,29 +101,20 @@ function Sidebar({ showMenu, showSubLinks, setShowSubLinks }) {
                       </span>
                     )} */}
                   </div>
-                </li>
-              </Link>
-
-              {showDropdown &&
-                nav.subLinks &&
-                nav.subLinks.map((subLink, i) => (
-                  <div
-                    key={i}
-                    className={`flex flex-col  pl-20 capitalize duration-300 whitespace-nowrap cursor-pointer}`}
-                    // onClick={subLink && showSubnav}
-                    // onClick={() => toggle(i)}
-                  >
-                    <Link href={subLink.link} passHref>
-                      <p className="my-3 text-xs">{subLink.name}</p>
-
-                      {/* {subLink && subnav
-                      ? item.iconOpened
-                      : subLink
-                      ? item.iconClosed
-                      : null} */}
-                    </Link>
-                  </div>
-                ))}
+                  {navLink.subLinks.map((subLink, i) => (
+                    <SubMenu
+                      key={i}
+                      index={i}
+                      subLink={subLink}
+                      clicked={clicked}
+                      setClicked={setClicked}
+                    />
+                    // <p key={i} className="flex flex-col">
+                    //   {subLink.name}
+                    // </p>
+                  ))}
+                </div>
+              )}
 
               {/* {nav.subLinks &&
                 nav.subLinks.map((subLink, i) => (
@@ -115,7 +131,7 @@ function Sidebar({ showMenu, showSubLinks, setShowSubLinks }) {
               )} */}
             </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );

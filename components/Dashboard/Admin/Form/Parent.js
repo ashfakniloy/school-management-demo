@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
 
-const API_URL = "https://api.com";
+const API_URL = "http://192.168.0.20:8000/v1/parent/signup";
 
 function Parent() {
   const initialvalues = {
@@ -43,28 +43,29 @@ function Parent() {
     bio: Yup.string().required("Bio is required"),
   });
 
-  const handleSubmit = (values, formik) => {
-    console.log("parent data", values);
-  };
-
-  // const handleSubmit = async (values, formik) => {
-  //   const res = await fetch(`${API_URL}`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(values),
-  //   });
-
-  //   if (res.ok) {
-  //     toast.success("Form Submitted Successfully!");
-  //     console.log(res);
-  //     formik.resetForm();
-  //   } else {
-  //     console.log("status", res.status);
-  //     toast.error("Something went wrong!");
-  //   }
+  // const handleSubmit = (values, formik) => {
+  //   console.log("parent data", values);
   // };
+
+  const handleSubmit = async (values, formik) => {
+    const res = await fetch(`${API_URL}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+    const data = await res.json();
+
+    if (res.ok) {
+      toast.success("Form Submitted Successfully!");
+      console.log(data);
+      // formik.resetForm();
+    } else {
+      console.log("error", data);
+      toast.error(data.message);
+    }
+  };
 
   return (
     <div className="mt-14 bg-white p-10 shadow-md">
