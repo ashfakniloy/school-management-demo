@@ -1,18 +1,15 @@
 import React from "react";
-import AddExpenseForm from "../../components/Dashboard/Admin/Form/AddExpenseForm";
 import Layout from "../../components/Layout";
 
-function AddExpense() {
+function AllSalariesPage() {
   return (
     <Layout>
       <div className="px-8 py-10 ">
         <h1 className="text-xl font-semibold text-slate-800">Accounting</h1>
-        <div className="mt-8">
-          <AddExpenseForm />
-        </div>
+        <div className="mt-8">All Salaries</div>
       </div>
     </Layout>
   );
 }
 
-export default AddExpense;
+export default AllSalariesPage;

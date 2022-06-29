@@ -4,37 +4,33 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
 
-const API_URL = "http://192.168.0.20:8000/v1/class_routine/add";
+const API_URL = "http://192.168.0.20:8000/v1/expense/add";
 
-function AddClassForm() {
+function AddExpenseForm() {
   const initialvalues = {
-    teacher_name: "",
+    name: "",
     id_no: "",
-    gender: "",
-    class: "",
-    subject: "",
-    section: "",
-    time: "",
-    date: "",
+    expense_type: "",
+    amount: "",
     phone: "",
     email: "",
+    status: "",
+    date: "",
   };
 
   const validate = Yup.object({
-    teacher_name: Yup.string().required("Teacher name is required"),
-    id_no: Yup.string().required("ID number is required"),
-    gender: Yup.string().required("Gender is required"),
-    class: Yup.string().required("Class is required"),
-    subject: Yup.string().required("Subject is required"),
-    section: Yup.string().required("Section is required"),
-    time: Yup.string().required("Time is required"),
-    date: Yup.string().required("Date is required"),
+    name: Yup.string().required("Name is required"),
+    id_no: Yup.string().required("ID No is required"),
+    expense_type: Yup.string().required("Expense type is required"),
+    amount: Yup.string().required("Amount is required"),
     phone: Yup.string().required("Phone is required"),
     email: Yup.string().required("Email is required"),
+    status: Yup.string().required("Status is required"),
+    date: Yup.string().required("Date is required"),
   });
 
   // const handleSubmit = (values, formik) => {
-  //   console.log("add class data", values);
+  //   console.log("add expense data", values);
   // };
 
   const handleSubmit = async (values, formik) => {
@@ -68,48 +64,43 @@ function AddClassForm() {
           <Form>
             <ToastContainer />
             <h1 className="text-xl font-semibold text-slate-800">
-              Add New Class Schedule
+              Add New Expense
             </h1>
             <div className="pt-10 grid grid-cols-1 md:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7">
               <div className="col-span-4 md:col-span-1 ">
-                <TextField
-                  label="Teacher Name *"
-                  name="teacher_name"
-                  type="text"
-                />
+                <TextField label="Name *" name="name" type="text" />
               </div>
-              <div className="col-span-4 md:col-span-1 ">
+              <div className="col-span-4 md:col-span-1">
                 <TextField label="ID No *" name="id_no" type="number" />
               </div>
-              <div className="col-span-4 md:col-span-1 ">
-                <SelectField
-                  label="Gender *"
-                  name="gender"
+              <div className="col-span-4 md:col-span-1">
+                <TextField
+                  label="Expense Type *"
+                  name="expense_type"
                   type="text"
-                  placeholder="Select Gender"
-                  options={["Male", "Female"]}
                 />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField label="Class *" name="class" type="text" />
+                <TextField label="Amount *" name="amount" type="number" />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField label="Subject *" name="subject" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Section *" name="section" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Time *" name="time" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Date *" name="date" type="date" />
-              </div>
-              <div className="col-span-4 md:col-span-1 ">
-                <TextField label="Phone *" name="phone" type="number" />
+                <TextField label="Phone *" name="phone" type="text" />
               </div>
               <div className="col-span-4 md:col-span-1">
                 <TextField label="Email *" name="email" type="email" />
+              </div>
+
+              <div className="col-span-4 md:col-span-1">
+                <SelectField
+                  label="Status *"
+                  name="status"
+                  type="text"
+                  placeholder="Select Status"
+                  options={["Paid", "Due", "Others"]}
+                />
+              </div>
+              <div className="col-span-4 md:col-span-1">
+                <TextField label="Date *" name="date" type="date" />
               </div>
             </div>
 
@@ -128,4 +119,4 @@ function AddClassForm() {
   );
 }
 
-export default AddClassForm;
+export default AddExpenseForm;

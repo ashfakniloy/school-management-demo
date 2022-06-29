@@ -4,37 +4,31 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
 
-const API_URL = "http://192.168.0.20:8000/v1/class_routine/add";
+const API_URL = "http://192.168.0.20:8000/v1/library/add";
 
-function AddClassForm() {
+function AddBookForm() {
   const initialvalues = {
-    teacher_name: "",
-    id_no: "",
-    gender: "",
-    class: "",
+    book_name: "",
     subject: "",
-    section: "",
-    time: "",
-    date: "",
-    phone: "",
-    email: "",
+    writer_name: "",
+    class: "",
+    book_id: "",
+    publish_date: "",
+    upload_date: "",
   };
 
   const validate = Yup.object({
-    teacher_name: Yup.string().required("Teacher name is required"),
-    id_no: Yup.string().required("ID number is required"),
-    gender: Yup.string().required("Gender is required"),
-    class: Yup.string().required("Class is required"),
-    subject: Yup.string().required("Subject is required"),
-    section: Yup.string().required("Section is required"),
-    time: Yup.string().required("Time is required"),
-    date: Yup.string().required("Date is required"),
-    phone: Yup.string().required("Phone is required"),
-    email: Yup.string().required("Email is required"),
+    book_name: Yup.string().required("Subject Name is required"),
+    subject: Yup.string().required("Subject Type is required"),
+    writer_name: Yup.string().required("Class is required"),
+    class: Yup.string().required("Code is required"),
+    book_id: Yup.string().required("Code is required"),
+    publish_date: Yup.string().required("Code is required"),
+    upload_date: Yup.string().required("Code is required"),
   });
 
   // const handleSubmit = (values, formik) => {
-  //   console.log("add class data", values);
+  //   console.log("add book data", values);
   // };
 
   const handleSubmit = async (values, formik) => {
@@ -68,48 +62,41 @@ function AddClassForm() {
           <Form>
             <ToastContainer />
             <h1 className="text-xl font-semibold text-slate-800">
-              Add New Class Schedule
+              Add New Book
             </h1>
             <div className="pt-10 grid grid-cols-1 md:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7">
               <div className="col-span-4 md:col-span-1 ">
+                <TextField label="Book Name *" name="book_name" type="text" />
+              </div>
+              <div className="col-span-4 md:col-span-1">
+                <TextField label="Subject *" name="subject" type="text" />
+              </div>
+              <div className="col-span-4 md:col-span-1">
                 <TextField
-                  label="Teacher Name *"
-                  name="teacher_name"
+                  label="Writer Name *"
+                  name="writer_name"
                   type="text"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1 ">
-                <TextField label="ID No *" name="id_no" type="number" />
-              </div>
-              <div className="col-span-4 md:col-span-1 ">
-                <SelectField
-                  label="Gender *"
-                  name="gender"
-                  type="text"
-                  placeholder="Select Gender"
-                  options={["Male", "Female"]}
                 />
               </div>
               <div className="col-span-4 md:col-span-1">
                 <TextField label="Class *" name="class" type="text" />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField label="Subject *" name="subject" type="text" />
+                <TextField label="Book ID *" name="book_id" type="number" />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField label="Section *" name="section" type="text" />
+                <TextField
+                  label="Publish Date *"
+                  name="publish_date"
+                  type="date"
+                />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField label="Time *" name="time" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Date *" name="date" type="date" />
-              </div>
-              <div className="col-span-4 md:col-span-1 ">
-                <TextField label="Phone *" name="phone" type="number" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Email *" name="email" type="email" />
+                <TextField
+                  label="Upload Date *"
+                  name="upload_date"
+                  type="date"
+                />
               </div>
             </div>
 
@@ -128,4 +115,4 @@ function AddClassForm() {
   );
 }
 
-export default AddClassForm;
+export default AddBookForm;

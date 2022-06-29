@@ -33,15 +33,15 @@ function Home() {
     },
     {
       title: "teachers",
-      count: userData.total_students,
+      count: userData.total_teachers,
     },
     {
       title: "parents",
-      count: userData.total_students,
+      count: userData.total_parents,
     },
     {
-      title: "earnings",
-      count: userData.total_students,
+      title: "expenses",
+      count: userData.total_expenses,
     },
   ];
 

@@ -4,31 +4,29 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
 
-const API_URL = "http://192.168.0.20:8000/v1/fee/add";
+const API_URL = "http://192.168.0.20:8000/v1/exam/add";
 
-function AddFeeForm() {
+function AddExamForm() {
   const initialvalues = {
-    class: "",
-    section: "",
-    fee_name: "",
-    fee_amount: "",
-    fee_type: "",
-    starts_from: "",
-    finishes_at: "",
+    exam_name: "",
+    subject_type: "",
+    select_class: "",
+    select_section: "",
+    select_time: "",
+    select_date: "",
   };
 
   const validate = Yup.object({
-    class: Yup.string().required("Class is required"),
-    section: Yup.string().required("Section is required"),
-    fee_name: Yup.string().required("Fee Name is required"),
-    fee_amount: Yup.string().required("Fee Amount is required"),
-    fee_type: Yup.string().required("Fee Type is required"),
-    starts_from: Yup.string().required("Starts From is required"),
-    finishes_at: Yup.string().required("Finishes At is required"),
+    exam_name: Yup.string().required("Exam Name is required"),
+    subject_type: Yup.string().required("Subject Type is required"),
+    select_class: Yup.string().required("Class is required"),
+    select_section: Yup.string().required("Section is required"),
+    select_time: Yup.string().required("Time is required"),
+    select_date: Yup.string().required("Date is required"),
   });
 
   // const handleSubmit = (values, formik) => {
-  //   console.log("add fee data", values);
+  //   console.log("add exam data", values);
   // };
 
   const handleSubmit = async (values, formik) => {
@@ -62,43 +60,45 @@ function AddFeeForm() {
           <Form>
             <ToastContainer />
             <h1 className="text-xl font-semibold text-slate-800">
-              Add New fee
+              Add New Exam
             </h1>
             <div className="pt-10 grid grid-cols-1 md:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7">
               <div className="col-span-4 md:col-span-1 ">
-                <TextField label="Class *" name="class" type="text" />
+                <TextField label="Name *" name="exam_name" type="text" />
+              </div>
+              <div className="col-span-4 md:col-span-1">
+                <TextField
+                  label="Subject Type *"
+                  name="subject_type"
+                  type="text"
+                />
+              </div>
+              <div className="col-span-4 md:col-span-1">
+                <TextField label="Class *" name="select_class" type="text" />
+              </div>
+              <div className="col-span-4 md:col-span-1">
+                <TextField
+                  label="Select Section *"
+                  name="select_section"
+                  type="text"
+                />
+              </div>
+              <div className="col-span-4 md:col-span-1">
+                <TextField label="Time *" name="select_time" type="text" />
+              </div>
+              <div className="col-span-4 md:col-span-1">
+                <TextField label="Date *" name="select_date" type="date" />
               </div>
 
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Section *" name="section" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Fee Name *" name="fee_name" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Fee Amount *"
-                  name="fee_amount"
-                  type="number"
+              {/* <div className="col-span-4 md:col-span-1">
+                <SelectField
+                  label="Status *"
+                  name="status"
+                  type="text"
+                  placeholder="Select Status"
+                  options={["Paid", "Due", "Others"]}
                 />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Fee Type *" name="fee_type" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Starts From *"
-                  name="starts_from"
-                  type="date"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Finishes At *"
-                  name="finishes_at"
-                  type="date"
-                />
-              </div>
+              </div> */}
             </div>
 
             <div className="mt-8 flex justify-start">
@@ -116,4 +116,4 @@ function AddFeeForm() {
   );
 }
 
-export default AddFeeForm;
+export default AddExamForm;

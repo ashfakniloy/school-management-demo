@@ -4,31 +4,25 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
 
-const API_URL = "http://192.168.0.20:8000/v1/fee/add";
+const API_URL = "http://192.168.0.20:8000/v1/subject/add";
 
-function AddFeeForm() {
+function AddSubjectForm() {
   const initialvalues = {
-    class: "",
-    section: "",
-    fee_name: "",
-    fee_amount: "",
-    fee_type: "",
-    starts_from: "",
-    finishes_at: "",
+    subject_name: "",
+    subject_type: "",
+    select_class: "",
+    select_code: "",
   };
 
   const validate = Yup.object({
-    class: Yup.string().required("Class is required"),
-    section: Yup.string().required("Section is required"),
-    fee_name: Yup.string().required("Fee Name is required"),
-    fee_amount: Yup.string().required("Fee Amount is required"),
-    fee_type: Yup.string().required("Fee Type is required"),
-    starts_from: Yup.string().required("Starts From is required"),
-    finishes_at: Yup.string().required("Finishes At is required"),
+    subject_name: Yup.string().required("Subject Name is required"),
+    subject_type: Yup.string().required("Subject Type is required"),
+    select_class: Yup.string().required("Class is required"),
+    select_code: Yup.string().required("Code is required"),
   });
 
   // const handleSubmit = (values, formik) => {
-  //   console.log("add fee data", values);
+  //   console.log("add subject data", values);
   // };
 
   const handleSubmit = async (values, formik) => {
@@ -62,41 +56,35 @@ function AddFeeForm() {
           <Form>
             <ToastContainer />
             <h1 className="text-xl font-semibold text-slate-800">
-              Add New fee
+              Add New Subject
             </h1>
             <div className="pt-10 grid grid-cols-1 md:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7">
               <div className="col-span-4 md:col-span-1 ">
-                <TextField label="Class *" name="class" type="text" />
-              </div>
-
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Section *" name="section" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Fee Name *" name="fee_name" type="text" />
+                <TextField
+                  label="Subject Name *"
+                  name="subject_name"
+                  type="text"
+                />
               </div>
               <div className="col-span-4 md:col-span-1">
                 <TextField
-                  label="Fee Amount *"
-                  name="fee_amount"
+                  label="Subject Type *"
+                  name="subject_type"
+                  type="text"
+                />
+              </div>
+              <div className="col-span-4 md:col-span-1">
+                <TextField
+                  label="Select Class *"
+                  name="select_class"
+                  type="text"
+                />
+              </div>
+              <div className="col-span-4 md:col-span-1">
+                <TextField
+                  label="Select Code *"
+                  name="select_code"
                   type="number"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Fee Type *" name="fee_type" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Starts From *"
-                  name="starts_from"
-                  type="date"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Finishes At *"
-                  name="finishes_at"
-                  type="date"
                 />
               </div>
             </div>
@@ -116,4 +104,4 @@ function AddFeeForm() {
   );
 }
 
-export default AddFeeForm;
+export default AddSubjectForm;

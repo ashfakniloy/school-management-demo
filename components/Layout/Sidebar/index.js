@@ -8,18 +8,19 @@ import SubMenu from "./SubMenu";
 function Sidebar({ showMenu, setShowMenu }) {
   const router = useRouter();
 
-  const [subMenuOpen, setSubMenuOpen] = useState("");
+  const [active, setActive] = useState("");
 
   const toggle = (index) => {
-    if (subMenuOpen === index) {
-      return setSubMenuOpen(null);
+    if (active === index) {
+      return setActive(null);
     }
 
-    setSubMenuOpen(index);
+    setActive(index);
   };
 
-  const activeClass = (path) =>
-    router.pathname === path
+  const activeClass = (id) =>
+    // router.pathname === path
+    id === active
       ? "bg-slate-500 hover:bg-slate-500 border-l-4 border-slate-400 pl-6"
       : "hover:bg-slate-600 ";
 
@@ -44,9 +45,15 @@ function Sidebar({ showMenu, setShowMenu }) {
           {navLinks.map((navLink, i) => (
             <div className="" key={i} onClick={() => setShowMenu(true)}>
               <Link href={!navLink.subLinks ? navLink.link : ""} passHref>
-                <div
+                {/* <div
                   className={`px-7 py-3 text-[13px] cursor-pointer border-t border-slate-600 ${activeClass(
                     navLink.link
+                  )}`}
+                  onClick={() => toggle(navLink.id)}
+                > */}
+                <div
+                  className={`px-7 py-3 text-[13px] cursor-pointer border-t border-slate-600 ${activeClass(
+                    navLink.id
                   )}`}
                   onClick={() => toggle(navLink.id)}
                 >
@@ -65,7 +72,7 @@ function Sidebar({ showMenu, setShowMenu }) {
                     </div>
                     {navLink.subLinks && (
                       <div className="">
-                        {subMenuOpen === navLink.id ? (
+                        {active === navLink.id ? (
                           <FaAngleDown />
                         ) : (
                           <FaAngleRight />
@@ -76,7 +83,7 @@ function Sidebar({ showMenu, setShowMenu }) {
                 </div>
               </Link>
 
-              {subMenuOpen === navLink.id &&
+              {active === navLink.id &&
                 showMenu &&
                 navLink.subLinks &&
                 navLink.subLinks.map((subLink, i) => (
@@ -84,7 +91,7 @@ function Sidebar({ showMenu, setShowMenu }) {
                     key={i}
                     index={subLink.id}
                     subLink={subLink}
-                    activeClass={activeClass}
+                    // activeClass={activeClass}
                   />
                 ))}
             </div>

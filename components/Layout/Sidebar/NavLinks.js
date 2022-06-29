@@ -26,14 +26,17 @@ export const navLinks = [
     icon: <ImUsers className="fill-green-400" />,
     subLinks: [
       {
+        id: 0.1,
         name: "all students",
         link: "/students/all-students",
       },
       {
+        id: 0.2,
         name: "admission form",
         link: "/students/admission-form",
       },
       {
+        id: 0.3,
         name: "student promotion",
         link: "/students/student-promotion",
       },
@@ -80,6 +83,16 @@ export const navLinks = [
     name: "library",
     link: "/library",
     icon: <ImLibrary className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "all books",
+        link: "/library/all-books",
+      },
+      {
+        name: "add book",
+        link: "/library/add-book",
+      },
+    ],
   },
   {
     id: 6,
@@ -102,6 +115,14 @@ export const navLinks = [
       {
         name: "add fee",
         link: "/accounting/add-fee",
+      },
+      {
+        name: "all salaries",
+        link: "/accounting/all-salaries",
+      },
+      {
+        name: "add salary",
+        link: "/accounting/add-salary",
       },
     ],
   },
@@ -126,6 +147,16 @@ export const navLinks = [
     name: "subject",
     link: "/subject",
     icon: <FaBookOpen className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "all subject",
+        link: "/subject/all-subjects",
+      },
+      {
+        name: "add subject",
+        link: "/subject/add-subject",
+      },
+    ],
   },
   {
     id: 9,
@@ -147,11 +178,11 @@ export const navLinks = [
     subLinks: [
       {
         name: "all leaves",
-        link: "/leaves/all-leaves",
+        link: "/leave/all-leaves",
       },
       {
         name: "add leave",
-        link: "/leaves/add-leave",
+        link: "/leave/add-leave",
       },
     ],
   },
@@ -160,24 +191,64 @@ export const navLinks = [
     name: "exam",
     link: "/exam",
     icon: <GoChecklist className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "all exam",
+        link: "/exam/all-exam",
+      },
+      {
+        name: "add exam",
+        link: "/exam/add-exam",
+      },
+    ],
   },
   {
     id: 13,
-    name: "transpoart",
-    link: "/transpoart",
+    name: "transport",
+    link: "/transport",
     icon: <GiBus className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "all transport",
+        link: "/transport/all-transport",
+      },
+      {
+        name: "add transport",
+        link: "/transport/add-transport",
+      },
+    ],
   },
   {
     id: 14,
     name: "hostel",
     link: "/hostel",
     icon: <AiOutlineHome className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "All hostel rooms",
+        link: "/hostel/all-hostel-rooms",
+      },
+      {
+        name: "add new room",
+        link: "/hostel/add-new-room",
+      },
+    ],
   },
   {
     id: 15,
     name: "notice",
     link: "/notice",
     icon: <FaClipboardList className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "Notice Board",
+        link: "/notice/notice-board",
+      },
+      {
+        name: "Add Notice",
+        link: "/notice/add-notice",
+      },
+    ],
   },
   {
     id: 16,
