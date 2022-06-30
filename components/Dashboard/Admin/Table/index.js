@@ -21,7 +21,7 @@ import { GlobalFilter } from "./GlobalFilter";
 // import { Checkbox } from "./Checkbox";
 
 function Table({ columnsHeading, usersData }) {
-  const columns = useMemo(() => columnsHeading, []);
+  const columns = useMemo(() => columnsHeading, [columnsHeading]);
   // const data = useMemo(() => MOCK_DATA, []);
   const data = useMemo(() => usersData, [usersData]);
   // const defaultColumn = useMemo(() => {
