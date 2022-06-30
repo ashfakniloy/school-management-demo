@@ -40,8 +40,8 @@ function Home() {
       count: userData.total_parents,
     },
     {
-      title: "expenses",
-      count: userData.total_expenses,
+      title: "earnings",
+      count: userData.total_earnings,
     },
   ];
 

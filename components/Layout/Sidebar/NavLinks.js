@@ -124,6 +124,14 @@ export const navLinks = [
         name: "add salary",
         link: "/accounting/add-salary",
       },
+      {
+        name: "all earnings",
+        link: "/accounting/all-earnings",
+      },
+      {
+        name: "add earning",
+        link: "/accounting/add-earning",
+      },
     ],
   },
   {
