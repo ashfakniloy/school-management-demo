@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import Table from "../../components/Dashboard/Admin/Table";
+import { StudentsColumn } from "../../components/Dashboard/Admin/Table/columns/students";
+// import { StudentsColumn } from "../../components/Dashboard/Admin/Table/columns/students";
 import StudentsTable from "../../components/Dashboard/Admin/Table/Students";
 import Layout from "../../components/Layout";
 
 const API_URL = "http://192.168.0.20:8000/v1/student/all";
 
-function AdmissionFormPage() {
+function AllStudentsPage() {
   const [studentsData, setStudentsData] = useState([]);
 
   useEffect(() => {
@@ -16,7 +19,7 @@ function AdmissionFormPage() {
       });
       const data = await res.json();
       // console.log("students", data.data);
-      setStudentsData(data.data);
+      setStudentsData(data.student);
     };
     getData();
   }, []);
@@ -31,7 +34,8 @@ function AdmissionFormPage() {
               All Students Data
             </h1>
             <div className="mt-10 px-3 flex flex-col items-center">
-              <StudentsTable studentsData={studentsData} />
+              <Table columnsHeading={StudentsColumn} usersData={studentsData} />
+              {/* <StudentsTable  /> */}
             </div>
           </div>
         </div>
@@ -40,4 +44,4 @@ function AdmissionFormPage() {
   );
 }
 
-export default AdmissionFormPage;
+export default AllStudentsPage;

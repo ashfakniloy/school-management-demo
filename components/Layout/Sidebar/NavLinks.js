@@ -157,7 +157,7 @@ export const navLinks = [
     icon: <FaBookOpen className="fill-green-400" />,
     subLinks: [
       {
-        name: "all subject",
+        name: "all subjects",
         link: "/subject/all-subjects",
       },
       {

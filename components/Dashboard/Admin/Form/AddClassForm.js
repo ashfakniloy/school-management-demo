@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
 
-const API_URL = "http://192.168.0.20:8000/v1/class_routine/add";
+const API_URL = "http://192.168.0.20:8000/v1/class/add";
 
 function AddClassForm() {
   const initialvalues = {
