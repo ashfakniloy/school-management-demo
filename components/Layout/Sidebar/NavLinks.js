@@ -22,7 +22,7 @@ export const navLinks = [
   {
     id: 2,
     name: "students",
-    link: "/students",
+    // link: "/students",
     icon: <ImUsers className="fill-green-400" />,
     subLinks: [
       {
@@ -45,7 +45,7 @@ export const navLinks = [
   {
     id: 3,
     name: "teachers",
-    link: "/teachers",
+    // link: "/teachers",
     icon: <MdOutlineGroups className="fill-green-400" />,
     subLinks: [
       {
@@ -65,7 +65,7 @@ export const navLinks = [
   {
     id: 4,
     name: "parents",
-    link: "/parents",
+    // link: "/parents",
     icon: <RiParentFill className="fill-green-400" />,
     subLinks: [
       {
@@ -81,7 +81,7 @@ export const navLinks = [
   {
     id: 5,
     name: "library",
-    link: "/library",
+    // link: "/library",
     icon: <ImLibrary className="fill-green-400" />,
     subLinks: [
       {
@@ -97,7 +97,7 @@ export const navLinks = [
   {
     id: 6,
     name: "accounting",
-    link: "/accounting",
+    // link: "/accounting",
     icon: <GiMoneyStack className="fill-green-400" />,
     subLinks: [
       {
@@ -137,7 +137,7 @@ export const navLinks = [
   {
     id: 7,
     name: "class",
-    link: "/class",
+    // link: "/class",
     icon: <SiGoogleclassroom className="fill-green-400" />,
     subLinks: [
       {
@@ -153,7 +153,7 @@ export const navLinks = [
   {
     id: 8,
     name: "subject",
-    link: "/subject",
+    // link: "/subject",
     icon: <FaBookOpen className="fill-green-400" />,
     subLinks: [
       {
@@ -181,7 +181,7 @@ export const navLinks = [
   {
     id: 11,
     name: "leave",
-    link: "/leave",
+    // link: "/leave",
     icon: <SiGooglesheets className="fill-green-400" />,
     subLinks: [
       {
@@ -197,7 +197,7 @@ export const navLinks = [
   {
     id: 12,
     name: "exam",
-    link: "/exam",
+    // link: "/exam",
     icon: <GoChecklist className="fill-green-400" />,
     subLinks: [
       {
@@ -213,7 +213,7 @@ export const navLinks = [
   {
     id: 13,
     name: "transport",
-    link: "/transport",
+    // link: "/transport",
     icon: <GiBus className="fill-green-400" />,
     subLinks: [
       {
@@ -229,7 +229,7 @@ export const navLinks = [
   {
     id: 14,
     name: "hostel",
-    link: "/hostel",
+    // link: "/hostel",
     icon: <AiOutlineHome className="fill-green-400" />,
     subLinks: [
       {
@@ -245,7 +245,7 @@ export const navLinks = [
   {
     id: 15,
     name: "notice",
-    link: "/notice",
+    // link: "/notice",
     icon: <FaClipboardList className="fill-green-400" />,
     subLinks: [
       {

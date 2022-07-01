@@ -44,7 +44,10 @@ function Sidebar({ showMenu, setShowMenu }) {
         <div className="mt-6">
           {navLinks.map((navLink, i) => (
             <div className="" key={i} onClick={() => setShowMenu(true)}>
-              <Link href={!navLink.subLinks ? navLink.link : ""} passHref>
+              <Link
+                href={!navLink.subLinks ? navLink.link : "javscript:;"}
+                passHref
+              >
                 {/* <div
                   className={`px-7 py-3 text-[13px] cursor-pointer border-t border-slate-600 ${activeClass(
                     navLink.link
