@@ -1,5 +1,5 @@
 import React from "react";
-import AddExpenseForm from "../../components/Dashboard/Admin/Form/AddExpenseForm";
+import AddExpenseForm from "../../components/Admin/Form/AddExpenseForm";
 import Layout from "../../components/Layout";
 
 function AddExpense() {

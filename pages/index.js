@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import Cards from "../components/Dashboard/Admin/Cards";
 import Layout from "../components/Layout";
-import LineChart from "../components/Dashboard/Admin/Charts/LineChart";
-import BarChart from "../components/Dashboard/Admin/Charts/BarChart";
-import DoughnutChart from "../components/Dashboard/Admin/Charts/DoughnutChart";
-import NoticeBoard from "../components/Dashboard/Admin/NoticeBoard";
+import Cards from "../components/Admin/Dashboard/Cards";
+import LineChart from "../components/Admin/Dashboard/Charts/LineChart";
+import BarChart from "../components/Admin/Dashboard/Charts/BarChart";
+import DoughnutChart from "../components/Admin/Dashboard/Charts/DoughnutChart";
+import NoticeBoard from "../components/Admin/NoticeBoard";
 
 const API_URL = "http://192.168.0.20:8000/v1/data/all";
 

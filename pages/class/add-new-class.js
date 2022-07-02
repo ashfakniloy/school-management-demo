@@ -1,5 +1,5 @@
 import React from "react";
-import AddClassForm from "../../components/Dashboard/Admin/Form/AddClassForm";
+import AddClassForm from "../../components/Admin/Form/AddClassForm";
 import Layout from "../../components/Layout";
 
 function AddNewClasses() {

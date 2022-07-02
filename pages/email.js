@@ -1,5 +1,5 @@
 import Layout from "../components/Layout";
-import EmailForm from "../components/Dashboard/Admin/Form/EmailForm";
+import EmailForm from "../components/Admin/Form/EmailForm";
 
 function AddEmail() {
   return (

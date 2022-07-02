@@ -1,5 +1,5 @@
 import React from "react";
-import AddExamForm from "../../components/Dashboard/Admin/Form/AddExamForm";
+import AddExamForm from "../../components/Admin/Form/AddExamForm";
 import Layout from "../../components/Layout";
 
 function AddExamPage() {

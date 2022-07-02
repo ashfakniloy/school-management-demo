@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Table from "../../components/Dashboard/Admin/Table";
-import { ClassesColumn } from "../../components/Dashboard/Admin/Table/columns/classes";
+import Table from "../../components/Admin/Table";
+import { ClassesColumn } from "../../components/Admin/Table/columns/classes";
 import Layout from "../../components/Layout";
 
 const API_URL = "http://192.168.0.20:8000/v1/class/all";

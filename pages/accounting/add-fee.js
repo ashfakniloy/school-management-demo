@@ -1,5 +1,5 @@
 import React from "react";
-import AddFeeForm from "../../components/Dashboard/Admin/Form/AddFeeForm";
+import AddFeeForm from "../../components/Admin/Form/AddFeeForm";
 import Layout from "../../components/Layout";
 
 function AddNewClasses() {

@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../../components/Layout";
-import Teacher from "../../components/Dashboard/Admin/Form/Teacher";
+import Teacher from "../../components/Admin/Form/Teacher";
 
 function AddTeacherPage() {
   return (

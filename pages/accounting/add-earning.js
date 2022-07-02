@@ -1,5 +1,5 @@
 import React from "react";
-import AddEarningForm from "../../components/Dashboard/Admin/Form/AddEarningForm";
+import AddEarningForm from "../../components/Admin/Form/AddEarningForm";
 import Layout from "../../components/Layout";
 
 function AddEarningPage() {

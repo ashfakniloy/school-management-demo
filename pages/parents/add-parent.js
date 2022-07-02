@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../../components/Layout";
-import Parent from "../../components/Dashboard/Admin/Form/Parent";
+import Parent from "../../components/Admin/Form/Parent";
 
 function AddParentPage() {
   return (

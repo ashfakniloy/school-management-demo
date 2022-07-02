@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Table from "../../components/Dashboard/Admin/Table";
-import { TransportsColumn } from "../../components/Dashboard/Admin/Table/columns/transports";
+import Table from "../../components/Admin/Table";
+import { TransportsColumn } from "../../components/Admin/Table/columns/transports";
 import Layout from "../../components/Layout";
 
 const API_URL = "http://192.168.0.20:8000/v1/transport/all";

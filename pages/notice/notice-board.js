@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import NoticeBoard from "../../components/Dashboard/Admin/NoticeBoard";
+import NoticeBoard from "../../components/Admin/NoticeBoard";
 import Layout from "../../components/Layout";
 
 const API_URL = "http://192.168.0.20:8000/v1/notice/all";

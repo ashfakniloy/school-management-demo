@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Table from "../../components/Dashboard/Admin/Table";
-import { StudentsColumn } from "../../components/Dashboard/Admin/Table/columns/students";
-// import { StudentsColumn } from "../../components/Dashboard/Admin/Table/columns/students";
-import StudentsTable from "../../components/Dashboard/Admin/Table/Students";
+import Table from "../../components/Admin/Table";
+import { StudentsColumn } from "../../components/Admin/Table/columns/students";
+// import { StudentsColumn } from "../../components/Admin/Table/columns/students";
+import StudentsTable from "../../components/Admin/Table/Students";
 import Layout from "../../components/Layout";
 
 const API_URL = "http://192.168.0.20:8000/v1/student/all";

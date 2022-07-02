@@ -1,5 +1,5 @@
 import React from "react";
-import AddSubjectForm from "../../components/Dashboard/Admin/Form/AddSubjectForm";
+import AddSubjectForm from "../../components/Admin/Form/AddSubjectForm";
 import Layout from "../../components/Layout";
 
 function AddClassPage() {
