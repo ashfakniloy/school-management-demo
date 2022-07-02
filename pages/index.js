@@ -24,26 +24,33 @@ function Home() {
     getData();
   }, [setUserData]);
 
-  const { total_male, total_female } = userData;
+  const {
+    total_students,
+    total_teachers,
+    total_parents,
+    total_earnings,
+    total_male,
+    total_female,
+  } = userData;
 
-  const totalCounts = [
-    {
-      title: "students",
-      count: userData.total_students,
-    },
-    {
-      title: "teachers",
-      count: userData.total_teachers,
-    },
-    {
-      title: "parents",
-      count: userData.total_parents,
-    },
-    {
-      title: "earnings",
-      count: userData.total_earnings,
-    },
-  ];
+  // const totalCounts = [
+  //   {
+  //     title: "students",
+  //     count: userData.total_students,
+  //   },
+  //   {
+  //     title: "teachers",
+  //     count: userData.total_teachers,
+  //   },
+  //   {
+  //     title: "parents",
+  //     count: userData.total_parents,
+  //   },
+  //   {
+  //     title: "earnings",
+  //     count: userData.total_earnings,
+  //   },
+  // ];
 
   return (
     <Layout>
@@ -52,7 +59,12 @@ function Home() {
           Admin Dashboard
         </h1>
         <div className="mt-8 grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
-          <Cards totalCounts={totalCounts} />
+          <Cards
+            students={total_students}
+            teachers={total_teachers}
+            parents={total_parents}
+            earnings={total_earnings}
+          />
           <div className="col-span-2">
             <LineChart />
           </div>

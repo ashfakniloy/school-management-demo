@@ -19,7 +19,12 @@ function Layout({ children }) {
   Router.events.on("routeChangeStart", (url) => {
     setLoading(true);
   });
+
   Router.events.on("routeChangeComplete", (url) => {
+    setLoading(false);
+  });
+
+  Router.events.on("routeChangeError", (url) => {
     setLoading(false);
   });
 

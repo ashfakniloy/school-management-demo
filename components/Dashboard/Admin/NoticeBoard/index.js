@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { format, formatDistance } from "date-fns";
 import { enUS } from "date-fns/locale";
 
@@ -42,7 +42,16 @@ import { enUS } from "date-fns/locale";
 // ];
 
 function NoticeBoard({ notices }) {
-  // console.log(notices.data);
+  const [showNotice, setShowNotice] = useState("");
+
+  const toggle = (index) => {
+    if (showNotice === index) {
+      return setShowNotice(null);
+    }
+
+    setShowNotice(index);
+  };
+
   return (
     <div className="bg-white p-5 shadow-lg">
       <h1 className="my-5 text-2xl">Notice Board</h1>
@@ -61,6 +70,19 @@ function NoticeBoard({ notices }) {
                   })}
                 </span>
                 <p className="mt-4 mb-2 font-semibold">{notice.title}</p>
+                <p
+                  className="my-2 text-xs cursor-pointer"
+                  onClick={() => toggle(notice.id)}
+                >
+                  {showNotice === notice.id ? (
+                    <p className="">Hide Details</p>
+                  ) : (
+                    <p className="">Show Details</p>
+                  )}
+                </p>
+                {showNotice === notice.id && (
+                  <p className="my-2">{notice.details}</p>
+                )}
                 <p className="mb-4 text-sm text-slate-600">
                   {notice.posted_by}{" "}
                   <span className="text-slate-400 text-xs mr-1">/</span>
@@ -74,14 +96,6 @@ function NoticeBoard({ notices }) {
             ))}
         </div>
       </div>
-      {/* <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
-        ducimus neque repellendus deserunt aut natus magni nulla. Nesciunt
-        maxime quasi consequuntur neque perferendis! Corrupti, eaque. Natus quam
-        quis, expedita eius ab at. In consequuntur dolore, est rem, illo
-        asperiores aut labore ullam id, nihil sed culpa temporibus consectetur
-        tenetur! Ex?
-      </p> */}
     </div>
   );
 }

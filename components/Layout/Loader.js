@@ -1,5 +1,3 @@
-import React from "react";
-
 function Loader() {
   return (
     <div className="fixed left-1/2 top-1/2  p-5 z-30">

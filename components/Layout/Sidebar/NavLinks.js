@@ -266,6 +266,18 @@ export const navLinks = [
   },
   {
     id: 17,
+    name: "email",
+    link: "/email",
+    icon: <MdMessage className="fill-green-400" />,
+  },
+  {
+    id: 18,
+    name: "sms",
+    link: "/sms",
+    icon: <MdMessage className="fill-green-400" />,
+  },
+  {
+    id: 19,
     name: "account",
     link: "/account",
     icon: <AiFillSetting className="fill-green-400" />,

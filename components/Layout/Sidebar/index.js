@@ -37,7 +37,7 @@ function Sidebar({ showMenu, setShowMenu }) {
               showMenu ? "opacity-100" : "opacity-0"
             }`}
           >
-            Sidebar
+            LOGO
           </h2>
         </div>
 
@@ -45,7 +45,7 @@ function Sidebar({ showMenu, setShowMenu }) {
           {navLinks.map((navLink, i) => (
             <div className="" key={i} onClick={() => setShowMenu(true)}>
               <Link
-                href={!navLink.subLinks ? navLink.link : "javscript:;"}
+                href={!navLink.subLinks ? navLink.link : "javascript:;"}
                 passHref
               >
                 {/* <div
