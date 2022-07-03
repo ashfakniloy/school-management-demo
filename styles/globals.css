@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* html,
+body {
+  @apply p-0 m-0 font-Poppins bg-gray-100;
+}
+
+/* sidebar */
 .sidebar::-webkit-scrollbar {
   width: 0px;
 }
@@ -17,10 +23,21 @@
   background-color: transparent;
 }
 
-* html,
-body {
-  @apply p-0 m-0 font-Poppins bg-gray-100;
+/* firefox sidebar */
+/* .sidebar::-moz-scrollbar {
+  width: 0px;
 }
+
+::-moz-scrollbar {
+  width: 6px;
+}
+::-moz-scrollbar-thumb {
+  background-color: grey;
+  border-radius: 40px;
+}
+::-moz-scrollbar-track {
+  background-color: transparent;
+} */
 
 /* loading spinner */
 .lds-spinner {

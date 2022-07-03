@@ -30,7 +30,7 @@ function Table({ columnsHeading, usersData }) {
   //   };
   // }, []);
 
-  console.log("tables", usersData);
+  // console.log("tables", usersData);
 
   const {
     getTableProps,

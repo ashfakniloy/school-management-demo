@@ -32,7 +32,7 @@ function StudentsTable({ studentsData }) {
   //   };
   // }, []);
 
-  console.log("tables", studentsData);
+  // console.log("tables", studentsData);
 
   const {
     getTableProps,

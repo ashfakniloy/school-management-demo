@@ -2,30 +2,19 @@ import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { TextField, TextArea, SelectField } from "../InputField";
-import { useState } from "react";
+import { TextField, TextArea } from "../InputField";
 
 const API_URL = "http://192.168.0.20:8000/v1/exam/add";
 
-function IndividualEmailForm() {
-  const [value, setValue] = useState("");
-
-  // const [emailTo, setEmailTo] = useState("");
-
-  // const handleValues = (value) => {
-  //   setEmailTo(value);
-  //   console.log(value);
-  // };
-
+function StudentsEmailForm() {
   const initialvalues = {
-    email_to: "individual",
-    email_address: "",
+    email_to: "all students",
     subject: "",
     message: "",
   };
 
   const validate = Yup.object({
-    email_address: Yup.string().required("Email is required"),
+    // email_address: Yup.string().required("Email is required"),
     subject: Yup.string().required("Subject is required"),
     message: Yup.string().required("Message is required"),
   });
@@ -64,27 +53,8 @@ function IndividualEmailForm() {
         {(formik) => (
           <Form>
             <ToastContainer />
-            {/* <h1 className="text-xl font-semibold text-slate-800">Send Email</h1> */}
 
             <div className="grid grid-cols-1 md:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7">
-              {/* <div className="col-span-1">
-                <SelectField
-                  label="Send Email To *"
-                  name="email_to"
-                  type="text"
-                  placeholder="individual"
-                  options={["individual", "all users"]}
-                />
-              </div> */}
-
-              <div className="col-span-1">
-                <TextField
-                  label="Email Address *"
-                  name="email_address"
-                  type="email"
-                />
-              </div>
-
               <div className="col-span-4 md:col-span-1">
                 <TextField label="Subject *" name="subject" type="text" />
               </div>
@@ -109,4 +79,4 @@ function IndividualEmailForm() {
   );
 }
 
-export default IndividualEmailForm;
+export default StudentsEmailForm;

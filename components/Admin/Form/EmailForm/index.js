@@ -1,16 +1,18 @@
-import * as Yup from "yup";
-import { Formik, Form } from "formik";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { TextField, TextArea, SelectField } from "../InputField";
 import { useState } from "react";
-import AddEmailForm from "./IndividualEmailForm";
+import IndividualEmailForm from "./IndividualEmailForm";
+import AllEmailForm from "./AllEmailForm";
+import TeachersEmailForm from "./TeachersEmailForm";
+import StudentsEmailForm from "./StudentsEmailForm";
+// import StudentsClassEmailForm from "./StudentsClassEmailForm";
+import StudentsClassAndSectionEmailForm from "./StudentsClassAndSectionEmailForm";
+import ParentsEmailForm from "./ParentsEmailForm";
+import ParentsClassAndSectionEmailForm from "./ParentsClassAndSectionEmailForm";
 
 function EmailForm() {
-  const [value, setValue] = useState("individual");
+  const [selectedValue, setSelectedValue] = useState("individual");
 
-  const handleChange = (e) => {
-    setValue(e);
+  const handleChange = (value) => {
+    setSelectedValue(value);
   };
 
   return (
@@ -22,17 +24,38 @@ function EmailForm() {
       </label>
 
       <select
-        className="mt-8 p-2 outline-none border border-slate-500"
+        className="mt-8 p-2 outline-none border border-slate-500 text-sm"
         name="email"
         id="email"
-        value={value}
+        value={selectedValue}
         onChange={(e) => handleChange(e.target.value)}
       >
         <option value="individual">Individual</option>
+        <option value="all teachers">All Teachers</option>
+        <option value="all students">All Students</option>
+        <option value="all parents">All Parents</option>
+        {/* <option value="students class">Students By Class</option> */}
+        <option value="students class and section">
+          Students By Class and Section
+        </option>
+        <option value="parents class and section">
+          Parents By Class and Section
+        </option>
         <option value="all users">All Users</option>
       </select>
 
-      {value === "individual" && <AddEmailForm />}
+      {selectedValue === "individual" && <IndividualEmailForm />}
+      {selectedValue === "all teachers" && <TeachersEmailForm />}
+      {selectedValue === "all students" && <StudentsEmailForm />}
+      {selectedValue === "all parents" && <ParentsEmailForm />}
+      {/* {selectedValue === "students class" && <StudentsClassEmailForm />} */}
+      {selectedValue === "students class and section" && (
+        <StudentsClassAndSectionEmailForm />
+      )}
+      {selectedValue === "parents class and section" && (
+        <ParentsClassAndSectionEmailForm />
+      )}
+      {selectedValue === "all users" && <AllEmailForm />}
     </div>
   );
 }
