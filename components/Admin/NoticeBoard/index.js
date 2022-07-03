@@ -64,7 +64,7 @@ function NoticeBoard({ notices }) {
                 key={notice.id}
                 className="my-8 mr-5 border-b border-slate-200"
               >
-                <span className="bg-slate-400  text-white text-sm py-2 px-5 rounded-full">
+                <span className="bg-slate-400  text-white text-xs py-2 px-5 rounded-full">
                   {format(new Date(notice.post_date), "dd MMM, yyyy", {
                     locale: enUS,
                   })}
@@ -81,12 +81,12 @@ function NoticeBoard({ notices }) {
                   )}
                 </p>
                 {showNotice === notice.id && (
-                  <p className="my-2">{notice.details}</p>
+                  <p className="my-2 text-sm">{notice.details}</p>
                 )}
                 <p className="mb-4 text-sm text-slate-600">
                   {notice.posted_by}{" "}
                   <span className="text-slate-400 text-xs mr-1">/</span>
-                  <span className="text-slate-400">
+                  <span className="text-slate-400 text-xs">
                     {formatDistance(new Date(notice.created_at), new Date(), {
                       addSuffix: true,
                     })}

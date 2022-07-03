@@ -24,7 +24,7 @@ body {
 }
 
 /* firefox sidebar */
-/* .sidebar::-moz-scrollbar {
+.sidebar::-moz-scrollbar {
   width: 0px;
 }
 
@@ -37,7 +37,7 @@ body {
 }
 ::-moz-scrollbar-track {
   background-color: transparent;
-} */
+}
 
 /* loading spinner */
 .lds-spinner {
