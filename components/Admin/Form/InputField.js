@@ -74,13 +74,7 @@ export const SelectField = ({ label, name, type, placeholder, options }) => {
   );
 };
 
-export const FileField = ({
-  label,
-  // type,
-  name,
-  handleChange,
-  imagePreview,
-}) => {
+export const FileField = ({ label, name, handleChange, imagePreview }) => {
   return (
     <div className="">
       <div className="relative">
