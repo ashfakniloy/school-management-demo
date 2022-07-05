@@ -5,15 +5,16 @@ import LineChart from "../components/Admin/Dashboard/Charts/LineChart";
 import BarChart from "../components/Admin/Dashboard/Charts/BarChart";
 import DoughnutChart from "../components/Admin/Dashboard/Charts/DoughnutChart";
 import NoticeBoard from "../components/Admin/NoticeBoard";
+import { API_URL } from "../config";
 
-const API_URL = "http://192.168.0.20:8000/v1/data/all";
+// const API_URL = "http://192.168.0.20:8000/v1/data/all";
 
 function Home() {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch(`${API_URL}`, {
+      const res = await fetch(`${API_URL}/data/all`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -32,25 +33,6 @@ function Home() {
     total_male,
     total_female,
   } = userData;
-
-  // const totalCounts = [
-  //   {
-  //     title: "students",
-  //     count: userData.total_students,
-  //   },
-  //   {
-  //     title: "teachers",
-  //     count: userData.total_teachers,
-  //   },
-  //   {
-  //     title: "parents",
-  //     count: userData.total_parents,
-  //   },
-  //   {
-  //     title: "earnings",
-  //     count: userData.total_earnings,
-  //   },
-  // ];
 
   return (
     <Layout>

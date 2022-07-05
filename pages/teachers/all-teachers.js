@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import Table from "../../components/Admin/Table";
 import { TeachersColumn } from "../../components/Admin/Table/columns/teachers";
 import Layout from "../../components/Layout";
-
-const API_URL = "http://192.168.0.20:8000/v1/teacher/all";
+import { API_URL } from "../../config";
 
 function AllTeachersPage() {
   const [teachersData, setTeachersData] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch(`${API_URL}`, {
+      const res = await fetch(`${API_URL}/teacher/all`, {
         headers: {
           "Content-Type": "application/json",
         },

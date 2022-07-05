@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import Table from "../../components/Admin/Table";
 import { EarningsColumn } from "../../components/Admin/Table/columns/earnings";
 import Layout from "../../components/Layout";
-
-const API_URL = "http://192.168.0.20:8000/v1/earning/all";
+import { API_URL } from "../../config";
 
 function AllEarningsPage() {
   const [earningsData, setEarningsData] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch(`${API_URL}`, {
+      const res = await fetch(`${API_URL}/earning/all`, {
         headers: {
           "Content-Type": "application/json",
         },

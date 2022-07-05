@@ -1,10 +1,11 @@
+import { useState } from "react";
+import Image from "next/image";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
-
-const API_URL = "http://192.168.0.20:8000/v1/student/signup";
+import { API_URL } from "../../../config";
 
 function Student() {
   const initialvalues = {
@@ -22,6 +23,7 @@ function Student() {
     phone: "",
     address: "",
     bio: "",
+    // image_url: "",
   };
 
   const validate = Yup.object({
@@ -39,39 +41,74 @@ function Student() {
     phone: Yup.string().required("Phone is required"),
     address: Yup.string().required("Address is required"),
     bio: Yup.string().required("Bio is required"),
+    // image_url: Yup.string().required("Image is required"),
   });
 
-  // const handleSubmit = (values, formik) => {
-  //   console.log("student data", values);
+  const handleSubmit = (values, formik) => {
+    console.log("student data", values);
+  };
+
+  // const handleSubmit = async (values, formik) => {
+  //   const res = await fetch(`${API_URL}/student/signup`, {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(values),
+  //   });
+
+  //   const data = await res.json();
+
+  //   if (res.ok) {
+  //     toast.success("Form Submitted Successfully!");
+  //     console.log(data);
+  //     // formik.resetForm();
+  //   } else {
+  //     console.log("error", data);
+  //     toast.error(data.message);
+  //   }
   // };
 
-  const handleSubmit = async (values, formik) => {
-    const res = await fetch(`${API_URL}`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
+  const [loading, setLoading] = useState(false);
+  const [imagePreview, setImagePreview] = useState("");
+
+  const imageUpload = async (e, formik) => {
+    const files = e.target.files;
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    formData.append("upload_preset", "u9pqvof1");
+    // setLoading(true);
+
+    // console.log([...formData.entries()]);
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/niloy56/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
 
     const data = await res.json();
 
     if (res.ok) {
-      toast.success("Form Submitted Successfully!");
-      console.log(data);
-      // formik.resetForm();
+      console.log("success", data.secure_url);
+      setImagePreview(data.secure_url);
+      formik.setFieldValue("image_url", data.secure_url);
     } else {
-      console.log("error", data);
-      toast.error(data.message);
+      console.log("failed", data);
     }
+
+    // setImage(data.secure_url);
+    // setLoading(false);
   };
 
   return (
     <div className="mt-14 bg-white p-10 shadow-md">
       <Formik
         initialValues={initialvalues}
-        validationSchema={validate}
+        // validationSchema={validate}
         onSubmit={handleSubmit}
       >
         {(formik) => (
@@ -154,6 +191,24 @@ function Student() {
               </div>
               <div className="col-start-1 col-end-5 md:col-end-3">
                 <TextArea label="Short Bio *" name="bio" type="text" />
+              </div>
+            </div>
+
+            <div className="col-start-1 col-end-3 flex gap-3 items-center">
+              <input
+                type="file"
+                className="mt-5"
+                onChange={(e) => imageUpload(e, formik)}
+              />
+              <div className="">
+                {imagePreview && (
+                  <Image
+                    src={imagePreview}
+                    alt="Preview Image"
+                    width={200}
+                    height={200}
+                  />
+                )}
               </div>
             </div>
 

@@ -3,8 +3,7 @@ import { Formik, Form } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea } from "../InputField";
-
-const API_URL = "http://192.168.0.20:8000/v1/exam/add";
+import { API_URL } from "../../../../config";
 
 function ParentsEmailForm() {
   const initialvalues = {
@@ -24,7 +23,7 @@ function ParentsEmailForm() {
   };
 
   // const handleSubmit = async (values, formik) => {
-  //   const res = await fetch(`${API_URL}`, {
+  //   const res = await fetch(`${API_URL}/exam/add`, {
   //     method: "POST",
   //     headers: {
   //       "Content-Type": "application/json",

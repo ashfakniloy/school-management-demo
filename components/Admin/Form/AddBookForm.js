@@ -3,8 +3,7 @@ import { Formik, Form } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
-
-const API_URL = "http://192.168.0.20:8000/v1/library/add";
+import { API_URL } from "../../../config";
 
 function AddBookForm() {
   const initialvalues = {
@@ -32,7 +31,7 @@ function AddBookForm() {
   // };
 
   const handleSubmit = async (values, formik) => {
-    const res = await fetch(`${API_URL}`, {
+    const res = await fetch(`${API_URL}/library/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import Table from "../../components/Admin/Table";
 import { ExamsColumn } from "../../components/Admin/Table/columns/exams";
 import Layout from "../../components/Layout";
-
-const API_URL = "http://192.168.0.20:8000/v1/exam/all";
+import { API_URL } from "../../config";
 
 function AllExamsPage() {
   const [examsData, setExamsData] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch(`${API_URL}`, {
+      const res = await fetch(`${API_URL}/exam/all`, {
         headers: {
           "Content-Type": "application/json",
         },

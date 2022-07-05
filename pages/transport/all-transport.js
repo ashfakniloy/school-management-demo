@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import Table from "../../components/Admin/Table";
 import { TransportsColumn } from "../../components/Admin/Table/columns/transports";
 import Layout from "../../components/Layout";
-
-const API_URL = "http://192.168.0.20:8000/v1/transport/all";
+import { API_URL } from "../../config";
 
 function AllTransportPage() {
   const [transportsData, setTransportsData] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch(`${API_URL}`, {
+      const res = await fetch(`${API_URL}/transport/all`, {
         headers: {
           "Content-Type": "application/json",
         },

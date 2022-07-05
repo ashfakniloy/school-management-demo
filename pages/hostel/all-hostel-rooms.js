@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import Table from "../../components/Admin/Table";
 import { HostelsColumn } from "../../components/Admin/Table/columns/hostels";
 import Layout from "../../components/Layout";
-
-const API_URL = "http://192.168.0.20:8000/v1/hostel/all";
+import { API_URL } from "../../config";
 
 function AllHostelRoomsPage() {
   const [hostelsData, setHostelsData] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch(`${API_URL}`, {
+      const res = await fetch(`${API_URL}/hostel/all`, {
         headers: {
           "Content-Type": "application/json",
         },

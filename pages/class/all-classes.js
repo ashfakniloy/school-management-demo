@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import Table from "../../components/Admin/Table";
 import { ClassesColumn } from "../../components/Admin/Table/columns/classes";
 import Layout from "../../components/Layout";
-
-const API_URL = "http://192.168.0.20:8000/v1/class/all";
+import { API_URL } from "../../config";
 
 function AllClassesPage() {
   const [classesData, setClassesData] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch(`${API_URL}`, {
+      const res = await fetch(`${API_URL}/class/all`, {
         headers: {
           "Content-Type": "application/json",
         },

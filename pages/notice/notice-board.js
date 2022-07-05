@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
 import NoticeBoard from "../../components/Admin/NoticeBoard";
 import Layout from "../../components/Layout";
-
-const API_URL = "http://192.168.0.20:8000/v1/notice/all";
+import { API_URL } from "../../config";
 
 function NoticesPage() {
   const [notices, setNotices] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch(`${API_URL}`, {
+      const res = await fetch(`${API_URL}/notice/all`, {
         headers: {
           "Content-Type": "application/json",
         },
