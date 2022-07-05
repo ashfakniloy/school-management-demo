@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Image from "next/image";
 import * as Yup from "yup";
-import { Formik, Form } from "formik";
+import { Formik, Form, ErrorMessage } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { TextField, TextArea, SelectField } from "./InputField";
+import { TextField, TextArea, SelectField, FileField } from "./InputField";
 import { API_URL } from "../../../config";
 
 function StudentForm() {
@@ -23,7 +23,6 @@ function StudentForm() {
     phone: "",
     address: "",
     bio: "",
-    // image_url: "",
     testimonial: "",
     certificate: "",
     marksheet: "",
@@ -46,34 +45,38 @@ function StudentForm() {
     phone: Yup.string().required("Phone is required"),
     address: Yup.string().required("Address is required"),
     bio: Yup.string().required("Bio is required"),
-    // image_url: Yup.string().required("Image is required"),
+    testimonial: Yup.string().required("Testimonial is required"),
+    certificate: Yup.string().required("Certificate is required"),
+    marksheet: Yup.string().required("Marksheet is required"),
+    signature: Yup.string().required("Signature is required"),
+    photo: Yup.string().required("Photo is required"),
   });
 
-  // const handleSubmit = (values, formik) => {
-  //   console.log("student data", values);
-  // };
-
-  const handleSubmit = async (values, formik) => {
-    const res = await fetch(`${API_URL}/student/signup`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
-
-    const data = await res.json();
-
-    if (res.ok) {
-      toast.success("Form Submitted Successfully!");
-      console.log(data);
-      // formik.resetForm();
-    } else {
-      console.log("error", data);
-      toast.error(data.message);
-    }
+  const handleSubmit = (values, formik) => {
+    console.log("student data", values);
   };
+
+  // const handleSubmit = async (values, formik) => {
+  //   const res = await fetch(`${API_URL}/student/signup`, {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(values),
+  //   });
+
+  //   const data = await res.json();
+
+  //   if (res.ok) {
+  //     toast.success("Form Submitted Successfully!");
+  //     console.log(data);
+  //     // formik.resetForm();
+  //   } else {
+  //     console.log("error", data);
+  //     toast.error(data.message);
+  //   }
+  // };
 
   // const [loading, setLoading] = useState(false);
   const [testimonialPreview, setTestimonialPreview] = useState("");
@@ -221,7 +224,7 @@ function StudentForm() {
     <div className="mt-14 bg-white p-10 shadow-md">
       <Formik
         initialValues={initialvalues}
-        // validationSchema={validate}
+        validationSchema={validate}
         onSubmit={handleSubmit}
       >
         {(formik) => (
@@ -307,106 +310,41 @@ function StudentForm() {
               </div>
             </div>
 
-            <div className="mt-5 flex text-sm">
-              <div className="">
-                <label htmlFor="testimonial">Add Testimonial* </label>
-                <input
-                  type="file"
-                  id="testimonial"
-                  className=""
-                  onChange={(e) => testimonialUpload(e, formik)}
-                />
-                <div className="">
-                  {testimonialPreview && (
-                    <Image
-                      src={testimonialPreview}
-                      alt="Preview Image"
-                      width={50}
-                      height={50}
-                    />
-                  )}
-                </div>
-              </div>
+            <div className="mt-5 md:flex text-sm">
+              <FileField
+                name="testimonial"
+                label="Add Testimonial *"
+                handleChange={(e) => testimonialUpload(e, formik)}
+                imagePreview={testimonialPreview}
+              />
 
-              <div className="">
-                <label htmlFor="certificate">Add Certificate* </label>
-                <input
-                  type="file"
-                  id="certificate"
-                  className=""
-                  onChange={(e) => certificateUpload(e, formik)}
-                />
-                <div className="">
-                  {certificatePreview && (
-                    <Image
-                      src={certificatePreview}
-                      alt="Preview Image"
-                      width={50}
-                      height={50}
-                    />
-                  )}
-                </div>
-              </div>
+              <FileField
+                name="certificate"
+                label="Add Certificate *"
+                handleChange={(e) => certificateUpload(e, formik)}
+                imagePreview={certificatePreview}
+              />
 
-              <div className="">
-                <label htmlFor="marksheet">Add Marksheet* </label>
-                <input
-                  type="file"
-                  id="marksheet"
-                  className=""
-                  onChange={(e) => marksheetUpload(e, formik)}
-                />
-                <div className="">
-                  {marksheetPreview && (
-                    <Image
-                      src={marksheetPreview}
-                      alt="Preview Image"
-                      width={50}
-                      height={50}
-                    />
-                  )}
-                </div>
-              </div>
+              <FileField
+                name="marksheet"
+                label="Add Marksheet *"
+                handleChange={(e) => marksheetUpload(e, formik)}
+                imagePreview={marksheetPreview}
+              />
 
-              <div className="">
-                <label htmlFor="signature">Add Signature* </label>
-                <input
-                  type="file"
-                  id="signature"
-                  className=""
-                  onChange={(e) => signatureUpload(e, formik)}
-                />
-                <div className="">
-                  {signaturePreview && (
-                    <Image
-                      src={signaturePreview}
-                      alt="Preview Image"
-                      width={50}
-                      height={50}
-                    />
-                  )}
-                </div>
-              </div>
+              <FileField
+                name="signature"
+                label="Add Signature *"
+                handleChange={(e) => signatureUpload(e, formik)}
+                imagePreview={signaturePreview}
+              />
 
-              <div className="">
-                <label htmlFor="photo">Add Photo* </label>
-                <input
-                  type="file"
-                  id="photo"
-                  className=""
-                  onChange={(e) => photoUpload(e, formik)}
-                />
-                <div className="">
-                  {photoPreview && (
-                    <Image
-                      src={photoPreview}
-                      alt="Preview Image"
-                      width={50}
-                      height={50}
-                    />
-                  )}
-                </div>
-              </div>
+              <FileField
+                name="photo"
+                label="Add Photo *"
+                handleChange={(e) => photoUpload(e, formik)}
+                imagePreview={photoPreview}
+              />
             </div>
 
             <div className="mt-8 flex justify-start">

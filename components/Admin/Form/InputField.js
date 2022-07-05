@@ -1,4 +1,5 @@
 import { ErrorMessage, Field } from "formik";
+import Image from "next/image";
 
 export const TextField = ({ label, name, type }) => {
   return (
@@ -68,6 +69,31 @@ export const SelectField = ({ label, name, type, placeholder, options }) => {
         <p className="absolute -bottom-4 text-red-600 text-xs">
           <ErrorMessage name={name} />
         </p>
+      </div>
+    </div>
+  );
+};
+
+export const FileField = ({
+  label,
+  // type,
+  name,
+  handleChange,
+  imagePreview,
+}) => {
+  return (
+    <div className="">
+      <div className="relative">
+        <label htmlFor="testimonial">{label} </label>
+        <input type="file" id={name} className="" onChange={handleChange} />
+        <p className="absolute -bottom-4 text-red-600 text-xs">
+          <ErrorMessage name={name} />
+        </p>
+      </div>
+      <div className="">
+        {imagePreview && (
+          <Image src={imagePreview} alt={name} width={50} height={50} />
+        )}
       </div>
     </div>
   );
