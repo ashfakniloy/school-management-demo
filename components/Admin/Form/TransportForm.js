@@ -5,33 +5,29 @@ import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
 import { API_URL } from "../../../config";
 
-function AddBookForm() {
+function TransportForm() {
   const initialvalues = {
-    book_name: "",
-    subject: "",
-    writer_name: "",
-    class: "",
-    book_id: "",
-    publish_date: "",
-    upload_date: "",
+    route_name: "",
+    vehicle_number: "",
+    driver_name: "",
+    license_number: "",
+    phone_number: "",
   };
 
   const validate = Yup.object({
-    book_name: Yup.string().required("Subject Name is required"),
-    subject: Yup.string().required("Subject Type is required"),
-    writer_name: Yup.string().required("Class is required"),
-    class: Yup.string().required("Code is required"),
-    book_id: Yup.string().required("Code is required"),
-    publish_date: Yup.string().required("Code is required"),
-    upload_date: Yup.string().required("Code is required"),
+    route_name: Yup.string().required("Route Name is required"),
+    vehicle_number: Yup.string().required("Vehicle Number is required"),
+    driver_name: Yup.string().required("Drier Name is required"),
+    license_number: Yup.string().required("License Number is required"),
+    phone_number: Yup.string().required("Phone Number is required"),
   });
 
   // const handleSubmit = (values, formik) => {
-  //   console.log("add book data", values);
+  //   console.log("add transport data", values);
   // };
 
   const handleSubmit = async (values, formik) => {
-    const res = await fetch(`${API_URL}/library/add`, {
+    const res = await fetch(`${API_URL}/transport/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -61,40 +57,38 @@ function AddBookForm() {
           <Form>
             <ToastContainer />
             <h1 className="text-xl font-semibold text-slate-800">
-              Add New Book
+              Add New Transport
             </h1>
             <div className="pt-10 grid grid-cols-1 md:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7">
               <div className="col-span-4 md:col-span-1 ">
-                <TextField label="Book Name *" name="book_name" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Subject *" name="subject" type="text" />
+                <TextField label="Route Name *" name="route_name" type="text" />
               </div>
               <div className="col-span-4 md:col-span-1">
                 <TextField
-                  label="Writer Name *"
-                  name="writer_name"
+                  label="Vehicle Number *"
+                  name="vehicle_number"
+                  type="number"
+                />
+              </div>
+              <div className="col-span-4 md:col-span-1">
+                <TextField
+                  label="Driver Name *"
+                  name="driver_name"
                   type="text"
                 />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField label="Class *" name="class" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Book ID *" name="book_id" type="number" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
                 <TextField
-                  label="Publish Date *"
-                  name="publish_date"
-                  type="date"
+                  label="License Number *"
+                  name="license_number"
+                  type="text"
                 />
               </div>
               <div className="col-span-4 md:col-span-1">
                 <TextField
-                  label="Upload Date *"
-                  name="upload_date"
-                  type="date"
+                  label="Phone Number *"
+                  name="phone_number"
+                  type="number"
                 />
               </div>
             </div>
@@ -114,4 +108,4 @@ function AddBookForm() {
   );
 }
 
-export default AddBookForm;
+export default TransportForm;

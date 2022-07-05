@@ -1,5 +1,5 @@
 import React from "react";
-import AddRoomForm from "../../components/Admin/Form/AddRoomForm";
+import RoomForm from "../../components/Admin/Form/RoomForm";
 import Layout from "../../components/Layout";
 
 function AddNewRoom() {
@@ -8,7 +8,7 @@ function AddNewRoom() {
       <div className="px-8 py-10 ">
         <h1 className="text-xl font-semibold text-slate-800">Hostel</h1>
         <div className="mt-8">
-          <AddRoomForm />
+          <RoomForm />
         </div>
       </div>
     </Layout>

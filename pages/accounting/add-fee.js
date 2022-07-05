@@ -1,5 +1,5 @@
 import React from "react";
-import AddFeeForm from "../../components/Admin/Form/AddFeeForm";
+import FeeForm from "../../components/Admin/Form/FeeForm";
 import Layout from "../../components/Layout";
 
 function AddNewClasses() {
@@ -8,7 +8,7 @@ function AddNewClasses() {
       <div className="px-8 py-10 ">
         <h1 className="text-xl font-semibold text-slate-800">Accounting</h1>
         <div className="mt-8">
-          <AddFeeForm />
+          <FeeForm />
         </div>
       </div>
     </Layout>

@@ -5,35 +5,33 @@ import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
 import { API_URL } from "../../../config";
 
-function AddExpenseForm() {
+function BookForm() {
   const initialvalues = {
-    name: "",
-    id_no: "",
-    expense_type: "",
-    amount: "",
-    phone: "",
-    email: "",
-    status: "",
-    date: "",
+    book_name: "",
+    subject: "",
+    writer_name: "",
+    class: "",
+    book_id: "",
+    publish_date: "",
+    upload_date: "",
   };
 
   const validate = Yup.object({
-    name: Yup.string().required("Name is required"),
-    id_no: Yup.string().required("ID No is required"),
-    expense_type: Yup.string().required("Expense type is required"),
-    amount: Yup.string().required("Amount is required"),
-    phone: Yup.string().required("Phone is required"),
-    email: Yup.string().required("Email is required"),
-    status: Yup.string().required("Status is required"),
-    date: Yup.string().required("Date is required"),
+    book_name: Yup.string().required("Subject Name is required"),
+    subject: Yup.string().required("Subject Type is required"),
+    writer_name: Yup.string().required("Class is required"),
+    class: Yup.string().required("Code is required"),
+    book_id: Yup.string().required("Code is required"),
+    publish_date: Yup.string().required("Code is required"),
+    upload_date: Yup.string().required("Code is required"),
   });
 
   // const handleSubmit = (values, formik) => {
-  //   console.log("add expense data", values);
+  //   console.log("add book data", values);
   // };
 
   const handleSubmit = async (values, formik) => {
-    const res = await fetch(`${API_URL}/expense/add`, {
+    const res = await fetch(`${API_URL}/library/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -63,43 +61,41 @@ function AddExpenseForm() {
           <Form>
             <ToastContainer />
             <h1 className="text-xl font-semibold text-slate-800">
-              Add New Expense
+              Add New Book
             </h1>
             <div className="pt-10 grid grid-cols-1 md:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7">
               <div className="col-span-4 md:col-span-1 ">
-                <TextField label="Name *" name="name" type="text" />
+                <TextField label="Book Name *" name="book_name" type="text" />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField label="ID No *" name="id_no" type="number" />
+                <TextField label="Subject *" name="subject" type="text" />
               </div>
               <div className="col-span-4 md:col-span-1">
                 <TextField
-                  label="Expense Type *"
-                  name="expense_type"
+                  label="Writer Name *"
+                  name="writer_name"
                   type="text"
                 />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField label="Amount *" name="amount" type="number" />
+                <TextField label="Class *" name="class" type="text" />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField label="Phone *" name="phone" type="text" />
+                <TextField label="Book ID *" name="book_id" type="number" />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField label="Email *" name="email" type="email" />
-              </div>
-
-              <div className="col-span-4 md:col-span-1">
-                <SelectField
-                  label="Status *"
-                  name="status"
-                  type="text"
-                  placeholder="Select Status"
-                  options={["Paid", "Due", "Others"]}
+                <TextField
+                  label="Publish Date *"
+                  name="publish_date"
+                  type="date"
                 />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField label="Date *" name="date" type="date" />
+                <TextField
+                  label="Upload Date *"
+                  name="upload_date"
+                  type="date"
+                />
               </div>
             </div>
 
@@ -118,4 +114,4 @@ function AddExpenseForm() {
   );
 }
 
-export default AddExpenseForm;
+export default BookForm;

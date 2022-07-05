@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
 import { API_URL } from "../../../config";
 
-function Student() {
+function StudentForm() {
   const initialvalues = {
     first_name: "",
     last_name: "",
@@ -227,4 +227,4 @@ function Student() {
   );
 }
 
-export default Student;
+export default StudentForm;

@@ -1,5 +1,5 @@
 import React from "react";
-import AddEarningForm from "../../components/Admin/Form/AddEarningForm";
+import EarningForm from "../../components/Admin/Form/EarningForm";
 import Layout from "../../components/Layout";
 
 function AddEarningPage() {
@@ -8,7 +8,7 @@ function AddEarningPage() {
       <div className="px-8 py-10 ">
         <h1 className="text-xl font-semibold text-slate-800">Accounting</h1>
         <div className="mt-8">
-          <AddEarningForm />
+          <EarningForm />
         </div>
       </div>
     </Layout>

@@ -5,31 +5,27 @@ import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
 import { API_URL } from "../../../config";
 
-function AddExamForm() {
+function NoticeForm() {
   const initialvalues = {
-    exam_name: "",
-    subject_type: "",
-    select_class: "",
-    select_section: "",
-    select_time: "",
-    select_date: "",
+    title: "",
+    details: "",
+    posted_by: "",
+    post_date: "",
   };
 
   const validate = Yup.object({
-    exam_name: Yup.string().required("Exam Name is required"),
-    subject_type: Yup.string().required("Subject Type is required"),
-    select_class: Yup.string().required("Class is required"),
-    select_section: Yup.string().required("Section is required"),
-    select_time: Yup.string().required("Time is required"),
-    select_date: Yup.string().required("Date is required"),
+    title: Yup.string().required("Title is required"),
+    details: Yup.string().required("Details is required"),
+    posted_by: Yup.string().required("Posted By is required"),
+    post_date: Yup.string().required("Date is required"),
   });
 
   // const handleSubmit = (values, formik) => {
-  //   console.log("add exam data", values);
+  //   console.log("add notice data", values);
   // };
 
   const handleSubmit = async (values, formik) => {
-    const res = await fetch(`${API_URL}/exam/add`, {
+    const res = await fetch(`${API_URL}/notice/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -59,45 +55,21 @@ function AddExamForm() {
           <Form>
             <ToastContainer />
             <h1 className="text-xl font-semibold text-slate-800">
-              Add New Exam
+              Add New Notice
             </h1>
             <div className="pt-10 grid grid-cols-1 md:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7">
               <div className="col-span-4 md:col-span-1 ">
-                <TextField label="Name *" name="exam_name" type="text" />
+                <TextField label="Title *" name="title" type="text" />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Subject Type *"
-                  name="subject_type"
-                  type="text"
-                />
+                <TextField label="Details *" name="details" type="text" />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField label="Class *" name="select_class" type="text" />
+                <TextField label="Posted By *" name="posted_by" type="text" />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Select Section *"
-                  name="select_section"
-                  type="text"
-                />
+                <TextField label="Date *" name="post_date" type="date" />
               </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Time *" name="select_time" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Date *" name="select_date" type="date" />
-              </div>
-
-              {/* <div className="col-span-4 md:col-span-1">
-                <SelectField
-                  label="Status *"
-                  name="status"
-                  type="text"
-                  placeholder="Select Status"
-                  options={["Paid", "Due", "Others"]}
-                />
-              </div> */}
             </div>
 
             <div className="mt-8 flex justify-start">
@@ -115,4 +87,4 @@ function AddExamForm() {
   );
 }
 
-export default AddExamForm;
+export default NoticeForm;

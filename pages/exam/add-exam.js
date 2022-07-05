@@ -1,5 +1,5 @@
 import React from "react";
-import AddExamForm from "../../components/Admin/Form/AddExamForm";
+import ExamForm from "../../components/Admin/Form/ExamForm";
 import Layout from "../../components/Layout";
 
 function AddExamPage() {
@@ -8,7 +8,7 @@ function AddExamPage() {
       <div className="px-8 py-10 ">
         <h1 className="text-xl font-semibold text-slate-800">Exam</h1>
         <div className="mt-8">
-          <AddExamForm />
+          <ExamForm />
         </div>
       </div>
     </Layout>

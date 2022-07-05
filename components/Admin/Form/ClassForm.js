@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
 import { API_URL } from "../../../config";
 
-function AddClassForm() {
+function ClassForm() {
   const initialvalues = {
     teacher_name: "",
     id_no: "",
@@ -127,4 +127,4 @@ function AddClassForm() {
   );
 }
 
-export default AddClassForm;
+export default ClassForm;

@@ -5,29 +5,27 @@ import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
 import { API_URL } from "../../../config";
 
-function AddTransportForm() {
+function EarningForm() {
   const initialvalues = {
-    route_name: "",
-    vehicle_number: "",
-    driver_name: "",
-    license_number: "",
-    phone_number: "",
+    name: "",
+    amount: "",
+    type: "",
+    date: "",
   };
 
   const validate = Yup.object({
-    route_name: Yup.string().required("Route Name is required"),
-    vehicle_number: Yup.string().required("Vehicle Number is required"),
-    driver_name: Yup.string().required("Drier Name is required"),
-    license_number: Yup.string().required("License Number is required"),
-    phone_number: Yup.string().required("Phone Number is required"),
+    name: Yup.string().required("Name Type is required"),
+    amount: Yup.string().required("Amount is required"),
+    type: Yup.string().required("Type is required"),
+    date: Yup.string().required("Date is required"),
   });
 
   // const handleSubmit = (values, formik) => {
-  //   console.log("add transport data", values);
+  //   console.log("add earning data", values);
   // };
 
   const handleSubmit = async (values, formik) => {
-    const res = await fetch(`${API_URL}/transport/add`, {
+    const res = await fetch(`${API_URL}/earning/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,40 +55,31 @@ function AddTransportForm() {
           <Form>
             <ToastContainer />
             <h1 className="text-xl font-semibold text-slate-800">
-              Add New Transport
+              Add New Earning
             </h1>
             <div className="pt-10 grid grid-cols-1 md:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7">
-              <div className="col-span-4 md:col-span-1 ">
-                <TextField label="Route Name *" name="route_name" type="text" />
+              <div className="col-span-4 md:col-span-1">
+                <TextField label="Name *" name="name" type="text" />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Vehicle Number *"
-                  name="vehicle_number"
-                  type="number"
-                />
+                <TextField label="Amount *" name="amount" type="number" />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Driver Name *"
-                  name="driver_name"
+                <TextField label="Type *" name="type" type="text" />
+              </div>
+              <div className="col-span-4 md:col-span-1">
+                <TextField label="Date *" name="date" type="date" />
+              </div>
+
+              {/* <div className="col-span-4 md:col-span-1">
+                <SelectField
+                  label="Status *"
+                  name="status"
                   type="text"
+                  placeholder="Select Status"
+                  options={["Paid", "Due", "Others"]}
                 />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="License Number *"
-                  name="license_number"
-                  type="text"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Phone Number *"
-                  name="phone_number"
-                  type="number"
-                />
-              </div>
+              </div> */}
             </div>
 
             <div className="mt-8 flex justify-start">
@@ -108,4 +97,4 @@ function AddTransportForm() {
   );
 }
 
-export default AddTransportForm;
+export default EarningForm;

@@ -5,27 +5,29 @@ import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
 import { API_URL } from "../../../config";
 
-function AddNoticeForm() {
+function RoomForm() {
   const initialvalues = {
-    title: "",
-    details: "",
-    posted_by: "",
-    post_date: "",
+    hostel_name: "",
+    room_number: "",
+    room_type: "",
+    num_of_bed: "",
+    cost_per_bed: "",
   };
 
   const validate = Yup.object({
-    title: Yup.string().required("Title is required"),
-    details: Yup.string().required("Details is required"),
-    posted_by: Yup.string().required("Posted By is required"),
-    post_date: Yup.string().required("Date is required"),
+    hostel_name: Yup.string().required("Hostel Name is required"),
+    room_number: Yup.string().required("Room Number is required"),
+    room_type: Yup.string().required("Room Type is required"),
+    num_of_bed: Yup.string().required("Number Of Bed is required"),
+    cost_per_bed: Yup.string().required("Cost Per Bed is required"),
   });
 
   // const handleSubmit = (values, formik) => {
-  //   console.log("add notice data", values);
+  //   console.log("add hostel data", values);
   // };
 
   const handleSubmit = async (values, formik) => {
-    const res = await fetch(`${API_URL}/notice/add`, {
+    const res = await fetch(`${API_URL}/hostel/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,20 +57,47 @@ function AddNoticeForm() {
           <Form>
             <ToastContainer />
             <h1 className="text-xl font-semibold text-slate-800">
-              Add New Notice
+              Add New Room
             </h1>
             <div className="pt-10 grid grid-cols-1 md:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7">
               <div className="col-span-4 md:col-span-1 ">
-                <TextField label="Title *" name="title" type="text" />
+                <TextField
+                  label="Hostel Name *"
+                  name="hostel_name"
+                  type="text"
+                />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField label="Details *" name="details" type="text" />
+                <TextField
+                  label="Room Number *"
+                  name="room_number"
+                  type="text"
+                />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField label="Posted By *" name="posted_by" type="text" />
+                <SelectField
+                  label="Room Type *"
+                  name="room_type"
+                  type="text"
+                  placeholder="Select Room Type"
+                  options={["Big", "Medium", "Small"]}
+                />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField label="Date *" name="post_date" type="date" />
+                <SelectField
+                  label="Number Of Bed *"
+                  name="num_of_bed"
+                  type="number"
+                  placeholder="Select Number Of Bed"
+                  options={[2, 3, 4, 5]}
+                />
+              </div>
+              <div className="col-span-4 md:col-span-1">
+                <TextField
+                  label="Cost Per Bed *"
+                  name="cost_per_bed"
+                  type="number"
+                />
               </div>
             </div>
 
@@ -87,4 +116,4 @@ function AddNoticeForm() {
   );
 }
 
-export default AddNoticeForm;
+export default RoomForm;

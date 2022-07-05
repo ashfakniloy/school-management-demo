@@ -1,5 +1,5 @@
 import React from "react";
-import AddBookForm from "../../components/Admin/Form/AddBookForm";
+import BookForm from "../../components/Admin/Form/BookForm";
 import Layout from "../../components/Layout";
 
 function AddBookPage() {
@@ -8,7 +8,7 @@ function AddBookPage() {
       <div className="px-8 py-10 ">
         <h1 className="text-xl font-semibold text-slate-800">Library</h1>
         <div className="mt-8">
-          <AddBookForm />
+          <BookForm />
         </div>
       </div>
     </Layout>

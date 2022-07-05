@@ -5,29 +5,31 @@ import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
 import { API_URL } from "../../../config";
 
-function AddRoomForm() {
+function SalaryForm() {
   const initialvalues = {
-    hostel_name: "",
-    room_number: "",
-    room_type: "",
-    num_of_bed: "",
-    cost_per_bed: "",
+    staff_id: "",
+    name: "",
+    gender: "",
+    month: "",
+    amount: "",
+    email: "",
   };
 
   const validate = Yup.object({
-    hostel_name: Yup.string().required("Hostel Name is required"),
-    room_number: Yup.string().required("Room Number is required"),
-    room_type: Yup.string().required("Room Type is required"),
-    num_of_bed: Yup.string().required("Number Of Bed is required"),
-    cost_per_bed: Yup.string().required("Cost Per Bed is required"),
+    staff_id: Yup.string().required("Staff ID Name is required"),
+    name: Yup.string().required("Name Type is required"),
+    gender: Yup.string().required("Gender is required"),
+    month: Yup.string().required("Month is required"),
+    amount: Yup.string().required("Amount is required"),
+    email: Yup.string().required("Email is required"),
   });
 
   // const handleSubmit = (values, formik) => {
-  //   console.log("add hostel data", values);
+  //   console.log("add salary data", values);
   // };
 
   const handleSubmit = async (values, formik) => {
-    const res = await fetch(`${API_URL}/hostel/add`, {
+    const res = await fetch(`${API_URL}/salary/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -57,48 +59,65 @@ function AddRoomForm() {
           <Form>
             <ToastContainer />
             <h1 className="text-xl font-semibold text-slate-800">
-              Add New Room
+              Add New Salary
             </h1>
             <div className="pt-10 grid grid-cols-1 md:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7">
               <div className="col-span-4 md:col-span-1 ">
-                <TextField
-                  label="Hostel Name *"
-                  name="hostel_name"
-                  type="text"
-                />
+                <TextField label="Staff ID *" name="staff_id" type="text" />
               </div>
               <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Room Number *"
-                  name="room_number"
+                <TextField label="Name *" name="name" type="text" />
+              </div>
+              {/* <div className="col-span-4 md:col-span-1">
+                <TextField label="Class *" name="gender" type="text" />
+              </div> */}
+              <div className="col-span-4 md:col-span-1">
+                <SelectField
+                  label="Gender *"
+                  name="gender"
                   type="text"
+                  placeholder="Select Gender"
+                  options={["Male", "Female"]}
                 />
               </div>
               <div className="col-span-4 md:col-span-1">
                 <SelectField
-                  label="Room Type *"
-                  name="room_type"
+                  label="Month *"
+                  name="month"
                   type="text"
-                  placeholder="Select Room Type"
-                  options={["Big", "Medium", "Small"]}
+                  placeholder="Select Month"
+                  options={[
+                    "January",
+                    "February",
+                    "March",
+                    "April",
+                    "May",
+                    "June",
+                    "July",
+                    "August",
+                    "September",
+                    "October",
+                    "November",
+                    "December",
+                  ]}
                 />
               </div>
               <div className="col-span-4 md:col-span-1">
+                <TextField label="Amount *" name="amount" type="number" />
+              </div>
+              <div className="col-span-4 md:col-span-1">
+                <TextField label="Email *" name="email" type="email" />
+              </div>
+
+              {/* <div className="col-span-4 md:col-span-1">
                 <SelectField
-                  label="Number Of Bed *"
-                  name="num_of_bed"
-                  type="number"
-                  placeholder="Select Number Of Bed"
-                  options={[2, 3, 4, 5]}
+                  label="Status *"
+                  name="status"
+                  type="text"
+                  placeholder="Select Status"
+                  options={["Paid", "Due", "Others"]}
                 />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Cost Per Bed *"
-                  name="cost_per_bed"
-                  type="number"
-                />
-              </div>
+              </div> */}
             </div>
 
             <div className="mt-8 flex justify-start">
@@ -116,4 +135,4 @@ function AddRoomForm() {
   );
 }
 
-export default AddRoomForm;
+export default SalaryForm;

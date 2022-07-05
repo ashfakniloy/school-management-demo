@@ -5,31 +5,27 @@ import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
 import { API_URL } from "../../../config";
 
-function AddSMSForm() {
+function LeaveForm() {
   const initialvalues = {
-    exam_name: "",
-    subject_type: "",
+    leave_name: "",
     select_class: "",
     select_section: "",
-    select_time: "",
     select_date: "",
   };
 
   const validate = Yup.object({
-    exam_name: Yup.string().required("Exam Name is required"),
-    subject_type: Yup.string().required("Subject Type is required"),
+    leave_name: Yup.string().required("leave Name is required"),
     select_class: Yup.string().required("Class is required"),
     select_section: Yup.string().required("Section is required"),
-    select_time: Yup.string().required("Time is required"),
     select_date: Yup.string().required("Date is required"),
   });
 
   const handleSubmit = (values, formik) => {
-    console.log("add exam data", values);
+    console.log("add leave data", values);
   };
 
   // const handleSubmit = async (values, formik) => {
-  //   const res = await fetch(`${API_URL}/exam/add`, {
+  //   const res = await fetch(`${API_URL}/leave/add`, {
   //     method: "POST",
   //     headers: {
   //       "Content-Type": "application/json",
@@ -58,18 +54,14 @@ function AddSMSForm() {
         {(formik) => (
           <Form>
             <ToastContainer />
-            <h1 className="text-xl font-semibold text-slate-800">Send SMS</h1>
+            <h1 className="text-xl font-semibold text-slate-800">
+              Add New leave
+            </h1>
             <div className="pt-10 grid grid-cols-1 md:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7">
               <div className="col-span-4 md:col-span-1 ">
-                <TextField label="Name *" name="exam_name" type="text" />
+                <TextField label="Name *" name="leave_name" type="text" />
               </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Subject Type *"
-                  name="subject_type"
-                  type="text"
-                />
-              </div>
+
               <div className="col-span-4 md:col-span-1">
                 <TextField label="Class *" name="select_class" type="text" />
               </div>
@@ -80,9 +72,7 @@ function AddSMSForm() {
                   type="text"
                 />
               </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Time *" name="select_time" type="text" />
-              </div>
+
               <div className="col-span-4 md:col-span-1">
                 <TextField label="Date *" name="select_date" type="date" />
               </div>
@@ -113,4 +103,4 @@ function AddSMSForm() {
   );
 }
 
-export default AddSMSForm;
+export default LeaveForm;

@@ -1,5 +1,5 @@
 import React from "react";
-import AddSalaryForm from "../../components/Admin/Form/AddSalaryForm";
+import SalaryForm from "../../components/Admin/Form/SalaryForm";
 import Layout from "../../components/Layout";
 
 function AddSalaryPage() {
@@ -8,7 +8,7 @@ function AddSalaryPage() {
       <div className="px-8 py-10 ">
         <h1 className="text-xl font-semibold text-slate-800">Accounting</h1>
         <div className="mt-8">
-          <AddSalaryForm />
+          <SalaryForm />
         </div>
       </div>
     </Layout>

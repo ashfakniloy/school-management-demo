@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "./InputField";
 import { API_URL } from "../../../config";
 
-function Teacher() {
+function ParentForm() {
   const initialvalues = {
     first_name: "",
     last_name: "",
@@ -14,6 +14,8 @@ function Teacher() {
     id_no: "",
     blood_group: "",
     religion: "",
+    occupation: "",
+    student_email: "",
     email: "",
     class: "",
     section: "",
@@ -26,10 +28,12 @@ function Teacher() {
     first_name: Yup.string().required("First name is required"),
     last_name: Yup.string().required("Last name is required"),
     gender: Yup.string().required("Gender is required"),
-    date_of_birth: Yup.string().required("Birthdate is required"),
+    date_of_birth: Yup.string().required("BirthDate is required"),
     id_no: Yup.string().required("ID number is required"),
     blood_group: Yup.string().required("Blood Group is required"),
     religion: Yup.string().required("Religion is required"),
+    occupation: Yup.string().required("Occupation is required"),
+    student_email: Yup.string().required("Student Email is required"),
     email: Yup.string().required("Email is required"),
     class: Yup.string().required("Class is required"),
     section: Yup.string().required("Section is required"),
@@ -39,24 +43,23 @@ function Teacher() {
   });
 
   // const handleSubmit = (values, formik) => {
-  //   console.log("teacher data", values);
+  //   console.log("parent data", values);
   // };
 
   const handleSubmit = async (values, formik) => {
-    const res = await fetch(`${API_URL}/teacher/signup`, {
+    const res = await fetch(`${API_URL}/parent/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(values),
     });
-
     const data = await res.json();
 
     if (res.ok) {
       toast.success("Form Submitted Successfully!");
       console.log(data);
-      formik.resetForm();
+      // formik.resetForm();
     } else {
       console.log("error", data);
       toast.error(data.message);
@@ -74,16 +77,16 @@ function Teacher() {
           <Form>
             <ToastContainer />
             <h1 className="text-xl font-semibold text-slate-800">
-              Add New Teacher
+              Add New Parent
             </h1>
             <div className="pt-10 grid grid-cols-1 md:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7">
-              <div className="col-span-4 md:col-span-1">
+              <div className="col-span-4 md:col-span-1 ">
                 <TextField label="First Name *" name="first_name" type="text" />
               </div>
-              <div className="col-span-4 md:col-span-1">
+              <div className="col-span-4 md:col-span-1 ">
                 <TextField label="Last Name *" name="last_name" type="text" />
               </div>
-              <div className="col-span-4 md:col-span-1">
+              <div className="col-span-4 md:col-span-1 ">
                 <SelectField
                   label="Gender *"
                   name="gender"
@@ -99,10 +102,10 @@ function Teacher() {
                   type="date"
                 />
               </div>
-              <div className="col-span-4 md:col-span-1">
+              <div className="col-span-4 md:col-span-1 ">
                 <TextField label="ID No *" name="id_no" type="number" />
               </div>
-              <div className="col-span-4 md:col-span-1">
+              <div className="col-span-4 md:col-span-1 ">
                 <SelectField
                   label="Blood Group *"
                   name="blood_group"
@@ -111,7 +114,7 @@ function Teacher() {
                   options={["A+", "A-", "B+", "B-", "O+", "O-"]}
                 />
               </div>
-              <div className="col-span-4 md:col-span-1">
+              <div className="col-span-4 md:col-span-1 ">
                 <SelectField
                   label="Religion *"
                   name="religion"
@@ -126,6 +129,16 @@ function Teacher() {
                   ]}
                 />
               </div>
+              <div className="col-span-4 md:col-span-1 ">
+                <TextField label="Occupation *" name="occupation" type="text" />
+              </div>
+              <div className="col-span-4 md:col-span-1 ">
+                <TextField
+                  label="Student Email *"
+                  name="student_email"
+                  type="email"
+                />
+              </div>
               <div className="col-span-4 md:col-span-1">
                 <TextField label="Email *" name="email" type="email" />
               </div>
@@ -135,16 +148,17 @@ function Teacher() {
               <div className="col-span-4 md:col-span-1">
                 <TextField label="Section *" name="section" type="text" />
               </div>
-              <div className="col-span-4 md:col-span-1">
+              <div className="col-span-4 md:col-span-1 ">
                 <TextField label="Phone *" name="phone" type="number" />
               </div>
-              <div className="col-span-4 md:col-span-1">
+              <div className="col-span-4 md:col-span-1 ">
                 <TextField label="Address *" name="address" type="text" />
               </div>
               <div className="col-start-1 col-end-5 md:col-end-3">
                 <TextArea label="Short Bio *" name="bio" type="text" />
               </div>
             </div>
+
             <div className="mt-8 flex justify-start">
               <button
                 type="submit"
@@ -160,4 +174,4 @@ function Teacher() {
   );
 }
 
-export default Teacher;
+export default ParentForm;

@@ -1,5 +1,5 @@
 import React from "react";
-import AddExpenseForm from "../../components/Admin/Form/AddExpenseForm";
+import ExpenseForm from "../../components/Admin/Form/ExpenseForm";
 import Layout from "../../components/Layout";
 
 function AddExpense() {
@@ -8,7 +8,7 @@ function AddExpense() {
       <div className="px-8 py-10 ">
         <h1 className="text-xl font-semibold text-slate-800">Accounting</h1>
         <div className="mt-8">
-          <AddExpenseForm />
+          <ExpenseForm />
         </div>
       </div>
     </Layout>
