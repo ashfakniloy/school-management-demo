@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import * as Yup from "yup";
-import { Formik, Form, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField, FileField } from "./InputField";
@@ -78,7 +78,6 @@ function StudentForm() {
   //   }
   // };
 
-  // const [loading, setLoading] = useState(false);
   const [testimonialPreview, setTestimonialPreview] = useState("");
   const [certificatePreview, setCertificatePreview] = useState("");
   const [marksheetPreview, setMarksheetPreview] = useState("");
