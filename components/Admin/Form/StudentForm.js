@@ -309,38 +309,38 @@ function StudentForm() {
               </div>
             </div>
 
-            <div className="mt-5 md:flex text-sm">
+            <div className="mt-6 md:flex text-sm">
               <FileField
                 name="testimonial"
-                label="Add Testimonial *"
+                label="Testimonial *"
                 handleChange={(e) => testimonialUpload(e, formik)}
                 imagePreview={testimonialPreview}
               />
 
               <FileField
                 name="certificate"
-                label="Add Certificate *"
+                label="Certificate *"
                 handleChange={(e) => certificateUpload(e, formik)}
                 imagePreview={certificatePreview}
               />
 
               <FileField
                 name="marksheet"
-                label="Add Marksheet *"
+                label="Marksheet *"
                 handleChange={(e) => marksheetUpload(e, formik)}
                 imagePreview={marksheetPreview}
               />
 
               <FileField
                 name="signature"
-                label="Add Signature *"
+                label="Signature *"
                 handleChange={(e) => signatureUpload(e, formik)}
                 imagePreview={signaturePreview}
               />
 
               <FileField
                 name="photo"
-                label="Add Photo *"
+                label="Photo *"
                 handleChange={(e) => photoUpload(e, formik)}
                 imagePreview={photoPreview}
               />

@@ -76,17 +76,17 @@ export const SelectField = ({ label, name, type, placeholder, options }) => {
 
 export const FileField = ({ label, name, handleChange, imagePreview }) => {
   return (
-    <div className="">
+    <div className="mb-3">
       <div className="relative">
         <label htmlFor="testimonial">{label} </label>
-        <input type="file" id={name} className="" onChange={handleChange} />
+        <input type="file" id={name} className="mt-1" onChange={handleChange} />
         <p className="absolute -bottom-4 text-red-600 text-xs">
           <ErrorMessage name={name} />
         </p>
       </div>
-      <div className="">
+      <div className="mt-2">
         {imagePreview && (
-          <Image src={imagePreview} alt={name} width={50} height={50} />
+          <Image src={imagePreview} alt={name} width={60} height={60} />
         )}
       </div>
     </div>
