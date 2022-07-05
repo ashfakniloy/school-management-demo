@@ -24,6 +24,11 @@ function StudentForm() {
     address: "",
     bio: "",
     // image_url: "",
+    testimonial: "",
+    certificate: "",
+    marksheet: "",
+    signature: "",
+    photo: "",
   };
 
   const validate = Yup.object({
@@ -44,41 +49,44 @@ function StudentForm() {
     // image_url: Yup.string().required("Image is required"),
   });
 
-  const handleSubmit = (values, formik) => {
-    console.log("student data", values);
-  };
-
-  // const handleSubmit = async (values, formik) => {
-  //   const res = await fetch(`${API_URL}/student/signup`, {
-  //     method: "POST",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(values),
-  //   });
-
-  //   const data = await res.json();
-
-  //   if (res.ok) {
-  //     toast.success("Form Submitted Successfully!");
-  //     console.log(data);
-  //     // formik.resetForm();
-  //   } else {
-  //     console.log("error", data);
-  //     toast.error(data.message);
-  //   }
+  // const handleSubmit = (values, formik) => {
+  //   console.log("student data", values);
   // };
 
-  const [loading, setLoading] = useState(false);
-  const [imagePreview, setImagePreview] = useState("");
+  const handleSubmit = async (values, formik) => {
+    const res = await fetch(`${API_URL}/student/signup`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
 
-  const imageUpload = async (e, formik) => {
+    const data = await res.json();
+
+    if (res.ok) {
+      toast.success("Form Submitted Successfully!");
+      console.log(data);
+      // formik.resetForm();
+    } else {
+      console.log("error", data);
+      toast.error(data.message);
+    }
+  };
+
+  // const [loading, setLoading] = useState(false);
+  const [testimonialPreview, setTestimonialPreview] = useState("");
+  const [certificatePreview, setCertificatePreview] = useState("");
+  const [marksheetPreview, setMarksheetPreview] = useState("");
+  const [signaturePreview, setSignaturePreview] = useState("");
+  const [photoPreview, setPhotoPreview] = useState("");
+
+  const testimonialUpload = async (e, formik) => {
     const files = e.target.files;
     const formData = new FormData();
     formData.append("file", files[0]);
     formData.append("upload_preset", "u9pqvof1");
-    // setLoading(true);
 
     // console.log([...formData.entries()]);
 
@@ -94,14 +102,119 @@ function StudentForm() {
 
     if (res.ok) {
       console.log("success", data.secure_url);
-      setImagePreview(data.secure_url);
-      formik.setFieldValue("image_url", data.secure_url);
+      setTestimonialPreview(data.secure_url);
+      formik.setFieldValue("testimonial", data.secure_url);
     } else {
       console.log("failed", data);
     }
+  };
 
-    // setImage(data.secure_url);
-    // setLoading(false);
+  const certificateUpload = async (e, formik) => {
+    const files = e.target.files;
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    formData.append("upload_preset", "u9pqvof1");
+
+    // console.log([...formData.entries()]);
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/niloy56/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await res.json();
+
+    if (res.ok) {
+      console.log("success", data.secure_url);
+      setCertificatePreview(data.secure_url);
+      formik.setFieldValue("certificate", data.secure_url);
+    } else {
+      console.log("failed", data);
+    }
+  };
+
+  const marksheetUpload = async (e, formik) => {
+    const files = e.target.files;
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    formData.append("upload_preset", "u9pqvof1");
+
+    // console.log([...formData.entries()]);
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/niloy56/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await res.json();
+
+    if (res.ok) {
+      console.log("success", data.secure_url);
+      setMarksheetPreview(data.secure_url);
+      formik.setFieldValue("marksheet", data.secure_url);
+    } else {
+      console.log("failed", data);
+    }
+  };
+
+  const signatureUpload = async (e, formik) => {
+    const files = e.target.files;
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    formData.append("upload_preset", "u9pqvof1");
+
+    // console.log([...formData.entries()]);
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/niloy56/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await res.json();
+
+    if (res.ok) {
+      console.log("success", data.secure_url);
+      setSignaturePreview(data.secure_url);
+      formik.setFieldValue("signature", data.secure_url);
+    } else {
+      console.log("failed", data);
+    }
+  };
+
+  const photoUpload = async (e, formik) => {
+    const files = e.target.files;
+    const formData = new FormData();
+    formData.append("file", files[0]);
+    formData.append("upload_preset", "u9pqvof1");
+
+    // console.log([...formData.entries()]);
+
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/niloy56/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await res.json();
+
+    if (res.ok) {
+      console.log("success", data.secure_url);
+      setPhotoPreview(data.secure_url);
+      formik.setFieldValue("photo", data.secure_url);
+    } else {
+      console.log("failed", data);
+    }
   };
 
   return (
@@ -194,21 +307,105 @@ function StudentForm() {
               </div>
             </div>
 
-            <div className="col-start-1 col-end-3 flex gap-3 items-center">
-              <input
-                type="file"
-                className="mt-5"
-                onChange={(e) => imageUpload(e, formik)}
-              />
+            <div className="mt-5 flex text-sm">
               <div className="">
-                {imagePreview && (
-                  <Image
-                    src={imagePreview}
-                    alt="Preview Image"
-                    width={200}
-                    height={200}
-                  />
-                )}
+                <label htmlFor="testimonial">Add Testimonial* </label>
+                <input
+                  type="file"
+                  id="testimonial"
+                  className=""
+                  onChange={(e) => testimonialUpload(e, formik)}
+                />
+                <div className="">
+                  {testimonialPreview && (
+                    <Image
+                      src={testimonialPreview}
+                      alt="Preview Image"
+                      width={50}
+                      height={50}
+                    />
+                  )}
+                </div>
+              </div>
+
+              <div className="">
+                <label htmlFor="certificate">Add Certificate* </label>
+                <input
+                  type="file"
+                  id="certificate"
+                  className=""
+                  onChange={(e) => certificateUpload(e, formik)}
+                />
+                <div className="">
+                  {certificatePreview && (
+                    <Image
+                      src={certificatePreview}
+                      alt="Preview Image"
+                      width={50}
+                      height={50}
+                    />
+                  )}
+                </div>
+              </div>
+
+              <div className="">
+                <label htmlFor="marksheet">Add Marksheet* </label>
+                <input
+                  type="file"
+                  id="marksheet"
+                  className=""
+                  onChange={(e) => marksheetUpload(e, formik)}
+                />
+                <div className="">
+                  {marksheetPreview && (
+                    <Image
+                      src={marksheetPreview}
+                      alt="Preview Image"
+                      width={50}
+                      height={50}
+                    />
+                  )}
+                </div>
+              </div>
+
+              <div className="">
+                <label htmlFor="signature">Add Signature* </label>
+                <input
+                  type="file"
+                  id="signature"
+                  className=""
+                  onChange={(e) => signatureUpload(e, formik)}
+                />
+                <div className="">
+                  {signaturePreview && (
+                    <Image
+                      src={signaturePreview}
+                      alt="Preview Image"
+                      width={50}
+                      height={50}
+                    />
+                  )}
+                </div>
+              </div>
+
+              <div className="">
+                <label htmlFor="photo">Add Photo* </label>
+                <input
+                  type="file"
+                  id="photo"
+                  className=""
+                  onChange={(e) => photoUpload(e, formik)}
+                />
+                <div className="">
+                  {photoPreview && (
+                    <Image
+                      src={photoPreview}
+                      alt="Preview Image"
+                      width={50}
+                      height={50}
+                    />
+                  )}
+                </div>
               </div>
             </div>
 
