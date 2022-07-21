@@ -70,7 +70,7 @@ function NoticeBoard({ notices }) {
                   })}
                 </span>
                 <p className="mt-4 mb-2 font-semibold">{notice.title}</p>
-                <p
+                <div
                   className="my-2 text-xs cursor-pointer"
                   onClick={() => toggle(notice.id)}
                 >
@@ -79,7 +79,7 @@ function NoticeBoard({ notices }) {
                   ) : (
                     <p className="">Show Details</p>
                   )}
-                </p>
+                </div>
                 {showNotice === notice.id && (
                   <p className="my-2 text-sm">{notice.details}</p>
                 )}

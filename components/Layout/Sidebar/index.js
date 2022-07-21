@@ -20,8 +20,7 @@ function Sidebar({ showMenu, setShowMenu }) {
 
   const activeClass = (path) =>
     router.pathname === path
-      ? // id === active
-        "bg-slate-500 hover:bg-slate-500 border-l-4 border-slate-400 pl-6"
+      ? "bg-slate-500 hover:bg-slate-500 border-l-4 border-slate-400 pl-6"
       : "hover:bg-slate-600 ";
 
   return (
@@ -44,16 +43,32 @@ function Sidebar({ showMenu, setShowMenu }) {
         <div className="mt-6">
           {navLinks.map((navLink, i) => (
             <div className="" key={i} onClick={() => setShowMenu(true)}>
-              <Link
-                href={!navLink.subLinks ? navLink.link : "javascript:;"}
-                passHref
-              >
-                {/* <div
-                  className={`px-7 py-3 text-[13px] cursor-pointer border-t border-slate-600 ${activeClass(
-                    navLink.link
-                  )}`}
-                  onClick={() => toggle(navLink.id)}
-                > */}
+              {!navLink.subLinks ? (
+                <Link href={navLink.link} passHref>
+                  <div className="border-t border-slate-600">
+                    <div
+                      className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
+                        navLink.link
+                      )}`}
+                    >
+                      <div className="flex items-center justify-between relative">
+                        <div className="flex items-center gap-4">
+                          <div className="text-xl">
+                            <span>{navLink.icon}</span>
+                          </div>
+                          <p
+                            className={`capitalize duration-300 whitespace-nowrap ${
+                              showMenu ? "opacity-100" : "opacity-0"
+                            }`}
+                          >
+                            {navLink.name}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ) : (
                 <div className="border-t border-slate-600">
                   <div
                     className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
@@ -74,30 +89,22 @@ function Sidebar({ showMenu, setShowMenu }) {
                           {navLink.name}
                         </p>
                       </div>
-                      {navLink.subLinks && (
-                        <div className="">
-                          {active === navLink.id ? (
-                            <FaAngleDown />
-                          ) : (
-                            <FaAngleRight />
-                          )}
-                        </div>
-                      )}
+
+                      <div className="">
+                        {active === navLink.id ? (
+                          <FaAngleDown />
+                        ) : (
+                          <FaAngleRight />
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </Link>
-
+              )}
               {active === navLink.id &&
                 showMenu &&
-                navLink.subLinks &&
                 navLink.subLinks.map((subLink, i) => (
-                  <SubMenu
-                    key={i}
-                    index={subLink.id}
-                    subLink={subLink}
-                    // activeClass={activeClass}
-                  />
+                  <SubMenu key={i} index={subLink.id} subLink={subLink} />
                 ))}
             </div>
           ))}
