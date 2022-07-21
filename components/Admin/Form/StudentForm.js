@@ -52,31 +52,31 @@ function StudentForm() {
     photo: Yup.string().required("Photo is required"),
   });
 
-  const handleSubmit = (values, formik) => {
-    console.log("student data", values);
-  };
-
-  // const handleSubmit = async (values, formik) => {
-  //   const res = await fetch(`${API_URL}/student/signup`, {
-  //     method: "POST",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(values),
-  //   });
-
-  //   const data = await res.json();
-
-  //   if (res.ok) {
-  //     toast.success("Form Submitted Successfully!");
-  //     console.log(data);
-  //     // formik.resetForm();
-  //   } else {
-  //     console.log("error", data);
-  //     toast.error(data.message);
-  //   }
+  // const handleSubmit = (values, formik) => {
+  //   console.log("student data", values);
   // };
+
+  const handleSubmit = async (values, formik) => {
+    const res = await fetch(`${API_URL}/student/signup`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      toast.success("Form Submitted Successfully!");
+      console.log(data);
+      // formik.resetForm();
+    } else {
+      console.log("error", data);
+      toast.error(data.message);
+    }
+  };
 
   const [testimonialPreview, setTestimonialPreview] = useState("");
   const [certificatePreview, setCertificatePreview] = useState("");
