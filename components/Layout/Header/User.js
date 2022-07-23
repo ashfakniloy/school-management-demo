@@ -7,9 +7,9 @@ function User() {
   const [showDropdown, setShowDropdown, node] = useDropdowm();
 
   return (
-    <div ref={node} className="relative cursor-pointer">
+    <div ref={node} className="relative">
       <div
-        className="flex justify-between items-center px-3 py-2 gap-3 cursor-pointer rounded hover:bg-slate-200 transition duration-300"
+        className="flex justify-between items-center px-3 py-2 gap-3 rounded hover:bg-slate-200 transition duration-300 cursor-pointer"
         onClick={() => setShowDropdown(!showDropdown)}
       >
         <div className="flex text-end gap-2">
@@ -30,12 +30,12 @@ function User() {
       </div>
 
       {showDropdown && (
-        <div className="absolute w-[250px] font-light top-[60px] right-1 bg-white shadow-md cursor-pointer">
-          <p className="px-1 py-4 bg-emerald-500 text-white transition duration-300 text-center">
+        <div className="absolute w-[250px] font-light top-[60px] right-1 bg-white shadow-md">
+          <p className="px-1 py-4 bg-emerald-500 text-white transition duration-300 text-center cursor-default">
             Username
           </p>
 
-          <div className="text-sm divide-y">
+          <div className="text-sm divide-y cursor-pointer">
             <p className="px-5 py-3 flex items-center gap-2 hover:bg-slate-100 transition duration-300">
               <FaRegUserCircle />
               My Profile

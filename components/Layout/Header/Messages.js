@@ -6,8 +6,11 @@ function Messages() {
   const [showDropdown, setShowDropdown, node] = useDropdown();
 
   return (
-    <div ref={node} className="relative cursor-pointer">
-      <div className="" onClick={() => setShowDropdown(!showDropdown)}>
+    <div ref={node} className="relative">
+      <div
+        className="cursor-pointer"
+        onClick={() => setShowDropdown(!showDropdown)}
+      >
         <FaRegEnvelope
           className={`text-xl ${
             showDropdown ? "text-blue-700" : "text-teal-700"
@@ -19,8 +22,8 @@ function Messages() {
       </div>
 
       {showDropdown && (
-        <div className="absolute w-[400px] font-light  top-[44px] right-0 bg-white shadow-md cursor-pointer">
-          <p className="px-1 py-4  bg-teal-500 text-white transition duration-300 text-center">
+        <div className="absolute w-[400px] font-light  top-[44px] right-0 bg-white shadow-md">
+          <p className="px-1 py-4  bg-teal-500 text-white transition duration-300 text-center cursor-default">
             Messages
           </p>
 
@@ -28,7 +31,7 @@ function Messages() {
             {messagesData.map((message) => (
               <div
                 key={message.id}
-                className="flex gap-3 p-5 hover:bg-slate-100 transition duration-300"
+                className="flex gap-3 p-5 hover:bg-slate-100 transition duration-300 cursor-pointer"
               >
                 <div className="">
                   <FaRegUserCircle className="fill-teal-700 text-3xl" />

@@ -6,8 +6,11 @@ function Notifications() {
   const [showDropdown, setShowDropdown, node] = useDropdowm();
 
   return (
-    <div ref={node} className="relative cursor-pointer">
-      <div className="" onClick={() => setShowDropdown(!showDropdown)}>
+    <div ref={node} className="relative">
+      <div
+        className="cursor-pointer"
+        onClick={() => setShowDropdown(!showDropdown)}
+      >
         <FaRegBell
           className={`text-xl ${
             showDropdown ? "text-blue-700" : "text-red-500"
@@ -19,16 +22,16 @@ function Notifications() {
       </div>
 
       {showDropdown && (
-        <div className="absolute w-[400px] font-light top-[44px] right-0 bg-white shadow-md cursor-pointer">
-          <p className="px-1 py-4  bg-red-500 text-white transition duration-300 text-center">
+        <div className="absolute w-[400px] font-light top-[44px] right-0 bg-white shadow-md">
+          <p className="px-1 py-4 bg-red-500 text-white transition duration-300 text-center cursor-default">
             Notifications
           </p>
 
-          <div className="divide-y  overflow-y-scroll h-[340px]">
+          <div className="divide-y overflow-y-scroll h-[340px]">
             {notificationsData.map((notification) => (
               <div
                 key={notification.id}
-                className="px-7 py-5 space-y-2 hover:bg-slate-100 transition duration-300"
+                className="px-7 py-5 space-y-2 hover:bg-slate-100 transition duration-300 cursor-pointer"
               >
                 <h4 className="text-sm font-semibold ">{notification.name}</h4>
                 <p className="text-xs font-light">{notification.time} ago</p>
