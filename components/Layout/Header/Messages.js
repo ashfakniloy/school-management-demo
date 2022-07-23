@@ -23,7 +23,11 @@ function Messages() {
   return (
     <div ref={node} className="relative cursor-pointer">
       <div className="" onClick={() => setShowDropdown(!showDropdown)}>
-        <FaRegEnvelope className=" text-xl text-teal-700" />
+        <FaRegEnvelope
+          className={`text-xl ${
+            showDropdown ? "text-blue-700" : "text-teal-700"
+          }`}
+        />
         <div className="absolute -top-5 -right-4 bg-teal-500 border-2 border-white text-sm text-white rounded-full p-[2px]  w-7 text-center  shadow-lg">
           {messagesData.length}
         </div>
@@ -35,7 +39,7 @@ function Messages() {
             Messages
           </p>
 
-          <div className="divide-y">
+          <div className="divide-y overflow-y-scroll h-[324px]">
             {messagesData.map((message) => (
               <div
                 key={message.id}

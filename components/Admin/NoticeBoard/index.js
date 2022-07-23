@@ -56,7 +56,7 @@ function NoticeBoard({ notices }) {
     <div className="bg-white p-5 shadow-lg">
       <h1 className="my-5 text-2xl">Notice Board</h1>
 
-      <div className="m-3 overflow-y-scroll notice   h-[400px]">
+      <div className="m-3 overflow-y-scroll notice  h-[400px]">
         <div className="my-4 ">
           {notices &&
             notices.map((notice) => (

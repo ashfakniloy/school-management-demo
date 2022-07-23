@@ -33,8 +33,10 @@ function User() {
             <p className="text-xs font-extralight">Admin</p>
           </div>
 
-          <span className="pt-1 text-green-600 text-sm">
-            <GoTriangleDown />
+          <span className="pt-1 text-sm">
+            <GoTriangleDown
+              className={showDropdown ? "text-blue-700" : "text-emerald-500"}
+            />
           </span>
         </div>
         <div className="">

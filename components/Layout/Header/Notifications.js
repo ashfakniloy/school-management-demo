@@ -23,7 +23,11 @@ function Notifications() {
   return (
     <div ref={node} className="relative cursor-pointer">
       <div className="" onClick={() => setShowDropdown(!showDropdown)}>
-        <FaRegBell className=" text-xl text-teal-700" />
+        <FaRegBell
+          className={`text-xl ${
+            showDropdown ? "text-blue-700" : "text-red-500"
+          }`}
+        />
         <div className="absolute -top-5 -right-4 bg-red-500 border-2 border-white text-sm text-white rounded-full p-[2px]  w-7 text-center  shadow-lg">
           {notificationsData.length}
         </div>
@@ -35,7 +39,7 @@ function Notifications() {
             Notifications
           </p>
 
-          <div className="divide-y">
+          <div className="divide-y  overflow-y-scroll h-[340px]">
             {notificationsData.map((notification) => (
               <div
                 key={notification.id}
