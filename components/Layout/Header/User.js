@@ -1,25 +1,10 @@
-import { useState, useRef, useEffect } from "react";
 import { FaUserCircle, FaRegUserCircle } from "react-icons/fa";
 import { AiOutlineLogout, AiOutlineSetting } from "react-icons/ai";
 import { GoTriangleDown } from "react-icons/go";
+import useDropdowm from "../../Hooks.js/useDropdown";
 
 function User() {
-  const [showDropdown, setShowDropdown] = useState(false);
-  const node = useRef(null);
-
-  useEffect(() => {
-    document.addEventListener("mousedown", clickOutside);
-    return () => {
-      document.removeEventListener("mousedown", clickOutside);
-    };
-  }, []);
-
-  const clickOutside = (e) => {
-    if (node.current.contains(e.target)) {
-      return;
-    }
-    setShowDropdown(false);
-  };
+  const [showDropdown, setShowDropdown, node] = useDropdowm();
 
   return (
     <div ref={node} className="relative cursor-pointer">
