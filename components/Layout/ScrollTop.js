@@ -33,8 +33,8 @@ function ScrollTop() {
       onClick={scrollToTop}
       className={
         isVisible
-          ? "fixed bottom-10 right-10 p-3 opacity-100 text-2xl text-slate-100 bg-gray-500 rounded-full transition-opacity duration-300 hover:bg-gray-700 active:scale-90"
-          : "opacity-0"
+          ? "fixed bottom-10 right-10 p-3 text-2xl text-slate-100 bg-gray-500 rounded-full transition-opacity duration-300 hover:bg-gray-700 active:scale-90"
+          : "hidden"
       }
     >
       <FaAngleUp />

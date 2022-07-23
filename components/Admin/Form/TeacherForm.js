@@ -56,7 +56,7 @@ function TeacherForm() {
     if (res.ok) {
       toast.success("Form Submitted Successfully!");
       console.log(data);
-      formik.resetForm();
+      // formik.resetForm();
     } else {
       console.log("error", data);
       toast.error(data.message);
