@@ -1,7 +1,7 @@
 import { FaUserCircle, FaRegUserCircle } from "react-icons/fa";
 import { AiOutlineLogout, AiOutlineSetting } from "react-icons/ai";
 import { GoTriangleDown } from "react-icons/go";
-import useDropdowm from "../../Hooks.js/useDropdown";
+import useDropdowm from "../../Hooks/useDropdown";
 
 function User() {
   const [showDropdown, setShowDropdown, node] = useDropdowm();

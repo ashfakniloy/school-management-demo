@@ -1,5 +1,5 @@
 import { FaRegBell } from "react-icons/fa";
-import useDropdowm from "../../Hooks.js/useDropdown";
+import useDropdowm from "../../Hooks/useDropdown";
 import { notificationsData } from "./notificationsData";
 
 function Notifications() {

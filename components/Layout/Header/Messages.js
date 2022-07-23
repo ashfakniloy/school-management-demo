@@ -1,5 +1,5 @@
 import { FaRegEnvelope, FaRegUserCircle } from "react-icons/fa";
-import useDropdown from "../../Hooks.js/useDropdown";
+import useDropdown from "../../Hooks/useDropdown";
 import { messagesData } from "./messagesData";
 
 function Messages() {
