@@ -1,25 +1,10 @@
-import { useEffect, useState } from "react";
 import Table from "../../components/Admin/Table";
 import { HostelsColumn } from "../../components/Admin/Table/columns/hostels";
 import Layout from "../../components/Layout";
-import { API_URL } from "../../config";
+import useGetData from "../../components/Hooks/useGetData";
 
 function AllHostelRoomsPage() {
-  const [hostelsData, setHostelsData] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(`${API_URL}/hostel/all`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-
-      setHostelsData(data.hostel);
-    };
-    getData();
-  }, []);
+  const [fetchedData] = useGetData("/hostel/all");
 
   return (
     <Layout>
@@ -30,7 +15,9 @@ function AllHostelRoomsPage() {
             Hostel Room Lists
           </h1>
           <div className="mt-10 px-3 flex flex-col items-center">
-            <Table columnsHeading={HostelsColumn} usersData={hostelsData} />
+            {fetchedData && (
+              <Table columnsHeading={HostelsColumn} usersData={fetchedData} />
+            )}
           </div>
         </div>
       </div>

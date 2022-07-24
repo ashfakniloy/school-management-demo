@@ -1,5 +1,4 @@
 import { FaBars } from "react-icons/fa";
-
 import Messages from "./Messages";
 import Notifications from "./Notifications";
 import User from "./User";
