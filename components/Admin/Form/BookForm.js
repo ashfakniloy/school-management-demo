@@ -57,12 +57,7 @@ function BookForm() {
                 name="publish_date"
                 type="date"
               />
-              <TextField
-                className="col-span-4 md:col-span-1"
-                label="Upload Date *"
-                name="upload_date"
-                type="date"
-              />
+              <TextField label="Upload Date *" name="upload_date" type="date" />
             </div>
             <button type="submit" className="submit_button">
               Submit

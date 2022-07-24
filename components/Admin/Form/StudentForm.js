@@ -232,81 +232,47 @@ function StudentForm() {
             <h1 className="text-xl font-semibold text-slate-800">
               Add New Students
             </h1>
-            <div className="pt-10 grid md:grid-cols-4 text-sm md:gap-x-8 gap-y-5 md:gap-y-7">
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="First Name *" name="first_name" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Last Name *" name="last_name" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <SelectField
-                  label="Gender *"
-                  name="gender"
-                  type="text"
-                  placeholder="Select Gender"
-                  options={["Male", "Female"]}
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Date of Birth *"
-                  name="date_of_birth"
-                  type="date"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Roll *" name="roll" type="number" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <SelectField
-                  label="Blood Group *"
-                  name="blood_group"
-                  type="text"
-                  placeholder="Select Blood Group"
-                  options={["A+", "A-", "B+", "B-", "O+", "O-"]}
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <SelectField
-                  label="Religion *"
-                  name="religion"
-                  type="text"
-                  placeholder="Select Religion"
-                  options={[
-                    "Islam",
-                    "Hindu",
-                    "Christian",
-                    "Buddhist",
-                    "Others",
-                  ]}
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Email *" name="email" type="email" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Class *" name="class" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Section *" name="section" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Admission ID *"
-                  name="admission_id"
-                  type="number"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Phone *" name="phone" type="number" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Address *" name="address" type="text" />
-              </div>
-              <div className="col-start-1 col-end-5 md:col-end-3">
-                <TextArea label="Short Bio *" name="bio" type="text" />
-              </div>
+            <div className="form">
+              <TextField label="First Name *" name="first_name" type="text" />
+              <TextField label="Last Name *" name="last_name" type="text" />
+              <SelectField
+                label="Gender *"
+                name="gender"
+                type="text"
+                placeholder="Select Gender"
+                options={["Male", "Female"]}
+              />
+              <TextField
+                label="Date of Birth *"
+                name="date_of_birth"
+                type="date"
+              />
+              <TextField label="Roll *" name="roll" type="number" />
+              <SelectField
+                label="Blood Group *"
+                name="blood_group"
+                type="text"
+                placeholder="Select Blood Group"
+                options={["A+", "A-", "B+", "B-", "O+", "O-"]}
+              />
+              <SelectField
+                label="Religion *"
+                name="religion"
+                type="text"
+                placeholder="Select Religion"
+                options={["Islam", "Hindu", "Christian", "Buddhist", "Others"]}
+              />
+              <TextField label="Email *" name="email" type="email" />
+              <TextField label="Class *" name="class" type="text" />
+              <TextField label="Section *" name="section" type="text" />
+              <TextField
+                label="Admission ID *"
+                name="admission_id"
+                type="number"
+              />
+              <TextField label="Phone *" name="phone" type="number" />
+              <TextField label="Address *" name="address" type="text" />
+              <TextArea label="Short Bio *" name="bio" type="text" />
             </div>
 
             <div className="mt-6 md:flex text-sm">
@@ -346,14 +312,9 @@ function StudentForm() {
               />
             </div>
 
-            <div className="mt-8 flex justify-start">
-              <button
-                type="submit"
-                className="px-9 py-3 border-2 border-slate-700 text-slate-700 text-[11px] tracking-widest font-bold bg-transparent hover:bg-slate-700  hover:text-white transition duration-300 uppercase"
-              >
-                Submit
-              </button>
-            </div>
+            <button type="submit" className="submit_button">
+              Submit
+            </button>
           </Form>
         )}
       </Formik>

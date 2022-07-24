@@ -21,11 +21,11 @@ function Sidebar({ showMenu, setShowMenu }) {
   const activeClass = (path) =>
     router.pathname === path
       ? "bg-slate-500 hover:bg-slate-500 border-l-4 border-slate-400 pl-6"
-      : "hover:bg-slate-600 ";
+      : "hover:bg-slate-600";
 
   return (
     <div
-      className={`h-screen bg-gray-700 z-20 duration-300 top-0 bottom-0 sticky sidebar overflow-y-scroll overflow-x-hidden text-white ${
+      className={` h-screen bg-gray-700 z-20 duration-300 top-0 bottom-0 sticky sidebar overflow-y-scroll overflow-x-hidden text-white ${
         showMenu ? "w-[270px]" : "w-20"
       }`}
     >

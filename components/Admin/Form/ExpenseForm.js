@@ -66,51 +66,29 @@ function ExpenseForm() {
               Add New Expense
             </h1>
             <div className="form">
-              <div className="col-span-4 md:col-span-1 ">
-                <TextField label="Name *" name="name" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="ID No *" name="id_no" type="number" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Expense Type *"
-                  name="expense_type"
-                  type="text"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Amount *" name="amount" type="number" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Phone *" name="phone" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Email *" name="email" type="email" />
-              </div>
-
-              <div className="col-span-4 md:col-span-1">
-                <SelectField
-                  label="Status *"
-                  name="status"
-                  type="text"
-                  placeholder="Select Status"
-                  options={["Paid", "Due", "Others"]}
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Date *" name="date" type="date" />
-              </div>
+              <TextField label="Name *" name="name" type="text" />
+              <TextField label="ID No *" name="id_no" type="number" />
+              <TextField
+                label="Expense Type *"
+                name="expense_type"
+                type="text"
+              />
+              <TextField label="Amount *" name="amount" type="number" />
+              <TextField label="Phone *" name="phone" type="text" />
+              <TextField label="Email *" name="email" type="email" />
+              <SelectField
+                label="Status *"
+                name="status"
+                type="text"
+                placeholder="Select Status"
+                options={["Paid", "Due", "Others"]}
+              />
+              <TextField label="Date *" name="date" type="date" />
             </div>
 
-            <div className="mt-8 flex justify-start">
-              <button
-                type="submit"
-                className="px-9 py-3 border-2 border-black text-black text-[11px] tracking-widest font-bold bg-transparent hover:bg-black  hover:text-white transition duration-300 uppercase"
-              >
-                Submit
-              </button>
-            </div>
+            <button type="submit" className="submit_button">
+              Submit
+            </button>
           </Form>
         )}
       </Formik>
