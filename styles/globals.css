@@ -7,6 +7,14 @@ body {
   @apply p-0 m-0 font-Poppins bg-gray-100;
 }
 
+.submit_button {
+  @apply mt-8 px-9 py-3 border-2 border-black text-black text-[11px] tracking-widest font-bold bg-transparent hover:bg-black  hover:text-white transition duration-300 uppercase;
+}
+
+.form {
+  @apply pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7;
+}
+
 /* sidebar */
 .sidebar::-webkit-scrollbar {
   width: 0px;

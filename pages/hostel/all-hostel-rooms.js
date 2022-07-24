@@ -4,7 +4,7 @@ import Layout from "../../components/Layout";
 import useGetData from "../../components/Hooks/useGetData";
 
 function AllHostelRoomsPage() {
-  const [fetchedData] = useGetData("/hostel/all");
+  const { fetchedData } = useGetData("/hostel/all");
 
   return (
     <Layout>

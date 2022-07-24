@@ -4,9 +4,11 @@ import { API_URL } from "../../config";
 function useGetData(route) {
   const [fetchedData, setFetchedData] = useState([]);
 
+  const url = API_URL + route;
+
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch(`${API_URL}${route}`, {
+      const res = await fetch(url, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -14,11 +16,17 @@ function useGetData(route) {
       const data = await res.json();
 
       setFetchedData(data.hostel);
+
+      // if (res.ok) {
+      //   setFetchedData(data.hostel);
+      // } else {
+      //   console.log("error");
+      // }
     };
     getData();
-  }, [route]);
+  }, [url]);
 
-  return [fetchedData];
+  return { fetchedData };
 }
 
 export default useGetData;

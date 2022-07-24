@@ -22,7 +22,7 @@ function RoomForm() {
     cost_per_bed: Yup.string().required("Cost Per Bed is required"),
   });
 
-  const [postData] = usePostData("/hostel/add");
+  const { postData } = usePostData("/hostel/add");
 
   const handleSubmit = (values, formik) => {
     postData(values, formik);
@@ -41,56 +41,32 @@ function RoomForm() {
             <h1 className="text-xl font-semibold text-slate-800">
               Add New Room
             </h1>
-            <div className="pt-10 grid grid-cols-1 md:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7">
-              <div className="col-span-4 md:col-span-1 ">
-                <TextField
-                  label="Hostel Name *"
-                  name="hostel_name"
-                  type="text"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Room Number *"
-                  name="room_number"
-                  type="text"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <SelectField
-                  label="Room Type *"
-                  name="room_type"
-                  type="text"
-                  placeholder="Select Room Type"
-                  options={["Big", "Medium", "Small"]}
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <SelectField
-                  label="Number Of Bed *"
-                  name="num_of_bed"
-                  type="number"
-                  placeholder="Select Number Of Bed"
-                  options={[2, 3, 4, 5]}
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Cost Per Bed *"
-                  name="cost_per_bed"
-                  type="number"
-                />
-              </div>
+            <div className="form">
+              <TextField label="Hostel Name *" name="hostel_name" type="text" />
+              <TextField label="Room Number *" name="room_number" type="text" />
+              <SelectField
+                label="Room Type *"
+                name="room_type"
+                type="text"
+                placeholder="Select Room Type"
+                options={["Big", "Medium", "Small"]}
+              />
+              <SelectField
+                label="Number Of Bed *"
+                name="num_of_bed"
+                type="number"
+                placeholder="Select Number Of Bed"
+                options={[2, 3, 4, 5]}
+              />
+              <TextField
+                label="Cost Per Bed *"
+                name="cost_per_bed"
+                type="number"
+              />
             </div>
-
-            <div className="mt-8 flex justify-start">
-              <button
-                type="submit"
-                className="px-9 py-3 border-2 border-black text-black text-[11px] tracking-widest font-bold bg-transparent hover:bg-black  hover:text-white transition duration-300 uppercase"
-              >
-                Submit
-              </button>
-            </div>
+            <button type="submit" className="submit_button">
+              Submit
+            </button>
           </Form>
         )}
       </Formik>

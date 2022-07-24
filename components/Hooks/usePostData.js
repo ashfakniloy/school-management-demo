@@ -2,13 +2,15 @@ import { API_URL } from "../../config";
 import { toast } from "react-toastify";
 
 function usePostData(route) {
+  const url = API_URL + route;
+
   // const postData = (values, formik) => {
   //   console.log("add hostel data", values);
-  //   formik.resetForm();
+  //   // formik.resetForm();
   // };
 
   const postData = async (values, formik) => {
-    const res = await fetch(`${API_URL}${route}`, {
+    const res = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,14 +22,14 @@ function usePostData(route) {
     if (res.ok) {
       toast.success("Form Submitted Successfully!");
       console.log(data);
-      formik.resetForm();
+      // formik.resetForm();
     } else {
       console.log("error", data);
       toast.error(data.message);
     }
   };
 
-  return [postData];
+  return { postData };
 }
 
 export default usePostData;
