@@ -58,28 +58,14 @@ function NoticeForm() {
               Add New Notice
             </h1>
             <div className="form">
-              <div className="col-span-4 md:col-span-1 ">
-                <TextField label="Title *" name="title" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Details *" name="details" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Posted By *" name="posted_by" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Date *" name="post_date" type="date" />
-              </div>
+              <TextField label="Title *" name="title" type="text" />
+              <TextField label="Details *" name="details" type="text" />
+              <TextField label="Posted By *" name="posted_by" type="text" />
+              <TextField label="Date *" name="post_date" type="date" />
             </div>
-
-            <div className="mt-8 flex justify-start">
-              <button
-                type="submit"
-                className="px-9 py-3 border-2 border-black text-black text-[11px] tracking-widest font-bold bg-transparent hover:bg-black  hover:text-white transition duration-300 uppercase"
-              >
-                Submit
-              </button>
-            </div>
+            <button type="submit" className="submit_button">
+              Submit
+            </button>
           </Form>
         )}
       </Formik>

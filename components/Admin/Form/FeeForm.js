@@ -64,50 +64,18 @@ function FeeForm() {
               Add New fee
             </h1>
             <div className="form">
-              <div className="col-span-4 md:col-span-1 ">
-                <TextField label="Class *" name="class" type="text" />
-              </div>
-
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Section *" name="section" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Fee Name *" name="fee_name" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Fee Amount *"
-                  name="fee_amount"
-                  type="number"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Fee Type *" name="fee_type" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Starts From *"
-                  name="starts_from"
-                  type="date"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Finishes At *"
-                  name="finishes_at"
-                  type="date"
-                />
-              </div>
+              <TextField label="Class *" name="class" type="text" />
+              <TextField label="Section *" name="section" type="text" />
+              <TextField label="Fee Name *" name="fee_name" type="text" />
+              <TextField label="Fee Amount *" name="fee_amount" type="number" />
+              <TextField label="Fee Type *" name="fee_type" type="text" />
+              <TextField label="Starts From *" name="starts_from" type="date" />
+              <TextField label="Finishes At *" name="finishes_at" type="date" />
             </div>
 
-            <div className="mt-8 flex justify-start">
-              <button
-                type="submit"
-                className="px-9 py-3 border-2 border-black text-black text-[11px] tracking-widest font-bold bg-transparent hover:bg-black  hover:text-white transition duration-300 uppercase"
-              >
-                Submit
-              </button>
-            </div>
+            <button type="submit" className="submit_button">
+              Submit
+            </button>
           </Form>
         )}
       </Formik>

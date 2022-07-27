@@ -60,47 +60,27 @@ function TransportForm() {
               Add New Transport
             </h1>
             <div className="form">
-              <div className="col-span-4 md:col-span-1 ">
-                <TextField label="Route Name *" name="route_name" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Vehicle Number *"
-                  name="vehicle_number"
-                  type="number"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Driver Name *"
-                  name="driver_name"
-                  type="text"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="License Number *"
-                  name="license_number"
-                  type="text"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Phone Number *"
-                  name="phone_number"
-                  type="number"
-                />
-              </div>
+              <TextField label="Route Name *" name="route_name" type="text" />
+              <TextField
+                label="Vehicle Number *"
+                name="vehicle_number"
+                type="number"
+              />
+              <TextField label="Driver Name *" name="driver_name" type="text" />
+              <TextField
+                label="License Number *"
+                name="license_number"
+                type="text"
+              />
+              <TextField
+                label="Phone Number *"
+                name="phone_number"
+                type="number"
+              />
             </div>
-
-            <div className="mt-8 flex justify-start">
-              <button
-                type="submit"
-                className="px-9 py-3 border-2 border-black text-black text-[11px] tracking-widest font-bold bg-transparent hover:bg-black  hover:text-white transition duration-300 uppercase"
-              >
-                Submit
-              </button>
-            </div>
+            <button type="submit" className="submit_button">
+              Submit
+            </button>
           </Form>
         )}
       </Formik>

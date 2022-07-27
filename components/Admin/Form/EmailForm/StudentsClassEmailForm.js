@@ -75,10 +75,7 @@ function StudentsClassEmailForm() {
             </div>
 
             <div className="mt-8 flex justify-start">
-              <button
-                type="submit"
-                className="px-9 py-3 border-2 border-black text-black text-[11px] tracking-widest font-bold bg-transparent hover:bg-black  hover:text-white transition duration-300 uppercase"
-              >
+              <button type="submit" className="submit_button">
                 Submit
               </button>
             </div>

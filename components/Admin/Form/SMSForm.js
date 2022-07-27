@@ -60,52 +60,25 @@ function SMSForm() {
             <ToastContainer />
             <h1 className="text-xl font-semibold text-slate-800">Send SMS</h1>
             <div className="form">
-              <div className="col-span-4 md:col-span-1 ">
-                <TextField label="Name *" name="exam_name" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Subject Type *"
-                  name="subject_type"
-                  type="text"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Class *" name="select_class" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Select Section *"
-                  name="select_section"
-                  type="text"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Time *" name="select_time" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Date *" name="select_date" type="date" />
-              </div>
-
-              {/* <div className="col-span-4 md:col-span-1">
-                <SelectField
-                  label="Status *"
-                  name="status"
-                  type="text"
-                  placeholder="Select Status"
-                  options={["Paid", "Due", "Others"]}
-                />
-              </div> */}
+              <TextField label="Name *" name="exam_name" type="text" />
+              <TextField
+                label="Subject Type *"
+                name="subject_type"
+                type="text"
+              />
+              <TextField label="Class *" name="select_class" type="text" />
+              <TextField
+                label="Select Section *"
+                name="select_section"
+                type="text"
+              />
+              <TextField label="Time *" name="select_time" type="text" />
+              <TextField label="Date *" name="select_date" type="date" />
             </div>
 
-            <div className="mt-8 flex justify-start">
-              <button
-                type="submit"
-                className="px-9 py-3 border-2 border-black text-black text-[11px] tracking-widest font-bold bg-transparent hover:bg-black  hover:text-white transition duration-300 uppercase"
-              >
-                Submit
-              </button>
-            </div>
+            <button type="submit" className="submit_button">
+              Submit
+            </button>
           </Form>
         )}
       </Formik>

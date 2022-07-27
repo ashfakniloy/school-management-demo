@@ -62,54 +62,38 @@ function SalaryForm() {
               Add New Salary
             </h1>
             <div className="form">
-              <div className="col-span-4 md:col-span-1 ">
-                <TextField label="Staff ID *" name="staff_id" type="text" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Name *" name="name" type="text" />
-              </div>
-              {/* <div className="col-span-4 md:col-span-1">
-                <TextField label="Class *" name="gender" type="text" />
-              </div> */}
-              <div className="col-span-4 md:col-span-1">
-                <SelectField
-                  label="Gender *"
-                  name="gender"
-                  type="text"
-                  placeholder="Select Gender"
-                  options={["Male", "Female"]}
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <SelectField
-                  label="Month *"
-                  name="month"
-                  type="text"
-                  placeholder="Select Month"
-                  options={[
-                    "January",
-                    "February",
-                    "March",
-                    "April",
-                    "May",
-                    "June",
-                    "July",
-                    "August",
-                    "September",
-                    "October",
-                    "November",
-                    "December",
-                  ]}
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Amount *" name="amount" type="number" />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Email *" name="email" type="email" />
-              </div>
-
-              {/* <div className="col-span-4 md:col-span-1">
+              <TextField label="Staff ID *" name="staff_id" type="text" />
+              <TextField label="Name *" name="name" type="text" />
+              <SelectField
+                label="Gender *"
+                name="gender"
+                type="text"
+                placeholder="Select Gender"
+                options={["Male", "Female"]}
+              />
+              <SelectField
+                label="Month *"
+                name="month"
+                type="text"
+                placeholder="Select Month"
+                options={[
+                  "January",
+                  "February",
+                  "March",
+                  "April",
+                  "May",
+                  "June",
+                  "July",
+                  "August",
+                  "September",
+                  "October",
+                  "November",
+                  "December",
+                ]}
+              />
+              <TextField label="Amount *" name="amount" type="number" />
+              <TextField label="Email *" name="email" type="email" />
+              {/* 
                 <SelectField
                   label="Status *"
                   name="status"
@@ -120,14 +104,9 @@ function SalaryForm() {
               </div> */}
             </div>
 
-            <div className="mt-8 flex justify-start">
-              <button
-                type="submit"
-                className="px-9 py-3 border-2 border-black text-black text-[11px] tracking-widest font-bold bg-transparent hover:bg-black  hover:text-white transition duration-300 uppercase"
-              >
-                Submit
-              </button>
-            </div>
+            <button type="submit" className="submit_button">
+              Submit
+            </button>
           </Form>
         )}
       </Formik>

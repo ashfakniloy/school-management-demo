@@ -58,44 +58,31 @@ function AddSubjectForm() {
               Add New Subject
             </h1>
             <div className="form">
-              <div className="col-span-4 md:col-span-1 ">
-                <TextField
-                  label="Subject Name *"
-                  name="subject_name"
-                  type="text"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Subject Type *"
-                  name="subject_type"
-                  type="text"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Select Class *"
-                  name="select_class"
-                  type="text"
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField
-                  label="Select Code *"
-                  name="select_code"
-                  type="number"
-                />
-              </div>
+              <TextField
+                label="Subject Name *"
+                name="subject_name"
+                type="text"
+              />
+              <TextField
+                label="Subject Type *"
+                name="subject_type"
+                type="text"
+              />
+              <TextField
+                label="Select Class *"
+                name="select_class"
+                type="text"
+              />
+              <TextField
+                label="Select Code *"
+                name="select_code"
+                type="number"
+              />
             </div>
 
-            <div className="mt-8 flex justify-start">
-              <button
-                type="submit"
-                className="px-9 py-3 border-2 border-black text-black text-[11px] tracking-widest font-bold bg-transparent hover:bg-black  hover:text-white transition duration-300 uppercase"
-              >
-                Submit
-              </button>
-            </div>
+            <button type="submit" className="submit_button">
+              Submit
+            </button>
           </Form>
         )}
       </Formik>
