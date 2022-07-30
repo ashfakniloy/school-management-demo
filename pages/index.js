@@ -6,11 +6,15 @@ import BarChart from "../components/Admin/Dashboard/Charts/BarChart";
 import DoughnutChart from "../components/Admin/Dashboard/Charts/DoughnutChart";
 import NoticeBoard from "../components/Admin/NoticeBoard";
 import { API_URL } from "../config";
+import { useDispatch, useSelector } from "react-redux";
+import { getUsers } from "../redux/features/admin/usersSlice";
 
 // const API_URL = "http://192.168.0.20:8000/v1/data/all";
 
 function Home() {
   const [userData, setUserData] = useState([]);
+  const dispatch = useDispatch();
+  const reduxUsers = useSelector((state) => state.users.users);
 
   useEffect(() => {
     const getData = async () => {
@@ -24,6 +28,10 @@ function Home() {
     };
     getData();
   }, [setUserData]);
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, []);
 
   const {
     total_students,
@@ -54,6 +62,21 @@ function Home() {
           <DoughnutChart male={total_male} female={total_female} />
           <div className="col-span-2">
             <NoticeBoard notices={userData.notice} />
+          </div>
+          <div className="col-span-2 bg-white p-8">
+            <h4 className="text-2xl">Redux test</h4>
+            <div className="mt-5">
+              {/* <button
+                className="bg-red-500 text-sm text-white px-4 py-2 rounded active:bg-red-700"
+                onClick={() => dispatch(getUsers())}
+              >
+                Get Data
+              </button> */}
+              <div className="mt-4">
+                {reduxUsers &&
+                  reduxUsers.map((user, i) => <p key={i}>{user.name}</p>)}
+              </div>
+            </div>
           </div>
         </div>
       </div>
