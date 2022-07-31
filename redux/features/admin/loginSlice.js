@@ -1,12 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  user: "",
+  token: null,
+  userId: null,
   pending: false,
   error: false,
 };
 
-export const login = createAsyncThunk("admin/login", async (user) => {
+export const login = createAsyncThunk("admin/login", async (values) => {
   const API_URL = `http://192.168.1.106:8000/v1/admin/login`;
 
   const res = await fetch(API_URL, {
@@ -27,7 +28,7 @@ export const login = createAsyncThunk("admin/login", async (user) => {
     console.log("error", data);
   }
 
-  return data.id;
+  return data;
 });
 
 export const loginSlice = createSlice({
@@ -40,7 +41,7 @@ export const loginSlice = createSlice({
       })
       .addCase(getUsers.fulfilled, (state, action) => {
         state.pending = false;
-        state.user = action.payload;
+        state.userId = action.payload.id;
       })
       .addCase(getUsers.rejected, (state) => {
         state.pending = false;

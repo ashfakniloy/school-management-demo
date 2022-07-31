@@ -1,9 +1,11 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { HYDRATE, createWrapper } from "next-redux-wrapper";
 import usersReducer from "../features/admin/usersSlice";
+import loginReducer from "../features/admin/loginSlice";
 
 export const combinedReducers = combineReducers({
   users: usersReducer,
+  login: loginReducer,
 });
 
 // const masterReducer = (state, action) => {

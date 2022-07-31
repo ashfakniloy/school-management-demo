@@ -27,29 +27,31 @@ function LoginForm({ user }) {
 
   const router = useRouter();
   const dispatch = useDispatch();
+  // const id = useSelector((state) => state.login.userId);
 
   const handleSubmit = async (values, formik) => {
-    // dispatch(login(user));
+    dispatch(login(values));
+    // console.log(id);
 
-    const API_URL = `http://192.168.1.106:8000/v1/${user}/login`;
+    // const API_URL = `http://192.168.1.106:8000/v1/${user}/login`;
 
-    const res = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
+    // const res = await fetch(API_URL, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(values),
+    // });
 
-    const data = await res.json();
+    // const data = await res.json();
 
-    if (res.ok) {
-      console.log("success", data);
-      localStorage.setItem(`school erp ${user}`, data.token);
-      // router.push(`/${user}`);
-    } else {
-      console.log("error", data);
-    }
+    // if (res.ok) {
+    //   console.log("success", data);
+    //   localStorage.setItem(`school erp ${user}`, data.token);
+    //   // router.push(`/${user}`);
+    // } else {
+    //   console.log("error", data);
+    // }
 
     // if (data.text === "success") {
     //   // toast.success("Success!");
