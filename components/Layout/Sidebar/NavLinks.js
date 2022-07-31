@@ -16,7 +16,7 @@ export const navLinks = [
   {
     id: 1,
     name: "dashboard",
-    link: "/",
+    link: "/admin",
     icon: <AiOutlineDashboard className="fill-green-400" />,
   },
   {
@@ -28,17 +28,17 @@ export const navLinks = [
       {
         id: 0.1,
         name: "all students",
-        link: "/students/all-students",
+        link: "/admin/students/all-students",
       },
       {
         id: 0.2,
         name: "admission form",
-        link: "/students/admission-form",
+        link: "/admin/students/admission-form",
       },
       {
         id: 0.3,
         name: "student promotion",
-        link: "/students/student-promotion",
+        link: "/admin/students/student-promotion",
       },
     ],
   },
@@ -50,15 +50,15 @@ export const navLinks = [
     subLinks: [
       {
         name: "all teachers",
-        link: "/teachers/all-teachers",
+        link: "/admin/teachers/all-teachers",
       },
       {
         name: "add teacher",
-        link: "/teachers/add-teacher",
+        link: "/admin/teachers/add-teacher",
       },
       {
         name: "payment",
-        link: "/teachers/payment",
+        link: "/admin/teachers/payment",
       },
     ],
   },
@@ -70,11 +70,11 @@ export const navLinks = [
     subLinks: [
       {
         name: "all parents",
-        link: "/parents/all-parents",
+        link: "/admin/parents/all-parents",
       },
       {
         name: "add parent",
-        link: "/parents/add-parent",
+        link: "/admin/parents/add-parent",
       },
     ],
   },
@@ -86,11 +86,11 @@ export const navLinks = [
     subLinks: [
       {
         name: "all books",
-        link: "/library/all-books",
+        link: "/admin/library/all-books",
       },
       {
         name: "add book",
-        link: "/library/add-book",
+        link: "/admin/library/add-book",
       },
     ],
   },
@@ -102,35 +102,35 @@ export const navLinks = [
     subLinks: [
       {
         name: "all expenses",
-        link: "/accounting/all-expenses",
+        link: "/admin/accounting/all-expenses",
       },
       {
         name: "add expense",
-        link: "/accounting/add-expense",
+        link: "/admin/accounting/add-expense",
       },
       {
         name: "all fees",
-        link: "/accounting/all-fees",
+        link: "/admin/accounting/all-fees",
       },
       {
         name: "add fee",
-        link: "/accounting/add-fee",
+        link: "/admin/accounting/add-fee",
       },
       {
         name: "all salaries",
-        link: "/accounting/all-salaries",
+        link: "/admin/accounting/all-salaries",
       },
       {
         name: "add salary",
-        link: "/accounting/add-salary",
+        link: "/admin/accounting/add-salary",
       },
       {
         name: "all earnings",
-        link: "/accounting/all-earnings",
+        link: "/admin/accounting/all-earnings",
       },
       {
         name: "add earning",
-        link: "/accounting/add-earning",
+        link: "/admin/accounting/add-earning",
       },
     ],
   },
@@ -142,11 +142,11 @@ export const navLinks = [
     subLinks: [
       {
         name: "all classes",
-        link: "/class/all-classes",
+        link: "/admin/class/all-classes",
       },
       {
         name: "add new class",
-        link: "/class/add-new-class",
+        link: "/admin/class/add-new-class",
       },
     ],
   },
@@ -158,24 +158,24 @@ export const navLinks = [
     subLinks: [
       {
         name: "all subjects",
-        link: "/subject/all-subjects",
+        link: "/admin/subject/all-subjects",
       },
       {
         name: "add subject",
-        link: "/subject/add-subject",
+        link: "/admin/subject/add-subject",
       },
     ],
   },
   {
     id: 9,
     name: "class Routine",
-    link: "/class-routine",
+    link: "/admin/class-routine",
     icon: <BsCalendar3 className="fill-green-400" />,
   },
   {
     id: 10,
     name: "attendance",
-    link: "/attendance",
+    link: "/admin/attendance",
     icon: <SiGooglesheets className="fill-green-400" />,
   },
   {
@@ -186,11 +186,11 @@ export const navLinks = [
     subLinks: [
       {
         name: "all leaves",
-        link: "/leave/all-leaves",
+        link: "/admin/leave/all-leaves",
       },
       {
         name: "add leave",
-        link: "/leave/add-leave",
+        link: "/admin/leave/add-leave",
       },
     ],
   },
@@ -202,11 +202,11 @@ export const navLinks = [
     subLinks: [
       {
         name: "all exam",
-        link: "/exam/all-exam",
+        link: "/admin/exam/all-exam",
       },
       {
         name: "add exam",
-        link: "/exam/add-exam",
+        link: "/admin/exam/add-exam",
       },
     ],
   },
@@ -218,11 +218,11 @@ export const navLinks = [
     subLinks: [
       {
         name: "all transport",
-        link: "/transport/all-transport",
+        link: "/admin/transport/all-transport",
       },
       {
         name: "add transport",
-        link: "/transport/add-transport",
+        link: "/admin/transport/add-transport",
       },
     ],
   },
@@ -234,11 +234,11 @@ export const navLinks = [
     subLinks: [
       {
         name: "All hostel rooms",
-        link: "/hostel/all-hostel-rooms",
+        link: "/admin/hostel/all-hostel-rooms",
       },
       {
         name: "add new room",
-        link: "/hostel/add-new-room",
+        link: "/admin/hostel/add-new-room",
       },
     ],
   },
@@ -250,36 +250,36 @@ export const navLinks = [
     subLinks: [
       {
         name: "Notice Board",
-        link: "/notice/notice-board",
+        link: "/admin/notice/notice-board",
       },
       {
         name: "Add Notice",
-        link: "/notice/add-notice",
+        link: "/admin/notice/add-notice",
       },
     ],
   },
   {
     id: 16,
     name: "message",
-    link: "/message",
+    link: "/admin/message",
     icon: <MdMessage className="fill-green-400" />,
   },
   {
     id: 17,
     name: "email",
-    link: "/email",
+    link: "/admin/email",
     icon: <MdMessage className="fill-green-400" />,
   },
   {
     id: 18,
     name: "sms",
-    link: "/sms",
+    link: "/admin/sms",
     icon: <MdMessage className="fill-green-400" />,
   },
   {
     id: 19,
     name: "account",
-    link: "/account",
+    link: "/admin/account",
     icon: <AiFillSetting className="fill-green-400" />,
   },
 ];

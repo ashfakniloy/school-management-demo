@@ -76,28 +76,17 @@ function IndividualEmailForm() {
                 />
               </div> */}
 
-              <div className="col-span-1">
-                <TextField
-                  label="Email Address *"
-                  name="email_address"
-                  type="email"
-                />
-              </div>
-
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Subject *" name="subject" type="text" />
-              </div>
-
-              <div className="col-start-1 col-end-5 md:col-end-3">
-                <TextArea label="Message *" name="message" type="text" />
-              </div>
+              <TextField
+                label="Email Address *"
+                name="email_address"
+                type="email"
+              />
+              <TextField label="Subject *" name="subject" type="text" />
+              <TextArea label="Message *" name="message" type="text" />
             </div>
-
-            <div className="mt-8 flex justify-start">
-              <button type="submit" className="submit_button">
-                Submit
-              </button>
-            </div>
+            <button type="submit" className="submit_button">
+              Submit
+            </button>
           </Form>
         )}
       </Formik>

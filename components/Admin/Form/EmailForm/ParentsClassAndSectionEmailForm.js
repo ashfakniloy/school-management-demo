@@ -56,40 +56,28 @@ function ParentsClassAndSectionEmailForm() {
         {(formik) => (
           <Form>
             <ToastContainer />
-
             <div className="grid grid-cols-1 md:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7">
-              <div className="col-span-4 md:col-span-1">
-                <SelectField
-                  label="Class *"
-                  name="class"
-                  type="text"
-                  placeholder="Select Class"
-                  options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <SelectField
-                  label="Section *"
-                  name="section"
-                  type="text"
-                  placeholder="Select Section"
-                  options={["All", "A", "B", "C", "D", "E"]}
-                />
-              </div>
-              <div className="col-span-4 md:col-span-1">
-                <TextField label="Subject *" name="subject" type="text" />
-              </div>
-
-              <div className="col-start-1 col-end-5 md:col-end-3">
-                <TextArea label="Message *" name="message" type="text" />
-              </div>
+              <SelectField
+                label="Class *"
+                name="class"
+                type="text"
+                placeholder="Select Class"
+                options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+              />
+              <SelectField
+                label="Section *"
+                name="section"
+                type="text"
+                placeholder="Select Section"
+                options={["All", "A", "B", "C", "D", "E"]}
+              />
+              <TextField label="Subject *" name="subject" type="text" />
+              <TextArea label="Message *" name="message" type="text" />
             </div>
 
-            <div className="mt-8 flex justify-start">
-              <button type="submit" className="submit_button">
-                Submit
-              </button>
-            </div>
+            <button type="submit" className="submit_button">
+              Submit
+            </button>
           </Form>
         )}
       </Formik>
