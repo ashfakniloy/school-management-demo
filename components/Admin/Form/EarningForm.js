@@ -2,7 +2,7 @@ import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { TextField } from "./InputField";
+import { TextField } from "../../common/InputField";
 import usePostData from "../../Hooks/usePostData";
 
 function EarningForm() {

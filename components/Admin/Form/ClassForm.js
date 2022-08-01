@@ -2,7 +2,7 @@ import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { TextField, SelectField } from "./InputField";
+import { TextField, SelectField } from "../../common/InputField";
 import usePostData from "../../Hooks/usePostData";
 
 function ClassForm() {

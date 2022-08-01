@@ -23,7 +23,7 @@ export const login = createAsyncThunk("admin/login", async (values) => {
   if (res.ok) {
     console.log("success", data);
     localStorage.setItem(`school erp admin`, data.token);
-    // router.push(`/${user}`);
+    router.push(`/admin`);
   } else {
     console.log("error", data);
   }
@@ -36,14 +36,14 @@ export const loginSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase(getUsers.pending, (state) => {
+      .addCase(login.pending, (state) => {
         state.pending = true;
       })
-      .addCase(getUsers.fulfilled, (state, action) => {
+      .addCase(login.fulfilled, (state, action) => {
         state.pending = false;
         state.userId = action.payload.id;
       })
-      .addCase(getUsers.rejected, (state) => {
+      .addCase(login.rejected, (state) => {
         state.pending = false;
         state.error = true;
       });

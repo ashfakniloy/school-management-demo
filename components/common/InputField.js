@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export const TextField = ({ label, name, type }) => {
   return (
-    <div className="my-5">
+    <div className="">
       <label htmlFor={name}>{label}</label>
-      <div className="my-2 relative">
+      <div className="mt-1 relative">
         <Field
           className="p-3 w-full outline-none bg-slate-100 border border-slate-300 focus:border-slate-500"
           id={name}
@@ -22,13 +22,13 @@ export const TextField = ({ label, name, type }) => {
 
 export const TextArea = ({ label, name, ...rest }) => {
   return (
-    <div className="mb-2 col-start-1 md:col-end-3">
+    <div className="col-start-1 md:col-end-3">
       <label htmlFor={name}>{label}</label>
-      <div className="my-2 relative">
+      <div className="mt-1 relative">
         <Field
           as="textarea"
           rows="5"
-          className=" p-3 w-full outline-none bg-slate-100 border border-slate-300 focus:border-slate-500"
+          className="p-3 w-full outline-none bg-slate-100 border border-slate-300 focus:border-slate-500"
           id={name}
           name={name}
           {...rest}
@@ -43,9 +43,9 @@ export const TextArea = ({ label, name, ...rest }) => {
 
 export const SelectField = ({ label, name, type, placeholder, options }) => {
   return (
-    <div className="mb-2">
+    <div className="">
       <label htmlFor={name}>{label}</label>
-      <div className="my-2 relative">
+      <div className="mt-1 relative">
         <Field
           as="select"
           name={name}

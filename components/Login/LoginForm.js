@@ -31,10 +31,9 @@ function LoginForm({ user }) {
 
   const handleSubmit = async (values, formik) => {
     dispatch(login(values));
+    // router.push("/admin");
     // console.log(id);
-
     // const API_URL = `http://192.168.1.106:8000/v1/${user}/login`;
-
     // const res = await fetch(API_URL, {
     //   method: "POST",
     //   headers: {
@@ -42,9 +41,7 @@ function LoginForm({ user }) {
     //   },
     //   body: JSON.stringify(values),
     // });
-
     // const data = await res.json();
-
     // if (res.ok) {
     //   console.log("success", data);
     //   localStorage.setItem(`school erp ${user}`, data.token);
@@ -52,7 +49,6 @@ function LoginForm({ user }) {
     // } else {
     //   console.log("error", data);
     // }
-
     // if (data.text === "success") {
     //   // toast.success("Success!");
     //   // router.push("/dashboard");

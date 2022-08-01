@@ -2,7 +2,7 @@ import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { TextField, TextArea, SelectField } from "./InputField";
+import { TextField, TextArea, SelectField } from "../../common/InputField";
 import { API_URL } from "../../../config";
 
 function ExpenseForm() {
