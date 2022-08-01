@@ -7,7 +7,7 @@ export const TextField = ({ label, name, type }) => {
       <label htmlFor={name}>{label}</label>
       <div className="mt-1 relative">
         <Field
-          className="p-3 w-full outline-none bg-slate-100 border border-slate-300 focus:border-slate-500"
+          className="p-2 w-full outline-none bg-slate-100 border border-slate-300 focus:border-slate-500"
           id={name}
           name={name}
           type={type}
@@ -28,7 +28,7 @@ export const TextArea = ({ label, name, ...rest }) => {
         <Field
           as="textarea"
           rows="5"
-          className="p-3 w-full outline-none bg-slate-100 border border-slate-300 focus:border-slate-500"
+          className="p-2 w-full outline-none bg-slate-100 border border-slate-300 focus:border-slate-500"
           id={name}
           name={name}
           {...rest}
@@ -50,7 +50,7 @@ export const SelectField = ({ label, name, type, placeholder, options }) => {
           as="select"
           name={name}
           id={name}
-          className="p-3 w-full outline-none bg-slate-100 border border-slate-300 focus:border-slate-500"
+          className="p-2 w-full outline-none bg-slate-100 border border-slate-300 focus:border-slate-500"
         >
           <option
             value=""
