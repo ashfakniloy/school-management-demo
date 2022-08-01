@@ -49,7 +49,8 @@ function AdminPage() {
       // console.log(data);
     };
     getData();
-  }, [setUserData, token, router]);
+  }, [setUserData]);
+  // }, [setUserData, router]);
 
   useEffect(() => {
     dispatch(getUsers());
