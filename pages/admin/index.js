@@ -15,20 +15,31 @@ function AdminPage() {
   const [userData, setUserData] = useState([]);
   const dispatch = useDispatch();
   const reduxUsers = useSelector((state) => state.users.users);
+  const userId = useSelector((state) => state.login.userId);
+
+  console.log(userId);
+  // const id = localStorage.getItem("userId");
 
   useEffect(() => {
     const token = localStorage.getItem("school erp admin");
 
     const getData = async () => {
-      const res = await fetch(`${API_URL}/data/all`, {
+      const res = await fetch(`${API_URL}/data/all/${userId}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       });
       const data = await res.json();
-      setUserData(data);
-      console.log(data);
+
+      if (res.ok) {
+        setUserData(data.data);
+        console.log("success", data);
+      } else {
+        console.log("error", data);
+      }
+
+      // console.log(data);
     };
     getData();
   }, [setUserData]);
@@ -64,9 +75,9 @@ function AdminPage() {
           </div>
           <BarChart />
           <DoughnutChart male={total_male} female={total_female} />
-          <div className="col-span-2">
+          {/* <div className="col-span-2">
             <NoticeBoard notices={userData.notice} />
-          </div>
+          </div> */}
           <div className="col-span-2 bg-white p-8">
             <h4 className="text-2xl">Redux test</h4>
             <div className="mt-5">

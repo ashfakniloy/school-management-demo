@@ -1,13 +1,12 @@
-// import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 // import { ToastContainer, toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 import { TextField } from "../../components/common/InputField";
-import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../redux/features/admin/loginSlice";
-// import Layout from "../../components/Layout";
+import { login, reset } from "../../redux/features/admin/loginSlice";
 
 function LoginForm({ user }) {
   const initialvalues = {
@@ -27,11 +26,24 @@ function LoginForm({ user }) {
 
   const router = useRouter();
   const dispatch = useDispatch();
-  // const id = useSelector((state) => state.login.userId);
+  const { token, userId, isError, isSucccess, isLoading, message } =
+    useSelector((state) => state.login);
 
-  const handleSubmit = async (values, formik) => {
+  useEffect(() => {
+    if (isError) {
+      console.log(message);
+    }
+
+    if (isSucccess || token) {
+      router.push("/admin");
+    }
+
+    dispatch(reset());
+  }, [router, dispatch, token, userId, isError, isSucccess, message]);
+
+  const handleSubmit = async (values) => {
     dispatch(login(values));
-    // router.push("/admin");
+    // isSuccess && router.push("/admin");
     // console.log(id);
     // const API_URL = `http://192.168.1.106:8000/v1/${user}/login`;
     // const res = await fetch(API_URL, {
@@ -80,7 +92,7 @@ function LoginForm({ user }) {
               <Form>
                 {/* <ToastContainer /> */}
                 <div className="text-sm gap-y-5 md:gap-y-7">
-                  <div className="min-w-[400px]">
+                  <div className="min-w-[400px] space-y-4">
                     <TextField label="Email *" name="email" type="email" />
                     <TextField
                       label="Password *"
@@ -91,7 +103,7 @@ function LoginForm({ user }) {
                   </div>
                   <button
                     type="submit"
-                    className="mt-2 px-5 py-2 border-2 border-green-500 rounded text-green-500 text-sm hover:bg-gray-300 transition duration-300"
+                    className="mt-6 px-5 py-2 border-2 border-green-500 rounded text-green-500 text-sm hover:bg-gray-300 transition duration-300"
                   >
                     Login
                   </button>
