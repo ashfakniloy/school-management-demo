@@ -8,6 +8,7 @@ import NoticeBoard from "../../components/Admin/NoticeBoard";
 import { API_URL } from "../../config";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../redux/features/admin/usersSlice";
+import { useRouter } from "next/router";
 
 // const API_URL = "http://192.168.0.20:8000/v1/data/all";
 
@@ -15,13 +16,19 @@ function AdminPage() {
   const [userData, setUserData] = useState([]);
   const dispatch = useDispatch();
   const reduxUsers = useSelector((state) => state.users.users);
-  const userId = useSelector((state) => state.login.userId);
+  const { userId } = useSelector((state) => state.login);
 
   console.log(userId);
   // const id = localStorage.getItem("userId");
 
+  const router = useRouter();
+
   useEffect(() => {
     const token = localStorage.getItem("school erp admin");
+
+    // if (!userId) {
+    //   router.push("/login/admin");
+    // }
 
     const getData = async () => {
       const res = await fetch(`${API_URL}/data/all/${userId}`, {
@@ -42,7 +49,7 @@ function AdminPage() {
       // console.log(data);
     };
     getData();
-  }, [setUserData]);
+  }, [setUserData, token, router]);
 
   useEffect(() => {
     dispatch(getUsers());
