@@ -11,6 +11,7 @@ import {
   FileField,
 } from "../../common/InputField";
 import { API_URL } from "../../../config";
+import { useSelector } from "react-redux";
 
 function StudentForm() {
   const initialvalues = {
@@ -61,12 +62,15 @@ function StudentForm() {
   //   console.log("student data", values);
   // };
 
+  const { token, userId } = useSelector((state) => state.login);
+
   const handleSubmit = async (values, formik) => {
-    const res = await fetch(`${API_URL}/student/signup`, {
+    const res = await fetch(`${API_URL}/student/signup/${userId}`, {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(values),
     });

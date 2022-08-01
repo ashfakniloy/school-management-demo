@@ -63,6 +63,7 @@ function AdminPage() {
     total_earnings,
     total_male,
     total_female,
+    notice,
   } = userData;
 
   return (
@@ -84,7 +85,7 @@ function AdminPage() {
           <BarChart />
           <DoughnutChart male={total_male} female={total_female} />
           <div className="col-span-2">
-            <NoticeBoard notices={userData.notice} />
+            <NoticeBoard notices={notice} />
           </div>
           <div className="col-span-2 bg-white p-8">
             <h4 className="text-2xl">Redux test</h4>

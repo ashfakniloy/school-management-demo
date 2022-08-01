@@ -8,7 +8,7 @@ body {
 }
 
 .submit_button {
-  @apply mt-8 px-9 py-3 border-2 border-black text-black text-[11px] tracking-widest font-bold bg-transparent hover:bg-black  hover:text-white transition duration-300 uppercase;
+  @apply mt-8 px-9 py-3 border-2 border-black text-black text-[11px] tracking-widest font-bold bg-transparent hover:bg-black hover:text-white transition duration-300 uppercase;
 }
 
 .form {
