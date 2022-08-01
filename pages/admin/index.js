@@ -83,9 +83,9 @@ function AdminPage() {
           </div>
           <BarChart />
           <DoughnutChart male={total_male} female={total_female} />
-          {/* <div className="col-span-2">
+          <div className="col-span-2">
             <NoticeBoard notices={userData.notice} />
-          </div> */}
+          </div>
           <div className="col-span-2 bg-white p-8">
             <h4 className="text-2xl">Redux test</h4>
             <div className="mt-5">
