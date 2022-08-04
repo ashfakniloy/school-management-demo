@@ -1,25 +1,28 @@
 import { useEffect, useState } from "react";
 import Table from "../../../components/Admin/Table";
 import { TransportsColumn } from "../../../components/Admin/Table/columns/transports";
+import useGetData from "../../../components/Hooks/useGetData";
 import Layout from "../../../components/Layout";
 import { API_URL } from "../../../config";
 
 function AllTransportPage() {
   const [transportsData, setTransportsData] = useState([]);
 
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(`${API_URL}/transport/all`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
+  const { fetchedData } = useGetData("/transport/all");
 
-      setTransportsData(data.transport);
-    };
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const res = await fetch(`${API_URL}/transport/all`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     const data = await res.json();
+
+  //     setTransportsData(data.transport);
+  //   };
+  //   getData();
+  // }, []);
 
   return (
     <Layout>
@@ -30,10 +33,12 @@ function AllTransportPage() {
             All Transport Data
           </h1>
           <div className="mt-10 px-3 flex flex-col items-center">
-            <Table
-              columnsHeading={TransportsColumn}
-              usersData={transportsData}
-            />
+            {fetchedData && (
+              <Table
+                columnsHeading={TransportsColumn}
+                usersData={fetchedData}
+              />
+            )}
           </div>
         </div>
       </div>

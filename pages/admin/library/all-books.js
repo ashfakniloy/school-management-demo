@@ -1,25 +1,28 @@
 import { useEffect, useState } from "react";
 import Table from "../../../components/Admin/Table";
 import { LibraryColumn } from "../../../components/Admin/Table/columns/library";
+import useGetData from "../../../components/Hooks/useGetData";
 import Layout from "../../../components/Layout";
 import { API_URL } from "../../../config";
 
 function AllBooksPage() {
   const [libraryData, setLibraryData] = useState([]);
 
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(`${API_URL}/library/all`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
+  const { fetchedData } = useGetData("/library/all");
 
-      setLibraryData(data.library);
-    };
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const res = await fetch(`${API_URL}/library/all`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     const data = await res.json();
+
+  //     setLibraryData(data.library);
+  //   };
+  //   getData();
+  // }, []);
 
   return (
     <Layout>
@@ -30,7 +33,9 @@ function AllBooksPage() {
             All Books Data
           </h1>
           <div className="mt-10 px-3 flex flex-col items-center">
-            <Table columnsHeading={LibraryColumn} usersData={libraryData} />
+            {fetchedData && (
+              <Table columnsHeading={LibraryColumn} usersData={fetchedData} />
+            )}
           </div>
         </div>
       </div>

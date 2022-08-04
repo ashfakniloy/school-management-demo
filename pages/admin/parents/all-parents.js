@@ -1,25 +1,36 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Table from "../../../components/Admin/Table";
 import { ParentsColumn } from "../../../components/Admin/Table/columns/parents";
+import useGetData from "../../../components/Hooks/useGetData";
 import Layout from "../../../components/Layout";
-import { API_URL } from "../../../config";
+import { API_URL, token, schoolId } from "../../../config";
 
 function AllParentsPage() {
   const [parentsData, setParentsData] = useState([]);
+  // const { token, userId } = useSelector((state) => state.login);
 
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(`${API_URL}/parent/all`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
+  const { fetchedData } = useGetData("/parent/all");
 
-      setParentsData(data.data);
-    };
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const res = await fetch(`${API_URL}/parent/all/${schoolId}`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     const data = await res.json();
+
+  //     if (res.ok) {
+  //       setParentsData(data.data);
+  //       console.log(data.data);
+  //     } else {
+  //       console.log(data.data);
+  //     }
+  //   };
+  //   getData();
+  // }, []);
 
   return (
     <Layout>
@@ -30,7 +41,9 @@ function AllParentsPage() {
             All Parents Data
           </h1>
           <div className="mt-10 px-3 flex flex-col items-center">
-            <Table columnsHeading={ParentsColumn} usersData={parentsData} />
+            {fetchedData && (
+              <Table columnsHeading={ParentsColumn} usersData={fetchedData} />
+            )}
           </div>
         </div>
       </div>

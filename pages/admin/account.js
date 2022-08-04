@@ -3,6 +3,7 @@ import Layout from "../../components/Layout";
 import UserForm from "../../components/Admin/Form/UserForm";
 import Users from "../../components/Admin/Account/Users";
 import UserDetails from "../../components/Admin/Account/UserDetails";
+import useGetData from "../../components/Hooks/useGetData";
 
 const users = [
   {
@@ -36,10 +37,12 @@ const users = [
 ];
 
 function AddEmail() {
-  // const [showDetails, setShowDetails] = useState("");
   const [userDetails, setUserDetails] = useState(users[0]);
+  // const [userDetails, setUserDetails] = useState(fetchedData[0]);
 
   console.log(userDetails);
+
+  const { fetchedData } = useGetData("/admin_user/all");
 
   return (
     <Layout>
@@ -56,6 +59,11 @@ function AddEmail() {
             userDetails={userDetails}
             setUserDetails={setUserDetails}
           />
+          {/* <Users
+            users={fetchedData}
+            userDetails={userDetails}
+            setUserDetails={setUserDetails}
+          /> */}
           <UserDetails userDetails={userDetails} />
         </div>
       </div>

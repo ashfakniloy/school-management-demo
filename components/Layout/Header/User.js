@@ -2,9 +2,21 @@ import { FaUserCircle, FaRegUserCircle } from "react-icons/fa";
 import { AiOutlineLogout, AiOutlineSetting } from "react-icons/ai";
 import { GoTriangleDown } from "react-icons/go";
 import useDropdowm from "../../Hooks/useDropdown";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { reset } from "../../../redux/features/admin/loginSlice";
 
 function User() {
   const [showDropdown, setShowDropdown, node] = useDropdowm();
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  const handleLogOut = () => {
+    localStorage.removeItem("school token");
+    localStorage.removeItem("school id");
+    dispatch(reset());
+    router.push("/login/admin");
+  };
 
   return (
     <div ref={node} className="relative">
@@ -44,7 +56,10 @@ function User() {
               <AiOutlineSetting />
               Account Settings
             </p>
-            <p className="px-5 py-3 flex items-center gap-2 hover:bg-slate-100 transition duration-300">
+            <p
+              className="px-5 py-3 flex items-center gap-2 hover:bg-slate-100 transition duration-300"
+              onClick={handleLogOut}
+            >
               <AiOutlineLogout />
               Log Out
             </p>

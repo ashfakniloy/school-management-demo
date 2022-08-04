@@ -5,10 +5,11 @@ import LineChart from "../../components/Admin/Dashboard/Charts/LineChart";
 import BarChart from "../../components/Admin/Dashboard/Charts/BarChart";
 import DoughnutChart from "../../components/Admin/Dashboard/Charts/DoughnutChart";
 import NoticeBoard from "../../components/Admin/NoticeBoard";
-import { API_URL } from "../../config";
+import { API_URL, token, schoolId } from "../../config";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../redux/features/admin/usersSlice";
 import { useRouter } from "next/router";
+import useGetData from "../../components/Hooks/useGetData";
 
 // const API_URL = "http://192.168.0.20:8000/v1/data/all";
 
@@ -16,45 +17,57 @@ function AdminPage() {
   const [userData, setUserData] = useState([]);
   const dispatch = useDispatch();
   const reduxUsers = useSelector((state) => state.users.users);
-  const { userId } = useSelector((state) => state.login);
+  // const { userId } = useSelector((state) => state.login);
 
-  console.log(userId);
+  console.log(schoolId);
   // const id = localStorage.getItem("userId");
 
   const router = useRouter();
 
-  useEffect(() => {
-    const token = localStorage.getItem("school erp admin");
+  const { fetchedData } = useGetData("/data/all");
 
-    // if (!userId) {
-    //   router.push("/login/admin");
-    // }
+  // useEffect(() => {
+  //   // const token = localStorage.getItem("school token");
 
-    const getData = async () => {
-      const res = await fetch(`${API_URL}/data/all/${userId}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = await res.json();
+  //   // if (!userId) {
+  //   //   router.push("/login/admin");
+  //   // }
 
-      if (res.ok) {
-        setUserData(data.data);
-        console.log("success", data);
-      } else {
-        console.log("error", data);
-      }
+  //   const getData = async () => {
+  //     const res = await fetch(`${API_URL}/data/all/${schoolId}`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     const data = await res.json();
 
-      // console.log(data);
-    };
-    getData();
-  }, [setUserData]);
+  //     if (res.ok) {
+  //       setUserData(data.data);
+  //       console.log("success", data.data);
+  //     } else {
+  //       console.log("error", data.data);
+  //     }
+
+  //     // console.log(data);
+  //   };
+  //   getData();
+  // }, [setUserData]);
   // }, [setUserData, router]);
 
-  useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getUsers());
+  // }, [dispatch]);
+
+  // const {
+  //   total_students,
+  //   total_teachers,
+  //   total_parents,
+  //   total_earnings,
+  //   total_male,
+  //   total_female,
+  //   notice,
+  // } = userData;
 
   const {
     total_students,
@@ -64,7 +77,7 @@ function AdminPage() {
     total_male,
     total_female,
     notice,
-  } = userData;
+  } = fetchedData;
 
   return (
     <Layout>

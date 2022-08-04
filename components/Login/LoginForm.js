@@ -2,11 +2,12 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { TextField } from "../../components/common/InputField";
 import { useDispatch, useSelector } from "react-redux";
-import { login, reset } from "../../redux/features/admin/loginSlice";
+import { login, reset, loggedIn } from "../../redux/features/admin/loginSlice";
+// import { API_URL, token, schoolId } from "../../config";
 
 function LoginForm({ user }) {
   const initialvalues = {
@@ -26,23 +27,50 @@ function LoginForm({ user }) {
 
   const router = useRouter();
   const dispatch = useDispatch();
-  const { token, userId, isError, isSucccess, isLoading, message } =
-    useSelector((state) => state.login);
+  const { token, schoolId, isLoggedIn } = useSelector((state) => state.login);
+  // const { token, userId, isError, isSucccess, isLoading, message } =
+  //   useSelector((state) => state.login);
 
   useEffect(() => {
-    if (isError) {
-      console.log(message);
-    }
-
-    if (isSucccess || token) {
+    if (isLoggedIn) {
       router.push("/admin");
     }
-
-    dispatch(reset());
-  }, [router, dispatch, token, userId, isError, isSucccess, message]);
+  }, [isLoggedIn, router]);
 
   const handleSubmit = async (values) => {
     dispatch(login(values));
+    // token && schoolId && router.push("/admin");
+    // if (token && schoolId) {
+    //   dispatch(loggedIn(true));
+    // }
+    // if (isLoggedIn) {
+    //   router.push("/admin");
+    // }
+    // if (res.ok) {
+    //   router.push("/admin");
+    // } else {
+    //   toast.error(data);
+    // }
+
+    // const res = await fetch(`${API_URL}/admin/login`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(values),
+    // });
+
+    // const data = await res.json();
+
+    // if (res.ok) {
+    //   console.log("success", data.token);
+    //   localStorage.setItem("school token", data.token);
+    //   localStorage.setItem("school id", data.id);
+    //   router.push("/admin");
+    // } else {
+    //   console.log("error", data);
+    //   toast.error(data.message);
+    // }
     // isSuccess && router.push("/admin");
     // console.log(id);
     // const API_URL = `http://192.168.1.106:8000/v1/${user}/login`;
@@ -77,6 +105,7 @@ function LoginForm({ user }) {
 
   return (
     <div className="flex justify-center items-center h-screen">
+      <ToastContainer />
       <div className="bg-gray-200 px-10 py-14 shadow-lg">
         <h1 className="text-2xl font-semibold text-center">
           Log in as <span className="capitalize">{user}</span>
@@ -90,7 +119,6 @@ function LoginForm({ user }) {
           >
             {(formik) => (
               <Form>
-                {/* <ToastContainer /> */}
                 <div className="text-sm gap-y-5 md:gap-y-7">
                   <div className="min-w-[400px] space-y-4">
                     <TextField label="Email *" name="email" type="email" />
@@ -107,6 +135,13 @@ function LoginForm({ user }) {
                   >
                     Login
                   </button>
+                  {user === "admin" && (
+                    <p className="mt-4 text-xs text-teal-600">
+                      <a href="http://localhost:3001/school-management-system">
+                        Don&apos;t have an account? Register here
+                      </a>
+                    </p>
+                  )}
                 </div>
               </Form>
             )}

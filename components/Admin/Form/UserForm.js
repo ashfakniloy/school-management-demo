@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 // import { TextField, TextArea, SelectField } from "../../common/InputField";
 import { TextField, TextArea, SelectField } from "../../common/InputField";
 import { API_URL } from "../../../config";
+import usePostData from "../../Hooks/usePostData";
 
 function UserForm() {
   const initialvalues = {
@@ -49,26 +50,32 @@ function UserForm() {
   //   console.log("Form data", values);
   // };
 
-  const handleSubmit = async (values, formik) => {
-    const res = await fetch(`${API_URL}/admin_user/add`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
+  const { postData } = usePostData("/admin_user/add");
 
-    const data = await res.json();
-
-    if (res.ok) {
-      toast.success("Form Submitted Successfully!");
-      console.log(data);
-      // formik.resetForm();
-    } else {
-      console.log("error", data);
-      toast.error(data.message);
-    }
+  const handleSubmit = (values, formik) => {
+    postData(values, formik);
   };
+
+  // const handleSubmit = async (values, formik) => {
+  //   const res = await fetch(`${API_URL}/admin_user/add`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(values),
+  //   });
+
+  //   const data = await res.json();
+
+  //   if (res.ok) {
+  //     toast.success("Form Submitted Successfully!");
+  //     console.log(data);
+  //     // formik.resetForm();
+  //   } else {
+  //     console.log("error", data);
+  //     toast.error(data.message);
+  //   }
+  // };
 
   return (
     <div className="mt-14 bg-white p-10 shadow-md">

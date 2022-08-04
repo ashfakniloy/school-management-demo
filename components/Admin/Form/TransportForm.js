@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "../../common/InputField";
 import { API_URL } from "../../../config";
+import usePostData from "../../Hooks/usePostData";
 
 function TransportForm() {
   const initialvalues = {
@@ -26,25 +27,31 @@ function TransportForm() {
   //   console.log("add transport data", values);
   // };
 
-  const handleSubmit = async (values, formik) => {
-    const res = await fetch(`${API_URL}/transport/add`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
-    const data = await res.json();
+  const { postData } = usePostData("/transport/add");
 
-    if (res.ok) {
-      toast.success("Form Submitted Successfully!");
-      console.log(data);
-      // formik.resetForm();
-    } else {
-      console.log("error", data);
-      toast.error(data.message);
-    }
+  const handleSubmit = (values, formik) => {
+    postData(values, formik);
   };
+
+  // const handleSubmit = async (values, formik) => {
+  //   const res = await fetch(`${API_URL}/transport/add`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(values),
+  //   });
+  //   const data = await res.json();
+
+  //   if (res.ok) {
+  //     toast.success("Form Submitted Successfully!");
+  //     console.log(data);
+  //     // formik.resetForm();
+  //   } else {
+  //     console.log("error", data);
+  //     toast.error(data.message);
+  //   }
+  // };
 
   return (
     <div className="mt-14 bg-white p-10 shadow-md">

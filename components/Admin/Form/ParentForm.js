@@ -3,7 +3,9 @@ import { Formik, Form } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TextField, TextArea, SelectField } from "../../common/InputField";
-import { API_URL } from "../../../config";
+import { API_URL, token, schoolId } from "../../../config";
+import { useSelector } from "react-redux";
+import usePostData from "../../Hooks/usePostData";
 
 function ParentForm() {
   const initialvalues = {
@@ -11,14 +13,14 @@ function ParentForm() {
     last_name: "",
     gender: "",
     date_of_birth: "",
-    id_no: "",
+    // id_no: "",
     blood_group: "",
     religion: "",
     occupation: "",
     student_email: "",
     email: "",
-    class: "",
-    section: "",
+    // class: "",
+    // section: "",
     phone: "",
     address: "",
     bio: "",
@@ -29,14 +31,14 @@ function ParentForm() {
     last_name: Yup.string().required("Last name is required"),
     gender: Yup.string().required("Gender is required"),
     date_of_birth: Yup.string().required("BirthDate is required"),
-    id_no: Yup.string().required("ID number is required"),
+    // id_no: Yup.string().required("ID number is required"),
     blood_group: Yup.string().required("Blood Group is required"),
     religion: Yup.string().required("Religion is required"),
     occupation: Yup.string().required("Occupation is required"),
     student_email: Yup.string().required("Student Email is required"),
     email: Yup.string().required("Email is required"),
-    class: Yup.string().required("Class is required"),
-    section: Yup.string().required("Section is required"),
+    // class: Yup.string().required("Class is required"),
+    // section: Yup.string().required("Section is required"),
     phone: Yup.string().required("Phone is required"),
     address: Yup.string().required("Address is required"),
     bio: Yup.string().required("Bio is required"),
@@ -46,25 +48,37 @@ function ParentForm() {
   //   console.log("parent data", values);
   // };
 
-  const handleSubmit = async (values, formik) => {
-    const res = await fetch(`${API_URL}/parent/signup`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
-    const data = await res.json();
+  // const { token, userId } = useSelector((state) => state.login);
 
-    if (res.ok) {
-      toast.success("Form Submitted Successfully!");
-      console.log(data);
-      // formik.resetForm();
-    } else {
-      console.log("error", data);
-      toast.error(data.message);
-    }
+  const { postData } = usePostData("/parents/signup");
+
+  const handleSubmit = (values, formik) => {
+    postData(values, formik);
   };
+
+  // const handleSubmit = async (values, formik) => {
+  //   const res = await fetch(`${API_URL}/parent/signup/${schoolId}`, {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //     body: JSON.stringify(values),
+  //   });
+  //   const data = await res.json();
+
+  //   console.log(token);
+
+  //   if (res.ok) {
+  //     toast.success("Form Submitted Successfully!");
+  //     console.log(data.data);
+  //     // formik.resetForm();
+  //   } else {
+  //     console.log("error", data.message);
+  //     toast.error(data.data);
+  //   }
+  // };
 
   return (
     <div className="mt-14 bg-white p-10 shadow-md">
@@ -94,7 +108,7 @@ function ParentForm() {
                 name="date_of_birth"
                 type="date"
               />
-              <TextField label="ID No *" name="id_no" type="number" />
+              {/* <TextField label="ID No *" name="id_no" type="number" /> */}
               <SelectField
                 label="Blood Group *"
                 name="blood_group"
@@ -116,8 +130,8 @@ function ParentForm() {
                 type="email"
               />
               <TextField label="Email *" name="email" type="email" />
-              <TextField label="Class *" name="class" type="text" />
-              <TextField label="Section *" name="section" type="text" />
+              {/* <TextField label="Class *" name="class" type="text" />
+              <TextField label="Section *" name="section" type="text" /> */}
               <TextField label="Phone *" name="phone" type="number" />
               <TextField label="Address *" name="address" type="text" />
               <TextArea label="Short Bio *" name="bio" type="text" />

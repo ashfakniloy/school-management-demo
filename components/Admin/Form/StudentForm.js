@@ -10,8 +10,9 @@ import {
   SelectField,
   FileField,
 } from "../../common/InputField";
-import { API_URL } from "../../../config";
+import { API_URL, token, schoolId } from "../../../config";
 import { useSelector } from "react-redux";
+import usePostData from "../../Hooks/usePostData";
 
 function StudentForm() {
   const initialvalues = {
@@ -62,30 +63,36 @@ function StudentForm() {
   //   console.log("student data", values);
   // };
 
-  const { token, userId } = useSelector((state) => state.login);
+  // const { token, userId } = useSelector((state) => state.login);
 
-  const handleSubmit = async (values, formik) => {
-    const res = await fetch(`${API_URL}/student/signup/${userId}`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(values),
-    });
+  const { postData } = usePostData("/student/signup");
 
-    const data = await res.json();
-
-    if (res.ok) {
-      toast.success("Form Submitted Successfully!");
-      console.log(data);
-      // formik.resetForm();
-    } else {
-      console.log("error", data);
-      toast.error(data.message);
-    }
+  const handleSubmit = (values, formik) => {
+    postData(values, formik);
   };
+
+  // const handleSubmit = async (values, formik) => {
+  //   const res = await fetch(`${API_URL}/student/signup/${schoolId}`, {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //     body: JSON.stringify(values),
+  //   });
+
+  //   const data = await res.json();
+
+  //   if (res.ok) {
+  //     toast.success("Form Submitted Successfully!");
+  //     console.log(data);
+  //     // formik.resetForm();
+  //   } else {
+  //     console.log("error", data);
+  //     toast.error(data.message);
+  //   }
+  // };
 
   const [testimonialPreview, setTestimonialPreview] = useState("");
   const [certificatePreview, setCertificatePreview] = useState("");

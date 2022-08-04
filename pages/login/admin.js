@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 function AdminLogin() {
   // const dispatch = useDispatch();
-  const userId = useSelector((state) => state.login.userId);
+  // const userId = useSelector((state) => state.login.userId);
 
-  console.log("userid", userId);
+  // console.log("userid", userId);
 
   return (
     <div className="bg-gray-100">

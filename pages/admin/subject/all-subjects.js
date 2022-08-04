@@ -1,25 +1,28 @@
 import { useEffect, useState } from "react";
 import Table from "../../../components/Admin/Table";
 import { SubjectsColumn } from "../../../components/Admin/Table/columns/subjects";
+import useGetData from "../../../components/Hooks/useGetData";
 import Layout from "../../../components/Layout";
 import { API_URL } from "../../../config";
 
 function AllSubjectsPage() {
   const [subjectsData, setSubjectsData] = useState([]);
 
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(`${API_URL}/subject/all`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
+  const { fetchedData } = useGetData("/subject/all");
 
-      setSubjectsData(data.subject);
-    };
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const res = await fetch(`${API_URL}/subject/all`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     const data = await res.json();
+
+  //     setSubjectsData(data.subject);
+  //   };
+  //   getData();
+  // }, []);
 
   return (
     <Layout>
@@ -30,7 +33,9 @@ function AllSubjectsPage() {
             All Subjects Data
           </h1>
           <div className="mt-10 px-3 flex flex-col items-center">
-            <Table columnsHeading={SubjectsColumn} usersData={subjectsData} />
+            {fetchedData && (
+              <Table columnsHeading={SubjectsColumn} usersData={fetchedData} />
+            )}
           </div>
         </div>
       </div>

@@ -1,25 +1,38 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Table from "../../../components/Admin/Table";
 import { StudentsColumn } from "../../../components/Admin/Table/columns/students";
+import useGetData from "../../../components/Hooks/useGetData";
 import Layout from "../../../components/Layout";
-import { API_URL } from "../../../config";
+import { API_URL, token, schoolId } from "../../../config";
 
 function AllStudentsPage() {
   const [studentsData, setStudentsData] = useState([]);
+  // const { token, userId } = useSelector((state) => state.login);
 
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(`${API_URL}/student/all`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-      // console.log("students", data.data);
-      setStudentsData(data.student);
-    };
-    getData();
-  }, []);
+  const { fetchedData } = useGetData("/student/all");
+
+  // useEffect(() => {
+  //   // const token = localStorage.getItem("school token");
+
+  //   const getData = async () => {
+  //     const res = await fetch(`${API_URL}/student/all/${schoolId}`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     const data = await res.json();
+  //     // console.log("students", data.data);
+  //     if (res.ok) {
+  //       setStudentsData(data.data);
+  //       console.log(data.data);
+  //     } else {
+  //       console.log(data.data);
+  //     }
+  //   };
+  //   getData();
+  // }, []);
 
   return (
     <Layout>
@@ -31,7 +44,12 @@ function AllStudentsPage() {
               All Students Data
             </h1>
             <div className="mt-10 px-3 flex flex-col items-center">
-              <Table columnsHeading={StudentsColumn} usersData={studentsData} />
+              {fetchedData && (
+                <Table
+                  columnsHeading={StudentsColumn}
+                  usersData={fetchedData}
+                />
+              )}
               {/* <StudentsTable  /> */}
             </div>
           </div>
