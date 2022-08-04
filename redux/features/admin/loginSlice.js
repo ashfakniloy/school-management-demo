@@ -5,6 +5,7 @@ import { API_URL, token, schoolId } from "../../../config";
 const initialState = {
   token: token ? token : null,
   schoolId: schoolId ? schoolId : null,
+  role: "admin",
   isLoggedIn: false,
   isError: false,
   isSuccess: false,
