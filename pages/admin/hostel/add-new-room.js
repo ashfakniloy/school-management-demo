@@ -1,6 +1,6 @@
 import React from "react";
 import RoomForm from "../../../components/Admin/Form/RoomForm";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Admin/Layout";
 
 function AddNewRoom() {
   return (

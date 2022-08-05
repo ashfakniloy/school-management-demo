@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import NoticeBoard from "../../../components/Admin/NoticeBoard";
 import useGetData from "../../../components/Hooks/useGetData";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Admin/Layout";
 import { API_URL } from "../../../config";
 
 function NoticesPage() {

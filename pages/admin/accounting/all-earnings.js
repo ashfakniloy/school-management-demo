@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Table from "../../../components/Admin/Table";
 import { EarningsColumn } from "../../../components/Admin/Table/columns/earnings";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Admin/Layout";
 import { API_URL } from "../../../config";
 
 function AllEarningsPage() {

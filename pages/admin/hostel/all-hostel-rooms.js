@@ -1,6 +1,6 @@
 import Table from "../../../components/Admin/Table";
 import { HostelsColumn } from "../../../components/Admin/Table/columns/hostels";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Admin/Layout";
 import useGetData from "../../../components/Hooks/useGetData";
 
 function AllHostelRoomsPage() {

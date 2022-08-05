@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Admin/Layout";
 import Cards from "../../components/Admin/Dashboard/Cards";
 import LineChart from "../../components/Admin/Dashboard/Charts/LineChart";
 import BarChart from "../../components/Admin/Dashboard/Charts/BarChart";

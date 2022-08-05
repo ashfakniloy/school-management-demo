@@ -1,4 +1,4 @@
-import Layout from "../../components/Layout";
+import Layout from "../../components/Admin/Layout";
 import EmailForm from "../../components/Admin/Form/EmailForm";
 
 function AddEmail() {

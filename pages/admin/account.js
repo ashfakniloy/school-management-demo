@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Admin/Layout";
 import UserForm from "../../components/Admin/Form/UserForm";
 import Users from "../../components/Admin/Account/Users";
 import UserDetails from "../../components/Admin/Account/UserDetails";

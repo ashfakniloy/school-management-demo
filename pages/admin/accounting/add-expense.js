@@ -1,6 +1,6 @@
 import React from "react";
 import ExpenseForm from "../../../components/Admin/Form/ExpenseForm";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Admin/Layout";
 
 function AddExpense() {
   return (

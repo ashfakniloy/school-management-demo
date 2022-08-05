@@ -12,7 +12,7 @@ import { FaBookOpen, FaClipboardList } from "react-icons/fa";
 import { BsCalendar3 } from "react-icons/bs";
 import { GoChecklist } from "react-icons/go";
 
-export const adminLinks = [
+export const navLinks = [
   {
     id: 1,
     name: "dashboard",

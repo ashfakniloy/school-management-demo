@@ -1,6 +1,6 @@
 import React from "react";
 import SalaryForm from "../../../components/Admin/Form/SalaryForm";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Admin/Layout";
 
 function AddSalaryPage() {
   return (

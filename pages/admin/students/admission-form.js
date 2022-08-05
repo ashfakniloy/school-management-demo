@@ -1,6 +1,6 @@
 import React from "react";
 import StudentForm from "../../../components/Admin/Form/StudentForm";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Admin/Layout";
 
 function AdmissionFormPage() {
   return (

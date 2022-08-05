@@ -3,8 +3,8 @@ import Router, { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-import { adminLinks } from "../Admin/Sidebar/adminLinks";
-import { teacherLinks } from "../Teacher/Sidebar/teacherLinks";
+// import { adminLinks } from "../Admin/Sidebar/adminLinks";
+// import { teacherLinks } from "../Teacher/Sidebar/teacherLinks";
 import ScrollTop from "./ScrollTop";
 import Loader from "./Loader";
 
@@ -28,14 +28,14 @@ function Layout({ children }) {
     setLoading(false);
   });
 
-  const navLinks = () => {
-    if (role === "admin") {
-      return adminLinks;
-    }
-    if (role === "teacher") {
-      return teacherLinks;
-    }
-  };
+  // const navLinks = () => {
+  //   if (role === "admin") {
+  //     return adminLinks;
+  //   }
+  //   if (role === "teacher") {
+  //     return teacherLinks;
+  //   }
+  // };
 
   return (
     <div className="flex">
@@ -43,7 +43,7 @@ function Layout({ children }) {
         <Sidebar
           showMenu={showMenu}
           setShowMenu={setShowMenu}
-          navLinks={navLinks()}
+          // navLinks={navLinks()}
         />
       )}
 

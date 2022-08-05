@@ -1,6 +1,6 @@
 import React from "react";
 import TransportForm from "../../../components/Admin/Form/TransportForm";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Admin/Layout";
 
 function AddTransportPage() {
   return (

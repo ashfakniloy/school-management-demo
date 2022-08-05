@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Table from "../../../components/Admin/Table";
 import { ExpensesColumn } from "../../../components/Admin/Table/columns/expenses";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Admin/Layout";
 import { API_URL } from "../../../config";
 
 function AllExpensesPage() {

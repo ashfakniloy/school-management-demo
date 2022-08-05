@@ -1,6 +1,6 @@
 import React from "react";
 import FeeForm from "../../../components/Admin/Form/FeeForm";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Admin/Layout";
 
 function AddNewClasses() {
   return (

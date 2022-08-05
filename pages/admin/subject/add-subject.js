@@ -1,6 +1,6 @@
 import React from "react";
 import AddSubjectForm from "../../../components/Admin/Form/SubjectForm";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Admin/Layout";
 
 function AddClassPage() {
   return (

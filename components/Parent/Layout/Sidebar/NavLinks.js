@@ -12,11 +12,11 @@ import { FaBookOpen, FaClipboardList } from "react-icons/fa";
 import { BsCalendar3 } from "react-icons/bs";
 import { GoChecklist } from "react-icons/go";
 
-export const teacherLinks = [
+export const navLinks = [
   {
     id: 1,
     name: "dashboard",
-    link: "/admin",
+    link: "/parent",
     icon: <AiOutlineDashboard className="fill-green-400" />,
   },
   {
@@ -42,42 +42,42 @@ export const teacherLinks = [
       },
     ],
   },
-  // {
-  //   id: 3,
-  //   name: "teachers",
-  //   // link: "/teachers",
-  //   icon: <MdOutlineGroups className="fill-green-400" />,
-  //   subLinks: [
-  //     {
-  //       name: "all teachers",
-  //       link: "/admin/teachers/all-teachers",
-  //     },
-  //     {
-  //       name: "add teacher",
-  //       link: "/admin/teachers/add-teacher",
-  //     },
-  //     {
-  //       name: "payment",
-  //       link: "/admin/teachers/payment",
-  //     },
-  //   ],
-  // },
   {
-    id: 4,
-    name: "parents",
-    // link: "/parents",
-    icon: <RiParentFill className="fill-green-400" />,
+    id: 3,
+    name: "teachers",
+    // link: "/teachers",
+    icon: <MdOutlineGroups className="fill-green-400" />,
     subLinks: [
       {
-        name: "all parents",
-        link: "/admin/parents/all-parents",
+        name: "all teachers",
+        link: "/admin/teachers/all-teachers",
       },
       {
-        name: "add parent",
-        link: "/admin/parents/add-parent",
+        name: "add teacher",
+        link: "/admin/teachers/add-teacher",
+      },
+      {
+        name: "payment",
+        link: "/admin/teachers/payment",
       },
     ],
   },
+  // {
+  //   id: 4,
+  //   name: "parents",
+  //   // link: "/parents",
+  //   icon: <RiParentFill className="fill-green-400" />,
+  //   subLinks: [
+  //     {
+  //       name: "all parents",
+  //       link: "/admin/parents/all-parents",
+  //     },
+  //     {
+  //       name: "add parent",
+  //       link: "/admin/parents/add-parent",
+  //     },
+  //   ],
+  // },
   {
     id: 5,
     name: "library",
@@ -94,46 +94,46 @@ export const teacherLinks = [
       },
     ],
   },
-  // {
-  //   id: 6,
-  //   name: "accounting",
-  //   // link: "/accounting",
-  //   icon: <GiMoneyStack className="fill-green-400" />,
-  //   subLinks: [
-  //     {
-  //       name: "all expenses",
-  //       link: "/admin/accounting/all-expenses",
-  //     },
-  //     {
-  //       name: "add expense",
-  //       link: "/admin/accounting/add-expense",
-  //     },
-  //     {
-  //       name: "all fees",
-  //       link: "/admin/accounting/all-fees",
-  //     },
-  //     {
-  //       name: "add fee",
-  //       link: "/admin/accounting/add-fee",
-  //     },
-  //     {
-  //       name: "all salaries",
-  //       link: "/admin/accounting/all-salaries",
-  //     },
-  //     {
-  //       name: "add salary",
-  //       link: "/admin/accounting/add-salary",
-  //     },
-  //     {
-  //       name: "all earnings",
-  //       link: "/admin/accounting/all-earnings",
-  //     },
-  //     {
-  //       name: "add earning",
-  //       link: "/admin/accounting/add-earning",
-  //     },
-  //   ],
-  // },
+  {
+    id: 6,
+    name: "accounting",
+    // link: "/accounting",
+    icon: <GiMoneyStack className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "all expenses",
+        link: "/admin/accounting/all-expenses",
+      },
+      {
+        name: "add expense",
+        link: "/admin/accounting/add-expense",
+      },
+      {
+        name: "all fees",
+        link: "/admin/accounting/all-fees",
+      },
+      {
+        name: "add fee",
+        link: "/admin/accounting/add-fee",
+      },
+      {
+        name: "all salaries",
+        link: "/admin/accounting/all-salaries",
+      },
+      {
+        name: "add salary",
+        link: "/admin/accounting/add-salary",
+      },
+      {
+        name: "all earnings",
+        link: "/admin/accounting/all-earnings",
+      },
+      {
+        name: "add earning",
+        link: "/admin/accounting/add-earning",
+      },
+    ],
+  },
   {
     id: 7,
     name: "class",
@@ -178,22 +178,22 @@ export const teacherLinks = [
     link: "/admin/attendance",
     icon: <SiGooglesheets className="fill-green-400" />,
   },
-  {
-    id: 11,
-    name: "leave",
-    // link: "/leave",
-    icon: <SiGooglesheets className="fill-green-400" />,
-    subLinks: [
-      {
-        name: "all leaves",
-        link: "/admin/leave/all-leaves",
-      },
-      {
-        name: "add leave",
-        link: "/admin/leave/add-leave",
-      },
-    ],
-  },
+  // {
+  //   id: 11,
+  //   name: "leave",
+  //   // link: "/leave",
+  //   icon: <SiGooglesheets className="fill-green-400" />,
+  //   subLinks: [
+  //     {
+  //       name: "all leaves",
+  //       link: "/admin/leave/all-leaves",
+  //     },
+  //     {
+  //       name: "add leave",
+  //       link: "/admin/leave/add-leave",
+  //     },
+  //   ],
+  // },
   {
     id: 12,
     name: "exam",

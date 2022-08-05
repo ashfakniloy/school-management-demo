@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Admin/Layout";
 
 function AllLeavesPage() {
   return <Layout>AllLeavesPage</Layout>;

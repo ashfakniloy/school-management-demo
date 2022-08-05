@@ -1,6 +1,6 @@
 import React from "react";
 import ExamForm from "../../../components/Admin/Form/ExamForm";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Admin/Layout";
 
 function AddExamPage() {
   return (

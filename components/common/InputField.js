@@ -1,6 +1,23 @@
 import { ErrorMessage, Field } from "formik";
 import Image from "next/image";
 
+// export const TextField = ({ label, ...props }) => {
+//   return (
+//     <div className="">
+//       <label {...props}>{label}</label>
+//       <div className="mt-1 relative">
+//         <Field
+//           className="p-2 w-full outline-none bg-slate-100 border border-slate-300 focus:border-slate-500"
+//           {...props}
+//         />
+//         <p className="absolute -bottom-4 text-red-600 text-xs">
+//           <ErrorMessage {...props} />
+//         </p>
+//       </div>
+//     </div>
+//   );
+// };
+
 export const TextField = ({ label, name, type }) => {
   return (
     <div className="">

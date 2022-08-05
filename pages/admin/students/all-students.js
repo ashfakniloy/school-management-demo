@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Table from "../../../components/Admin/Table";
 import { StudentsColumn } from "../../../components/Admin/Table/columns/students";
 import useGetData from "../../../components/Hooks/useGetData";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Admin/Layout";
 import { API_URL, token, schoolId } from "../../../config";
 
 function AllStudentsPage() {

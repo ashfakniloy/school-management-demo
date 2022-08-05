@@ -1,6 +1,6 @@
 import React from "react";
 import BookForm from "../../../components/Admin/Form/BookForm";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/Admin/Layout";
 
 function AddBookPage() {
   return (

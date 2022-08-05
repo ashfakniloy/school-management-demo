@@ -5,7 +5,7 @@ import { API_URL, token, schoolId } from "../../../config";
 const initialState = {
   token: token ? token : null,
   schoolId: schoolId ? schoolId : null,
-  role: "admin",
+  role: "parent",
   isLoggedIn: false,
   isError: false,
   isSuccess: false,
@@ -16,25 +16,47 @@ const initialState = {
 export const login = createAsyncThunk(
   "admin/login",
   async (values, thunkAPI) => {
-    const res = await fetch(`${API_URL}/admin/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
+    try {
+      const res = await fetch(`${API_URL}/admin/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
 
-    const data = await res.json();
-    if (res.ok) {
+      const data = await res.json();
+
       console.log("success", data.token);
       localStorage.setItem("school token", data.token);
       localStorage.setItem("school id", data.id);
-    } else {
-      console.log("error", data);
-      toast.error(data.message);
-      return thunkAPI.rejectWithValue(data);
+
+      return data;
+    } catch (error) {
+      console.log(error);
+      toast.error(error.data.message);
+      return thunkAPI.rejectWithValue(error.data);
     }
-    return data;
+
+    // const res = await fetch(`${API_URL}/admin/login`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(values),
+    // });
+
+    // const data = await res.json();
+    // if (res.ok) {
+    //   console.log("success", data.token);
+    //   localStorage.setItem("school token", data.token);
+    //   localStorage.setItem("school id", data.id);
+    // } else {
+    //   console.log("error", data);
+    //   toast.error(data.message);
+    //   return thunkAPI.rejectWithValue(data);
+    // }
+    // return data;
   }
 );
 
