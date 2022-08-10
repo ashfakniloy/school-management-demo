@@ -5,7 +5,7 @@ import { FaAngleRight, FaAngleDown } from "react-icons/fa";
 // import { navLinks } from "./NavLinks";
 import SubMenu from "./SubMenu";
 
-function Sidebar({ showMenu, setShowMenu, navLinks }) {
+function Sidebar({ showMenu, setShowMenu, navLinks, name }) {
   const router = useRouter();
 
   const [active, setActive] = useState("");
@@ -32,11 +32,11 @@ function Sidebar({ showMenu, setShowMenu, navLinks }) {
       <div className="relative">
         <div className="p-5">
           <h2
-            className={`text-2xl text-white duration-300 ${
+            className={`text-2xl text-white duration-300 capitalize ${
               showMenu ? "opacity-100" : "opacity-0"
             }`}
           >
-            LOGO
+            {name}
           </h2>
         </div>
 

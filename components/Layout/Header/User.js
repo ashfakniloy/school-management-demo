@@ -4,17 +4,18 @@ import { GoTriangleDown } from "react-icons/go";
 import useDropdowm from "../../Hooks/useDropdown";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import { reset } from "../../../redux/features/admin/loginSlice";
+import { reset, logout } from "../../../redux/features/admin/loginSlice";
 
-function User() {
+function User({ logo, userName, role }) {
   const [showDropdown, setShowDropdown, node] = useDropdowm();
   const router = useRouter();
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
-    localStorage.removeItem("school token");
-    localStorage.removeItem("school id");
-    dispatch(reset());
+    // localStorage.removeItem("token");
+    // localStorage.removeItem("id");
+    // dispatch(reset());
+    dispatch(logout());
     router.push("/login/admin");
   };
 
@@ -26,8 +27,8 @@ function User() {
       >
         <div className="flex text-end gap-2">
           <div className="">
-            <h4 className="text-sm">Username</h4>
-            <p className="text-xs font-extralight">Admin</p>
+            <h4 className="text-sm">{userName}</h4>
+            <p className="text-xs font-extralight">{role}</p>
           </div>
 
           <span className="pt-1 text-sm">

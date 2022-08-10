@@ -4,7 +4,7 @@ import usersReducer from "../features/admin/usersSlice";
 import loginReducer from "../features/admin/loginSlice";
 
 export const combinedReducers = combineReducers({
-  users: usersReducer,
+  // users: usersReducer,
   login: loginReducer,
 });
 

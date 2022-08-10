@@ -5,16 +5,21 @@ import { API_URL } from "../../config";
 
 function useGetData(route) {
   const [fetchedData, setFetchedData] = useState([]);
-  const { token, schoolId } = useSelector((state) => state.login);
 
   // const url = API_URL + route;
-  const url = `${API_URL}${route}/${schoolId}`;
+
+  // const user = useSelector((state) => state.login);
+  const { token, id } = useSelector((state) => state.login);
 
   useEffect(() => {
+    // const url = `${API_URL}${route}/${user.id}`;
+    const url = `${API_URL}${route}/${id}`;
+
     const getData = async () => {
       const res = await fetch(url, {
         headers: {
           "Content-Type": "application/json",
+          // Authorization: `Bearer ${user.token}`,
           Authorization: `Bearer ${token}`,
         },
       });
@@ -22,7 +27,8 @@ function useGetData(route) {
 
       if (res.ok) {
         setFetchedData(data.data);
-        console.log("success", data.data);
+        // data.data.notice.map((item) => console.log("notice id", item.title));
+        console.log("all data", data.data);
       } else {
         console.log("error", data.data);
       }
@@ -36,7 +42,7 @@ function useGetData(route) {
       // }
     };
     getData();
-  }, [url, setFetchedData, token]);
+  }, [setFetchedData]);
 
   return { fetchedData };
 }

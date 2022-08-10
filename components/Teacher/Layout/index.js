@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Router, { useRouter } from "next/router";
 import { useSelector } from "react-redux";
-import Sidebar from "./Sidebar";
+// import Sidebar from "./Sidebar";
 import Header from "../../Layout/Header";
 import ScrollTop from "../../Layout/ScrollTop";
 import Loader from "../../Layout/Loader";
+import Sidebar from "../../Layout/Sidebar";
+import { navLinks } from "./NavLinks";
 
 function Layout({ children }) {
   const [showMenu, setShowMenu] = useState(true);
@@ -28,7 +30,12 @@ function Layout({ children }) {
 
   return (
     <div className="flex">
-      <Sidebar showMenu={showMenu} setShowMenu={setShowMenu} />
+      <Sidebar
+        showMenu={showMenu}
+        setShowMenu={setShowMenu}
+        navLinks={navLinks}
+        name="teacher"
+      />
 
       <div className="flex-1 min-h-screen">
         <Header showMenu={showMenu} setShowMenu={setShowMenu} />

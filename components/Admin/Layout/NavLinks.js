@@ -16,7 +16,7 @@ export const navLinks = [
   {
     id: 1,
     name: "dashboard",
-    link: "/parent",
+    link: "/admin",
     icon: <AiOutlineDashboard className="fill-green-400" />,
   },
   {
@@ -62,22 +62,22 @@ export const navLinks = [
       },
     ],
   },
-  // {
-  //   id: 4,
-  //   name: "parents",
-  //   // link: "/parents",
-  //   icon: <RiParentFill className="fill-green-400" />,
-  //   subLinks: [
-  //     {
-  //       name: "all parents",
-  //       link: "/admin/parents/all-parents",
-  //     },
-  //     {
-  //       name: "add parent",
-  //       link: "/admin/parents/add-parent",
-  //     },
-  //   ],
-  // },
+  {
+    id: 4,
+    name: "parents",
+    // link: "/parents",
+    icon: <RiParentFill className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "all parents",
+        link: "/admin/parents/all-parents",
+      },
+      {
+        name: "add parent",
+        link: "/admin/parents/add-parent",
+      },
+    ],
+  },
   {
     id: 5,
     name: "library",
@@ -178,22 +178,30 @@ export const navLinks = [
     link: "/admin/attendance",
     icon: <SiGooglesheets className="fill-green-400" />,
   },
-  // {
-  //   id: 11,
-  //   name: "leave",
-  //   // link: "/leave",
-  //   icon: <SiGooglesheets className="fill-green-400" />,
-  //   subLinks: [
-  //     {
-  //       name: "all leaves",
-  //       link: "/admin/leave/all-leaves",
-  //     },
-  //     {
-  //       name: "add leave",
-  //       link: "/admin/leave/add-leave",
-  //     },
-  //   ],
-  // },
+  {
+    id: 11,
+    name: "leave",
+    // link: "/leave",
+    icon: <SiGooglesheets className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "student leave",
+        link: "/admin/leave/student-leave",
+      },
+      {
+        name: "teacher leave",
+        link: "/admin/leave/teacher-leave",
+      },
+      // {
+      //   name: "all leaves",
+      //   link: "/admin/leave/all-leaves",
+      // },
+      // {
+      //   name: "add leave",
+      //   link: "/admin/leave/add-leave",
+      // },
+    ],
+  },
   {
     id: 12,
     name: "exam",
@@ -210,54 +218,54 @@ export const navLinks = [
       },
     ],
   },
-  // {
-  //   id: 13,
-  //   name: "transport",
-  //   // link: "/transport",
-  //   icon: <GiBus className="fill-green-400" />,
-  //   subLinks: [
-  //     {
-  //       name: "all transport",
-  //       link: "/admin/transport/all-transport",
-  //     },
-  //     {
-  //       name: "add transport",
-  //       link: "/admin/transport/add-transport",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: 14,
-  //   name: "hostel",
-  //   // link: "/hostel",
-  //   icon: <AiOutlineHome className="fill-green-400" />,
-  //   subLinks: [
-  //     {
-  //       name: "All hostel rooms",
-  //       link: "/admin/hostel/all-hostel-rooms",
-  //     },
-  //     {
-  //       name: "add new room",
-  //       link: "/admin/hostel/add-new-room",
-  //     },
-  //   ],
-  // },
-  // {
-  //   id: 15,
-  //   name: "notice",
-  //   // link: "/notice",
-  //   icon: <FaClipboardList className="fill-green-400" />,
-  //   subLinks: [
-  //     {
-  //       name: "Notice Board",
-  //       link: "/admin/notice/notice-board",
-  //     },
-  //     {
-  //       name: "Add Notice",
-  //       link: "/admin/notice/add-notice",
-  //     },
-  //   ],
-  // },
+  {
+    id: 13,
+    name: "transport",
+    // link: "/transport",
+    icon: <GiBus className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "all transport",
+        link: "/admin/transport/all-transport",
+      },
+      {
+        name: "add transport",
+        link: "/admin/transport/add-transport",
+      },
+    ],
+  },
+  {
+    id: 14,
+    name: "hostel",
+    // link: "/hostel",
+    icon: <AiOutlineHome className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "All hostel rooms",
+        link: "/admin/hostel/all-hostel-rooms",
+      },
+      {
+        name: "add new room",
+        link: "/admin/hostel/add-new-room",
+      },
+    ],
+  },
+  {
+    id: 15,
+    name: "notice",
+    // link: "/notice",
+    icon: <FaClipboardList className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "Notice Board",
+        link: "/admin/notice/notice-board",
+      },
+      {
+        name: "Add Notice",
+        link: "/admin/notice/add-notice",
+      },
+    ],
+  },
   {
     id: 16,
     name: "message",
