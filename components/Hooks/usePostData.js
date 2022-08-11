@@ -1,9 +1,9 @@
-import { API_URL, token, id } from "../../config";
+import { API_URL } from "../../config";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 
 function usePostData(route) {
-  // const { token, userId } = useSelector((state) => state.login);
+  const { token, id } = useSelector((state) => state.login);
 
   // const url = API_URL + route + schoolId;
   const url = `${API_URL}${route}/${id}`;
@@ -28,10 +28,10 @@ function usePostData(route) {
 
     if (res.ok) {
       toast.success("Form Submitted Successfully!");
-      console.log(data);
+      console.log("message", data.data);
       // formik.resetForm();
     } else {
-      console.log("error", data);
+      console.log("error", data.message);
       toast.error(data.message);
     }
   };

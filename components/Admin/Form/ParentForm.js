@@ -50,7 +50,7 @@ function ParentForm() {
 
   // const { token, userId } = useSelector((state) => state.login);
 
-  const { postData } = usePostData("/parents/signup");
+  const { postData } = usePostData("/parent/signup");
 
   const handleSubmit = (values, formik) => {
     postData(values, formik);
