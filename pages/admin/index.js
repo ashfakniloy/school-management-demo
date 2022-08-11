@@ -5,9 +5,19 @@ import BarChart from "../../components/Admin/Dashboard/Charts/BarChart";
 import DoughnutChart from "../../components/Admin/Dashboard/Charts/DoughnutChart";
 import NoticeBoard from "../../components/Admin/NoticeBoard";
 import useGetData from "../../components/Hooks/useGetData";
+import { useSelector } from "react-redux";
 
 function AdminPage() {
   const { fetchedData } = useGetData("/data/all");
+  // const {
+  //   total_students,
+  //   total_teachers,
+  //   total_parents,
+  //   total_earnings,
+  //   total_male,
+  //   total_female,
+  //   notice,
+  // } = useSelector((state) => state.login);
 
   const {
     total_students,
@@ -37,9 +47,9 @@ function AdminPage() {
           </div>
           <BarChart />
           <DoughnutChart male={total_male} female={total_female} />
-          {/* <div className="col-span-2">
+          <div className="col-span-2">
             {notice ? <NoticeBoard notices={notice} /> : null}
-          </div> */}
+          </div>
         </div>
       </div>
     </Layout>

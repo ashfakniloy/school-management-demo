@@ -11,18 +11,19 @@ function UserForm() {
   const initialvalues = {
     first_name: "",
     last_name: "",
+    user_name: "",
     // user_type: "",
     gender: "",
-    fathers_name: "",
-    mothers_name: "",
-    date_of_birth: "",
-    religion: "",
+    // fathers_name: "",
+    // mothers_name: "",
+    // date_of_birth: "",
+    // religion: "",
     joining_date: "",
     email: "",
     // subject: "",
     // class: "",
     // section: "",
-    id_no: "",
+    // id_no: "",
     phone: "",
     address: "",
   };
@@ -30,18 +31,19 @@ function UserForm() {
   const validate = Yup.object({
     first_name: Yup.string().required("First name is required"),
     last_name: Yup.string().required("Last name is required"),
+    user_name: Yup.string().required("User name is required"),
     // user_type: Yup.string().required("User Type is required"),
     gender: Yup.string().required("Gender is required"),
-    fathers_name: Yup.string().required("Father's Name is required"),
-    mothers_name: Yup.string().required("Mother's Name is required"),
-    date_of_birth: Yup.string().required("Birthdate is required"),
-    religion: Yup.string().required("Religion is required"),
+    // fathers_name: Yup.string().required("Father's Name is required"),
+    // mothers_name: Yup.string().required("Mother's Name is required"),
+    // date_of_birth: Yup.string().required("Birthdate is required"),
+    // religion: Yup.string().required("Religion is required"),
     joining_date: Yup.string().required("Joining Date is required"),
     email: Yup.string().required("Email is required"),
     // subject: Yup.string().required("Subject is required"),
     // class: Yup.string().required("Class is required"),
     // section: Yup.string().required("Section is required"),
-    id_no: Yup.string().required("ID number is required"),
+    // id_no: Yup.string().required("ID number is required"),
     phone: Yup.string().required("Phone is required"),
     address: Yup.string().required("Address is required"),
   });
@@ -93,6 +95,7 @@ function UserForm() {
             <div className="form">
               <TextField label="First Name *" name="first_name" type="text" />
               <TextField label="Last Name *" name="last_name" type="text" />
+              <TextField label="User Name *" name="user_name" type="text" />
               {/* <SelectField
                 label="User Type *"
                 name="user_type"
@@ -107,7 +110,7 @@ function UserForm() {
                 placeholder="Select Gender"
                 options={["Male", "Female"]}
               />
-              <TextField
+              {/* <TextField
                 label="Father's Name *"
                 name="fathers_name"
                 type="text"
@@ -128,7 +131,7 @@ function UserForm() {
                 type="text"
                 placeholder="Select Religion"
                 options={["Islam", "Hindu", "Christian", "Buddhist", "Others"]}
-              />
+              /> */}
               <TextField
                 label="Joining Date *"
                 name="joining_date"
@@ -138,7 +141,7 @@ function UserForm() {
               {/* <TextField label="Subject *" name="subject" type="text" />
               <TextField label="Class *" name="class" type="text" />
               <TextField label="Section *" name="section" type="text" /> */}
-              <TextField label="ID No *" name="id_no" type="number" />
+              {/* <TextField label="ID No *" name="id_no" type="number" /> */}
               {/* <SelectField
                 label="Blood Group *"
                 name="blood_group"

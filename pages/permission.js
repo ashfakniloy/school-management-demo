@@ -6,7 +6,7 @@ import { Formik, Form } from "formik";
 
 function PermissionPage() {
   // const [email, setEmail] = useState("");
-  // const [fetchedData, setFetchedData] = useState(null);
+  const [fetchedData, setFetchedData] = useState({});
 
   const initialvalues = {
     email: "",
@@ -35,7 +35,7 @@ function PermissionPage() {
     const data = await res.json();
 
     if (res.ok) {
-      // setFetchedData(data);
+      setFetchedData(data);
       console.log(data);
     } else {
       console.log(data.message);
@@ -63,25 +63,27 @@ function PermissionPage() {
   // };
 
   return (
-    <div className="flex justify-center items-center p-28">
-      <Formik
-        initialValues={initialvalues}
-        // validationSchema={validate}
-        onSubmit={handleSubmit}
-      >
-        {(formik) => (
-          <Form>
-            <TextField label="Email *" name="email" type="email" />
-            <button
-              type="submit"
-              className="mt-2 px-4 py-2 bg-teal-300 text-sm"
-            >
-              Send
-            </button>
-          </Form>
-        )}
-      </Formik>
-      {/* <form onSubmit={handleSubmit}>
+    <>
+      <div className="flex justify-center items-center pt-28">
+        <Formik
+          initialValues={initialvalues}
+          // validationSchema={validate}
+          onSubmit={handleSubmit}
+        >
+          {(formik) => (
+            <Form>
+              <TextField label="Email *" name="email" type="email" />
+              <button
+                type="submit"
+                className="mt-2 px-4 py-2 bg-teal-300 text-sm"
+              >
+                Send
+              </button>
+            </Form>
+          )}
+        </Formik>
+
+        {/* <form onSubmit={handleSubmit}>
         <input
           type="email"
           value={email}
@@ -92,7 +94,12 @@ function PermissionPage() {
           Send
         </button>
       </form> */}
-    </div>
+      </div>
+      <div className="flex flex-col mt-10 items-center justify-center">
+        <p>Email: {fetchedData.email}</p>
+        <p>Password: {fetchedData.password}</p>
+      </div>
+    </>
   );
 }
 

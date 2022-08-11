@@ -70,7 +70,7 @@ function NoticeBoard({ notices }) {
                   })}
                 </span>
                 <p className="mt-4 mb-2 font-semibold">{notice.title}</p>
-                {/* <div
+                <div
                   className="my-2 text-xs cursor-pointer"
                   onClick={() => toggle(notice.id)}
                 >
@@ -91,7 +91,7 @@ function NoticeBoard({ notices }) {
                       addSuffix: true,
                     })}
                   </span>
-                </p> */}
+                </p>
               </div>
             ))}
         </div>

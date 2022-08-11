@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Router, { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 // import Sidebar from "./Sidebar";
 import Header from "../../Layout/Header";
 import ScrollTop from "../../Layout/ScrollTop";
@@ -8,6 +8,7 @@ import Loader from "../../Layout/Loader";
 import { navLinks } from "./NavLinks";
 import Sidebar from "../../Layout/Sidebar";
 import useGetData from "../../Hooks/useGetData";
+import { allData, getAllData } from "../../../redux/features/admin/loginSlice";
 
 function Layout({ children }) {
   const [showMenu, setShowMenu] = useState(true);
@@ -16,6 +17,12 @@ function Layout({ children }) {
   // const [loggedIn, setLoggedIn] = useState(false);
 
   const router = useRouter();
+
+  const dispatch = useDispatch();
+
+  const { logo, user_name, institution_name, role, token, id } = useSelector(
+    (state) => state.login
+  );
 
   // const { role } = useSelector((state) => state.login);
 
@@ -31,9 +38,64 @@ function Layout({ children }) {
     setLoading(false);
   });
 
-  const { fetchedData } = useGetData("/data/all");
+  // const { fetchedData } = useGetData("/data/all");
+  // dispatch(getAllData(fetchedData));
 
-  const { user_name, institution_name, role, logo } = fetchedData;
+  // useEffect( () => {
+  //   dispatch(allData());
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   // dispatch(allData());
+  //   const res = await fetch(`http://192.168.1.107:8000/v1/data/all/${schoolId}`, {
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     Authorization: `Bearer ${schoolToken}`,
+  //   },
+  // });
+
+  // const data = await res.json();
+
+  // if (res.ok) {
+  //   console.log("data is", data.data);
+  //   // return data.data;
+  // } else {
+  //   return console.log("error", data.message);
+  // }
+  // }, [dispatch]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`http://192.168.1.107:8000/v1/data/all/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        console.log("data is", data.data);
+        dispatch(getAllData(data.data));
+        // return data.data;
+      } else {
+        return console.log("error", data.message);
+      }
+    };
+
+    fetchData();
+
+    // dispatch(getAllData(data));
+  }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(getAllData(fetchedData));
+  //   // dispatch(allData());
+  //   console.log("fetched");
+  // }, []);
+
+  // const { user_name, institution_name, role, logo } = fetchedData;
 
   // useEffect(() => {
   //   if (!user) {

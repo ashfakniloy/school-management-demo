@@ -19,7 +19,6 @@ function useGetData(route) {
       const res = await fetch(url, {
         headers: {
           "Content-Type": "application/json",
-          // Authorization: `Bearer ${user.token}`,
           Authorization: `Bearer ${token}`,
         },
       });
@@ -27,7 +26,6 @@ function useGetData(route) {
 
       if (res.ok) {
         setFetchedData(data.data);
-        // data.data.notice.map((item) => console.log("notice id", item.title));
         console.log("all data", data.data);
       } else {
         console.log("error", data.data);

@@ -1,28 +1,65 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ImFileZip } from "react-icons/im";
 import { toast } from "react-toastify";
 import {
   API_URL,
   user,
-  token,
-  id,
+  token as schoolToken,
+  id as schoolId,
   // institutionName,
   // username,
 } from "../../../config";
 
 const initialState = {
-  token: token ? token : null,
-  id: id ? id : null,
+  token: schoolToken ? schoolToken : null,
+  id: schoolId ? schoolId : null,
   // institutionName: institutionName ? institutionName : null,
   // username: username ? username : null,
   // user: user ? user : null,
-  role: "",
   isLoggedIn: false,
   isError: false,
   isSuccess: false,
   isLoading: false,
   message: "",
+  role: "",
+  institution_name: "",
+  total_students: "",
+  logo: "",
+  notice: "",
+  total_earnings: "",
+  total_expenses: "",
+  total_female: "",
+  total_male: "",
+  total_parents: "",
+  total_teachers: "",
+  user_name: "",
 };
+
+// export const allData = createAsyncThunk("admin/allData", async (thunkAPI) => {
+//   const res = await fetch(`http://192.168.1.107:8000/v1/data/all/${schoolId}`, {
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${schoolToken}`,
+//     },
+//   });
+
+//   const data = await res.json();
+
+//   if (res.ok) {
+//     console.log("data is", data.data);
+//     // return data.data;
+//   } else {
+//     return console.log("error", data.message);
+//   }
+
+//   // if (res.ok) {
+//   //   console.log("all data", data.data);
+//   // } else {
+//   //   console.log("error", data.data);
+//   //   return thunkAPI.rejectWithValue(data.data);
+//   // }
+
+//   return data.data;
+// });
 
 export const login = createAsyncThunk(
   "admin/login",
@@ -105,6 +142,35 @@ export const loginSlice = createSlice({
       // state.institutionName = null;
       // state.username = null;
     },
+    getAllData: (state, action) => {
+      const {
+        institution_name,
+        user_name,
+        total_students,
+        total_male,
+        total_female,
+        total_teachers,
+        total_parents,
+        total_earnings,
+        total_expenses,
+        role,
+        logo,
+        notice,
+      } = action.payload;
+
+      state.institution_name = institution_name;
+      state.user_name = user_name;
+      state.total_students = total_students;
+      state.total_male = total_male;
+      state.total_female = total_female;
+      state.total_teachers = total_teachers;
+      state.total_parents = total_parents;
+      state.total_earnings = total_earnings;
+      state.total_expenses = total_expenses;
+      state.role = role;
+      state.logo = logo;
+      state.notice = notice;
+    },
     // loggedIn: (state, action) => {
     //   state.isLoggedIn = action.payload;
     // },
@@ -136,18 +202,46 @@ export const loginSlice = createSlice({
         // state.institutionName = null;
         // state.username = null;
       })
-      .addCase(logout.fulfilled),
-      (state) => {
+      .addCase(logout.fulfilled, (state) => {
         state.token = null;
         state.id = null;
         state.isLoggedIn = false;
         state.isError = false;
         state.isSuccess = false;
         state.isLoading = false;
-      };
+      });
+    // .addCase(allData.fulfilled, (state, action) => {
+    //   const {
+    //     institution_name,
+    //     user_name,
+    //     total_students,
+    //     total_male,
+    //     total_female,
+    //     total_teachers,
+    //     total_parents,
+    //     total_earnings,
+    //     total_expenses,
+    //     role,
+    //     logo,
+    //     notice,
+    //   } = action.payload;
+
+    //   state.institution_name = institution_name;
+    //   state.user_name = user_name;
+    //   state.total_students = total_students;
+    //   state.total_male = total_male;
+    //   state.total_female = total_female;
+    //   state.total_teachers = total_teachers;
+    //   state.total_parents = total_parents;
+    //   state.total_earnings = total_earnings;
+    //   state.total_expenses = total_expenses;
+    //   state.role = role;
+    //   state.logo = logo;
+    //   state.notice = notice;
+    // });
   },
 });
 
-export const { reset } = loginSlice.actions;
+export const { reset, getAllData } = loginSlice.actions;
 
 export default loginSlice.reducer;
