@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import {
   API_URL,
-  user,
+  // user,
   token as schoolToken,
   id as schoolId,
   // institutionName,
@@ -61,71 +61,68 @@ const initialState = {
 //   return data.data;
 // });
 
-export const login = createAsyncThunk(
-  "admin/login",
-  async (values, thunkAPI) => {
-    // try {
-    //   const res = await fetch(`${API_URL}/admin/login`, {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(values),
-    //   });
+export const login = createAsyncThunk("admin/login", async (values, user) => {
+  // try {
+  //   const res = await fetch(`${API_URL}/admin/login`, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(values),
+  //   });
 
-    //   const data = await res.json();
+  //   const data = await res.json();
 
-    //   if (res.ok) {
-    //     console.log("success", data);
-    // localStorage.setItem("school token", data.token);
-    // localStorage.setItem("school id", data.id);
-    // localStorage.setItem("institution name", data.institution_name);
-    // localStorage.setItem("username", data.user_name);
-    //   }
+  //   if (res.ok) {
+  //     console.log("success", data);
+  // localStorage.setItem("school token", data.token);
+  // localStorage.setItem("school id", data.id);
+  // localStorage.setItem("institution name", data.institution_name);
+  // localStorage.setItem("username", data.user_name);
+  //   }
 
-    //   return data;
-    // } catch (error) {
-    //   console.log(error);
-    //   toast.error(error.data.message);
-    //   return thunkAPI.rejectWithValue(error.data);
-    // }
+  //   return data;
+  // } catch (error) {
+  //   console.log(error);
+  //   toast.error(error.data.message);
+  //   return thunkAPI.rejectWithValue(error.data);
+  // }
 
-    const res = await fetch(`${API_URL}/admin/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
+  const res = await fetch(`${API_URL}/admin/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(values),
+  });
 
-    const data = await res.json();
+  const data = await res.json();
 
-    if (res.ok) {
-      console.log("success", data);
+  if (res.ok) {
+    console.log("success", data);
 
-      // localStorage.setItem("user", JSON.stringify(data));
-      localStorage.setItem("token", JSON.stringify(data.token));
-      localStorage.setItem("id", JSON.stringify(data.id));
-    } else {
-      console.log("error", data);
-      toast.error(data.message);
-      return thunkAPI.rejectWithValue(data);
-    }
-
-    // if (res.ok) {
-    //   console.log("success", data);
-    //   localStorage.setItem("school token", data.token);
-    //   localStorage.setItem("school id", data.id);
-    //   localStorage.setItem("institution name", data.institution_name);
-    //   localStorage.setItem("username", data.user_name);
-    // } else {
-    //   console.log("error", data);
-    //   toast.error(data.message);
-    //   return thunkAPI.rejectWithValue(data);
-    // }
-    return data;
+    // localStorage.setItem("user", JSON.stringify(data));
+    localStorage.setItem("token", JSON.stringify(data.token));
+    localStorage.setItem("id", JSON.stringify(data.id));
+  } else {
+    console.log("error", data);
+    toast.error(data.message);
+    // return thunkAPI.rejectWithValue(data);
   }
-);
+
+  // if (res.ok) {
+  //   console.log("success", data);
+  //   localStorage.setItem("school token", data.token);
+  //   localStorage.setItem("school id", data.id);
+  //   localStorage.setItem("institution name", data.institution_name);
+  //   localStorage.setItem("username", data.user_name);
+  // } else {
+  //   console.log("error", data);
+  //   toast.error(data.message);
+  //   return thunkAPI.rejectWithValue(data);
+  // }
+  return data;
+});
 
 export const logout = createAsyncThunk("admin/logout", async () => {
   localStorage.removeItem("token");

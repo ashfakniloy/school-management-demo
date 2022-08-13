@@ -15,9 +15,9 @@ function StudentPage() {
     total_teachers,
     total_parents,
     total_earnings,
-    total_male,
-    total_female,
-    notice,
+    // total_male,
+    // total_female,
+    // notice,
   } = fetchedData;
 
   return (

@@ -33,12 +33,12 @@ function LoginForm({ user }) {
 
   useEffect(() => {
     if (isLoggedIn) {
-      router.push("/admin");
+      router.push(`/${user}`);
     }
   }, [isLoggedIn, router]);
 
-  const handleSubmit = async (values) => {
-    dispatch(login(values));
+  const handleSubmit = async (values, user) => {
+    dispatch(login(values, user));
     // token && schoolId && router.push("/admin");
     // if (token && schoolId) {
     //   dispatch(loggedIn(true));

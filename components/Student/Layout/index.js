@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Router, { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 // import Sidebar from "./Sidebar";
 import Header from "../../Layout/Header";
 import ScrollTop from "../../Layout/ScrollTop";
@@ -14,8 +14,6 @@ function Layout({ children }) {
 
   // const router = useRouter();
 
-  const { role } = useSelector((state) => state.login);
-
   Router.events.on("routeChangeStart", (url) => {
     setLoading(true);
   });
@@ -28,6 +26,37 @@ function Layout({ children }) {
     setLoading(false);
   });
 
+  const dispatch = useDispatch();
+
+  const { logo, user_name, institution_name, role, token, id } = useSelector(
+    (state) => state.login
+  );
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`http://192.168.1.107:8000/v1/data/all/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        console.log("data is", data.data);
+        dispatch(getAllData(data.data));
+        // return data.data;
+      } else {
+        return console.log("error", data.message);
+      }
+    };
+
+    fetchData();
+
+    // dispatch(getAllData(data));
+  }, [dispatch]);
+
   return (
     <div className="flex">
       <Sidebar
@@ -38,7 +67,14 @@ function Layout({ children }) {
       />
 
       <div className="flex-1 min-h-screen">
-        <Header showMenu={showMenu} setShowMenu={setShowMenu} />
+        <Header
+          showMenu={showMenu}
+          setShowMenu={setShowMenu}
+          logo={logo}
+          userName={user_name}
+          institutionName={institution_name}
+          role={role}
+        />
 
         {loading && <Loader />}
 
