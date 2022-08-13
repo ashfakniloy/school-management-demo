@@ -3,23 +3,10 @@ import Table from "../../../components/Admin/Table";
 import { FeesColumn } from "../../../components/Admin/Table/columns/fees";
 import Layout from "../../../components/Admin/Layout";
 import { API_URL } from "../../../config";
+import useGetData from "../../../components/Hooks/useGetData";
 
 function AllExpensesPage() {
-  const [feesData, setFeesData] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(`${API_URL}/fee/all`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-
-      setFeesData(data.all_fees);
-    };
-    getData();
-  }, []);
+  const { fetchedData } = useGetData("/fee/all");
 
   return (
     <Layout>
@@ -30,7 +17,9 @@ function AllExpensesPage() {
             All Fees Data
           </h1>
           <div className="mt-10 px-3 flex flex-col items-center">
-            <Table columnsHeading={FeesColumn} usersData={feesData} />
+            {fetchedData && (
+              <Table columnsHeading={FeesColumn} usersData={fetchedData} />
+            )}
           </div>
         </div>
       </div>

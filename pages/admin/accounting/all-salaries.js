@@ -3,23 +3,10 @@ import Table from "../../../components/Admin/Table";
 import { SalariesColumn } from "../../../components/Admin/Table/columns/salaries";
 import Layout from "../../../components/Admin/Layout";
 import { API_URL } from "../../../config";
+import useGetData from "../../../components/Hooks/useGetData";
 
 function AllExpensesPage() {
-  const [salariesData, setSalariesData] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(`${API_URL}/salary/all`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-
-      setSalariesData(data.salary);
-    };
-    getData();
-  }, []);
+  const { fetchedData } = useGetData("/salary/all");
 
   return (
     <Layout>
@@ -30,7 +17,9 @@ function AllExpensesPage() {
             All Salaries Data
           </h1>
           <div className="mt-10 px-3 flex flex-col items-center">
-            <Table columnsHeading={SalariesColumn} usersData={salariesData} />
+            {fetchedData && (
+              <Table columnsHeading={SalariesColumn} usersData={fetchedData} />
+            )}
           </div>
         </div>
       </div>

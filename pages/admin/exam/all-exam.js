@@ -3,23 +3,10 @@ import Table from "../../../components/Admin/Table";
 import { ExamsColumn } from "../../../components/Admin/Table/columns/exams";
 import Layout from "../../../components/Admin/Layout";
 import { API_URL } from "../../../config";
+import useGetData from "../../../components/Hooks/useGetData";
 
 function AllExamsPage() {
-  const [examsData, setExamsData] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(`${API_URL}/exam/all`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-
-      setExamsData(data.all_exams);
-    };
-    getData();
-  }, []);
+  const { fetchedData } = useGetData("/exam/all");
 
   return (
     <Layout>
@@ -30,7 +17,9 @@ function AllExamsPage() {
             All Exams Data
           </h1>
           <div className="mt-10 px-3 flex flex-col items-center">
-            <Table columnsHeading={ExamsColumn} usersData={examsData} />
+            {fetchedData && (
+              <Table columnsHeading={ExamsColumn} usersData={fetchedData} />
+            )}
           </div>
         </div>
       </div>

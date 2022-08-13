@@ -3,23 +3,10 @@ import Table from "../../../components/Admin/Table";
 import { ClassesColumn } from "../../../components/Admin/Table/columns/classes";
 import Layout from "../../../components/Admin/Layout";
 import { API_URL } from "../../../config";
+import useGetData from "../../../components/Hooks/useGetData";
 
 function AllClassesPage() {
-  const [classesData, setClassesData] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(`${API_URL}/class/all`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-
-      setClassesData(data.class);
-    };
-    getData();
-  }, []);
+  const { fetchedData } = useGetData("/class_routine/all");
 
   return (
     <Layout>
@@ -30,7 +17,9 @@ function AllClassesPage() {
             All Classes Data
           </h1>
           <div className="mt-10 px-3 flex flex-col items-center">
-            <Table columnsHeading={ClassesColumn} usersData={classesData} />
+            {fetchedData && (
+              <Table columnsHeading={ClassesColumn} usersData={fetchedData} />
+            )}
           </div>
         </div>
       </div>

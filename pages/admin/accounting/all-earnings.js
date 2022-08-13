@@ -3,23 +3,10 @@ import Table from "../../../components/Admin/Table";
 import { EarningsColumn } from "../../../components/Admin/Table/columns/earnings";
 import Layout from "../../../components/Admin/Layout";
 import { API_URL } from "../../../config";
+import useGetData from "../../../components/Hooks/useGetData";
 
 function AllEarningsPage() {
-  const [earningsData, setEarningsData] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(`${API_URL}/earning/all`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-
-      setEarningsData(data.earning);
-    };
-    getData();
-  }, []);
+  const { fetchedData } = useGetData("/earning/all");
 
   return (
     <Layout>
@@ -30,7 +17,9 @@ function AllEarningsPage() {
             All Earnings Data
           </h1>
           <div className="mt-10 px-3 flex flex-col items-center">
-            <Table columnsHeading={EarningsColumn} usersData={earningsData} />
+            {fetchedData && (
+              <Table columnsHeading={EarningsColumn} usersData={fetchedData} />
+            )}
           </div>
         </div>
       </div>

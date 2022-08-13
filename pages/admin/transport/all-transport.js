@@ -6,23 +6,7 @@ import Layout from "../../../components/Admin/Layout";
 import { API_URL } from "../../../config";
 
 function AllTransportPage() {
-  const [transportsData, setTransportsData] = useState([]);
-
   const { fetchedData } = useGetData("/transport/all");
-
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const res = await fetch(`${API_URL}/transport/all`, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-  //     const data = await res.json();
-
-  //     setTransportsData(data.transport);
-  //   };
-  //   getData();
-  // }, []);
 
   return (
     <Layout>

@@ -6,23 +6,7 @@ import Layout from "../../../components/Admin/Layout";
 import { API_URL } from "../../../config";
 
 function AllSubjectsPage() {
-  const [subjectsData, setSubjectsData] = useState([]);
-
   const { fetchedData } = useGetData("/subject/all");
-
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     const res = await fetch(`${API_URL}/subject/all`, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-  //     const data = await res.json();
-
-  //     setSubjectsData(data.subject);
-  //   };
-  //   getData();
-  // }, []);
 
   return (
     <Layout>

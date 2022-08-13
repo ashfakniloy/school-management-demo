@@ -8,31 +8,31 @@ import usePostData from "../../Hooks/usePostData";
 function ClassForm() {
   const initialvalues = {
     teacher_name: "",
-    id_no: "",
-    gender: "",
+    // id_no: "",
+    // gender: "",
     class: "",
     subject: "",
     section: "",
     time: "",
     date: "",
-    phone: "",
+    // phone: "",
     email: "",
   };
 
   const validate = Yup.object({
     teacher_name: Yup.string().required("Teacher name is required"),
-    id_no: Yup.string().required("ID number is required"),
-    gender: Yup.string().required("Gender is required"),
+    // id_no: Yup.string().required("ID number is required"),
+    // gender: Yup.string().required("Gender is required"),
     class: Yup.string().required("Class is required"),
     subject: Yup.string().required("Subject is required"),
     section: Yup.string().required("Section is required"),
     time: Yup.string().required("Time is required"),
     date: Yup.string().required("Date is required"),
-    phone: Yup.string().required("Phone is required"),
+    // phone: Yup.string().required("Phone is required"),
     email: Yup.string().required("Email is required"),
   });
 
-  const { postData } = usePostData("/class/add");
+  const { postData } = usePostData("/class_routine/add");
 
   const handleSubmit = (values, formik) => {
     postData(values, formik);
@@ -57,20 +57,20 @@ function ClassForm() {
                 name="teacher_name"
                 type="text"
               />
-              <TextField label="ID No *" name="id_no" type="number" />
+              {/* <TextField label="ID No *" name="id_no" type="number" />
               <SelectField
                 label="Gender *"
                 name="gender"
                 type="text"
                 placeholder="Select Gender"
                 options={["Male", "Female"]}
-              />
+              /> */}
               <TextField label="Class *" name="class" type="text" />
               <TextField label="Subject *" name="subject" type="text" />
               <TextField label="Section *" name="section" type="text" />
               <TextField label="Time *" name="time" type="text" />
               <TextField label="Date *" name="date" type="date" />
-              <TextField label="Phone *" name="phone" type="number" />
+              {/* <TextField label="Phone *" name="phone" type="number" /> */}
               <TextField label="Email *" name="email" type="email" />
             </div>
 

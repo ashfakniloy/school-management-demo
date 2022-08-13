@@ -136,17 +136,17 @@ export const navLinks = [
   },
   {
     id: 7,
-    name: "class",
+    name: "class routine",
     // link: "/class",
-    icon: <SiGoogleclassroom className="fill-green-400" />,
+    icon: <BsCalendar3 className="fill-green-400" />,
     subLinks: [
       {
         name: "all classes",
-        link: "/admin/class/all-classes",
+        link: "/admin/class-routine/all-classes",
       },
       {
         name: "add new class",
-        link: "/admin/class/add-new-class",
+        link: "/admin/class-routine/add-new-class",
       },
     ],
   },
@@ -166,12 +166,12 @@ export const navLinks = [
       },
     ],
   },
-  {
-    id: 9,
-    name: "class Routine",
-    link: "/admin/class-routine",
-    icon: <BsCalendar3 className="fill-green-400" />,
-  },
+  // {
+  //   id: 9,
+  //   name: "class Routine",
+  //   link: "/admin/class-routine",
+  //   icon: <BsCalendar3 className="fill-green-400" />,
+  // },
   {
     id: 10,
     name: "attendance",
@@ -289,5 +289,21 @@ export const navLinks = [
     name: "account",
     link: "/admin/account",
     icon: <AiFillSetting className="fill-green-400" />,
+  },
+  {
+    id: 20,
+    name: "billing",
+    link: "/admin/billing",
+    icon: <AiFillSetting className="fill-green-400" />,
+    subLinks: [
+      {
+        name: "All Bills",
+        link: "/admin/billing/all-bills",
+      },
+      {
+        name: "Pay Bills",
+        link: "/admin/billing/pay-bills",
+      },
+    ],
   },
 ];

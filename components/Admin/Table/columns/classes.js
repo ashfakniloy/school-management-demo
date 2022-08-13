@@ -9,10 +9,10 @@ export const ClassesColumn = [
     Header: "Teacher Name",
     accessor: "teacher_name",
   },
-  {
-    Header: "Gender",
-    accessor: "gender",
-  },
+  // {
+  //   Header: "Gender",
+  //   accessor: "gender",
+  // },
   {
     Header: "Class",
     accessor: "class",
@@ -36,10 +36,10 @@ export const ClassesColumn = [
     Header: "Time",
     accessor: "time",
   },
-  {
-    Header: "Phone",
-    accessor: "phone",
-  },
+  // {
+  //   Header: "Phone",
+  //   accessor: "phone",
+  // },
   {
     Header: "Email",
     accessor: "email",
