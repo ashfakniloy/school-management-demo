@@ -4,7 +4,7 @@ import LoginForm from "../../components/Login/LoginForm";
 function GuardianLogin() {
   return (
     <div className="bg-gray-100">
-      <LoginForm user="guardian" />
+      <LoginForm user="guardian" route="guardian" />
     </div>
   );
 }

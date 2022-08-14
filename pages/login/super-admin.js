@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import LoginForm from "../../components/Login/LoginForm";
 import { useDispatch, useSelector } from "react-redux";
 
-function AdminLogin() {
+function SuperAdminLogin() {
   // const dispatch = useDispatch();
   // const userId = useSelector((state) => state.login.userId);
 
@@ -10,9 +10,9 @@ function AdminLogin() {
 
   return (
     <div className="bg-gray-100">
-      <LoginForm user="admin" route="admin" />
+      <LoginForm user="super admin" route="admin" />
     </div>
   );
 }
 
-export default AdminLogin;
+export default SuperAdminLogin;

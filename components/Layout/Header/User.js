@@ -17,7 +17,8 @@ function User({ logo, userName, role }) {
     // localStorage.removeItem("id");
     dispatch(logout());
     dispatch(reset());
-    router.push("/login/admin");
+    // router.push(`/login/${role.split(" ").join("-")}`);
+    router.push("/");
   };
 
   return (

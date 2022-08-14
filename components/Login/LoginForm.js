@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, reset, loggedIn } from "../../redux/features/admin/loginSlice";
 // import { API_URL, token, schoolId } from "../../config";
 
-function LoginForm({ user }) {
+function LoginForm({ user, route }) {
   const initialvalues = {
     email: "",
     password: "",
@@ -22,7 +22,7 @@ function LoginForm({ user }) {
 
   // const handleSubmit = (values, formik) => {
   //   console.log(values);
-  //   router.push(`/${user}`);
+  //   router.push(`/${route}`);
   // };
 
   const router = useRouter();
@@ -33,12 +33,12 @@ function LoginForm({ user }) {
 
   useEffect(() => {
     if (token && id) {
-      router.push(`/${user}`);
+      router.push(`/${route}`);
     }
-  }, [token, id, router, user]);
+  }, [token, id, router, route]);
 
-  const handleSubmit = async (values, user) => {
-    dispatch(login(values, user));
+  const handleSubmit = async (values, route) => {
+    dispatch(login(values, route));
     // token && schoolId && router.push("/admin");
     // if (token && schoolId) {
     //   dispatch(loggedIn(true));
@@ -135,7 +135,7 @@ function LoginForm({ user }) {
                   >
                     Login
                   </button>
-                  {user === "admin" && (
+                  {user === "super admin" && (
                     <p className="mt-4 text-xs text-teal-600">
                       <a href="http://localhost:3001/school-management-system">
                         Don&apos;t have an account? Register here

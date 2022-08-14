@@ -3,16 +3,16 @@ import { toast } from "react-toastify";
 import {
   API_URL,
   // user,
-  token as schoolToken,
-  id as schoolId,
+  token,
+  id,
   // institutionName,
   // username,
 } from "../../../config";
 import authService from "./authService";
 
 const initialState = {
-  token: schoolToken ? schoolToken : null,
-  id: schoolId ? schoolId : null,
+  token: token ? token : null,
+  id: id ? id : null,
   // institutionName: institutionName ? institutionName : null,
   // username: username ? username : null,
   // user: user ? user : null,
@@ -35,60 +35,7 @@ const initialState = {
   user_name: "",
 };
 
-// export const allData = createAsyncThunk("admin/allData", async (thunkAPI) => {
-//   const res = await fetch(`http://192.168.1.107:8000/v1/data/all/${schoolId}`, {
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${schoolToken}`,
-//     },
-//   });
-
-//   const data = await res.json();
-
-//   if (res.ok) {
-//     console.log("data is", data.data);
-//     // return data.data;
-//   } else {
-//     return console.log("error", data.message);
-//   }
-
-//   // if (res.ok) {
-//   //   console.log("all data", data.data);
-//   // } else {
-//   //   console.log("error", data.data);
-//   //   return thunkAPI.rejectWithValue(data.data);
-//   // }
-
-//   return data.data;
-// });
-
 export const login = createAsyncThunk("admin/login", async (values, user) => {
-  // try {
-  //   const res = await fetch(`${API_URL}/admin/login`, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(values),
-  //   });
-
-  //   const data = await res.json();
-
-  //   if (res.ok) {
-  //     console.log("success", data);
-  // localStorage.setItem("school token", data.token);
-  // localStorage.setItem("school id", data.id);
-  // localStorage.setItem("institution name", data.institution_name);
-  // localStorage.setItem("username", data.user_name);
-  //   }
-
-  //   return data;
-  // } catch (error) {
-  //   console.log(error);
-  //   toast.error(error.data.message);
-  //   return thunkAPI.rejectWithValue(error.data);
-  // }
-
   const res = await fetch(`${API_URL}/admin/login`, {
     method: "POST",
     headers: {
@@ -102,7 +49,6 @@ export const login = createAsyncThunk("admin/login", async (values, user) => {
   if (res.ok) {
     console.log("success", data);
 
-    // localStorage.setItem("user", JSON.stringify(data));
     localStorage.setItem("token", JSON.stringify(data.token));
     localStorage.setItem("id", JSON.stringify(data.id));
   } else {
@@ -110,28 +56,10 @@ export const login = createAsyncThunk("admin/login", async (values, user) => {
     toast.error(data.message);
     // return thunkAPI.rejectWithValue(data);
   }
-
-  // if (res.ok) {
-  //   console.log("success", data);
-  //   localStorage.setItem("school token", data.token);
-  //   localStorage.setItem("school id", data.id);
-  //   localStorage.setItem("institution name", data.institution_name);
-  //   localStorage.setItem("username", data.user_name);
-  // } else {
-  //   console.log("error", data);
-  //   toast.error(data.message);
-  //   return thunkAPI.rejectWithValue(data);
-  // }
   return data;
 });
 
-// export const logout = createAsyncThunk("admin/logout", async () => {
-//   localStorage.removeItem("token");
-//   localStorage.setItem("id", JSON.stringify(data.id));
-// });
-
 export const logout = createAsyncThunk("auth/logout", () => {
-  // authService.logout();
   localStorage.removeItem("token");
   localStorage.removeItem("id");
 });
@@ -144,8 +72,18 @@ export const loginSlice = createSlice({
       state.token = null;
       state.id = null;
       state.isLoggedIn = false;
-      // state.institutionName = null;
-      // state.username = null;
+      state.role = null;
+      state.institution_name = null;
+      state.total_students = null;
+      state.logo = null;
+      state.notice = null;
+      state.total_earnings = null;
+      state.total_expenses = null;
+      state.total_female = null;
+      state.total_male = null;
+      state.total_parents = null;
+      state.total_teachers = null;
+      state.user_name = null;
     },
     getAllData: (state, action) => {
       const {

@@ -5,7 +5,7 @@ import { userCategories } from "./userCategories";
 function Login() {
   return (
     <div className="flex justify-center items-center h-screen bg-slate-200">
-      <div className="grid grid-cols-4 bg-white p-5">
+      <div className="grid grid-cols-5 bg-white p-5">
         {userCategories.map((user) => (
           <div
             key={user.id}

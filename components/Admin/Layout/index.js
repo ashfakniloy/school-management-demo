@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Header from "../../Layout/Header";
 import ScrollTop from "../../Layout/ScrollTop";
 import Loader from "../../Layout/Loader";
-import { navLinks } from "./NavLinks";
+import { navLinks, superAdminNavLinks } from "./NavLinks";
 import Sidebar from "../../Layout/Sidebar";
 import useGetData from "../../Hooks/useGetData";
 import { allData, getAllData } from "../../../redux/features/admin/loginSlice";
@@ -98,10 +98,20 @@ function Layout({ children }) {
 
   // const { user_name, institution_name, role, logo } = fetchedData;
 
+  const navLinks = () => {
+    if (role === "super admin") {
+      return superAdminNavLinks;
+    }
+
+    if (role === "admin") {
+      return navLinks;
+    }
+  };
+
   useEffect(() => {
     if (!token && !id) {
       // router.push("/login/admin");
-      router.replace("/login/admin");
+      router.replace("/");
     } else {
       // setLoggedIn(true);
       console.log("logged in");
@@ -117,7 +127,7 @@ function Layout({ children }) {
       <Sidebar
         showMenu={showMenu}
         setShowMenu={setShowMenu}
-        navLinks={navLinks}
+        navLinks={navLinks()}
         name="admin"
       />
 

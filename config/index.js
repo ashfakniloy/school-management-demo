@@ -23,7 +23,7 @@ export const id =
 // export const token =
 //   typeof window !== "undefined" ? localStorage.getItem("school token") : null;
 
-// export const schoolId =
+// export const id =
 //   typeof window !== "undefined" ? localStorage.getItem("school id") : null;
 
 // export const institutionName =
