@@ -108,7 +108,7 @@ function Layout({ children }) {
     }
   }, [token, id, router]);
 
-  if (!token && !id) {
+  if (!user_name) {
     return <Loader />;
   }
 
