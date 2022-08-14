@@ -9,6 +9,7 @@ function PermissionPage() {
   const [fetchedData, setFetchedData] = useState({});
 
   const initialvalues = {
+    identity_id: "",
     email: "",
     // password: "",
   };
@@ -71,7 +72,8 @@ function PermissionPage() {
           onSubmit={handleSubmit}
         >
           {(formik) => (
-            <Form>
+            <Form className="space-y-4">
+              <TextField label="School Code *" name="identity_id" type="text" />
               <TextField label="Email *" name="email" type="email" />
               <button
                 type="submit"

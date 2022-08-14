@@ -40,7 +40,7 @@ function useGetData(route) {
       // }
     };
     getData();
-  }, [setFetchedData]);
+  }, [setFetchedData, route, id, token]);
 
   return { fetchedData };
 }

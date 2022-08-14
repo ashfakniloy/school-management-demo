@@ -32,8 +32,8 @@ function BarChart() {
         label: "Sales for 2020 (M)",
         data: [3, 2, 2],
         fill: true,
-        borderColor: ["rgba(255, 206, 86, 0.2)"],
-        backgroundColor: ["rgba(255, 206, 86, 1)"],
+        borderColor: ["transparent"],
+        backgroundColor: ["#589BD2"],
         // pointBackgroundColor: "rgba(255, 206, 86, 0.2)",
         // pointBorderColor: "rgba(255, 206, 86, 0.2)",
       },
@@ -41,8 +41,8 @@ function BarChart() {
         label: "Sales for 2019 (M)",
         data: [1, 3, 2],
         fill: true,
-        borderColor: ["rgba(54, 162, 235, 0.2)"],
-        backgroundColor: ["rgba(54, 162, 235, 1)"],
+        borderColor: ["transparent"],
+        backgroundColor: ["#EC7E31"],
         // pointBackgroundColor: "rgba(54, 162, 235, 0.2)",
         // pointBorderColor: "rgba(54, 162, 235, 0.2)",
       },
@@ -55,7 +55,7 @@ function BarChart() {
   };
 
   return (
-    <div className=" bg-white p-5 shadow-lg">
+    <div className=" bg-gradient-to-t from-green-400 to-green-100 p-5 shadow-lg">
       <h1 className="my-5 text-2xl">Expenses</h1>
       <div className="h-[350px]">
         <Bar data={data} options={options} />

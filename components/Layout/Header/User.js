@@ -5,6 +5,7 @@ import useDropdowm from "../../Hooks/useDropdown";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { reset, logout } from "../../../redux/features/admin/loginSlice";
+import Image from "next/image";
 
 function User({ logo, userName, role }) {
   const [showDropdown, setShowDropdown, node] = useDropdowm();
@@ -22,13 +23,13 @@ function User({ logo, userName, role }) {
   return (
     <div ref={node} className="relative">
       <div
-        className="flex justify-between items-center px-3 py-2 gap-3 rounded hover:bg-slate-200 transition duration-300 cursor-pointer"
+        className="flex justify-between items-center px-3 py-[2px]  gap-3 rounded hover:bg-slate-200 transition duration-300 cursor-pointer"
         onClick={() => setShowDropdown(!showDropdown)}
       >
         <div className="flex text-end gap-2">
           <div className="">
-            <h4 className="text-sm">{userName}</h4>
-            <p className="text-xs font-extralight">{role}</p>
+            <h4 className="">{userName}</h4>
+            <p className="text-sm font-extralight">{role}</p>
           </div>
 
           <span className="pt-1 text-sm">
@@ -38,7 +39,17 @@ function User({ logo, userName, role }) {
           </span>
         </div>
         <div className="">
-          <FaUserCircle className="fill-emerald-500 text-3xl" />
+          {logo ? (
+            <Image
+              src={logo}
+              alt="user"
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
+          ) : (
+            <FaUserCircle className="fill-emerald-500 text-3xl" />
+          )}
         </div>
       </div>
 

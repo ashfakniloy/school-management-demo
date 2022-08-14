@@ -48,7 +48,7 @@ function Sidebar({ showMenu, setShowMenu, navLinks, name }) {
                   <Link href={navLink.link} passHref>
                     <div className="border-t border-slate-600">
                       <div
-                        className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
+                        className={`px-7 py-3 text-sm cursor-pointer ${activeClass(
                           navLink.link
                         )}`}
                       >
@@ -72,7 +72,7 @@ function Sidebar({ showMenu, setShowMenu, navLinks, name }) {
                 ) : (
                   <div className="border-t border-slate-600">
                     <div
-                      className={`px-7 py-3 text-[13px] cursor-pointer ${activeClass(
+                      className={`px-7 py-3 text-sm cursor-pointer ${activeClass(
                         navLink.link
                       )}`}
                       onClick={() => toggle(navLink.id)}

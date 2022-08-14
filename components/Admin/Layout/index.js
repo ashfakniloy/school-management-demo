@@ -9,6 +9,7 @@ import { navLinks } from "./NavLinks";
 import Sidebar from "../../Layout/Sidebar";
 import useGetData from "../../Hooks/useGetData";
 import { allData, getAllData } from "../../../redux/features/admin/loginSlice";
+import { API_URL } from "../../../config";
 
 function Layout({ children }) {
   const [showMenu, setShowMenu] = useState(true);
@@ -66,7 +67,7 @@ function Layout({ children }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`http://192.168.1.107:8000/v1/data/all/${id}`, {
+      const res = await fetch(`${API_URL}/data/all/${id}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -87,7 +88,7 @@ function Layout({ children }) {
     fetchData();
 
     // dispatch(getAllData(data));
-  }, [dispatch]);
+  }, [dispatch, id, token]);
 
   // useEffect(() => {
   //   dispatch(getAllData(fetchedData));
@@ -97,17 +98,19 @@ function Layout({ children }) {
 
   // const { user_name, institution_name, role, logo } = fetchedData;
 
-  // useEffect(() => {
-  //   if (!user) {
-  //     router.push("/login/admin");
-  //   } else {
-  //     setLoggedIn(true);
-  //   }
-  // }, [user, router]);
+  useEffect(() => {
+    if (!token && !id) {
+      // router.push("/login/admin");
+      router.replace("/login/admin");
+    } else {
+      // setLoggedIn(true);
+      console.log("logged in");
+    }
+  }, [token, id, router]);
 
-  // if (!loggedIn) {
-  //   return <Loader />;
-  // }
+  if (!token && !id) {
+    return <Loader />;
+  }
 
   return (
     <div className="flex">

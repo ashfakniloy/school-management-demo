@@ -35,7 +35,7 @@ function LoginForm({ user }) {
     if (isLoggedIn) {
       router.push(`/${user}`);
     }
-  }, [isLoggedIn, router]);
+  }, [isLoggedIn, router, user]);
 
   const handleSubmit = async (values, user) => {
     dispatch(login(values, user));

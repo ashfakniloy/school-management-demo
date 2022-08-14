@@ -24,7 +24,9 @@ function Header({
 
         <div className="">
           {/* <h2 className="text-xl font-semibold">{institutionName}</h2> */}
-          <h2 className="text-xl font-semibold">{institutionName}</h2>
+          <h2 className="text-xl font-semibold text-cyan-600">
+            {institutionName}
+          </h2>
         </div>
       </div>
 

@@ -27,9 +27,10 @@ function DoughnutChart({ male, female }) {
     datasets: [
       {
         data: [male, female],
+        // data: [200, 48],
         fill: true,
-        borderColor: ["white"],
-        backgroundColor: ["rgba(255, 206, 86, 1)", "blue"],
+        borderColor: ["transparent"],
+        backgroundColor: ["#36A2EB", "#FF6384"],
         // pointBackgroundColor: "rgba(255, 206, 86, 0.2)",
         // pointBorderColor: "rgba(255, 206, 86, 0.2)",
       },
@@ -42,7 +43,7 @@ function DoughnutChart({ male, female }) {
   };
 
   return (
-    <div className=" bg-white p-5 shadow-lg">
+    <div className="bg-gradient-to-t from-emerald-400 to-emerald-100 p-5 shadow-lg">
       <h1 className="my-5 text-2xl">Students</h1>
       <div className="h-[350px]">
         <Doughnut data={data} options={options} />

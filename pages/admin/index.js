@@ -48,7 +48,7 @@ function AdminPage() {
           <BarChart />
           <DoughnutChart male={total_male} female={total_female} />
           <div className="col-span-2">
-            {notice ? <NoticeBoard notices={notice} /> : null}
+            <NoticeBoard notices={notice} />
           </div>
         </div>
       </div>

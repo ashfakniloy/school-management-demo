@@ -55,7 +55,7 @@ function Layout({ children }) {
     fetchData();
 
     // dispatch(getAllData(data));
-  }, [dispatch]);
+  }, [dispatch, id, token]);
 
   return (
     <div className="flex">

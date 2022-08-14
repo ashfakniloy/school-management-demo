@@ -55,7 +55,7 @@ function LineChart() {
   };
 
   return (
-    <div className="bg-white p-5 shadow-lg">
+    <div className="bg-gradient-to-t from-cyan-400 to-cyan-100  p-5 shadow-lg">
       <h1 className="my-5 text-2xl">Earnings</h1>
       <div className="w-[700px] h-[350px]">
         <Line data={data} options={options} />

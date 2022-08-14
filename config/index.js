@@ -1,6 +1,8 @@
-export const API_URL = "http://192.168.1.107:8000/v1";
+// export const API_URL = "http://192.168.1.107:8000/v1";
 
 // export const API_URL = "http://206.189.132.115/v1";
+
+export const API_URL = "http://34.131.4.194/v1";
 
 // export const user =
 //   typeof window !== "undefined" ? localStorage.getItem("user") : null;

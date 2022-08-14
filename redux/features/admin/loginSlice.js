@@ -8,6 +8,7 @@ import {
   // institutionName,
   // username,
 } from "../../../config";
+import authService from "./authService";
 
 const initialState = {
   token: schoolToken ? schoolToken : null,
@@ -124,9 +125,14 @@ export const login = createAsyncThunk("admin/login", async (values, user) => {
   return data;
 });
 
-export const logout = createAsyncThunk("admin/logout", async () => {
-  localStorage.removeItem("token");
-  localStorage.setItem("id", JSON.stringify(data.id));
+// export const logout = createAsyncThunk("admin/logout", async () => {
+//   localStorage.removeItem("token");
+//   localStorage.setItem("id", JSON.stringify(data.id));
+// });
+
+export const logout = createAsyncThunk("auth/logout", async () => {
+  // await authService.logout()
+  authService.logout();
 });
 
 export const loginSlice = createSlice({

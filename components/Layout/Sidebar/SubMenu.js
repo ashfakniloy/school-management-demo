@@ -20,7 +20,7 @@ function SubMenu({ subLink }) {
       )}}`}
     >
       <Link href={subLink.link} passHref>
-        <p className="my-3 text-xs">{subLink.name}</p>
+        <p className="my-3 text-[13px]">{subLink.name}</p>
       </Link>
     </div>
   );
