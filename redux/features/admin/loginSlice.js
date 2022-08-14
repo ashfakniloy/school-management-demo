@@ -130,9 +130,10 @@ export const login = createAsyncThunk("admin/login", async (values, user) => {
 //   localStorage.setItem("id", JSON.stringify(data.id));
 // });
 
-export const logout = createAsyncThunk("auth/logout", async () => {
-  // await authService.logout()
-  authService.logout();
+export const logout = createAsyncThunk("auth/logout", () => {
+  // authService.logout();
+  localStorage.removeItem("token");
+  localStorage.removeItem("id");
 });
 
 export const loginSlice = createSlice({
@@ -142,6 +143,7 @@ export const loginSlice = createSlice({
     reset: (state) => {
       state.token = null;
       state.id = null;
+      state.isLoggedIn = false;
       // state.institutionName = null;
       // state.username = null;
     },

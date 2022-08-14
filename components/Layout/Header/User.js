@@ -15,8 +15,8 @@ function User({ logo, userName, role }) {
   const handleLogOut = () => {
     // localStorage.removeItem("token");
     // localStorage.removeItem("id");
-    // dispatch(reset());
     dispatch(logout());
+    dispatch(reset());
     router.push("/login/admin");
   };
 

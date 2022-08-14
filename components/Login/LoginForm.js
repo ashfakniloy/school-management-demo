@@ -27,15 +27,15 @@ function LoginForm({ user }) {
 
   const router = useRouter();
   const dispatch = useDispatch();
-  const { token, schoolId, isLoggedIn } = useSelector((state) => state.login);
+  const { token, id, isLoggedIn } = useSelector((state) => state.login);
   // const { token, userId, isError, isSucccess, isLoading, message } =
   //   useSelector((state) => state.login);
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (token && id) {
       router.push(`/${user}`);
     }
-  }, [isLoggedIn, router, user]);
+  }, [token, id, router, user]);
 
   const handleSubmit = async (values, user) => {
     dispatch(login(values, user));

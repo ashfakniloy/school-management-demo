@@ -1,40 +1,119 @@
-import { API_URL } from "../../../config";
+// import { toast } from "react-toastify";
+// import { createAsyncThunk } from "@reduxjs/toolkit";
+// import { API_URL } from "../../../config";
 
-const login = async () => {
-  const res = await fetch(`${API_URL}/admin/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(values),
-  });
+// const adminLogin = async (values) => {
+//   const res = await fetch(`${API_URL}/admin/login`, {
+//     method: "POST",
+//     headers: {
+//       Accept: "application/json",
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(values),
+//   });
 
-  const data = await res.json();
+//   const data = await res.json();
 
-  if (res.ok) {
-    console.log("success", data);
+//   if (res.ok) {
+//     console.log("success", data);
 
-    // localStorage.setItem("user", JSON.stringify(data));
-    localStorage.setItem("token", JSON.stringify(data.token));
-    localStorage.setItem("id", JSON.stringify(data.id));
-  }
+//     // localStorage.setItem("user", JSON.stringify(data));
+//     localStorage.setItem("token", JSON.stringify(data.token));
+//     localStorage.setItem("id", JSON.stringify(data.id));
+//   } else {
+//     console.log("error", data);
+//     toast.error(data.message);
+//   }
 
-  return data;
+//   return data;
+// };
 
-  // else {
-  //   console.log("error", data);
-  //   toast.error(data.message);
-  // }
-};
+// const teacherLogin = async () => {
+//   const res = await fetch(`${API_URL}/teacher/login`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(values),
+//   });
 
-const logout = () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("id");
-};
+//   const data = await res.json();
 
-const authService = {
-  login,
-  logout,
-};
+//   if (res.ok) {
+//     console.log("success", data);
 
-export default authService;
+//     // localStorage.setItem("user", JSON.stringify(data));
+//     localStorage.setItem("token", JSON.stringify(data.token));
+//     localStorage.setItem("id", JSON.stringify(data.id));
+//   } else {
+//     console.log("error", data);
+//     toast.error(data.message);
+//   }
+
+//   return data;
+// };
+
+// const studentLogin = async () => {
+//   const res = await fetch(`${API_URL}/student/login`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(values),
+//   });
+
+//   const data = await res.json();
+
+//   if (res.ok) {
+//     console.log("success", data);
+
+//     // localStorage.setItem("user", JSON.stringify(data));
+//     localStorage.setItem("token", JSON.stringify(data.token));
+//     localStorage.setItem("id", JSON.stringify(data.id));
+//   } else {
+//     console.log("error", data);
+//     toast.error(data.message);
+//   }
+
+//   return data;
+// };
+
+// const parentLogin = async () => {
+//   const res = await fetch(`${API_URL}/parent/login`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(values),
+//   });
+
+//   const data = await res.json();
+
+//   if (res.ok) {
+//     console.log("success", data);
+
+//     // localStorage.setItem("user", JSON.stringify(data));
+//     localStorage.setItem("token", JSON.stringify(data.token));
+//     localStorage.setItem("id", JSON.stringify(data.id));
+//   } else {
+//     console.log("error", data);
+//     toast.error(data.message);
+//   }
+
+//   return data;
+// };
+
+// const logout = () => {
+// localStorage.removeItem("token");
+// localStorage.removeItem("id");
+// };
+
+// const authService = {
+//   adminLogin,
+//   teacherLogin,
+//   studentLogin,
+//   parentLogin,
+//   logout,
+// };
+
+// export default authService;
