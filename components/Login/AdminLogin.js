@@ -4,14 +4,12 @@ import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { TextField } from "../../components/common/InputField";
+import { TextField } from "../common/InputField";
 import { useSelector } from "react-redux";
-
 import useLogin from "../Hooks/useLogin";
 
-function LoginForm({ user, route }) {
+function AdminLogin({ user, route }) {
   const initialvalues = {
-    // [(user === "teacher" || "student" || "parent") && institution_id]: "",
     email: "",
     password: "",
   };
@@ -20,11 +18,6 @@ function LoginForm({ user, route }) {
     email: Yup.string().required("Email is required"),
     password: Yup.string().required("Password is required"),
   });
-
-  // const handleSubmit = (values, formik) => {
-  //   console.log(values);
-  //   router.push(`/${route}`);
-  // };
 
   const router = useRouter();
 
@@ -91,4 +84,4 @@ function LoginForm({ user, route }) {
   );
 }
 
-export default LoginForm;
+export default AdminLogin;

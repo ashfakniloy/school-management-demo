@@ -1,12 +1,14 @@
 import React from "react";
-import LoginForm from "../../components/Login/LoginForm";
+// import LoginForm from "../../components/Login/LoginForm";
+import UserLogin from "../../components/Login/UserLogin";
 
-function GuardianLogin() {
+function GuardianLoginPage() {
   return (
     <div className="bg-gray-100">
-      <LoginForm user="guardian" route="guardian" />
+      {/* <LoginForm user="guardian" route="guardian" /> */}
+      <UserLogin user="guardian" route="guardian" />
     </div>
   );
 }
 
-export default GuardianLogin;
+export default GuardianLoginPage;

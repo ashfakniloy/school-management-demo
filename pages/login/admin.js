@@ -1,18 +1,12 @@
-import { useEffect } from "react";
-import LoginForm from "../../components/Login/LoginForm";
-import { useDispatch, useSelector } from "react-redux";
+import AdminLogin from "../../components/Login/AdminLogin";
 
-function AdminLogin() {
-  // const dispatch = useDispatch();
-  // const userId = useSelector((state) => state.login.userId);
-
-  // console.log("userid", userId);
-
+function AdminLoginPage() {
   return (
     <div className="bg-gray-100">
-      <LoginForm user="admin" route="admin" />
+      {/* <LoginForm user="admin" route="admin" /> */}
+      <AdminLogin user="admin" route="admin" />
     </div>
   );
 }
 
-export default AdminLogin;
+export default AdminLoginPage;
