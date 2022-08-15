@@ -1,11 +1,12 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { HYDRATE, createWrapper } from "next-redux-wrapper";
-import usersReducer from "../features/admin/usersSlice";
-import loginReducer from "../features/admin/loginSlice";
+
+import authReducer from "../features/auth/authSlice";
+import infoReducer from "../features/info/infoSlice";
 
 export const combinedReducers = combineReducers({
-  // users: usersReducer,
-  login: loginReducer,
+  auth: authReducer,
+  info: infoReducer,
 });
 
 // const masterReducer = (state, action) => {

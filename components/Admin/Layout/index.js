@@ -10,8 +10,9 @@ import ScrollTop from "../../Layout/ScrollTop";
 import Loader from "../../Layout/Loader";
 // import { adminNavLinks, superAdminNavLinks } from "./NavLinks";
 import useGetData from "../../Hooks/useGetData";
-import { allData, getAllData } from "../../../redux/features/admin/loginSlice";
+import { allData, getAllData } from "../../../redux/features/auth/authSlice";
 import { API_URL } from "../../../config";
+import { getInfo } from "../../../redux/features/info/infoSlice";
 
 function Layout({ children }) {
   const [showMenu, setShowMenu] = useState(true);
@@ -23,8 +24,10 @@ function Layout({ children }) {
 
   const dispatch = useDispatch();
 
-  const { logo, user_name, institution_name, role, token, id } = useSelector(
-    (state) => state.login
+  const { token, id } = useSelector((state) => state.auth);
+
+  const { logo, user_name, institution_name, role } = useSelector(
+    (state) => state.info
   );
 
   // const { role } = useSelector((state) => state.login);
@@ -79,8 +82,8 @@ function Layout({ children }) {
       const data = await res.json();
 
       if (res.ok) {
-        console.log("data is", data.data);
-        dispatch(getAllData(data.data));
+        console.log("info", data.data);
+        dispatch(getInfo(data.data));
         // return data.data;
       } else {
         return console.log("error", data.message);

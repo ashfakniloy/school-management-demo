@@ -1,18 +1,13 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-// import { API_URL, token, schoolId } from "../../config";
 import { API_URL } from "../../config";
 
 function useGetData(route) {
   const [fetchedData, setFetchedData] = useState([]);
 
-  // const url = API_URL + route;
-
-  // const user = useSelector((state) => state.login);
-  const { token, id } = useSelector((state) => state.login);
+  const { token, id } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    // const url = `${API_URL}${route}/${user.id}`;
     const url = `${API_URL}${route}/${id}`;
 
     const getData = async () => {
@@ -30,14 +25,6 @@ function useGetData(route) {
       } else {
         console.log("error", data.data);
       }
-
-      // setFetchedData(data.hostel);
-
-      // if (res.ok) {
-      //   setFetchedData(data.hostel);
-      // } else {
-      //   console.log("error");
-      // }
     };
     getData();
   }, [setFetchedData, route, id, token]);

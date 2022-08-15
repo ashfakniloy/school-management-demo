@@ -20,7 +20,7 @@ function AdminPage() {
   //   notice,
   // } = useSelector((state) => state.login);
 
-  const { role } = useSelector((state) => state.login);
+  const { role } = useSelector((state) => state.info);
 
   const {
     total_students,

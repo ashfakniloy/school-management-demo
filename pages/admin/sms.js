@@ -1,6 +1,6 @@
 import React from "react";
 import Layout from "../../components/Admin/Layout";
-import SMSForm from "../../components/Admin/Form/SMSForm";
+// import SMSForm from "../../components/Admin/Form/SMSForm";
 
 function AddSMSPage() {
   return (

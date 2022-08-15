@@ -3,15 +3,9 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 
 function usePostData(route) {
-  const { token, id } = useSelector((state) => state.login);
+  const { token, id } = useSelector((state) => state.auth);
 
-  // const url = API_URL + route + schoolId;
   const url = `${API_URL}${route}/${id}`;
-
-  // const postData = (values, formik) => {
-  //   console.log("add hostel data", values);
-  //   // formik.resetForm();
-  // };
 
   const postData = async (values, formik) => {
     const res = await fetch(url, {
@@ -35,26 +29,6 @@ function usePostData(route) {
       toast.error(data.message);
     }
   };
-
-  // const postData = async (values, formik) => {
-  //   const res = await fetch(url, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(values),
-  //   });
-  //   const data = await res.json();
-
-  //   if (res.ok) {
-  //     toast.success("Form Submitted Successfully!");
-  //     console.log(data);
-  //     // formik.resetForm();
-  //   } else {
-  //     console.log("error", data);
-  //     toast.error(data.message);
-  //   }
-  // };
 
   return { postData };
 }

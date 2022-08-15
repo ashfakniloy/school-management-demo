@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import Router, { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import { API_URL } from "../../config";
-import { getAllData } from "../../redux/features/admin/loginSlice";
+
+import { getInfo } from "../../redux/features/info/infoSlice";
+
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import ScrollTop from "./ScrollTop";
@@ -20,8 +22,10 @@ function Layout({ children }) {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const { logo, user_name, institution_name, role, token, id } = useSelector(
-    (state) => state.login
+  const { token, id } = useSelector((state) => state.auth);
+
+  const { logo, user_name, institution_name, role } = useSelector(
+    (state) => state.info
   );
 
   Router.events.on("routeChangeStart", (url) => {
@@ -49,7 +53,7 @@ function Layout({ children }) {
 
       if (res.ok) {
         console.log("data is", data.data);
-        dispatch(getAllData(data.data));
+        dispatch(getInfo(data.data));
         // return data.data;
       } else {
         return console.log("error", data.message);

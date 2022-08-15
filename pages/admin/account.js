@@ -45,20 +45,26 @@ function AccountPage() {
   const [userDetails, setUserDetails] = useState("");
   // const [userDetails, setUserDetails] = useState(fetchedData[0]);
 
-  const { role } = useSelector((state) => state.login);
+  const { role } = useSelector((state) => state.info);
 
   const router = useRouter();
 
+  // useEffect(() => {
+  //   console.log(fetchedData[0]);
+  //   setUserDetails(fetchedData[0]);
+  //   if (role !== "super admin") {
+  //     router.replace("/404");
+  //   }
+  // }, [fetchedData, setUserDetails, role, router]);
+
   useEffect(() => {
-    if (role !== "super admin") {
-      router.replace("/404");
-    }
     console.log(fetchedData[0]);
     setUserDetails(fetchedData[0]);
-  }, [fetchedData, setUserDetails, role, router]);
+  }, [fetchedData, setUserDetails]);
 
   // if (role !== "super admin") {
-  //   router.push("/404");
+  //   router.replace("/404");
+  //   return;
   // }
 
   return (

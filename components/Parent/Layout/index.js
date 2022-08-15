@@ -15,7 +15,7 @@ function Layout({ children }) {
 
   // const router = useRouter();
 
-  const { role } = useSelector((state) => state.login);
+  const { role } = useSelector((state) => state.info);
 
   Router.events.on("routeChangeStart", (url) => {
     setLoading(true);
