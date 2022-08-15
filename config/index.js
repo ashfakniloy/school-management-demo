@@ -2,7 +2,8 @@
 
 // export const API_URL = "http://206.189.132.115/v1";
 
-export const API_URL = "http://34.131.4.194/v1";
+// export const API_URL = "http://34.131.4.194/v1";
+export const API_URL = "https://limassolwaterdelivery.com/v1";
 
 // export const user =
 //   typeof window !== "undefined" ? localStorage.getItem("user") : null;

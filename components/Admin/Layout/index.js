@@ -103,9 +103,10 @@ function Layout({ children }) {
   const navLinks = () => {
     if (role === "super admin") {
       return superAdmin;
-    }
-    if (role === "admin") {
+    } else if (role === "admin") {
       return admin;
+    } else {
+      return superAdmin;
     }
   };
 
