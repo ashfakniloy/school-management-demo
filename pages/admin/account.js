@@ -1,48 +1,65 @@
 import { useState } from "react";
 import Layout from "../../components/Admin/Layout";
-import UserForm from "../../components/Admin/Form/UserForm";
+// import Layout from "../../components/Layout";
+import AdminForm from "../../components/Admin/Form/AdminForm";
 import Users from "../../components/Admin/Account/Users";
 import UserDetails from "../../components/Admin/Account/UserDetails";
 import useGetData from "../../components/Hooks/useGetData";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
-const users = [
-  {
-    id: 1,
-    name: "Steven Johnson",
-    role: "Super Admin",
-    gender: "Male",
-    image: "/images/user2.jpg",
-  },
-  {
-    id: 2,
-    name: "John Doe",
-    role: "Admin",
-    gender: "Male",
-    image: "/images/user2.jpg",
-  },
-  {
-    id: 3,
-    name: "Random User",
-    role: "User",
-    gender: "Female",
-    image: "/images/user2.jpg",
-  },
-  {
-    id: 4,
-    name: "Random User 2",
-    role: "User",
-    gender: "Female",
-    image: "/images/user2.jpg",
-  },
-];
+// const users = [
+//   {
+//     id: 1,
+//     name: "Steven Johnson",
+//     role: "Super Admin",
+//     gender: "Male",
+//     image: "/images/user2.jpg",
+//   },
+//   {
+//     id: 2,
+//     name: "John Doe",
+//     role: "Admin",
+//     gender: "Male",
+//     image: "/images/user2.jpg",
+//   },
+//   {
+//     id: 3,
+//     name: "Random User",
+//     role: "User",
+//     gender: "Female",
+//     image: "/images/user2.jpg",
+//   },
+//   {
+//     id: 4,
+//     name: "Random User 2",
+//     role: "User",
+//     gender: "Female",
+//     image: "/images/user2.jpg",
+//   },
+// ];
 
-function AddEmail() {
-  const [userDetails, setUserDetails] = useState(users[0]);
+function AccountPage() {
+  const { fetchedData } = useGetData("/admin_user/all");
+  const [userDetails, setUserDetails] = useState("");
   // const [userDetails, setUserDetails] = useState(fetchedData[0]);
 
-  console.log(userDetails);
+  const { role } = useSelector((state) => state.login);
 
-  const { fetchedData } = useGetData("/admin_user/all");
+  const router = useRouter();
+
+  useEffect(() => {
+    if (role !== "super admin") {
+      router.replace("/404");
+    }
+    console.log(fetchedData[0]);
+    setUserDetails(fetchedData[0]);
+  }, [fetchedData, setUserDetails, role, router]);
+
+  // if (role !== "super admin") {
+  //   router.push("/404");
+  // }
 
   return (
     <Layout>
@@ -51,24 +68,23 @@ function AddEmail() {
           Account Setting
         </h1>
         <div className="mt-8">
-          <UserForm />
+          <AdminForm />
         </div>
-        <div className="mt-8 flex gap-5">
-          <Users
-            users={users}
-            userDetails={userDetails}
-            setUserDetails={setUserDetails}
-          />
-          {/* <Users
-            users={fetchedData}
-            userDetails={userDetails}
-            setUserDetails={setUserDetails}
-          /> */}
-          <UserDetails userDetails={userDetails} />
-        </div>
+
+        {userDetails && (
+          <div className="mt-8 flex gap-5">
+            <Users
+              users={fetchedData}
+              userDetails={userDetails}
+              setUserDetails={setUserDetails}
+            />
+
+            <UserDetails userDetails={userDetails} />
+          </div>
+        )}
       </div>
     </Layout>
   );
 }
 
-export default AddEmail;
+export default AccountPage;

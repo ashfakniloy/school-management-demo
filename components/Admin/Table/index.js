@@ -97,7 +97,7 @@ function Table({ columnsHeading, usersData }) {
         {...getTableProps()}
         className="table-auto border-collapse border border-slate-600 text-xs lg:text-base min-w-[1500px]"
       >
-        <thead className="bg-cyan-600 text-white">
+        <thead className="bg-gradient-to-t from-cyan-600 to-cyan-400 text-white">
           {headerGroups.map((headerGroup, i) => (
             <tr key={i} {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column, i) => (
@@ -137,7 +137,7 @@ function Table({ columnsHeading, usersData }) {
               <tr
                 key={i}
                 {...row.getRowProps()}
-                className="even:bg-cyan-100 hover:bg-cyan-200"
+                className="hover:shadow transition duration-200 "
               >
                 {row.cells.map((cell, i) => {
                   return (
@@ -156,7 +156,7 @@ function Table({ columnsHeading, usersData }) {
         </tbody>
       </table>
 
-      <div className="flex text-sm items-center mt-3 space-x-2">
+      <div className="flex justify-center text-sm items-center mt-3 space-x-2">
         <span className="text-sm">
           Page{" "}
           <strong>

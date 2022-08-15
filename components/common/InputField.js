@@ -18,26 +18,26 @@ import Image from "next/image";
 //   );
 // };
 
-export const TextField = ({ label, name, type }) => {
+export const TextField = ({ label, ...props }) => {
   return (
     <div className="">
-      <label htmlFor={name}>{label}</label>
+      <label {...props}>{label}</label>
       <div className="mt-1 relative">
         <Field
           className="p-2 w-full outline-none bg-slate-100 border border-slate-300 focus:border-slate-500"
-          id={name}
-          name={name}
-          type={type}
+          // id={name}
+          // name={name}
+          {...props}
         />
         <p className="absolute -bottom-4 text-red-600 text-xs">
-          <ErrorMessage name={name} />
+          <ErrorMessage {...props} />
         </p>
       </div>
     </div>
   );
 };
 
-export const TextArea = ({ label, name, ...rest }) => {
+export const TextArea = ({ label, name, ...props }) => {
   return (
     <div className="col-start-1 md:col-end-3">
       <label htmlFor={name}>{label}</label>
@@ -48,7 +48,7 @@ export const TextArea = ({ label, name, ...rest }) => {
           className="p-2 w-full outline-none bg-slate-100 border border-slate-300 focus:border-slate-500"
           id={name}
           name={name}
-          {...rest}
+          {...props}
         />
         <p className="absolute -bottom-4 text-red-600 text-xs">
           <ErrorMessage name={name} />

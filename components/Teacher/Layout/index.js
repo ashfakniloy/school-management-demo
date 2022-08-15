@@ -6,7 +6,8 @@ import Header from "../../Layout/Header";
 import ScrollTop from "../../Layout/ScrollTop";
 import Loader from "../../Layout/Loader";
 import Sidebar from "../../Layout/Sidebar";
-import { navLinks } from "./NavLinks";
+import { teacher } from "../../Layout/Sidebar/navlinks/teacher";
+// import { navLinks } from "./NavLinks";
 
 function Layout({ children }) {
   const [showMenu, setShowMenu] = useState(true);
@@ -33,7 +34,7 @@ function Layout({ children }) {
       <Sidebar
         showMenu={showMenu}
         setShowMenu={setShowMenu}
-        navLinks={navLinks}
+        navLinks={teacher}
         name="teacher"
       />
 

@@ -56,7 +56,7 @@ function BarChart() {
 
   return (
     <div className=" bg-gradient-to-t from-green-400 to-green-100 p-5 shadow-lg">
-      <h1 className="my-5 text-2xl">Expenses</h1>
+      <h1 className="my-5 text-xl">Expenses</h1>
       <div className="h-[350px]">
         <Bar data={data} options={options} />
       </div>

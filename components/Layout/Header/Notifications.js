@@ -23,7 +23,7 @@ function Notifications() {
 
       {showDropdown && (
         <div className="absolute w-[400px] font-light top-[44px] right-0 bg-white shadow-md">
-          <p className="px-1 py-4 bg-red-500 text-white transition duration-300 text-center cursor-default">
+          <p className="px-1 py-4 bg-gradient-to-t from-red-600 to-red-300 text-white transition duration-300 text-center cursor-default">
             Notifications
           </p>
 

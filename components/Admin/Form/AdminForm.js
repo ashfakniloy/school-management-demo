@@ -7,7 +7,7 @@ import { TextField, TextArea, SelectField } from "../../common/InputField";
 import { API_URL } from "../../../config";
 import usePostData from "../../Hooks/usePostData";
 
-function UserForm() {
+function AdminForm() {
   const initialvalues = {
     first_name: "",
     last_name: "",
@@ -90,7 +90,7 @@ function UserForm() {
           <Form>
             <ToastContainer />
             <h1 className="text-xl font-semibold text-slate-800">
-              Add New User
+              Add New Admin
             </h1>
             <div className="form">
               <TextField label="First Name *" name="first_name" type="text" />
@@ -163,4 +163,4 @@ function UserForm() {
   );
 }
 
-export default UserForm;
+export default AdminForm;

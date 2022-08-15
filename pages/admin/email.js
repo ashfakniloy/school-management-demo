@@ -1,7 +1,8 @@
 import Layout from "../../components/Admin/Layout";
+// import Layout from "../../components/Layout";
 import EmailForm from "../../components/Admin/Form/EmailForm";
 
-function AddEmail() {
+function EmailPage() {
   return (
     <Layout>
       <div className="px-8 py-10 ">
@@ -14,4 +15,4 @@ function AddEmail() {
   );
 }
 
-export default AddEmail;
+export default EmailPage;

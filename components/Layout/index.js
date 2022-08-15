@@ -1,20 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Router, { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { API_URL } from "../../config";
+import { getAllData } from "../../redux/features/admin/loginSlice";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-// import { adminLinks } from "../Admin/Sidebar/adminLinks";
-// import { teacherLinks } from "../Teacher/Sidebar/teacherLinks";
 import ScrollTop from "./ScrollTop";
 import Loader from "./Loader";
+import { superAdmin } from "./Sidebar/navlinks/superAdmin";
+import { admin } from "./Sidebar/navlinks/admin";
+import { teacher } from "./Sidebar/navlinks/teacher";
+import { student } from "./Sidebar/navlinks/student";
+import { parent } from "./Sidebar/navlinks/parent";
 
 function Layout({ children }) {
   const [showMenu, setShowMenu] = useState(true);
   const [loading, setLoading] = useState(false);
 
-  // const router = useRouter();
+  const router = useRouter();
+  const dispatch = useDispatch();
 
-  const { role } = useSelector((state) => state.login);
+  const { logo, user_name, institution_name, role, token, id } = useSelector(
+    (state) => state.login
+  );
 
   Router.events.on("routeChangeStart", (url) => {
     setLoading(true);
@@ -28,27 +36,77 @@ function Layout({ children }) {
     setLoading(false);
   });
 
-  // const navLinks = () => {
-  //   if (role === "admin") {
-  //     return adminLinks;
-  //   }
-  //   if (role === "teacher") {
-  //     return teacherLinks;
-  //   }
-  // };
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`${API_URL}/data/all/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        console.log("data is", data.data);
+        dispatch(getAllData(data.data));
+        // return data.data;
+      } else {
+        return console.log("error", data.message);
+      }
+    };
+
+    fetchData();
+
+    // dispatch(getAllData(data));
+  }, [dispatch, id, token]);
+
+  useEffect(() => {
+    if (!token && !id) {
+      // router.push("/login/admin");
+      router.replace("/");
+    } else {
+      // setLoggedIn(true);
+      console.log("logged in");
+    }
+  }, [token, id, router]);
+
+  const navLinks = () => {
+    if (role === "super admin") {
+      return superAdmin;
+    }
+    if (role === "admin") {
+      return admin;
+    }
+    if (role === "teacher") {
+      return teacher;
+    }
+    if (role === "student") {
+      return student;
+    }
+    if (role === "parent") {
+      return parent;
+    }
+  };
 
   return (
     <div className="flex">
-      {role && (
-        <Sidebar
-          showMenu={showMenu}
-          setShowMenu={setShowMenu}
-          // navLinks={navLinks()}
-        />
-      )}
+      <Sidebar
+        showMenu={showMenu}
+        setShowMenu={setShowMenu}
+        navLinks={navLinks()}
+        name={role}
+      />
 
       <div className="flex-1 min-h-screen">
-        <Header showMenu={showMenu} setShowMenu={setShowMenu} />
+        <Header
+          showMenu={showMenu}
+          setShowMenu={setShowMenu}
+          logo={logo}
+          userName={user_name}
+          institutionName={institution_name}
+          role={role}
+        />
 
         {loading && <Loader />}
 

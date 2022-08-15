@@ -16,9 +16,12 @@ function Header({
   // const { institutionName, username } = useSelector((state) => state.login);
 
   return (
-    <div className="bg-white w-full flex justify-between items-center shadow-md px-5 py-2 sticky top-0 z-10">
+    <div className="bg-white w-full  flex justify-between items-center shadow-md px-5 py-2 sticky top-0 z-10">
       <div className="ml-3 flex items-center gap-10">
-        <div className="text-gray-700" onClick={() => setShowMenu(!showMenu)}>
+        <div
+          className="text-gray-700 text-lg"
+          onClick={() => setShowMenu(!showMenu)}
+        >
           <FaBars />
         </div>
 

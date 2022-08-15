@@ -1,11 +1,12 @@
 import Layout from "../../components/Admin/Layout";
+import { useSelector } from "react-redux";
+// import Layout from "../../components/Layout";
 import Cards from "../../components/Admin/Dashboard/Cards";
 import LineChart from "../../components/Admin/Dashboard/Charts/LineChart";
 import BarChart from "../../components/Admin/Dashboard/Charts/BarChart";
 import DoughnutChart from "../../components/Admin/Dashboard/Charts/DoughnutChart";
 import NoticeBoard from "../../components/Admin/NoticeBoard";
 import useGetData from "../../components/Hooks/useGetData";
-import { useSelector } from "react-redux";
 
 function AdminPage() {
   const { fetchedData } = useGetData("/data/all");
@@ -18,6 +19,8 @@ function AdminPage() {
   //   total_female,
   //   notice,
   // } = useSelector((state) => state.login);
+
+  const { role } = useSelector((state) => state.login);
 
   const {
     total_students,
@@ -32,8 +35,8 @@ function AdminPage() {
   return (
     <Layout>
       <div className="bg-gray-100 px-8 py-10 ">
-        <h1 className="text-xl font-semibold text-slate-800">
-          Admin Dashboard
+        <h1 className="text-xl font-semibold text-slate-800 capitalize">
+          {role} Dashboard
         </h1>
         <div className="mt-8 grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
           <Cards

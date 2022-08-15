@@ -5,8 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import Header from "../../Layout/Header";
 import ScrollTop from "../../Layout/ScrollTop";
 import Loader from "../../Layout/Loader";
-import { navLinks } from "./NavLinks";
+// import { navLinks } from "./NavLinks";
 import Sidebar from "../../Layout/Sidebar";
+import { student } from "../../Layout/Sidebar/navlinks/student";
 
 function Layout({ children }) {
   const [showMenu, setShowMenu] = useState(true);
@@ -62,7 +63,7 @@ function Layout({ children }) {
       <Sidebar
         showMenu={showMenu}
         setShowMenu={setShowMenu}
-        navLinks={navLinks}
+        navLinks={student}
         name="student"
       />
 

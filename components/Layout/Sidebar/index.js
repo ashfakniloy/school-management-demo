@@ -30,7 +30,7 @@ function Sidebar({ showMenu, setShowMenu, navLinks, name }) {
       }`}
     >
       <div className="relative">
-        <div className="p-5">
+        <div className="py-5 px-10">
           <h2
             className={`text-2xl text-white duration-300 capitalize ${
               showMenu ? "opacity-100" : "opacity-0"

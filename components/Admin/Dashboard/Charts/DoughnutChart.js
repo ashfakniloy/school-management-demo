@@ -44,7 +44,7 @@ function DoughnutChart({ male, female }) {
 
   return (
     <div className="bg-gradient-to-t from-emerald-400 to-emerald-100 p-5 shadow-lg">
-      <h1 className="my-5 text-2xl">Students</h1>
+      <h1 className="my-5 text-xl">Students</h1>
       <div className="h-[350px]">
         <Doughnut data={data} options={options} />
       </div>

@@ -3,10 +3,12 @@ import Router, { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 // import Sidebar from "./Sidebar";
 import Header from "../../Layout/Header";
+import Sidebar from "../../Layout/Sidebar";
+import { admin } from "../../Layout/Sidebar/navlinks/admin";
+import { superAdmin } from "../../Layout/Sidebar/navlinks/superAdmin";
 import ScrollTop from "../../Layout/ScrollTop";
 import Loader from "../../Layout/Loader";
-import { navLinks, superAdminNavLinks } from "./NavLinks";
-import Sidebar from "../../Layout/Sidebar";
+// import { adminNavLinks, superAdminNavLinks } from "./NavLinks";
 import useGetData from "../../Hooks/useGetData";
 import { allData, getAllData } from "../../../redux/features/admin/loginSlice";
 import { API_URL } from "../../../config";
@@ -100,11 +102,10 @@ function Layout({ children }) {
 
   const navLinks = () => {
     if (role === "super admin") {
-      return superAdminNavLinks;
+      return superAdmin;
     }
-
     if (role === "admin") {
-      return navLinks;
+      return admin;
     }
   };
 
@@ -118,9 +119,9 @@ function Layout({ children }) {
     }
   }, [token, id, router]);
 
-  if (!token && !id) {
-    return <Loader />;
-  }
+  // if (!token && !id) {
+  //   return <Loader />;
+  // }
 
   return (
     <div className="flex">
@@ -128,7 +129,7 @@ function Layout({ children }) {
         showMenu={showMenu}
         setShowMenu={setShowMenu}
         navLinks={navLinks()}
-        name="admin"
+        name={role}
       />
 
       <div className="flex-1 min-h-screen">
