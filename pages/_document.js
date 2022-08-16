@@ -5,6 +5,9 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <title>School management system</title>
+          <meta name="description" content="school management" />
+          <meta name="keywords" content="school management" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
