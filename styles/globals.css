@@ -15,7 +15,7 @@ body {
   @apply pt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-sm gap-x-8 gap-y-5 md:gap-y-7;
 }
 
-/* sidebar */
+/* chrome sidebar */
 .sidebar::-webkit-scrollbar {
   width: 0px;
 }
@@ -32,19 +32,14 @@ body {
 }
 
 /* firefox sidebar */
-.sidebar::-moz-scrollbar {
-  width: 0px;
-}
-
-::-moz-scrollbar {
-  width: 6px;
-}
-::-moz-scrollbar-thumb {
-  background-color: grey;
-  border-radius: 40px;
-}
-::-moz-scrollbar-track {
-  background-color: transparent;
+@supports (scrollbar-color: grey transparent) {
+  * {
+    scrollbar-color: grey transparent;
+    scrollbar-width: thin;
+  }
+  .sidebar {
+    scrollbar-width: none;
+  }
 }
 
 /* loading spinner */
