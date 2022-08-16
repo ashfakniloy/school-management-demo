@@ -74,7 +74,7 @@ function AdminLogin({ user, route }) {
                   </button>
                   {user === "super admin" && (
                     <p className="mt-4 text-xs text-teal-600">
-                      <a href="http://localhost:3001/school-management-system">
+                      <a href="https://shannonit.vercel.app/school-management-system">
                         Don&apos;t have an account? Register here
                       </a>
                     </p>
