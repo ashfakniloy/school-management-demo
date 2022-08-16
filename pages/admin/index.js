@@ -9,7 +9,11 @@ import NoticeBoard from "../../components/Admin/NoticeBoard";
 import useGetData from "../../components/Hooks/useGetData";
 
 function AdminPage() {
-  const { fetchedData } = useGetData("/data/all");
+  const { user_role } = useSelector((state) => state.auth);
+  const { role } = useSelector((state) => state.info);
+
+  const user = user_role && user_role.split(" ").join("_");
+  const { fetchedData } = useGetData(`/data/${user}/all`);
   // const {
   //   total_students,
   //   total_teachers,
@@ -19,8 +23,6 @@ function AdminPage() {
   //   total_female,
   //   notice,
   // } = useSelector((state) => state.login);
-
-  const { role } = useSelector((state) => state.info);
 
   const {
     total_students,

@@ -33,7 +33,7 @@ function ScrollTop() {
       onClick={scrollToTop}
       className={
         isVisible
-          ? "fixed bottom-10 right-10 p-3 text-2xl text-slate-100 bg-gray-500 rounded-full transition-opacity duration-300 hover:bg-gray-700 active:scale-90"
+          ? "fixed bottom-10 right-8 p-2 text-2xl text-slate-100 bg-gray-500 rounded transition-opacity duration-300 hover:bg-gray-700 active:scale-90"
           : "hidden"
       }
     >

@@ -3,8 +3,8 @@ import { AiOutlineLogout, AiOutlineSetting } from "react-icons/ai";
 import { GoTriangleDown } from "react-icons/go";
 import useDropdowm from "../../Hooks/useDropdown";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
-import { reset, logout } from "../../../redux/features/auth/authSlice";
+// import { useDispatch } from "react-redux";
+// import { reset, logout } from "../../../redux/features/auth/authSlice";
 import Image from "next/image";
 import useLogOut from "../../Hooks/useLogOut";
 
@@ -14,14 +14,15 @@ function User({ logo, userName, role }) {
   // const dispatch = useDispatch();
   const { logoutUser } = useLogOut();
 
-  const handleLogOut = () => {
+  const handleLogOut = async () => {
+    await router.push("/");
     logoutUser();
     // localStorage.removeItem("token");
     // localStorage.removeItem("id");
     // dispatch(logout());
     // dispatch(reset());
     // router.push(`/login/${role.split(" ").join("-")}`);
-    router.push("/");
+    // router.push("/");
   };
 
   return (

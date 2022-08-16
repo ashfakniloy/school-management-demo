@@ -13,6 +13,7 @@ const initialState = {
   total_teachers: "",
   notice: "",
   logo: "",
+  // user: "",
 };
 
 export const infoSlice = createSlice({
@@ -32,7 +33,12 @@ export const infoSlice = createSlice({
       state.total_parents = null;
       state.total_teachers = null;
       state.user_name = null;
+      // state.user = null;
     },
+
+    // getUser: (state, action) => {
+    //   state.user = action.payload;
+    // },
 
     getInfo: (state, action) => {
       const {

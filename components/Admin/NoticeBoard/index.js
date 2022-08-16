@@ -53,7 +53,7 @@ function NoticeBoard({ notices }) {
   };
 
   return (
-    <div className="bg-gradient-to-t from-red-300 to-red-100 p-5 shadow-lg">
+    <div className="bg-gradient-to-t from-teal-400 to-teal-100 p-5 shadow-lg">
       <h1 className="my-5 text-xl">Notice Board</h1>
 
       <div className="m-3 overflow-y-scroll notice  h-[400px]">

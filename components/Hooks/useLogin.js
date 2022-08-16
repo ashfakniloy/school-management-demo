@@ -21,8 +21,11 @@ function useLogin(route) {
 
     if (res.ok) {
       console.log("success", data);
-      localStorage.setItem("token", JSON.stringify(data.token));
-      localStorage.setItem("id", JSON.stringify(data.id));
+      // localStorage.setItem("token", JSON.stringify(data.token));
+      // localStorage.setItem("id", JSON.stringify(data.id));
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("id", data.id);
+      localStorage.setItem("user_role", data.from);
       dispatch(doLogin(data));
     } else {
       console.log("error", data);

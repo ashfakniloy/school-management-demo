@@ -9,12 +9,23 @@ import Loader from "../../Layout/Loader";
 import Sidebar from "../../Layout/Sidebar";
 import { student } from "../../Layout/Sidebar/navlinks/student";
 import { getInfo } from "../../../redux/features/info/infoSlice";
+import { API_URL } from "../../../config";
 
 function Layout({ children }) {
   const [showMenu, setShowMenu] = useState(true);
   const [loading, setLoading] = useState(false);
 
-  // const router = useRouter();
+  const router = useRouter();
+
+  const dispatch = useDispatch();
+
+  const { token, id } = useSelector((state) => state.auth);
+
+  const { logo, user_name, institution_name, role } = useSelector(
+    (state) => state.info
+  );
+
+  // const { role } = useSelector((state) => state.login);
 
   Router.events.on("routeChangeStart", (url) => {
     setLoading(true);
@@ -28,17 +39,15 @@ function Layout({ children }) {
     setLoading(false);
   });
 
-  const dispatch = useDispatch();
+  // const { fetchedData } = useGetData("/data/all");
 
-  const { token, id } = useSelector((state) => state.auth);
-
-  const { logo, user_name, institution_name, role } = useSelector(
-    (state) => state.info
-  );
+  // useEffect(() => {
+  //   dispatch(getInfo(fetchedData));
+  // }, [dispatch, getInfo, fetchedData]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`http://192.168.1.107:8000/v1/data/all/${id}`, {
+      const res = await fetch(`${API_URL}/data/all/${id}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -48,7 +57,7 @@ function Layout({ children }) {
       const data = await res.json();
 
       if (res.ok) {
-        console.log("data is", data.data);
+        console.log("info", data.data);
         dispatch(getInfo(data.data));
         // return data.data;
       } else {
@@ -60,6 +69,28 @@ function Layout({ children }) {
 
     // dispatch(getAllData(data));
   }, [dispatch, id, token]);
+
+  // useEffect(() => {
+  //   dispatch(getAllData(fetchedData));
+  //   // dispatch(allData());
+  //   console.log("fetched");
+  // }, []);
+
+  // const { user_name, institution_name, role, logo } = fetchedData;
+
+  useEffect(() => {
+    if (!token && !id) {
+      // router.push("/login/admin");
+      router.replace("/");
+    } else {
+      // setLoggedIn(true);
+      console.log("logged in");
+    }
+  }, [token, id, router]);
+
+  // if (!user_name) {
+  //   return <Loader />;
+  // }
 
   return (
     <div className="flex">

@@ -5,8 +5,9 @@ import { Formik, Form } from "formik";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { TextField } from "../common/InputField";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import useLogin from "../Hooks/useLogin";
+import { getUser } from "../../redux/features/info/infoSlice";
 
 function AdminLogin({ user, route }) {
   const initialvalues = {
@@ -21,11 +22,15 @@ function AdminLogin({ user, route }) {
 
   const router = useRouter();
 
+  // const dispatch = useDispatch();
+
   const { token, id } = useSelector((state) => state.auth);
 
   const { loginUser } = useLogin(`/${route}`);
 
   useEffect(() => {
+    // dispatch(getUser(user));
+
     if (token && id) {
       router.push(`/${route}`);
     }

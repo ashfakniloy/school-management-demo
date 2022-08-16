@@ -10,8 +10,8 @@ import ScrollTop from "../../Layout/ScrollTop";
 import Loader from "../../Layout/Loader";
 // import { adminNavLinks, superAdminNavLinks } from "./NavLinks";
 import useGetData from "../../Hooks/useGetData";
-import { allData, getAllData } from "../../../redux/features/auth/authSlice";
-import { API_URL } from "../../../config";
+// import { allData, getAllData } from "../../../redux/features/auth/authSlice";
+// import { API_URL } from "../../../config";
 import { getInfo } from "../../../redux/features/info/infoSlice";
 
 function Layout({ children }) {
@@ -24,7 +24,8 @@ function Layout({ children }) {
 
   const dispatch = useDispatch();
 
-  const { token, id } = useSelector((state) => state.auth);
+  const { token, id, user_role } = useSelector((state) => state.auth);
+  // const { token, id } = useSelector((state) => state.auth);
 
   const { logo, user_name, institution_name, role } = useSelector(
     (state) => state.info
@@ -44,56 +45,40 @@ function Layout({ children }) {
     setLoading(false);
   });
 
-  // const { fetchedData } = useGetData("/data/all");
-  // dispatch(getAllData(fetchedData));
+  const user = user_role && user_role.split(" ").join("_");
 
-  // useEffect( () => {
-  //   dispatch(allData());
-  // }, [dispatch]);
+  // console.log(user);
 
-  // useEffect(() => {
-  //   // dispatch(allData());
-  //   const res = await fetch(`http://192.168.1.107:8000/v1/data/all/${schoolId}`, {
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     Authorization: `Bearer ${schoolToken}`,
-  //   },
-  // });
-
-  // const data = await res.json();
-
-  // if (res.ok) {
-  //   console.log("data is", data.data);
-  //   // return data.data;
-  // } else {
-  //   return console.log("error", data.message);
-  // }
-  // }, [dispatch]);
+  const { fetchedData } = useGetData(`/data/${user}/all`);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(`${API_URL}/data/all/${id}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+    dispatch(getInfo(fetchedData));
+  }, [dispatch, fetchedData]);
 
-      const data = await res.json();
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const res = await fetch(`${API_URL}/data/super_admin/all/${id}`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
 
-      if (res.ok) {
-        console.log("info", data.data);
-        dispatch(getInfo(data.data));
-        // return data.data;
-      } else {
-        return console.log("error", data.message);
-      }
-    };
+  //     const data = await res.json();
 
-    fetchData();
+  //     if (res.ok) {
+  //       console.log("info", data.data);
+  //       dispatch(getInfo(data.data));
+  //       // return data.data;
+  //     } else {
+  //       return console.log("error", data.message);
+  //     }
+  //   };
 
-    // dispatch(getAllData(data));
-  }, [dispatch, id, token]);
+  //   fetchData();
+
+  //   // dispatch(getAllData(data));
+  // }, [dispatch, id, token]);
 
   // useEffect(() => {
   //   dispatch(getAllData(fetchedData));
@@ -121,7 +106,7 @@ function Layout({ children }) {
       // setLoggedIn(true);
       console.log("logged in");
     }
-  }, [token, id, router, Loader]);
+  }, [token, id, router]);
 
   // if (!user_name) {
   //   return <Loader />;
