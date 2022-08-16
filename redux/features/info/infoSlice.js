@@ -21,6 +21,7 @@ export const infoSlice = createSlice({
   reducers: {
     resetInfo: (state) => {
       state.institution_name = null;
+      state.role = null;
       state.total_students = null;
       state.logo = null;
       state.notice = null;

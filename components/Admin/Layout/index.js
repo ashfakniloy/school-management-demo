@@ -121,9 +121,9 @@ function Layout({ children }) {
       // setLoggedIn(true);
       console.log("logged in");
     }
-  }, [token, id, router]);
+  }, [token, id, router, Loader]);
 
-  // if (!token && !id) {
+  // if (!user_name) {
   //   return <Loader />;
   // }
 
