@@ -36,7 +36,8 @@ function Sidebar({ showMenu, setShowMenu, navLinks, name }) {
               showMenu ? "opacity-100" : "opacity-0"
             }`}
           >
-            {name}
+            {/* {name} */}
+            Logo
           </h2>
         </div>
 
