@@ -19,7 +19,7 @@ export const authSlice = createSlice({
     doLogin: (state, action) => {
       state.token = action.payload.token;
       state.id = action.payload.id;
-      state.user_role = action.payload.from;
+      state.user_role = action.payload.role;
     },
   },
 });

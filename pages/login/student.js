@@ -6,7 +6,11 @@ function StudentLoginPage() {
   return (
     <div className="bg-gray-100">
       {/* <LoginForm user="student" route="student" /> */}
-      <UserLogin user="student" route="student" />
+      <UserLogin
+        user="student"
+        loginRoute="/student"
+        dashboardRoute="/student"
+      />
     </div>
   );
 }

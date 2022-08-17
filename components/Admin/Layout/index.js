@@ -113,31 +113,33 @@ function Layout({ children }) {
   // }
 
   return (
-    <div className="flex">
-      <Sidebar
-        showMenu={showMenu}
-        setShowMenu={setShowMenu}
-        navLinks={navLinks()}
-        name={role}
-      />
-
-      <div className="flex-1 min-h-screen">
-        <Header
+    <>
+      <div className="flex">
+        <Sidebar
           showMenu={showMenu}
           setShowMenu={setShowMenu}
-          logo={logo}
-          userName={user_name}
-          institutionName={institution_name}
-          role={role}
+          navLinks={navLinks()}
+          name={role}
         />
 
-        {loading && <Loader />}
+        <div className="flex-1 min-h-screen">
+          <Header
+            showMenu={showMenu}
+            setShowMenu={setShowMenu}
+            logo={logo}
+            userName={user_name}
+            institutionName={institution_name}
+            role={role}
+          />
 
-        {children}
+          {loading && <Loader />}
 
-        <ScrollTop />
+          {children}
+
+          <ScrollTop />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

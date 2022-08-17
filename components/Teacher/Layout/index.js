@@ -20,7 +20,7 @@ function Layout({ children }) {
 
   const dispatch = useDispatch();
 
-  const { token, id } = useSelector((state) => state.auth);
+  const { token, id, user_role } = useSelector((state) => state.auth);
 
   const { logo, user_name, institution_name, role } = useSelector(
     (state) => state.info
@@ -46,30 +46,9 @@ function Layout({ children }) {
   //   dispatch(getInfo(fetchedData));
   // }, [dispatch, getInfo, fetchedData]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(`${API_URL}/data/all/${id}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+  const user = user_role && user_role;
 
-      const data = await res.json();
-
-      if (res.ok) {
-        console.log("info", data.data);
-        dispatch(getInfo(data.data));
-        // return data.data;
-      } else {
-        return console.log("error", data.message);
-      }
-    };
-
-    fetchData();
-
-    // dispatch(getAllData(data));
-  }, [dispatch, id, token]);
+  const { fetchedData } = useGetData(`/data/${user}/all`);
 
   // useEffect(() => {
   //   dispatch(getAllData(fetchedData));
@@ -78,6 +57,10 @@ function Layout({ children }) {
   // }, []);
 
   // const { user_name, institution_name, role, logo } = fetchedData;
+
+  useEffect(() => {
+    dispatch(getInfo(fetchedData));
+  }, [dispatch, fetchedData]);
 
   useEffect(() => {
     if (!token && !id) {

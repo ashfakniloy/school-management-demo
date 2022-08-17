@@ -19,7 +19,7 @@ function Layout({ children }) {
 
   const dispatch = useDispatch();
 
-  const { token, id } = useSelector((state) => state.auth);
+  const { token, id, user_role } = useSelector((state) => state.auth);
 
   const { logo, user_name, institution_name, role } = useSelector(
     (state) => state.info
@@ -39,36 +39,13 @@ function Layout({ children }) {
     setLoading(false);
   });
 
-  // const { fetchedData } = useGetData("/data/all");
+  const user = user_role && user_role;
 
-  // useEffect(() => {
-  //   dispatch(getInfo(fetchedData));
-  // }, [dispatch, getInfo, fetchedData]);
+  const { fetchedData } = useGetData(`/data/${user}/all`);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(`${API_URL}/data/all/${id}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        console.log("info", data.data);
-        dispatch(getInfo(data.data));
-        // return data.data;
-      } else {
-        return console.log("error", data.message);
-      }
-    };
-
-    fetchData();
-
-    // dispatch(getAllData(data));
-  }, [dispatch, id, token]);
+    dispatch(getInfo(fetchedData));
+  }, [dispatch, getInfo, fetchedData]);
 
   // useEffect(() => {
   //   dispatch(getAllData(fetchedData));

@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import useLogin from "../Hooks/useLogin";
 import { getUser } from "../../redux/features/info/infoSlice";
 
-function AdminLogin({ user, route }) {
+function SuperAdminLogin({ user, loginRoute, dashboardRoute }) {
   const initialvalues = {
     email: "",
     password: "",
@@ -24,17 +24,29 @@ function AdminLogin({ user, route }) {
 
   // const dispatch = useDispatch();
 
-  const { token, id } = useSelector((state) => state.auth);
+  const { token, id, user_role } = useSelector((state) => state.auth);
 
-  const { loginUser } = useLogin(`/${route}`);
+  const { loginUser } = useLogin(loginRoute);
+
+  // useEffect(() => {
+  //   // dispatch(getUser(user));
+
+  //   if (token && id) {
+  //     router.push(`/${route}`);
+  //   }
+  // }, [token, id, router, route]);
+
+  // const handleSubmit = (values) => {
+  //   loginUser(values);
+  // };
 
   useEffect(() => {
     // dispatch(getUser(user));
 
-    if (token && id) {
-      router.push(`/${route}`);
+    if (user_role) {
+      router.push(dashboardRoute);
     }
-  }, [token, id, router, route]);
+  }, [user_role, router, dashboardRoute]);
 
   const handleSubmit = (values) => {
     loginUser(values);
@@ -89,4 +101,4 @@ function AdminLogin({ user, route }) {
   );
 }
 
-export default AdminLogin;
+export default SuperAdminLogin;

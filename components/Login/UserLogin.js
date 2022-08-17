@@ -8,15 +8,15 @@ import { TextField } from "../common/InputField";
 import { useSelector } from "react-redux";
 import useLogin from "../Hooks/useLogin";
 
-function UserLogin({ user, route }) {
+function UserLogin({ user, loginRoute, dashboardRoute }) {
   const initialvalues = {
-    code: "",
+    identity_id: "",
     email: "",
     password: "",
   };
 
   const validate = Yup.object({
-    code: Yup.string().required("Code is required"),
+    identity_id: Yup.string().required("Institution Code is required"),
     email: Yup.string().required("Email is required"),
     password: Yup.string().required("Password is required"),
   });
@@ -25,13 +25,13 @@ function UserLogin({ user, route }) {
 
   const { token, id } = useSelector((state) => state.auth);
 
-  const { loginUser } = useLogin(`/${route}`);
+  const { loginUser } = useLogin(loginRoute);
 
   useEffect(() => {
     if (token && id) {
-      router.push(`/${route}`);
+      router.push(dashboardRoute);
     }
-  }, [token, id, router, route]);
+  }, [token, id, router, dashboardRoute]);
 
   const handleSubmit = (values) => {
     loginUser(values);
@@ -56,9 +56,9 @@ function UserLogin({ user, route }) {
                 <div className="text-sm gap-y-5 md:gap-y-7">
                   <div className="min-w-[400px] space-y-4">
                     <TextField
-                      label="Institution Code *"
-                      name="code"
-                      type="code"
+                      label="Institution Id *"
+                      name="identity_id"
+                      type="text"
                     />
                     <TextField label="Email *" name="email" type="email" />
                     <TextField

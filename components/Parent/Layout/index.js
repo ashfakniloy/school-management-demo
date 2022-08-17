@@ -7,18 +7,22 @@ import ScrollTop from "../../Layout/ScrollTop";
 import Loader from "../../Layout/Loader";
 import Sidebar from "../../Layout/Sidebar";
 import { parent } from "../../Layout/Sidebar/navlinks/parent";
-// import { getInfo } from "../../../redux/features/info/infoSlice";
+import { getInfo } from "../../../redux/features/info/infoSlice";
 // import { navLinks } from "./NavLinks";
 
 function Layout({ children }) {
   const [showMenu, setShowMenu] = useState(true);
   const [loading, setLoading] = useState(false);
 
-  // const router = useRouter();
+  const router = useRouter();
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // const { token, id } = useSelector((state) => state.auth);
+  const { token, id, user_role } = useSelector((state) => state.auth);
+
+  const { logo, user_name, institution_name, role } = useSelector(
+    (state) => state.info
+  );
 
   // const { logo, user_name, institution_name, role } = useSelector(
   //   (state) => state.info
@@ -38,54 +42,23 @@ function Layout({ children }) {
     setLoading(false);
   });
 
-  // const { fetchedData } = useGetData("/data/all");
+  const user = user_role && user_role;
 
-  // useEffect(() => {
-  //   dispatch(getInfo(fetchedData));
-  // }, [dispatch, getInfo, fetchedData]);
+  const { fetchedData } = useGetData(`/data/${user}/all`);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const res = await fetch(`${API_URL}/data/all/${id}`, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
+  useEffect(() => {
+    dispatch(getInfo(fetchedData));
+  }, [dispatch, getInfo, fetchedData]);
 
-  //     const data = await res.json();
-
-  //     if (res.ok) {
-  //       console.log("info", data.data);
-  //       dispatch(getInfo(data.data));
-  //       // return data.data;
-  //     } else {
-  //       return console.log("error", data.message);
-  //     }
-  //   };
-
-  //   fetchData();
-
-  //   // dispatch(getAllData(data));
-  // }, [dispatch, id, token]);
-
-  // useEffect(() => {
-  //   dispatch(getAllData(fetchedData));
-  //   // dispatch(allData());
-  //   console.log("fetched");
-  // }, []);
-
-  // const { user_name, institution_name, role, logo } = fetchedData;
-
-  // useEffect(() => {
-  //   if (!token && !id) {
-  //     // router.push("/login/admin");
-  //     router.replace("/");
-  //   } else {
-  //     // setLoggedIn(true);
-  //     console.log("logged in");
-  //   }
-  // }, [token, id, router]);
+  useEffect(() => {
+    if (!token && !id) {
+      // router.push("/login/admin");
+      router.replace("/");
+    } else {
+      // setLoggedIn(true);
+      console.log("logged in");
+    }
+  }, [token, id, router]);
 
   // if (!user_name) {
   //   return <Loader />;
