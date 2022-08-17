@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Router, { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 // import Sidebar from "./Sidebar";
@@ -8,6 +8,7 @@ import Loader from "../../Layout/Loader";
 import Sidebar from "../../Layout/Sidebar";
 import { parent } from "../../Layout/Sidebar/navlinks/parent";
 import { getInfo } from "../../../redux/features/info/infoSlice";
+import useGetData from "../../Hooks/useGetData";
 // import { navLinks } from "./NavLinks";
 
 function Layout({ children }) {
@@ -48,7 +49,7 @@ function Layout({ children }) {
 
   useEffect(() => {
     dispatch(getInfo(fetchedData));
-  }, [dispatch, getInfo, fetchedData]);
+  }, [dispatch, fetchedData]);
 
   useEffect(() => {
     if (!token && !id) {

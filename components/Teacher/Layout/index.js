@@ -9,7 +9,6 @@ import Sidebar from "../../Layout/Sidebar";
 import { teacher } from "../../Layout/Sidebar/navlinks/teacher";
 import useGetData from "../../Hooks/useGetData";
 import { getInfo } from "../../../redux/features/info/infoSlice";
-import { API_URL } from "../../../config";
 // import { navLinks } from "./NavLinks";
 
 function Layout({ children }) {

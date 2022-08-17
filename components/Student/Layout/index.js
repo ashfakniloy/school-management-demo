@@ -9,7 +9,7 @@ import Loader from "../../Layout/Loader";
 import Sidebar from "../../Layout/Sidebar";
 import { student } from "../../Layout/Sidebar/navlinks/student";
 import { getInfo } from "../../../redux/features/info/infoSlice";
-import { API_URL } from "../../../config";
+import useGetData from "../../Hooks/useGetData";
 
 function Layout({ children }) {
   const [showMenu, setShowMenu] = useState(true);
@@ -45,7 +45,7 @@ function Layout({ children }) {
 
   useEffect(() => {
     dispatch(getInfo(fetchedData));
-  }, [dispatch, getInfo, fetchedData]);
+  }, [dispatch, fetchedData]);
 
   // useEffect(() => {
   //   dispatch(getAllData(fetchedData));
