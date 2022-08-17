@@ -29,9 +29,9 @@ export const userCategories = [
   },
   {
     id: 5,
-    icon: "/images/users/guardian.png",
-    name: "GUARDIAN",
-    button: "Guardian",
-    link: "/login/guardian",
+    icon: "/images/users/parent.png",
+    name: "PARENT",
+    button: "parent",
+    link: "/login/parent",
   },
 ];
