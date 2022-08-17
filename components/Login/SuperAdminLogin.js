@@ -7,7 +7,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { TextField } from "../common/InputField";
 import { useSelector, useDispatch } from "react-redux";
 import useLogin from "../Hooks/useLogin";
-import { getUser } from "../../redux/features/info/infoSlice";
 
 function SuperAdminLogin({ user, loginRoute, dashboardRoute }) {
   const initialvalues = {
@@ -26,27 +25,13 @@ function SuperAdminLogin({ user, loginRoute, dashboardRoute }) {
 
   const { token, id, user_role } = useSelector((state) => state.auth);
 
-  const { loginUser } = useLogin(loginRoute);
-
-  // useEffect(() => {
-  //   // dispatch(getUser(user));
-
-  //   if (token && id) {
-  //     router.push(`/${route}`);
-  //   }
-  // }, [token, id, router, route]);
-
-  // const handleSubmit = (values) => {
-  //   loginUser(values);
-  // };
+  const { loginUser } = useLogin(loginRoute, dashboardRoute);
 
   useEffect(() => {
-    // dispatch(getUser(user));
-
-    if (user_role) {
+    if (token && id) {
       router.push(dashboardRoute);
     }
-  }, [user_role, router, dashboardRoute]);
+  }, [token, id, router, dashboardRoute]);
 
   const handleSubmit = (values) => {
     loginUser(values);

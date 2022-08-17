@@ -1,8 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { userCategories } from "./userCategories";
 
 function Login() {
+  //for redirecting to dashboard if logged in
+  // const { token, id, user_role } = useSelector((state) => state.auth);
+
+  // const dashboardRoute = user_role && user_role.split("super ").join("");
+
+  // const router = useRouter();
+
+  // useEffect(() => {
+  //   if (token && id) {
+  //     router.push(`/${dashboardRoute}`);
+  //   }
+  // }, [token, id, router, dashboardRoute]);
+
   return (
     <div className="flex justify-center items-center h-screen bg-slate-200">
       <div className="grid grid-cols-5 bg-white p-5">

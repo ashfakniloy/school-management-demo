@@ -1,5 +1,6 @@
 import {
   AiOutlineDashboard,
+  AiOutlineAreaChart,
   AiOutlineHome,
   AiFillSetting,
 } from "react-icons/ai";
@@ -9,7 +10,7 @@ import { RiParentFill } from "react-icons/ri";
 import { GiMoneyStack, GiBus } from "react-icons/gi";
 import { SiGoogleclassroom, SiGooglesheets } from "react-icons/si";
 import { FaBookOpen, FaClipboardList } from "react-icons/fa";
-import { BsCalendar3 } from "react-icons/bs";
+import { BsCalendar3, BsCalendarX } from "react-icons/bs";
 import { GoChecklist } from "react-icons/go";
 
 export const student = [
@@ -21,9 +22,9 @@ export const student = [
   },
   {
     id: 2,
-    name: "class",
-    link: "/student/class",
-    icon: <SiGoogleclassroom className="fill-green-400" />,
+    name: "class routine",
+    link: "/student/class-routine",
+    icon: <BsCalendar3 className="fill-green-400" />,
   },
   {
     id: 3,
@@ -33,28 +34,29 @@ export const student = [
   },
   {
     id: 4,
-    name: "result",
-    link: "/student/result",
+    name: "exam",
+    link: "/student/exam",
     icon: <GoChecklist className="fill-green-400" />,
   },
   {
     id: 5,
+    name: "result",
+    link: "/student/result",
+    icon: <AiOutlineAreaChart className="fill-green-400" />,
+  },
+  {
+    id: 6,
     name: "fees",
     link: "/student/fees",
     icon: <GiMoneyStack className="fill-green-400" />,
   },
   {
-    id: 6,
-    name: "leave",
-    link: "/student/leave",
-    icon: <SiGooglesheets className="fill-green-400" />,
-  },
-  {
     id: 7,
     name: "leave",
-    link: "/student/subject",
-    icon: <FaBookOpen className="fill-green-400" />,
+    link: "/student/leave",
+    icon: <BsCalendarX className="fill-green-400" />,
   },
+
   // {
   //   id: 2,
   //   name: "students",
@@ -206,7 +208,7 @@ export const student = [
   //   id: 9,
   //   name: "class Routine",
   //   link: "/admin/class-routine",
-  //   icon: <BsCalendar3 className="fill-green-400" />,
+  //   icon: <, BsCalendarX className="fill-green-400" />,
   // },
   // {
   //   id: 10,

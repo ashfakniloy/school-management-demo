@@ -25,8 +25,6 @@ function Layout({ children }) {
     (state) => state.info
   );
 
-  // const { role } = useSelector((state) => state.login);
-
   Router.events.on("routeChangeStart", (url) => {
     setLoading(true);
   });
@@ -39,31 +37,23 @@ function Layout({ children }) {
     setLoading(false);
   });
 
-  const user = user_role && user_role;
+  // const user = user_role && user_role;
 
-  const { fetchedData } = useGetData(`/data/${user}/all`);
-
-  useEffect(() => {
-    dispatch(getInfo(fetchedData));
-  }, [dispatch, fetchedData]);
+  // const { fetchedData } = useGetData(`/data/${user}/all`);
 
   // useEffect(() => {
-  //   dispatch(getAllData(fetchedData));
-  //   // dispatch(allData());
-  //   console.log("fetched");
-  // }, []);
+  //   dispatch(getInfo(fetchedData));
+  // }, [dispatch, fetchedData]);
 
-  // const { user_name, institution_name, role, logo } = fetchedData;
-
-  useEffect(() => {
-    if (!token && !id) {
-      // router.push("/login/admin");
-      router.replace("/");
-    } else {
-      // setLoggedIn(true);
-      console.log("logged in");
-    }
-  }, [token, id, router]);
+  //for authorization
+  // useEffect(() => {
+  //   if (!token && !id) {
+  //     router.replace("/");
+  //   } else {
+  //     // setLoggedIn(true);
+  //     console.log("logged in");
+  //   }
+  // }, [token, id, router]);
 
   // if (!user_name) {
   //   return <Loader />;

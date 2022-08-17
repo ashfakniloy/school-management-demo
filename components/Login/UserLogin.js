@@ -25,7 +25,7 @@ function UserLogin({ user, loginRoute, dashboardRoute }) {
 
   const { token, id } = useSelector((state) => state.auth);
 
-  const { loginUser } = useLogin(loginRoute);
+  const { loginUser } = useLogin(loginRoute, dashboardRoute);
 
   useEffect(() => {
     if (token && id) {
