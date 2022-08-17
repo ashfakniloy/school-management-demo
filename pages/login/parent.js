@@ -6,11 +6,7 @@ function GuardianLoginPage() {
   return (
     <div className="bg-gray-100">
       {/* <LoginForm user="guardian" route="guardian" /> */}
-      <UserLogin
-        user="guardian"
-        loginRoute="/guardian"
-        dashboardRoute="/guardian"
-      />
+      <UserLogin user="parent" loginRoute="/parent" dashboardRoute="/parent" />
     </div>
   );
 }
