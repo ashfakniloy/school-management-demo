@@ -31,7 +31,7 @@ export const userCategories = [
     id: 5,
     icon: "/images/users/parent.png",
     name: "PARENT",
-    button: "parent",
+    button: "Parent",
     link: "/login/parent",
   },
 ];

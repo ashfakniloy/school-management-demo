@@ -1,5 +1,6 @@
 import {
   AiOutlineDashboard,
+  AiOutlineAreaChart,
   AiOutlineHome,
   AiFillSetting,
 } from "react-icons/ai";
@@ -7,9 +8,9 @@ import { ImUsers, ImLibrary } from "react-icons/im";
 import { MdOutlineGroups, MdMessage } from "react-icons/md";
 import { RiParentFill } from "react-icons/ri";
 import { GiMoneyStack, GiBus } from "react-icons/gi";
-import { SiGoogleclassroom, SiGooglesheets } from "react-icons/si";
+import { SiGooglesheets } from "react-icons/si";
 import { FaBookOpen, FaClipboardList } from "react-icons/fa";
-import { BsCalendar3 } from "react-icons/bs";
+import { BsCalendar3, BsCalendarX } from "react-icons/bs";
 import { GoChecklist } from "react-icons/go";
 
 export const superAdmin = [
@@ -182,7 +183,7 @@ export const superAdmin = [
     id: 11,
     name: "leave",
     // link: "/leave",
-    icon: <SiGooglesheets className="fill-green-400" />,
+    icon: <BsCalendarX className="fill-green-400" />,
     subLinks: [
       {
         name: "student leave",
@@ -220,6 +221,12 @@ export const superAdmin = [
   },
   {
     id: 13,
+    name: "result",
+    link: "/admin/result",
+    icon: <AiOutlineAreaChart className="fill-green-400" />,
+  },
+  {
+    id: 14,
     name: "transport",
     // link: "/transport",
     icon: <GiBus className="fill-green-400" />,
@@ -235,7 +242,7 @@ export const superAdmin = [
     ],
   },
   {
-    id: 14,
+    id: 15,
     name: "hostel",
     // link: "/hostel",
     icon: <AiOutlineHome className="fill-green-400" />,
@@ -251,7 +258,7 @@ export const superAdmin = [
     ],
   },
   {
-    id: 15,
+    id: 16,
     name: "notice",
     // link: "/notice",
     icon: <FaClipboardList className="fill-green-400" />,
@@ -267,31 +274,31 @@ export const superAdmin = [
     ],
   },
   {
-    id: 16,
+    id: 17,
     name: "message",
     link: "/admin/message",
     icon: <MdMessage className="fill-green-400" />,
   },
   {
-    id: 17,
+    id: 18,
     name: "email",
     link: "/admin/email",
     icon: <MdMessage className="fill-green-400" />,
   },
   {
-    id: 18,
+    id: 19,
     name: "sms",
     link: "/admin/sms",
     icon: <MdMessage className="fill-green-400" />,
   },
   {
-    id: 19,
+    id: 20,
     name: "account",
     link: "/admin/account",
     icon: <AiFillSetting className="fill-green-400" />,
   },
   {
-    id: 20,
+    id: 21,
     name: "billing",
     link: "/admin/billing",
     icon: <AiFillSetting className="fill-green-400" />,

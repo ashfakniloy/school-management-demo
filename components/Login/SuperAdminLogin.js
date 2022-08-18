@@ -27,11 +27,11 @@ function SuperAdminLogin({ user, loginRoute, dashboardRoute }) {
 
   const { loginUser } = useLogin(loginRoute, dashboardRoute);
 
-  useEffect(() => {
-    if (token && id) {
-      router.push(dashboardRoute);
-    }
-  }, [token, id, router, dashboardRoute]);
+  // useEffect(() => {
+  //   if (token && id) {
+  //     router.push(dashboardRoute);
+  //   }
+  // }, [token, id, router, dashboardRoute]);
 
   const handleSubmit = (values) => {
     loginUser(values);

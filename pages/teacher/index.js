@@ -11,7 +11,7 @@ function TeacherPage() {
   const { user_role } = useSelector((state) => state.auth);
   const { role } = useSelector((state) => state.info);
 
-  const user = user_role && user_role.split(" ").join("_");
+  // const user = user_role && user_role.split(" ").join("_");
   // const { fetchedData } = useGetData(`/data/${user}/all`);
 
   // const {
@@ -19,15 +19,15 @@ function TeacherPage() {
   //   total_teachers,
   //   total_parents,
   //   total_earnings,
-  //   total_male,
-  //   total_female,
-  //   notice,
+  //   // total_male,
+  //   // total_female,
+  //   // notice,
   // } = fetchedData;
 
   return (
     <Layout>
       <div className="bg-gray-100 px-8 py-10 ">
-        <h1 className="text-xl font-semibold text-slate-800 capitalize">
+        <h1 className="text-xl font-semibold text-slate-800">
           {/* {user_role} Dashboard */}
           Teacher Dashboard
         </h1>

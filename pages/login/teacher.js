@@ -1,18 +1,20 @@
-import React from "react";
-// import LoginForm from "../../components/Login/LoginForm";
+import useRedirect from "../../components/Hooks/useRedirect";
 import UserLogin from "../../components/Login/UserLogin";
 
 function TeacherLoginPage() {
-  return (
-    <div className="bg-gray-100">
-      {/* <LoginForm user="teacher" route="reacher" /> */}
-      <UserLogin
-        user="teacher"
-        loginRoute="/teacher"
-        dashboardRoute="/teacher"
-      />
-    </div>
-  );
+  const { render } = useRedirect();
+
+  if (render) {
+    return (
+      <div className="bg-gray-100">
+        <UserLogin
+          user="teacher"
+          loginRoute="/teacher"
+          dashboardRoute="/teacher"
+        />
+      </div>
+    );
+  }
 }
 
 export default TeacherLoginPage;

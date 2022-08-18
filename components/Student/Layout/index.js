@@ -39,21 +39,23 @@ function Layout({ children }) {
 
   // const user = user_role && user_role;
 
-  // const { fetchedData } = useGetData(`/data/${user}/all`);
-
-  // useEffect(() => {
-  //   dispatch(getInfo(fetchedData));
-  // }, [dispatch, fetchedData]);
+  // const { fetchedData } = useGetData(`/data/${user_role}/all`);
 
   //for authorization
+  // useEffect(() => {
+  //     dispatch(getInfo(fetchedData));
+  //   if (user_role !== "student") {
+  //     router.push("/");
+  //   }
+  // }, [dispatch, fetchData, user_role, router]);
+
+  const userRole = user_role && user_role;
+
   useEffect(() => {
-    if (user_role !== "student") {
-      router.replace("/");
-    } else {
-      // setLoggedIn(true);
-      console.log("logged in as student");
+    if (userRole !== "student") {
+      router.push("/");
     }
-  }, [user_role, router]);
+  }, [userRole, router]);
 
   // if (!user_name) {
   //   return <Loader />;

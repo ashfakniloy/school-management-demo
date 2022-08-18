@@ -2,7 +2,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FaAngleRight, FaAngleDown } from "react-icons/fa";
-// import { navLinks } from "./NavLinks";
 import SubMenu from "./SubMenu";
 
 function Sidebar({ showMenu, setShowMenu, navLinks, name }) {

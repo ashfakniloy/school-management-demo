@@ -45,31 +45,17 @@ function Layout({ children }) {
   //   dispatch(getInfo(fetchedData));
   // }, [dispatch, getInfo, fetchedData]);
 
-  const user = user_role && user_role;
+  // const userRole = user_role && user_role;
 
-  const { fetchedData } = useGetData(`/data/${user}/all`);
-
-  // useEffect(() => {
-  //   dispatch(getAllData(fetchedData));
-  //   // dispatch(allData());
-  //   console.log("fetched");
-  // }, []);
-
-  // const { user_name, institution_name, role, logo } = fetchedData;
-
-  // useEffect(() => {
-  //   dispatch(getInfo(fetchedData));
-  // }, [dispatch, fetchedData]);
+  // const { fetchedData } = useGetData(`/data/${user_role}/all`);
 
   //for authorization
-  useEffect(() => {
-    if (user_role !== "teacher") {
-      router.replace("/");
-    } else {
-      // setLoggedIn(true);
-      console.log("logged in as teacher");
-    }
-  }, [user_role, router]);
+  // useEffect(() => {
+  //   dispatch(getInfo(fetchedData));
+  //   if (user_role !== "teacher") {
+  //     router.push("/");
+  //   }
+  // }, [dispatch, fetchedData, userRole, router]);
 
   // if (!user_name) {
   //   return <Loader />;

@@ -1,28 +1,17 @@
 import { FaUserCircle, FaRegUserCircle } from "react-icons/fa";
 import { AiOutlineLogout, AiOutlineSetting } from "react-icons/ai";
+import Image from "next/image";
 import { GoTriangleDown } from "react-icons/go";
 import useDropdowm from "../../Hooks/useDropdown";
-import { useRouter } from "next/router";
-// import { useDispatch } from "react-redux";
-// import { reset, logout } from "../../../redux/features/auth/authSlice";
-import Image from "next/image";
 import useLogOut from "../../Hooks/useLogOut";
 
 function User({ logo, userName, role }) {
   const [showDropdown, setShowDropdown, node] = useDropdowm();
-  const router = useRouter();
-  // const dispatch = useDispatch();
+
   const { logoutUser } = useLogOut();
 
-  const handleLogOut = async () => {
-    await router.push("/");
+  const handleLogOut = () => {
     logoutUser();
-    // localStorage.removeItem("token");
-    // localStorage.removeItem("id");
-    // dispatch(logout());
-    // dispatch(reset());
-    // router.push(`/login/${role.split(" ").join("-")}`);
-    // router.push("/");
   };
 
   return (

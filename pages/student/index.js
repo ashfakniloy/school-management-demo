@@ -8,8 +8,8 @@ import useGetData from "../../components/Hooks/useGetData";
 import { useSelector } from "react-redux";
 
 function StudentPage() {
-  const { user_role } = useSelector((state) => state.auth);
-  const { role } = useSelector((state) => state.info);
+  // const { user_role } = useSelector((state) => state.auth);
+  // const { role } = useSelector((state) => state.info);
 
   // const user = user_role && user_role.split(" ").join("_");
   // const { fetchedData } = useGetData(`/data/${user}/all`);

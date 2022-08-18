@@ -43,23 +43,17 @@ function Layout({ children }) {
     setLoading(false);
   });
 
-  const user = user_role && user_role;
+  // const user = user_role && user_role;
 
-  // const { fetchedData } = useGetData(`/data/${user}/all`);
-
-  // useEffect(() => {
-  //   dispatch(getInfo(fetchedData));
-  // }, [dispatch, fetchedData]);
+  // const { fetchedData } = useGetData(`/data/${user_role}/all`);
 
   //for authorization
-  useEffect(() => {
-    if (user_role !== "parent") {
-      router.replace("/");
-    } else {
-      // setLoggedIn(true);
-      console.log("logged in as parent");
-    }
-  }, [user_role, router]);
+  // useEffect(() => {
+  //   //   dispatch(getInfo(fetchedData));
+  //   if (user_role !== "parent") {
+  //     router.push("/");
+  //   }
+  // }, [dispatch, fetchData, user_role, router]);
 
   // if (!user_name) {
   //   return <Loader />;

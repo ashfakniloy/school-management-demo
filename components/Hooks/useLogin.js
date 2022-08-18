@@ -27,7 +27,7 @@ function useLogin(loginRoute, dashboardRoute) {
       // localStorage.setItem("id", JSON.stringify(data.id));
       localStorage.setItem("token", data.token);
       localStorage.setItem("id", data.id);
-      localStorage.setItem("user_role", data.from);
+      localStorage.setItem("user_role", data.role);
       dispatch(doLogin(data));
       router.push(dashboardRoute);
     } else {

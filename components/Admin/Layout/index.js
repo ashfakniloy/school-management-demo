@@ -31,7 +31,6 @@ import { API_URL } from "../../../config";
 function Layout({ children, data }) {
   const [showMenu, setShowMenu] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [render, setRender] = useState(false);
 
   const router = useRouter();
   const dispatch = useDispatch();
@@ -65,18 +64,13 @@ function Layout({ children, data }) {
 
   const { fetchedData } = useGetData(`/data/${userRoute}/all`);
 
+  //for authorization
   useEffect(() => {
     dispatch(getInfo(fetchedData));
     if (userRole !== "admin") {
       router.push("/");
     }
   }, [dispatch, fetchedData, userRole, router]);
-
-  // useEffect(() => {
-  //   if (userRole === "admin") {
-  //     setRender(true);
-  //   }
-  // }, [userRole]);
 
   // if (!userRole) {
   //   return <Loader />;

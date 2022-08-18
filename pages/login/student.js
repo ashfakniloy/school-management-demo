@@ -1,18 +1,20 @@
-import React from "react";
-import LoginForm from "../../components/Login/LoginForm";
+import useRedirect from "../../components/Hooks/useRedirect";
 import UserLogin from "../../components/Login/UserLogin";
 
 function StudentLoginPage() {
-  return (
-    <div className="bg-gray-100">
-      {/* <LoginForm user="student" route="student" /> */}
-      <UserLogin
-        user="student"
-        loginRoute="/student"
-        dashboardRoute="/student"
-      />
-    </div>
-  );
+  const { render } = useRedirect();
+
+  if (render) {
+    return (
+      <div className="bg-gray-100">
+        <UserLogin
+          user="student"
+          loginRoute="/student"
+          dashboardRoute="/student"
+        />
+      </div>
+    );
+  }
 }
 
 export default StudentLoginPage;
