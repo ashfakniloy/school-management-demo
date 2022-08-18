@@ -57,19 +57,19 @@ function Layout({ children }) {
 
   // const { user_name, institution_name, role, logo } = fetchedData;
 
-  useEffect(() => {
-    dispatch(getInfo(fetchedData));
-  }, [dispatch, fetchedData]);
+  // useEffect(() => {
+  //   dispatch(getInfo(fetchedData));
+  // }, [dispatch, fetchedData]);
 
+  //for authorization
   useEffect(() => {
-    if (!token && !id) {
-      // router.push("/login/admin");
+    if (user_role !== "teacher") {
       router.replace("/");
     } else {
       // setLoggedIn(true);
-      console.log("logged in");
+      console.log("logged in as teacher");
     }
-  }, [token, id, router]);
+  }, [user_role, router]);
 
   // if (!user_name) {
   //   return <Loader />;

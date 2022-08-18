@@ -46,14 +46,14 @@ function Layout({ children }) {
   // }, [dispatch, fetchedData]);
 
   //for authorization
-  // useEffect(() => {
-  //   if (!token && !id) {
-  //     router.replace("/");
-  //   } else {
-  //     // setLoggedIn(true);
-  //     console.log("logged in");
-  //   }
-  // }, [token, id, router]);
+  useEffect(() => {
+    if (user_role !== "student") {
+      router.replace("/");
+    } else {
+      // setLoggedIn(true);
+      console.log("logged in as student");
+    }
+  }, [user_role, router]);
 
   // if (!user_name) {
   //   return <Loader />;

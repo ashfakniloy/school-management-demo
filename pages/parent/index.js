@@ -17,39 +17,40 @@ function ParentPage() {
   const { role } = useSelector((state) => state.info);
 
   const user = user_role && user_role.split(" ").join("_");
-  const { fetchedData } = useGetData(`/data/${user}/all`);
+  // const { fetchedData } = useGetData(`/data/${user}/all`);
 
-  const {
-    total_students,
-    total_teachers,
-    total_parents,
-    total_earnings,
-    // total_male,
-    // total_female,
-    notice,
-  } = fetchedData;
+  // const {
+  //   total_students,
+  //   total_teachers,
+  //   total_parents,
+  //   total_earnings,
+  //   // total_male,
+  //   // total_female,
+  //   notice,
+  // } = fetchedData;
 
   return (
     <Layout>
       <div className="bg-gray-100 px-8 py-10 ">
-        <h1 className="text-xl font-semibold text-slate-800">
-          {role} Dashboard
+        <h1 className="text-xl font-semibold text-slate-800 capitalize">
+          {/* {user_role} Dashboard */}
+          Parent Dashboard
         </h1>
         <div className="mt-8 grid lg:grid-cols-2 xl:grid-cols-4 gap-6">
-          <Cards
+          {/* <Cards
             students={total_students}
             teachers={total_teachers}
             parents={total_parents}
             earnings={total_earnings}
-          />
+          /> */}
           {/* <div className="col-span-2">
             <LineChart />
           </div>
           <BarChart />
           <DoughnutChart male={total_male} female={total_female} /> */}
-          <div className="col-span-2">
+          {/* <div className="col-span-2">
             <NoticeBoard notices={notice} />
-          </div>
+          </div> */}
         </div>
       </div>
     </Layout>

@@ -45,21 +45,21 @@ function Layout({ children }) {
 
   const user = user_role && user_role;
 
-  const { fetchedData } = useGetData(`/data/${user}/all`);
+  // const { fetchedData } = useGetData(`/data/${user}/all`);
 
-  useEffect(() => {
-    dispatch(getInfo(fetchedData));
-  }, [dispatch, fetchedData]);
+  // useEffect(() => {
+  //   dispatch(getInfo(fetchedData));
+  // }, [dispatch, fetchedData]);
 
+  //for authorization
   useEffect(() => {
-    if (!token && !id) {
-      // router.push("/login/admin");
+    if (user_role !== "parent") {
       router.replace("/");
     } else {
       // setLoggedIn(true);
-      console.log("logged in");
+      console.log("logged in as parent");
     }
-  }, [token, id, router]);
+  }, [user_role, router]);
 
   // if (!user_name) {
   //   return <Loader />;

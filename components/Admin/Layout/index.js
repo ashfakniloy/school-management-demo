@@ -10,105 +10,75 @@ import ScrollTop from "../../Layout/ScrollTop";
 import Loader from "../../Layout/Loader";
 // import { adminNavLinks, superAdminNavLinks } from "./NavLinks";
 import useGetData from "../../Hooks/useGetData";
-// import { allData, getAllData } from "../../../redux/features/auth/authSlice";
-// import { API_URL } from "../../../config";
 import { getInfo } from "../../../redux/features/info/infoSlice";
+import { API_URL } from "../../../config";
 
-function Layout({ children }) {
+// Layout.getInitialProps = async () => {
+//   const { token, id } = useSelector((state) => state.auth);
+//   const url = `${API_URL}/data/admin/all/${id}`;
+
+//   const res = await fetch(url, {
+//     headers: {
+//       "Content-Type": "application/json",
+//       Authorization: `Bearer ${token}`,
+//     },
+//   });
+//   const data = await res.json();
+
+//   return { data };
+// };
+
+function Layout({ children, data }) {
   const [showMenu, setShowMenu] = useState(true);
   const [loading, setLoading] = useState(false);
-  // const [user, setUser] = useState("");
-  // const [loggedIn, setLoggedIn] = useState(false);
+  const [render, setRender] = useState(false);
 
   const router = useRouter();
-
   const dispatch = useDispatch();
-
-  const { token, id, user_role } = useSelector((state) => state.auth);
-  // const { token, id } = useSelector((state) => state.auth);
-
+  const { user_role } = useSelector((state) => state.auth);
   const { logo, user_name, institution_name, role } = useSelector(
     (state) => state.info
   );
 
-  // const { role } = useSelector((state) => state.login);
-
   Router.events.on("routeChangeStart", (url) => {
     setLoading(true);
   });
-
   Router.events.on("routeChangeComplete", (url) => {
     setLoading(false);
   });
-
   Router.events.on("routeChangeError", (url) => {
     setLoading(false);
   });
 
-  const user = user_role && user_role.split(" ").join("_");
-
-  // console.log(user);
-
-  const { fetchedData } = useGetData(`/data/${user}/all`);
-
-  useEffect(() => {
-    dispatch(getInfo(fetchedData));
-  }, [dispatch, fetchedData]);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const res = await fetch(`${API_URL}/data/super_admin/all/${id}`, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-
-  //     const data = await res.json();
-
-  //     if (res.ok) {
-  //       console.log("info", data.data);
-  //       dispatch(getInfo(data.data));
-  //       // return data.data;
-  //     } else {
-  //       return console.log("error", data.message);
-  //     }
-  //   };
-
-  //   fetchData();
-
-  //   // dispatch(getAllData(data));
-  // }, [dispatch, id, token]);
-
-  // useEffect(() => {
-  //   dispatch(getAllData(fetchedData));
-  //   // dispatch(allData());
-  //   console.log("fetched");
-  // }, []);
-
-  // const { user_name, institution_name, role, logo } = fetchedData;
-
   const navLinks = () => {
-    if (role === "super admin") {
+    if (user_role === "super admin") {
       return superAdmin;
-    } else if (role === "admin") {
+    } else if (user_role === "admin") {
       return admin;
     } else {
       return superAdmin;
     }
   };
 
-  useEffect(() => {
-    if (!token && !id) {
-      // router.push("/login/admin");
-      router.replace("/");
-    } else {
-      // setLoggedIn(true);
-      console.log("logged in");
-    }
-  }, [token, id, router]);
+  const userRoute = user_role && user_role.split(" ").join("_");
+  const userRole = user_role && user_role.split("super ").join("");
 
-  // if (!user_name) {
+  const { fetchedData } = useGetData(`/data/${userRoute}/all`);
+
+  useEffect(() => {
+    dispatch(getInfo(fetchedData));
+    if (userRole !== "admin") {
+      router.push("/");
+    }
+  }, [dispatch, fetchedData, userRole, router]);
+
+  // useEffect(() => {
+  //   if (userRole === "admin") {
+  //     setRender(true);
+  //   }
+  // }, [userRole]);
+
+  // if (!userRole) {
   //   return <Loader />;
   // }
 
@@ -119,6 +89,7 @@ function Layout({ children }) {
           showMenu={showMenu}
           setShowMenu={setShowMenu}
           navLinks={navLinks()}
+          // navLinks={superAdmin}
           name={role}
         />
 
