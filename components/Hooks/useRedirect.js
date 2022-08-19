@@ -14,11 +14,11 @@ function useRedirect() {
       setRender(true);
       dispatch(resetInfo());
     }
-    user_role === "super admin" && router.push("/admin");
-    user_role === "admin" && router.push("/admin");
-    user_role === "teacher" && router.push("/teacher");
-    user_role === "student" && router.push("/student");
-    user_role === "parent" && router.push("/parent");
+    user_role === "super admin" && router.replace("/admin");
+    user_role === "admin" && router.replace("/admin");
+    user_role === "teacher" && router.replace("/teacher");
+    user_role === "student" && router.replace("/student");
+    user_role === "parent" && router.replace("/parent");
   }, [user_role, router, dispatch]);
 
   return { render };

@@ -5,10 +5,9 @@ import { useSelector, useDispatch } from "react-redux";
 import Header from "../../Layout/Header";
 import Sidebar from "../../Layout/Sidebar";
 import { admin } from "../../Layout/Sidebar/navlinks/admin";
-import { superAdmin } from "../../Layout/Sidebar/navlinks/superAdmin";
 import ScrollTop from "../../Layout/ScrollTop";
 import Loader from "../../Layout/Loader";
-// import { adminNavLinks, superAdminNavLinks } from "./NavLinks";
+
 import useGetData from "../../Hooks/useGetData";
 import { getInfo } from "../../../redux/features/info/infoSlice";
 import { API_URL } from "../../../config";
@@ -28,7 +27,7 @@ import { API_URL } from "../../../config";
 //   return { data };
 // };
 
-function Layout({ children, data }) {
+function Layout({ children }) {
   const [showMenu, setShowMenu] = useState(true);
   const [loading, setLoading] = useState(false);
 
@@ -49,16 +48,6 @@ function Layout({ children, data }) {
     setLoading(false);
   });
 
-  const navLinks = () => {
-    if (user_role === "super admin") {
-      return superAdmin;
-    } else if (user_role === "admin") {
-      return admin;
-    } else {
-      return superAdmin;
-    }
-  };
-
   const userRoute = user_role && user_role.split(" ").join("_");
   const userRole = user_role && user_role.split("super ").join("");
 
@@ -66,15 +55,19 @@ function Layout({ children, data }) {
 
   //for authorization
   useEffect(() => {
-    dispatch(getInfo(fetchedData));
+    fetchedData && dispatch(getInfo(fetchedData));
     if (userRole !== "admin") {
       router.push("/");
     }
   }, [dispatch, fetchedData, userRole, router]);
 
-  // if (!userRole) {
-  //   return <Loader />;
-  // }
+  const navLinks = () => {
+    if (role !== "super admin") {
+      return admin.filter((item) => item.name !== "account");
+    } else {
+      return admin;
+    }
+  };
 
   return (
     <>
@@ -83,7 +76,6 @@ function Layout({ children, data }) {
           showMenu={showMenu}
           setShowMenu={setShowMenu}
           navLinks={navLinks()}
-          // navLinks={superAdmin}
           name={role}
         />
 

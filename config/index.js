@@ -14,6 +14,11 @@ export const API_URL = "https://limassolwaterdelivery.com/v1";
 // export const id =
 //   typeof window !== "undefined" ? JSON.parse(localStorage.getItem("id")) : null;
 
+// export const user_role =
+//   typeof window !== "undefined"
+//     ? JSON.parse(localStorage.getItem("user_role"))
+//     : null;
+
 export const token =
   typeof window !== "undefined" ? localStorage.getItem("token") : null;
 

@@ -291,14 +291,14 @@ export const admin = [
     link: "/admin/sms",
     icon: <MdMessage className="fill-green-400" />,
   },
-  // {
-  //   id: 19,
-  //   name: "account",
-  //   link: "/admin/account",
-  //   icon: <AiFillSetting className="fill-green-400" />,
-  // },
   {
     id: 20,
+    name: "account",
+    link: "/admin/account",
+    icon: <AiFillSetting className="fill-green-400" />,
+  },
+  {
+    id: 21,
     name: "billing",
     link: "/admin/billing",
     icon: <AiFillSetting className="fill-green-400" />,

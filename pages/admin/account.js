@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../../components/Admin/Layout";
 // import Layout from "../../components/Layout";
 import AdminForm from "../../components/Admin/Form/AdminForm";
 import Users from "../../components/Admin/Account/Users";
 import UserDetails from "../../components/Admin/Account/UserDetails";
 import useGetData from "../../components/Hooks/useGetData";
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import Loader from "../../components/Layout/Loader";
+import FullPageLoader from "../../components/Layout/FullPageLoader";
 
 // const users = [
 //   {
@@ -43,11 +44,20 @@ import { useRouter } from "next/router";
 function AccountPage() {
   const { fetchedData } = useGetData("/admin_user/all");
   const [userDetails, setUserDetails] = useState("");
+  const [render, setRender] = useState(true);
   // const [userDetails, setUserDetails] = useState(fetchedData[0]);
 
+  const { user_role } = useSelector((state) => state.auth);
   const { role } = useSelector((state) => state.info);
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (user_role !== "super admin") {
+      setRender(false);
+      router.replace("/404");
+    }
+  }, [user_role, router]);
 
   // useEffect(() => {
   //   console.log(fetchedData[0]);
@@ -57,40 +67,51 @@ function AccountPage() {
   //   }
   // }, [fetchedData, setUserDetails, role, router]);
 
+  // const userRole = role ? role : "";
+
   useEffect(() => {
+    // if (userRole !== "super admin") {
+    //   router.replace("/404");
+    // }
     console.log(fetchedData[0]);
     setUserDetails(fetchedData[0]);
-  }, [fetchedData, setUserDetails]);
+  }, [role, router, fetchedData, setUserDetails]);
 
   // if (role !== "super admin") {
   //   router.replace("/404");
   //   return;
   // }
 
-  return (
-    <Layout>
-      <div className="px-8 py-10 ">
-        <h1 className="text-xl font-semibold text-slate-800">
-          Account Setting
-        </h1>
-        <div className="mt-8">
-          <AdminForm />
-        </div>
+  // if (!render) {
+  //   return <FullPageLoader />;
+  // }
 
-        {userDetails && (
-          <div className="mt-8 flex gap-5">
-            <Users
-              users={fetchedData}
-              userDetails={userDetails}
-              setUserDetails={setUserDetails}
-            />
-
-            <UserDetails userDetails={userDetails} />
+  if (render) {
+    return (
+      <Layout>
+        <div className="px-8 py-10 ">
+          <h1 className="text-xl font-semibold text-slate-800">
+            Account Setting
+          </h1>
+          <div className="mt-8">
+            <AdminForm />
           </div>
-        )}
-      </div>
-    </Layout>
-  );
+
+          {userDetails && (
+            <div className="mt-8 flex gap-5">
+              <Users
+                users={fetchedData}
+                userDetails={userDetails}
+                setUserDetails={setUserDetails}
+              />
+
+              <UserDetails userDetails={userDetails} />
+            </div>
+          )}
+        </div>
+      </Layout>
+    );
+  }
 }
 
 export default AccountPage;

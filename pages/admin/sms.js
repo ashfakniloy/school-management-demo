@@ -9,7 +9,7 @@ function AddSMSPage() {
         <h1 className="text-xl font-semibold text-slate-800">SMS</h1>
         <div className="mt-8">
           {/* <SMSForm /> */}
-          sms page
+          <h1>SMS page</h1>
         </div>
       </div>
     </Layout>

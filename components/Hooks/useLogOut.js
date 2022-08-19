@@ -8,12 +8,12 @@ function useLogOut() {
   const router = useRouter();
 
   const logoutUser = () => {
-    router.push("/");
     localStorage.removeItem("token");
     localStorage.removeItem("id");
     localStorage.removeItem("user_role");
-    dispatch(resetLogin());
     dispatch(resetInfo());
+    dispatch(resetLogin());
+    router.push("/");
   };
 
   return { logoutUser };

@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  institution_name: "",
-  user_name: "",
-  role: "",
-  total_students: "",
-  total_earnings: "",
-  total_expenses: "",
-  total_female: "",
-  total_male: "",
-  total_parents: "",
-  total_teachers: "",
-  notice: "",
-  logo: "",
+  institution_name: null,
+  user_name: null,
+  role: null,
+  total_students: null,
+  total_earnings: null,
+  total_expenses: null,
+  total_female: null,
+  total_male: null,
+  total_parents: null,
+  total_teachers: null,
+  notice: null,
+  logo: null,
   // user: "",
 };
 

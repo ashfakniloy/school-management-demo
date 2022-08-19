@@ -33,7 +33,7 @@ function Login() {
             </h4>
             <Link href={user.link} passHref>
               <div className="px-3 py-3 mx-20 border-2 border-green-500 rounded text-sm text-green-500 hover:bg-gray-100 transition duration-300 cursor-pointer">
-                Login as {user.button}
+                <p>Login as {user.button}</p>
               </div>
             </Link>
           </div>
