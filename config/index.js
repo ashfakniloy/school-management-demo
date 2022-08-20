@@ -27,3 +27,6 @@ export const id =
 
 export const user_role =
   typeof window !== "undefined" ? localStorage.getItem("user_role") : null;
+
+export const identity_id =
+  typeof window !== "undefined" ? localStorage.getItem("identity_id") : null;

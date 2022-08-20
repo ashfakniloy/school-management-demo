@@ -1,8 +1,12 @@
 // import useGetData from "../../components/Hooks/useGetData";
+// import useGetData from "../../components/Hooks/useGetData";
+import Table from "../../components/common/Table";
+import { ClassesColumn } from "../../components/common/Table/columns/classes";
+import useUserGetData from "../../components/Hooks/useUserGetData";
 import Layout from "../../components/Student/Layout";
 
 function ClassRoutinePage() {
-  // const { fetchedData } = useGetData(`/data/${user}/all`);
+  const { fetchedData } = useUserGetData("class_routine");
 
   return (
     <Layout>
@@ -15,9 +19,11 @@ function ClassRoutinePage() {
           <h1 className="px-10 text-xl font-semibold text-slate-800">
             Class Routine Data
           </h1>
-          {/* <div className="mt-10 px-3 flex flex-col items-center">
-            
-          </div> */}
+          <div className="mt-10 px-3 flex flex-col items-center">
+            {fetchedData && (
+              <Table columnsHeading={ClassesColumn} usersData={fetchedData} />
+            )}
+          </div>
         </div>
       </div>
     </Layout>

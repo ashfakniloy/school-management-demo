@@ -26,6 +26,7 @@ function useLogin(loginRoute, dashboardRoute) {
       localStorage.setItem("token", data.token);
       localStorage.setItem("id", data.id);
       localStorage.setItem("user_role", data.role);
+      localStorage.setItem("identity_id", data.identity_id);
       // localStorage.setItem("token", JSON.stringify(data.token));
       // localStorage.setItem("id", JSON.stringify(data.id));
       // localStorage.setItem("user_role", JSON.stringify(data.role));

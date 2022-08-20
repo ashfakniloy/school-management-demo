@@ -11,6 +11,7 @@ function useLogOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("id");
     localStorage.removeItem("user_role");
+    localStorage.removeItem("identity_id");
     dispatch(resetInfo());
     dispatch(resetLogin());
     router.push("/");

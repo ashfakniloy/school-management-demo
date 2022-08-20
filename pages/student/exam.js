@@ -1,8 +1,11 @@
 // import useGetData from "../../components/Hooks/useGetData";
+import Table from "../../components/common/Table";
+import { ExamsColumn } from "../../components/common/Table/columns/exams";
+import useUserGetData from "../../components/Hooks/useUserGetData";
 import Layout from "../../components/Student/Layout";
 
 function ExamPage() {
-  // const { fetchedData } = useGetData(`/data/${user}/all`);
+  const { fetchedData } = useUserGetData("exam");
 
   return (
     <Layout>
@@ -15,9 +18,11 @@ function ExamPage() {
           <h1 className="px-10 text-xl font-semibold text-slate-800">
             Exam Data
           </h1>
-          {/* <div className="mt-10 px-3 flex flex-col items-center">
-            
-          </div> */}
+          <div className="mt-10 px-3 flex flex-col items-center">
+            {fetchedData && (
+              <Table columnsHeading={ExamsColumn} usersData={fetchedData} />
+            )}
+          </div>
         </div>
       </div>
     </Layout>
