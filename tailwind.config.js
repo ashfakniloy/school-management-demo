@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        Poppins: ["Poppins, sans-serif"],
-        Roboto: ["Roboto, sans-serif"],
+        // Roboto: ["Roboto, sans-serif"],
+        OpenSans: ["Open Sans", "sans-serif"],
       },
     },
   },

@@ -57,7 +57,7 @@ function User({ photo, userName, role }) {
       </div>
 
       {showDropdown && (
-        <div className="absolute w-[250px] font-light top-[60px] right-1 bg-white shadow-md">
+        <div className="absolute w-[250px] font-light top-[59px] right-1 bg-white shadow-md">
           <p className="px-1 py-4 bg-gradient-to-t from-emerald-600 to-emerald-300 text-white transition duration-300 text-center cursor-default">
             Username
           </p>
