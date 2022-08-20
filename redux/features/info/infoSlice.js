@@ -13,6 +13,7 @@ const initialState = {
   total_teachers: null,
   notice: null,
   logo: null,
+  photo: null,
   // user: "",
 };
 
@@ -25,6 +26,7 @@ export const infoSlice = createSlice({
       state.role = null;
       state.total_students = null;
       state.logo = null;
+      state.photo = null;
       state.notice = null;
       state.total_earnings = null;
       state.total_expenses = null;
@@ -53,6 +55,7 @@ export const infoSlice = createSlice({
         total_expenses,
         role,
         logo,
+        photo,
         notice,
       } = action.payload;
 
@@ -67,6 +70,7 @@ export const infoSlice = createSlice({
       state.total_expenses = total_expenses;
       state.role = role;
       state.logo = logo;
+      state.photo = photo;
       state.notice = notice;
     },
   },

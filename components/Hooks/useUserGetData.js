@@ -29,7 +29,7 @@ function useUserGetData(route) {
       }
     };
     getData();
-  }, [setFetchedData, route, id, token, identity_id]);
+  }, [setFetchedData, user_role, route, id, token, identity_id]);
 
   return { fetchedData };
 }

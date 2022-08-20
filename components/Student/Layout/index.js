@@ -10,18 +10,16 @@ import Sidebar from "../../Layout/Sidebar";
 import { student } from "../../Layout/Sidebar/navlinks/student";
 import { getInfo } from "../../../redux/features/info/infoSlice";
 import useGetData from "../../Hooks/useGetData";
+import useUserGetData from "../../Hooks/useUserGetData";
 
 function Layout({ children }) {
   const [showMenu, setShowMenu] = useState(true);
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-
   const dispatch = useDispatch();
-
-  const { token, id, user_role } = useSelector((state) => state.auth);
-
-  const { logo, user_name, institution_name, role } = useSelector(
+  const { user_role } = useSelector((state) => state.auth);
+  const { logo, photo, user_name, institution_name, role } = useSelector(
     (state) => state.info
   );
 
@@ -39,23 +37,22 @@ function Layout({ children }) {
 
   // const user = user_role && user_role;
 
-  // const { fetchedData } = useGetData(`/data/${user_role}/all`);
-
-  //for authorization
-  // useEffect(() => {
-  //     dispatch(getInfo(fetchedData));
-  //   if (user_role !== "student") {
-  //     router.push("/");
-  //   }
-  // }, [dispatch, fetchData, user_role, router]);
-
-  const userRole = user_role && user_role;
+  const { fetchedData } = useUserGetData(`personal/data`);
 
   useEffect(() => {
-    if (userRole !== "student") {
+    fetchedData && dispatch(getInfo(fetchedData));
+    if (user_role !== "student") {
       router.push("/");
     }
-  }, [userRole, router]);
+  }, [dispatch, fetchedData, user_role, router]);
+
+  // const userRole = user_role && user_role;
+
+  // useEffect(() => {
+  //   if (userRole !== "student") {
+  //     router.push("/");
+  //   }
+  // }, [userRole, router]);
 
   // if (!user_name) {
   //   return <Loader />;
@@ -75,6 +72,7 @@ function Layout({ children }) {
           showMenu={showMenu}
           setShowMenu={setShowMenu}
           logo={logo}
+          photo={photo}
           userName={user_name}
           institutionName={institution_name}
           role={role}

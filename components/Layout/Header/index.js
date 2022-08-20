@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FaBars } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { institutionName } from "../../../config";
@@ -9,6 +10,7 @@ function Header({
   showMenu,
   setShowMenu,
   logo,
+  photo,
   userName,
   institutionName,
   role,
@@ -25,7 +27,8 @@ function Header({
           <FaBars />
         </div>
 
-        <div className="">
+        <div className="flex items-center gap-10">
+          {logo && <Image src={logo} alt="logo" width={40} height={40} />}
           {/* <h2 className="text-xl font-semibold">{institutionName}</h2> */}
           <h2 className="text-xl font-semibold text-cyan-600">
             {institutionName}
@@ -38,7 +41,7 @@ function Header({
           <Messages />
           <Notifications />
         </div>
-        <User logo={logo} userName={userName} role={role} />
+        <User photo={photo} userName={userName} role={role} />
       </div>
     </div>
   );

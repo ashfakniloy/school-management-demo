@@ -5,7 +5,7 @@ import { GoTriangleDown } from "react-icons/go";
 import useDropdowm from "../../Hooks/useDropdown";
 import useLogOut from "../../Hooks/useLogOut";
 
-function User({ logo, userName, role }) {
+function User({ photo, userName, role }) {
   const [showDropdown, setShowDropdown, node] = useDropdowm();
 
   const { logoutUser } = useLogOut();
@@ -33,16 +33,25 @@ function User({ logo, userName, role }) {
           </span>
         </div>
         <div className="">
-          {logo ? (
+          {photo ? (
             <Image
-              src={logo}
+              src={photo}
               alt="user"
               width={40}
               height={40}
               className="rounded-full"
             />
           ) : (
-            <FaUserCircle className="fill-emerald-500 text-3xl" />
+            // <div className="">
+            //   <FaUserCircle className="fill-emerald-500 text-3xl" />
+            // </div>
+            <Image
+              src="/images/user.webp"
+              alt="user"
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
           )}
         </div>
       </div>
