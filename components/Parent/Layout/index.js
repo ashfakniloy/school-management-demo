@@ -8,28 +8,19 @@ import Loader from "../../Layout/Loader";
 import Sidebar from "../../Layout/Sidebar";
 import { parent } from "../../Layout/Sidebar/navlinks/parent";
 import { getInfo } from "../../../redux/features/info/infoSlice";
-import useGetData from "../../Hooks/useGetData";
-// import { navLinks } from "./NavLinks";
+import useUserGetData from "../../Hooks/useUserGetData";
 
 function Layout({ children }) {
   const [showMenu, setShowMenu] = useState(true);
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
-
   const dispatch = useDispatch();
 
-  const { token, id, user_role } = useSelector((state) => state.auth);
-
-  const { logo, user_name, institution_name, role } = useSelector(
+  const { user_role } = useSelector((state) => state.auth);
+  const { logo, photo, user_name, institution_name, role } = useSelector(
     (state) => state.info
   );
-
-  // const { logo, user_name, institution_name, role } = useSelector(
-  //   (state) => state.info
-  // );
-
-  // const { role } = useSelector((state) => state.login);
 
   Router.events.on("routeChangeStart", (url) => {
     setLoading(true);
@@ -42,6 +33,15 @@ function Layout({ children }) {
   Router.events.on("routeChangeError", (url) => {
     setLoading(false);
   });
+
+  const { fetchedData } = useUserGetData("personal/data");
+
+  useEffect(() => {
+    fetchedData && dispatch(getInfo(fetchedData));
+    if (user_role !== "parent") {
+      router.push("/");
+    }
+  }, [dispatch, fetchedData, user_role, router]);
 
   // const user = user_role && user_role;
 
@@ -69,7 +69,15 @@ function Layout({ children }) {
       />
 
       <div className="flex-1 min-h-screen">
-        <Header showMenu={showMenu} setShowMenu={setShowMenu} />
+        <Header
+          showMenu={showMenu}
+          setShowMenu={setShowMenu}
+          logo={logo}
+          photo={photo}
+          userName={user_name}
+          institutionName={institution_name}
+          role={role}
+        />
 
         {loading && <Loader />}
 

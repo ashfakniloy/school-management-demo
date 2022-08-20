@@ -37,7 +37,7 @@ function Layout({ children }) {
 
   // const user = user_role && user_role;
 
-  const { fetchedData } = useUserGetData(`personal/data`);
+  const { fetchedData } = useUserGetData("personal/data");
 
   useEffect(() => {
     fetchedData && dispatch(getInfo(fetchedData));
