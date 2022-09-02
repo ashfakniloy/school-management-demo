@@ -4,7 +4,7 @@
 
 // export const API_URL = "http://34.131.4.194/v1";
 
-export const API_URL = "https://limassolwaterdelivery.com/v1";
+export const API_URL = "https://bool.re/v1";
 
 // export const token =
 //   typeof window !== "undefined"
